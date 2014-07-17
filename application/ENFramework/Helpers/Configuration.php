@@ -9,7 +9,7 @@
 
 require_once 'PersonalConfiguration.php';
 
-// Set where the application is found on disk.
+// Set where the project folder is found on disk.
 set_include_path(PROJECT_ROOT);
 
 // Set the folder where the saved session files should go. Change the second argument if you want to change the folder.
