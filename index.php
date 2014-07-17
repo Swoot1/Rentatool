@@ -19,12 +19,12 @@ try{
    $route           = $routeCollection->getRoute($requestModel->getResource());
 
    if ($route){
-      if ($route->isUserAllowed()){
+//      if ($route->isUserAllowed()){
          $response = $routing->callMethod($route);
          $response->sendResponse();
-      } else{
-         throw new UserIsNotAllowedException('Du måste logga in för att fortsätta.');
-      }
+//      } else{
+//         throw new UserIsNotAllowedException('Du måste logga in för att fortsätta.');
+//      }
    } else{
       include 'Application\Templates\indexHTML.php';
    }

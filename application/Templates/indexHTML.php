@@ -5,7 +5,7 @@ namespace Rentatool\Application\Templates;
 echo '<!DOCTYPE html>
 <html ng-app="Rentatool">
 <head>
-    <title>Ojas fiskeri</title>
+    <title>Rentatool</title>
     <meta charset="utf-8"/>
     <link href="Public/Foundation/css/foundation.css" type="text/css" rel="stylesheet"/>
     <link href="Public/test.css" type="text/css" rel="stylesheet"/>
@@ -35,9 +35,11 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Factories/FishFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/CaughtFishFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/UserFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/DatabaseFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/AuthorizationFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RequestErrorInterceptorFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/FishController.js"></script>
+<script type="text/javascript" src="Public/Scripts/Controllers/DatabaseController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/CaughtFishController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/NavigationController.js"></script>

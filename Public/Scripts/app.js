@@ -33,6 +33,10 @@ var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute']
                 templateUrl: 'public/Templates/login.html',
                 controller: 'AuthorizationController'
             })
+            .when('/database/new', {
+                templateUrl: 'public/Templates/database.html',
+                controller: 'DatabaseController'
+            })
             .otherwise({
                 redirectTo: '/authorization/login'
             });

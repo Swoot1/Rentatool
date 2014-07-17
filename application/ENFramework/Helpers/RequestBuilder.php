@@ -72,7 +72,7 @@ class RequestBuilder{
       $urlParams = array_values(array_filter(explode('/', $parsedURL['path'])));
 
       $this->requestModel->setURLParams($urlParams);
-      $this->requestModel->setResource($urlParams[0]);
+      $this->requestModel->setResource(array_pop($urlParams));
 
       return $this;
    }

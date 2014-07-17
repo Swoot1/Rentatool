@@ -10,32 +10,43 @@
 namespace Rentatool\Application\ENFramework\Models;
 
 
-class DatabaseConnection implements IDatabaseConnection
-{
-    /**
-     * @var \PDO
-     */
-    private $databaseConnection;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
-    public function __construct()
-    {
-        $databaseConnection = new \PDO(sprintf('sqlite:%s/Rentatool/test.sq3', PROJECT_ROOT));
-        $databaseConnection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        $this->databaseConnection = $databaseConnection;
-    }
+class DatabaseConnection implements IDatabaseConnection {
+   /**
+    * @var \PDO
+    */
+   private $databaseConnection;
 
-    public function runQuery($query, $params = array())
-    {
-        $queryResult = array();
-        $DBConnection = $this->databaseConnection;
+   public function __construct() {
+      $host         = 'localhost';
+      $userName     = 'root';
+      $password     = '';
+      $databaseName = 'Rentatool';
 
-        $stmt = $DBConnection->prepare($query);
-        $stmt->execute($params);
+      $databaseConnection = new \PDO(sprintf('mysql:host=%s;dbname=%s', $host, $databaseName), $userName, $password);
+      $databaseConnection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+      $this->databaseConnection = $databaseConnection;
+   }
 
-        while ($result = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $queryResult[] = $result;
-        }
+   public function runQuery($query, $params = array()) {
+      try{
+         $queryResult  = array();
+         $DBConnection = $this->databaseConnection;
 
-        return $queryResult;
-    }
+         $stmt = $DBConnection->prepare($query);
+         $stmt->execute($params);
+
+         if($stmt->rowCount() > 0){
+            while ($result = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+               $queryResult[] = $result;
+            }
+         }
+
+      }catch(\PDOException $exception){
+         throw new ApplicationException('Kunde inte läsa databas.');
+      }
+
+      return $queryResult;
+   }
 }

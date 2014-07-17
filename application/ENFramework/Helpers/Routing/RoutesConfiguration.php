@@ -28,5 +28,10 @@ $routes['user'] = array(
    'controllerName' => 'UserController'
 );
 
+$routes['database'] = array(
+   'resource'              => 'database',
+   'controllerName'        => 'DatabaseController',
+   'requiresAuthorization' => false
+);
 
 return new RouteCollection($routes);

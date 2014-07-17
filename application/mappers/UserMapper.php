@@ -90,8 +90,8 @@ class UserMapper
 
     public function index()
     {
-        $fishes = $this->databaseConnection->runQuery($this->indexSQL, array());
-        return $fishes;
+        $users = $this->databaseConnection->runQuery($this->indexSQL, array());
+        return $users;
     }
 
     public function create(array $DBParameters)
