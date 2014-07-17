@@ -11,25 +11,22 @@ use Rentatool\Application\ENFramework\Helpers\Routing\RouteCollection;
 
 $routes = array();
 
-$routes[] = array(
-    'resource' => 'caughtfish',
-    'controllerName' => 'CaughtFishController'
+$routes['caughtfish'] = array(
+   'controllerName' => 'CaughtFishController'
 );
 
-$routes[] = array(
-    'resource' => 'fish',
-    'controllerName' => 'FishController'
+$routes['fish'] = array(
+   'controllerName' => 'FishController'
 );
 
-$routes[] = array(
-    'resource' => 'authorization',
-    'controllerName' => 'AuthorizationController',
-    'requiresAuthorization' => false
+$routes['authorization'] = array(
+   'controllerName'        => 'AuthorizationController',
+   'requiresAuthorization' => false
 );
 
-$routes[] = array(
-    'resource' => 'user',
-    'controllerName' => 'UserController'
+$routes['user'] = array(
+   'controllerName' => 'UserController'
 );
+
 
 return new RouteCollection($routes);

@@ -13,89 +13,97 @@ namespace Rentatool\Application\ENFramework\Models;
 use Rentatool\Application\Collections\RequestMethodCollection;
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\MethodNotAllowedException;
 
-class Request extends GeneralModel
-{
-    /**
-     * @var \Rentatool\Application\Collections\RequestMethodCollection
-     */
-    private $requestMethodCollection;
-    private $requestMethod;
-    private $urlParams;
-    private $requestURI;
-
-    public function __construct(array $data, RequestMethodCollection $requestMethodCollection)
-    {
-        $this->setRequestMethodCollection($requestMethodCollection);
-        parent::__construct($data);
-    }
-
-    private function setRequestMethodCollection(RequestMethodCollection $requestMethodCollection)
-    {
-        $this->requestMethodCollection = $requestMethodCollection;
-    }
-
-    public function setRequestURI($value)
-    {
-        $this->requestURI = $value;
-    }
+class Request extends GeneralModel{
+   /**
+    * @var \Rentatool\Application\Collections\RequestMethodCollection
+    */
+   private $requestMethodCollection;
+   private $requestMethod;
+   private $urlParams;
+   private $requestURI;
+   private $resource;
 
 
-    public function getResource(){
-        $requestURIAsArray = explode('/', $this->requestURI);
-        return array_shift($requestURIAsArray);
-    }
+   public function __construct(array $data, RequestMethodCollection $requestMethodCollection){
+      $this->setRequestMethodCollection($requestMethodCollection);
+      parent::__construct($data);
+   }
 
-    public function getRequestURI()
-    {
-        return $this->requestURI;
-    }
 
-    /**
-     * @param array $serverArray
-     */
-    public function setRequestMethod($requestMethod)
-    {
-        $this->validateRequestMethod($requestMethod);
-        $this->requestMethod = $requestMethod;
-    }
+   private function setRequestMethodCollection(RequestMethodCollection $requestMethodCollection){
+      $this->requestMethodCollection = $requestMethodCollection;
+   }
 
-    public function getRequestMethod()
-    {
-        return $this->requestMethod;
-    }
 
-    public function setURLParams(array $urlParams)
-    {
-        $this->urlParams = $urlParams;
-        return $this;
-    }
+   public function setRequestURI($value){
+      $this->requestURI = $value;
+   }
 
-    public function getURLParams()
-    {
-        return $this->urlParams;
-    }
 
-    /**
-     * @return bool
-     * @throws \Exception
-     */
-    private function validateRequestMethod($methodName)
-    {
-        $isValidRequestMethod = $this->requestMethodCollection->isValidRequestMethod($methodName);
+   public function getResource(){
+      return $this->resource;
+   }
 
-        if (!$isValidRequestMethod) {
-            throw new MethodNotAllowedException('Ange en vettig request-typ för bövelen.');
-        }
 
-        return true;
-    }
+   public function setResource($resource) {
+      $this->resource = $resource;
+   }
 
-    public function setUpValidation()
-    {
-        // TODO
-    }
 
-    public function getRequestData(){
-        return json_decode(file_get_contents("php://input"), true);
-    }
+   public function getRequestURI(){
+      return $this->requestURI;
+   }
+
+
+   /**
+    * @param $requestMethod
+    * @internal param array $serverArray
+    */
+   public function setRequestMethod($requestMethod){
+      $this->validateRequestMethod($requestMethod);
+      $this->requestMethod = $requestMethod;
+   }
+
+
+   public function getRequestMethod(){
+      return $this->requestMethod;
+   }
+
+
+   public function setURLParams(array $urlParams){
+      $this->urlParams = $urlParams;
+
+      return $this;
+   }
+
+
+   public function getURLParams(){
+      return $this->urlParams;
+   }
+
+
+   /**
+    * @param $methodName
+    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\MethodNotAllowedException
+    * @return bool
+    */
+   private function validateRequestMethod($methodName){
+      $isValidRequestMethod = $this->requestMethodCollection->isValidRequestMethod($methodName);
+
+      if (!$isValidRequestMethod){
+         throw new MethodNotAllowedException('Ange en vettig request-typ för bövelen.');
+      }
+
+      return true;
+   }
+
+
+   public function setUpValidation(){
+      // TODO
+   }
+
+
+   public function getRequestData(){
+      return json_decode(file_get_contents("php://input"), true);
+   }
 }

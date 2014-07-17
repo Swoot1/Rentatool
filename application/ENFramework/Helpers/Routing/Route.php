@@ -11,32 +11,29 @@ namespace Rentatool\Application\ENFramework\Helpers\Routing;
 
 use Rentatool\Application\ENFramework\Helpers\SessionManager;
 
-class Route
-{
-    protected $resource;
-    protected $controllerName;
-    protected $requiresAuthorization = true;
-    // allowed request methods
+class Route{
+   private $controllerName;
+   private $requiresAuthorization = true;
+   private $get;
+   private $post;
+   private $put;
+   private $delete;
 
-    public function __construct(array $data)
-    {
-        foreach ($data as $key => $value) {
-            $this->$key = $value;
-        }
-    }
 
-    public function getController()
-    {
-        return $this->controllerName;
-    }
+   public function __construct(array $data){
+      foreach ($data as $key => $value){
+         $this->$key = $value;
+      }
+   }
 
-    public function isMatchingRoute($stringToMatch)
-    {
-        return $stringToMatch != '' && preg_match(sprintf('/^\/{0,1}%s(\/\d{1,10}){0,1}(\?(\w{0,30}=[\w\d]{0,200}&{0,1}){0,100}){0,1}$/', $this->resource), $stringToMatch) == 1;
-    }
 
-    // TODO this function should be moved and improved.
-    public function isUserAllowed(){
-        return $this->requiresAuthorization == false || SessionManager::isUserLoggedIn();
-    }
+   public function getController(){
+      return $this->controllerName;
+   }
+
+
+   // TODO this function should be moved and improved.
+   public function isUserAllowed(){
+      return $this->requiresAuthorization == false || SessionManager::isUserLoggedIn();
+   }
 }
