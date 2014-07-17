@@ -20,7 +20,13 @@ class DatabaseMapper {
           username VARCHAR(50) NOT NULL UNIQUE,
           email VARCHAR(50) NOT NULL UNIQUE,
           password CHAR(60) NOT NULL
-      )
+      );
+
+      CREATE TABLE IF NOT EXISTS category(
+         id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+         name VARCHAR(30) NOT NULL UNIQUE,
+         description VARCHAR(140) NOT NULL
+      );
    ";
 
    public function __construct(DatabaseConnection $databaseConnection) {
