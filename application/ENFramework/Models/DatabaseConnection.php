@@ -19,7 +19,7 @@ class DatabaseConnection implements IDatabaseConnection
 
     public function __construct()
     {
-        $databaseConnection = new \PDO('sqlite:D:/wamp/www/Rentatool/test.sq3');
+        $databaseConnection = new \PDO(sprintf('sqlite:%s/gofish/test.sq3', PROJECT_ROOT));
         $databaseConnection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         $this->databaseConnection = $databaseConnection;
     }
