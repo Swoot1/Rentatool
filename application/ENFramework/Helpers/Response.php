@@ -5,14 +5,14 @@
  * Time: 11:29
  */
 
-namespace GoFish\Application\ENFramework\Helpers;
+namespace Rentatool\Application\ENFramework\Helpers;
 
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
 /**
  * Class Header
  * Creates and can execute a header() based on its data.
- * @package GoFish\Application\ENFramework\Helpers
+ * @package Rentatool\Application\ENFramework\Helpers
  */
 class Response implements IResponse
 {

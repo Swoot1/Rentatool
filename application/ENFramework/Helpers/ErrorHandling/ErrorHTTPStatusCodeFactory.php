@@ -5,15 +5,15 @@
  * Time: 19:48
  */
 
-namespace GoFish\Application\ENFramework\Helpers\ErrorHandling;
+namespace Rentatool\Application\ENFramework\Helpers\ErrorHandling;
 
 
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ConflictException;
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\MethodNotAllowedException;
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ConflictException;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\MethodNotAllowedException;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
 
 class ErrorHTTPStatusCodeFactory
 {

@@ -5,9 +5,9 @@
  * Time: 09:09
  */
 
-namespace GoFish\Tests\ENFrameworkTests\HelperTests;
+namespace Rentatool\Tests\ENFrameworkTests\HelperTests;
 
-use GoFish\Application\ENFramework\Helpers\Routing\Route;
+use Rentatool\Application\ENFramework\Helpers\Routing\Route;
 
 class RouteTest extends \PHPUnit_Framework_TestCase
 {

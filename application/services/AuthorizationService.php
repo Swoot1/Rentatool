@@ -5,12 +5,12 @@
  * Time: 12:15
  */
 
-namespace GoFish\Application\Services;
+namespace Rentatool\Application\Services;
 
 
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use GoFish\Application\ENFramework\Helpers\SessionManager;
-use GoFish\Application\Models\Authorization;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Rentatool\Application\ENFramework\Helpers\SessionManager;
+use Rentatool\Application\Models\Authorization;
 
 class AuthorizationService
 {

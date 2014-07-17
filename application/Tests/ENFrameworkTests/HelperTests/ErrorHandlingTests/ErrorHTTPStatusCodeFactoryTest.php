@@ -5,11 +5,11 @@
  * Time: 11:21
  */
 
-namespace GoFish\Tests\ENFrameworkTests\HelperTests;
+namespace Rentatool\Tests\ENFrameworkTests\HelperTests;
 
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeFactory;
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeFactory;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
 
 class ErrorHeaderFactoryTest extends \PHPUnit_Framework_TestCase{
 

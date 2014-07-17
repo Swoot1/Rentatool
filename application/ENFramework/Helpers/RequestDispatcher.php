@@ -7,9 +7,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace GoFish\Application\ENFramework\Helpers;
+namespace Rentatool\Application\ENFramework\Helpers;
 
-use GoFish\Application\Collections\RequestMethodCollection;
+use Rentatool\Application\Collections\RequestMethodCollection;
 
 class RequestDispatcher
 {

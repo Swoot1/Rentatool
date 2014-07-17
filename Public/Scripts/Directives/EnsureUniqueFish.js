@@ -1,7 +1,7 @@
 /**
  * Created by Elin on 2014-05-26.
  */
-goFish.directive('ensureUniqueFish', function ($http) {
+rentaTool.directive('ensureUniqueFish', function ($http) {
     return {
         require: 'ngModel',
         link: function (scope, ele, attrs, c) {

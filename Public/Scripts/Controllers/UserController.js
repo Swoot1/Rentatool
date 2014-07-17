@@ -1,7 +1,7 @@
 /**
  * Created by Elin on 2014-06-16.
  */
-goFish.controller('UserController', ['$scope', '$routeParams', '$location', 'User', function ($scope, $routeParams, $location, User) {
+rentaTool.controller('UserController', ['$scope', '$routeParams', '$location', 'User', function ($scope, $routeParams, $location, User) {
 
     if ($routeParams.id) {
         $scope.user = User.get({id: $routeParams.id});

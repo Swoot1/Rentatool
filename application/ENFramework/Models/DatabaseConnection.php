@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace GoFish\Application\ENFramework\Models;
+namespace Rentatool\Application\ENFramework\Models;
 
 
 class DatabaseConnection implements IDatabaseConnection
@@ -19,7 +19,7 @@ class DatabaseConnection implements IDatabaseConnection
 
     public function __construct()
     {
-        $databaseConnection = new \PDO('sqlite:C:/users/Elin/repos/gofish/test.sq3');
+        $databaseConnection = new \PDO('sqlite:D:/wamp/www/Rentatool/test.sq3');
         $databaseConnection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         $this->databaseConnection = $databaseConnection;
     }

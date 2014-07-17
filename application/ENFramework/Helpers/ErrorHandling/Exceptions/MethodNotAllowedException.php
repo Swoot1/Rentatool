@@ -5,7 +5,7 @@
  * Time: 20:35
  */
 
-namespace GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions;
+namespace Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions;
 
 
 class MethodNotAllowedException extends \Exception{

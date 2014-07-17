@@ -5,13 +5,13 @@
  * Date: 2014-07-08
  * Time: 20:40
  */
-namespace GoFish\Application\ENFramework\Helpers;
+namespace Rentatool\Application\ENFramework\Helpers;
 
 
 /**
  * Class Header
  * Creates and can execute a header() based on its data.
- * @package GoFish\Application\ENFramework\Helpers
+ * @package Rentatool\Application\ENFramework\Helpers
  */
 interface IResponse
 {

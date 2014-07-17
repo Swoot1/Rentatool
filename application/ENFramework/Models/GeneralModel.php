@@ -7,9 +7,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace GoFish\Application\ENFramework\Models;
+namespace Rentatool\Application\ENFramework\Models;
 
-use GoFish\Application\ENFramework\Collections\PropertyValidationCollection;
+use Rentatool\Application\ENFramework\Collections\PropertyValidationCollection;
 
 abstract class GeneralModel
 {

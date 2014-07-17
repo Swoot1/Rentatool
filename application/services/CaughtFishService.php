@@ -7,12 +7,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace GoFish\Application\Services;
+namespace Rentatool\Application\Services;
 
 
-use GoFish\Application\Collections\CaughtFishCollection;
-use GoFish\Application\Mappers\CaughtFishMapper;
-use GoFish\Application\Models\CaughtFish;
+use Rentatool\Application\Collections\CaughtFishCollection;
+use Rentatool\Application\Mappers\CaughtFishMapper;
+use Rentatool\Application\Models\CaughtFish;
 
 class CaughtFishService
 {

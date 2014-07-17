@@ -2,7 +2,7 @@
  * Created by Elin on 2014-04-18.
  */
 
-goFish.controller('FishController', ['$scope', 'Fish', function ($scope, Fish) {
+rentaTool.controller('FishController', ['$scope', 'Fish', function ($scope, Fish) {
 
     $scope.fishCollection = Fish.query();
 

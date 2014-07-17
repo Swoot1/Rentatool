@@ -6,13 +6,13 @@
  * Time: 20:42
  */
 
-namespace GoFish\Application\Services;
+namespace Rentatool\Application\Services;
 
 
-use GoFish\Application\Collections\UserCollection;
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
-use GoFish\Application\Mappers\UserMapper;
-use GoFish\Application\Models\User;
+use Rentatool\Application\Collections\UserCollection;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
+use Rentatool\Application\Mappers\UserMapper;
+use Rentatool\Application\Models\User;
 
 class UserService
 {

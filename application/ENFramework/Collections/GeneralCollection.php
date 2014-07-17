@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace GoFish\Application\ENFramework\Collections;
+namespace Rentatool\Application\ENFramework\Collections;
 
 class GeneralCollection
 {

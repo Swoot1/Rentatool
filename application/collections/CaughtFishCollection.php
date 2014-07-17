@@ -7,12 +7,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace GoFish\Application\Collections;
+namespace Rentatool\Application\Collections;
 
-use GoFish\Application\ENFramework\Collections\GeneralCollection;
+use Rentatool\Application\ENFramework\Collections\GeneralCollection;
 
 class CaughtFishCollection extends GeneralCollection
 {
     protected $data;
-    protected $model = 'GoFish\Application\Models\CaughtFish';
+    protected $model = 'Rentatool\Application\Models\CaughtFish';
 }

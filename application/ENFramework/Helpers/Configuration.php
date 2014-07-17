@@ -8,16 +8,16 @@
  */
 
 // Set where the application is found on disk.
-set_include_path('C:/Users/Elin/repos/');
+set_include_path('D:/wamp/www');
 
 // Set the folder where the saved session files should go. Change the second argument if you want to change the folder.
 ini_set('session.save_path', 'tmp');
 
 // Set up the auto loader.
 require_once 'AutoLoader.php';
-$autoLoader = new \GoFish\Application\ENFramework\Helpers\Autoloader();
+$autoLoader = new \Rentatool\Application\ENFramework\Helpers\Autoloader();
 $autoLoader->setUpAutoLoader();
 
 // Setup error handlers so that errors such as no such method exists or variable is used but never defined throws an exception.
-require_once 'GoFish\Application\ENFramework\Helpers\ErrorHandling\ErrorHandler.php';
+require_once 'Rentatool\Application\ENFramework\Helpers\ErrorHandling\ErrorHandler.php';
 

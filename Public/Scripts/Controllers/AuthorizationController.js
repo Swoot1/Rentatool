@@ -1,7 +1,7 @@
 /**
  * Created by Elin on 2014-06-17.
  */
-goFish.controller("AuthorizationController", ['$scope', '$location', 'Authorization', function ($scope, $location, Authorization) {
+rentaTool.controller("AuthorizationController", ['$scope', '$location', 'Authorization', function ($scope, $location, Authorization) {
     var authorizationResource;
 
     $scope.attemptLogin = function () {

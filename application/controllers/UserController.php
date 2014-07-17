@@ -6,16 +6,16 @@
  * Time: 20:42
  */
 
-namespace GoFish\Application\Controllers;
+namespace Rentatool\Application\Controllers;
 
-use GoFish\Application\ENFramework\Helpers\Response;
-use GoFish\Application\Services\UserService;
+use Rentatool\Application\ENFramework\Helpers\Response;
+use Rentatool\Application\Services\UserService;
 
 class UserController
 {
 
     /**
-     * @var \GoFish\Application\Services\UserService
+     * @var \Rentatool\Application\Services\UserService
      */
     private $userService;
 

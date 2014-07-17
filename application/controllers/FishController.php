@@ -7,15 +7,15 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace GoFish\Application\Controllers;
+namespace Rentatool\Application\Controllers;
 
-use GoFish\Application\ENFramework\Helpers\Response;
-use GoFish\Application\Services\FishService;
+use Rentatool\Application\ENFramework\Helpers\Response;
+use Rentatool\Application\Services\FishService;
 
 class FishController
 {
     /**
-     * @var \GoFish\Application\Services\FishService
+     * @var \Rentatool\Application\Services\FishService
      */
     private $fishService;
 

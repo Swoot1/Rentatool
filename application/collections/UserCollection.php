@@ -6,11 +6,11 @@
  * Time: 20:52
  */
 
-namespace GoFish\Application\Collections;
+namespace Rentatool\Application\Collections;
 
 
-use GoFish\Application\ENFramework\Collections\GeneralCollection;
+use Rentatool\Application\ENFramework\Collections\GeneralCollection;
 
 class UserCollection extends GeneralCollection{
-    protected $model = 'GoFish\Application\Models\User';
+    protected $model = 'Rentatool\Application\Models\User';
 } 

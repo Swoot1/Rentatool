@@ -7,14 +7,14 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace GoFish\Application\Mappers;
+namespace Rentatool\Application\Mappers;
 
-use GoFish\Application\ENFramework\Models\IDatabaseConnection;
+use Rentatool\Application\ENFramework\Models\IDatabaseConnection;
 
 class CaughtFishMapper
 {
     /**
-     * @var \GoFish\Application\ENFramework\Models\IDatabaseConnection
+     * @var \Rentatool\Application\ENFramework\Models\IDatabaseConnection
      */
     private $databaseConnection;
 

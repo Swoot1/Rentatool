@@ -1,7 +1,7 @@
 /**
  * Created by Elin on 2014-06-19.
  */
-goFish.directive('logoutbutton', [function () {
+rentaTool.directive('logoutbutton', [function () {
     return {
         restrict: 'A',
         replace: 'true',

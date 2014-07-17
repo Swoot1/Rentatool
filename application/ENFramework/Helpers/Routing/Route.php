@@ -7,9 +7,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace GoFish\Application\ENFramework\Helpers\Routing;
+namespace Rentatool\Application\ENFramework\Helpers\Routing;
 
-use GoFish\Application\ENFramework\Helpers\SessionManager;
+use Rentatool\Application\ENFramework\Helpers\SessionManager;
 
 class Route
 {

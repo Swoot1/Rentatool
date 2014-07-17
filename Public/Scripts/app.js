@@ -2,7 +2,7 @@
  * Created by Elin on 2014-05-26.
  */
 
-var goFish = angular.module('GoFish', ['ngResource', 'filters', 'ngRoute'])
+var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute'])
     .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
         $routeProvider
             .when('/fish/new', {

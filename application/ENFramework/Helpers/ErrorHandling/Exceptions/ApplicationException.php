@@ -6,13 +6,13 @@
  * Time: 15:58
  */
 
-namespace GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions;
+namespace Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions;
 
 /**
  * Exception class for general and controlled exceptions,
  * "I know what you want, but I won't do that", i.e. user input that fails validation.
  * Class ApplicationException
- * @package GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions
+ * @package Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions
  */
 class ApplicationException extends \ErrorException{
 

@@ -6,9 +6,9 @@
  * Time: 20:32
  * To change this template use File | Settings | File Templates.
  */
-namespace GoFish\Application\ENFramework\Helpers;
+namespace Rentatool\Application\ENFramework\Helpers;
 
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
 class PropertyValidation
 {

@@ -5,7 +5,7 @@
  * Date: 2014-04-18
  * Time: 08:28
  */
-namespace GoFish\Application\ENFramework\Models;
+namespace Rentatool\Application\ENFramework\Models;
 
 interface IDatabaseConnection
 {

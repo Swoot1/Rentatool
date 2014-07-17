@@ -7,17 +7,17 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace GoFish\Application\ENFramework\Helpers;
+namespace Rentatool\Application\ENFramework\Helpers;
 
 
-use GoFish\Application\Collections\RequestMethodCollection;
-use GoFish\Application\ENFramework\Models\Request;
+use Rentatool\Application\Collections\RequestMethodCollection;
+use Rentatool\Application\ENFramework\Models\Request;
 
 class RequestBuilder
 {
     private $buildSource;
     /**
-     * @var \GoFish\Application\ENFramework\Models\Request
+     * @var \Rentatool\Application\ENFramework\Models\Request
      */
     private $requestModel;
 

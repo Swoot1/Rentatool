@@ -5,12 +5,12 @@
  * Time: 09:21
  */
 
-namespace GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions;
+namespace Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions;
 
 /**
  * An exception that is thrown when the requested route doesn't exist.
  * Class NoSuchRouteException
- * @package GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions
+ * @package Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions
  */
 class NoSuchRouteException extends \ErrorException
 {

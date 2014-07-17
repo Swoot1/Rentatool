@@ -5,13 +5,13 @@
  * Time: 11:19
  */
 
-namespace GoFish\Application\ENFramework\Helpers\Routing;
+namespace Rentatool\Application\ENFramework\Helpers\Routing;
 
 
-use GoFish\Application\ENFramework\Helpers\DependencyInjection\DependencyInjection;
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
-use GoFish\Application\ENFramework\Models\Request;
+use Rentatool\Application\ENFramework\Helpers\DependencyInjection\DependencyInjection;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
+use Rentatool\Application\ENFramework\Models\Request;
 
 class Routing
 {

@@ -5,7 +5,7 @@
  * Time: 15:29
  */
 
-namespace GoFish\Application\Controllers;
+namespace Rentatool\Application\Controllers;
 
 
 class TemplateController {

@@ -6,10 +6,10 @@
  * Time: 20:40
  */
 
-namespace GoFish\Application\Models;
+namespace Rentatool\Application\Models;
 
-use GoFish\Application\ENFramework\Collections\PropertyValidationCollection;
-use GoFish\Application\ENFramework\Models\GeneralModel;
+use Rentatool\Application\ENFramework\Collections\PropertyValidationCollection;
+use Rentatool\Application\ENFramework\Models\GeneralModel;
 
 class User extends GeneralModel
 {

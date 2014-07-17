@@ -1,7 +1,7 @@
 /**
  * Created by Elin on 2014-06-12.
  */
-goFish.controller('CaughtFishController', ['$scope', 'CaughtFish', 'Fish', function ($scope, CaughtFish, Fish) {
+rentaTool.controller('CaughtFishController', ['$scope', 'CaughtFish', 'Fish', function ($scope, CaughtFish, Fish) {
     $scope.caughtFishCollection = CaughtFish.query();    
     $scope.fishCollection = Fish.query();
     $scope.caughtFish = new CaughtFish({});

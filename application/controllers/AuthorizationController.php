@@ -5,15 +5,15 @@
  * Time: 12:14
  */
 
-namespace GoFish\Application\Controllers;
+namespace Rentatool\Application\Controllers;
 
 
-use GoFish\Application\ENFramework\Helpers\Response;
-use GoFish\Application\Services\AuthorizationService;
+use Rentatool\Application\ENFramework\Helpers\Response;
+use Rentatool\Application\Services\AuthorizationService;
 
 class AuthorizationController {
     /**
-     * @var \GoFish\Application\Services\AuthorizationService
+     * @var \Rentatool\Application\Services\AuthorizationService
      */
     private $authorizationService;
 

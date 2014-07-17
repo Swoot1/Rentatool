@@ -1,7 +1,7 @@
 /**
  * Created by Elin on 2014-05-26.
  */
-goFish.directive('ngFocus', [function () {
+rentaTool.directive('ngFocus', [function () {
     var FOCUS_CLASS = 'ng-focused';
     return {
         restrict: 'A',

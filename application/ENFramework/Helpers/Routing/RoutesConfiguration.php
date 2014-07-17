@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-use GoFish\Application\ENFramework\Helpers\Routing\RouteCollection;
+use Rentatool\Application\ENFramework\Helpers\Routing\RouteCollection;
 
 $routes = array();
 

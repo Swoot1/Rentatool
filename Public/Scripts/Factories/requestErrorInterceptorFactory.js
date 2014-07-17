@@ -1,7 +1,7 @@
 /**
  * Created by Elin on 2014-07-16.
  */
-goFish.factory('requestErrorInterceptor', function () {
+rentaTool.factory('requestErrorInterceptor', function () {
     var requestErrorInterceptor = {
         requestError: function (response) {
             requestErrorInterceptor.writeError(response.data);

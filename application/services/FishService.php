@@ -6,18 +6,18 @@
  * Time: 19:51
  */
 
-namespace GoFish\Application\Services;
+namespace Rentatool\Application\Services;
 
-use GoFish\Application\Collections\FishCollection;
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
-use GoFish\Application\Mappers\FishMapper;
-use GoFish\Application\Models\Fish;
+use Rentatool\Application\Collections\FishCollection;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
+use Rentatool\Application\Mappers\FishMapper;
+use Rentatool\Application\Models\Fish;
 
 class FishService
 {
     /**
-     * @var \GoFish\Application\Mappers\FishMapper
+     * @var \Rentatool\Application\Mappers\FishMapper
      */
     private $fishMapper;
 

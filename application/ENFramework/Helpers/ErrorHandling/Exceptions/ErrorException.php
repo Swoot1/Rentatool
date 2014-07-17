@@ -5,12 +5,12 @@
  * Time: 21:47
  */
 
-namespace GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions;
+namespace Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions;
 
 /**
  * An exception that is thrown when a error occurs, i.e. when a variable is used but never defined.
  * Class ErrorException
- * @package GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions
+ * @package Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions
  */
 class ErrorException extends \Exception{
 

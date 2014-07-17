@@ -1,9 +1,9 @@
 <?php
 
-namespace GoFish\Application\Templates;
+namespace Rentatool\Application\Templates;
 
 echo '<!DOCTYPE html>
-<html ng-app="GoFish">
+<html ng-app="Rentatool">
 <head>
     <title>Ojas fiskeri</title>
     <meta charset="utf-8"/>

@@ -2,85 +2,85 @@
 
 <!-- Inspo //http://richardmiller.co.uk/2011/07/07/dependency-injection-moving-from-basics-to-container -->
 
-<gofish>
+<rentatool>
     <dependencies>
 
         <!-- Controllers -->
-        <dependency namespace="GoFish\Application\Controllers" class="FishController">
+        <dependency namespace="Rentatool\Application\Controllers" class="FishController">
             <dependencies>
-                <dependency namespace="GoFish\Application\Services" class="FishService"/>
+                <dependency namespace="Rentatool\Application\Services" class="FishService"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="GoFish\Application\Controllers" class="CaughtFishController">
+        <dependency namespace="Rentatool\Application\Controllers" class="CaughtFishController">
             <dependencies>
-                <dependency namespace="GoFish\Application\Services" class="CaughtFishService"/>
+                <dependency namespace="Rentatool\Application\Services" class="CaughtFishService"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="GoFish\Application\Controllers" class="AuthorizationController">
+        <dependency namespace="Rentatool\Application\Controllers" class="AuthorizationController">
             <dependencies>
-                <dependency namespace="GoFish\Application\Services" class="AuthorizationService"/>
+                <dependency namespace="Rentatool\Application\Services" class="AuthorizationService"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="GoFish\Application\Controllers" class="UserController">
+        <dependency namespace="Rentatool\Application\Controllers" class="UserController">
             <dependencies>
-                <dependency namespace="GoFish\Application\Services" class="UserService"/>
+                <dependency namespace="Rentatool\Application\Services" class="UserService"/>
             </dependencies>
         </dependency>
 
 
         <!-- Services -->
-        <dependency namespace="GoFish\Application\Services" class="CaughtFishService">
+        <dependency namespace="Rentatool\Application\Services" class="CaughtFishService">
             <dependencies>
-                <dependency namespace="GoFish\Application\Mappers" class="CaughtFishMapper"/>
+                <dependency namespace="Rentatool\Application\Mappers" class="CaughtFishMapper"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="GoFish\Application\Services" class="FishService">
+        <dependency namespace="Rentatool\Application\Services" class="FishService">
             <dependencies>
-                <dependency namespace="GoFish\Application\Mappers" class="FishMapper"/>
+                <dependency namespace="Rentatool\Application\Mappers" class="FishMapper"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="GoFish\Application\Services" class="UserService">
+        <dependency namespace="Rentatool\Application\Services" class="UserService">
             <dependencies>
-                <dependency namespace="GoFish\Application\Mappers" class="UserMapper"/>
+                <dependency namespace="Rentatool\Application\Mappers" class="UserMapper"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="GoFish\Application\Services" class="AuthorizationService">
+        <dependency namespace="Rentatool\Application\Services" class="AuthorizationService">
             <dependencies>
-                <dependency namespace="GoFish\Application\Services" class="UserService"/>
+                <dependency namespace="Rentatool\Application\Services" class="UserService"/>
             </dependencies>
         </dependency>
 
 
         <!-- Mappers -->
-        <dependency namespace="GoFish\Application\Mappers" class="CaughtFishMapper">
+        <dependency namespace="Rentatool\Application\Mappers" class="CaughtFishMapper">
             <dependencies>
-                <dependency namespace="GoFish\Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="GoFish\Application\Mappers" class="FishMapper">
+        <dependency namespace="Rentatool\Application\Mappers" class="FishMapper">
             <dependencies>
-                <dependency namespace="GoFish\Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="GoFish\Application\Mappers" class="UserMapper">
+        <dependency namespace="Rentatool\Application\Mappers" class="UserMapper">
             <dependencies>
-                <dependency namespace="GoFish\Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
 
         <!-- Others -->
-        <dependency namespace="GoFish\Application\ENFramework\Models" class="DatabaseConnection">
+        <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection">
             <dependencies/>
         </dependency>
 
     </dependencies>
-</gofish>
+</rentatool>

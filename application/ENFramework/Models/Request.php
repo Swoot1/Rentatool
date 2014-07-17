@@ -7,16 +7,16 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace GoFish\Application\ENFramework\Models;
+namespace Rentatool\Application\ENFramework\Models;
 
 
-use GoFish\Application\Collections\RequestMethodCollection;
-use GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions\MethodNotAllowedException;
+use Rentatool\Application\Collections\RequestMethodCollection;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\MethodNotAllowedException;
 
 class Request extends GeneralModel
 {
     /**
-     * @var \GoFish\Application\Collections\RequestMethodCollection
+     * @var \Rentatool\Application\Collections\RequestMethodCollection
      */
     private $requestMethodCollection;
     private $requestMethod;

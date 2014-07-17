@@ -7,11 +7,11 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace GoFish\Application\Models;
+namespace Rentatool\Application\Models;
 
-use GoFish\Application\ENFramework\Collections\PropertyValidationCollection;
-use GoFish\Application\ENFramework\Models\GeneralModel;
-use GoFish\Application\ENFramework\Helpers\PropertyValidation;
+use Rentatool\Application\ENFramework\Collections\PropertyValidationCollection;
+use Rentatool\Application\ENFramework\Models\GeneralModel;
+use Rentatool\Application\ENFramework\Helpers\PropertyValidation;
 
 class Fish extends GeneralModel
 {

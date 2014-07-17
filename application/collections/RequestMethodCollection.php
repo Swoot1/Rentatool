@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace GoFish\Application\Collections;
+namespace Rentatool\Application\Collections;
 
 
 class RequestMethodCollection {

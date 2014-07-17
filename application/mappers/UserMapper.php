@@ -6,15 +6,15 @@
  * Time: 20:42
  */
 
-namespace GoFish\Application\Mappers;
+namespace Rentatool\Application\Mappers;
 
-use GoFish\Application\ENFramework\Models\IDatabaseConnection;
+use Rentatool\Application\ENFramework\Models\IDatabaseConnection;
 
 class UserMapper
 {
 
     /**
-     * @var \GoFish\Application\ENFramework\Models\IDatabaseConnection
+     * @var \Rentatool\Application\ENFramework\Models\IDatabaseConnection
      */
     private $databaseConnection;
     private $indexSQL = '

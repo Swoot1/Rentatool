@@ -5,7 +5,7 @@
  * Time: 20:57
  */
 
-namespace GoFish\Application\ENFramework\Helpers\ErrorHandling\Exceptions;
+namespace Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions;
 
 
 class UserIsNotAllowedException extends \Exception{
