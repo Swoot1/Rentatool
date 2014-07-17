@@ -8,3 +8,4 @@
 .idea
 tmp/
 test.sq3
+application/ENFramework/Helpers/PersonalConfiguration.php
