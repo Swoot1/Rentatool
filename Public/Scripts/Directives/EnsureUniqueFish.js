@@ -1,7 +1,7 @@
 /**
  * Created by Elin on 2014-05-26.
  */
-rentaTool.directive('ensureUniqueFish', function ($http) {
+rentaTool.directive('ensureUniqueFish', function ($http) { // TODO use this with username instead.
     return {
         require: 'ngModel',
         link: function (scope, ele, attrs, c) {

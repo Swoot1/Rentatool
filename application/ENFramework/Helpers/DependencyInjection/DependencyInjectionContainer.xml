@@ -6,9 +6,9 @@
     <dependencies>
 
         <!-- Controllers -->
-        <dependency namespace="Rentatool\Application\Controllers" class="FishController">
+        <dependency namespace="Rentatool\Application\Controllers" class="RentalObjectController">
             <dependencies>
-                <dependency namespace="Rentatool\Application\Services" class="FishService"/>
+                <dependency namespace="Rentatool\Application\Services" class="RentalObjectService"/>
             </dependencies>
         </dependency>
 
@@ -44,9 +44,9 @@
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Services" class="FishService">
+        <dependency namespace="Rentatool\Application\Services" class="RentalObjectService">
             <dependencies>
-                <dependency namespace="Rentatool\Application\Mappers" class="FishMapper"/>
+                <dependency namespace="Rentatool\Application\Mappers" class="RentalObjectMapper"/>
             </dependencies>
         </dependency>
 
@@ -76,7 +76,7 @@
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Mappers" class="FishMapper">
+        <dependency namespace="Rentatool\Application\Mappers" class="RentalObjectMapper">
             <dependencies>
                 <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>

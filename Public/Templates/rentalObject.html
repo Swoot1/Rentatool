@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="large-12 columns">
+        <h1>Lägg till uthyrningsobjekt</h1>
+    </div>
+</div>
+<form name="rental_object_form">
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="error" ng-show="rental_object_form.name.$dirty && rental_object_form.$invalid">
+                <small class="error" ng-show="rental_object_form.$error.unique">
+                    WOoow! Det uthyrningsobjektet finns redan!
+                </small>
+            </div>
+            <input id="rentalObject" ng-model="rentalObject.name" type="text" ng-placeholder="Namn" ng-focus/>
+            <button type="button" ng-click="addRentalObject()" ng-disabled="rental_object_form.$invalid">Lägg till uthyrningsobjekt</button>
+        </div>
+    </div>
+</form>
+<div class="row">
+    <div class="large-12 columns">
+        <ul ng-repeat="rentalObject in rentalObjectCollection">
+            <li><p>{{rentalObject.name |lowercase | capitalize}} <input type="button" ng-click="deleteRentalObject(rentalObject)"
+                                                                        class="button alert tiny" value="Ta bort uthyrningsobjekt"/></p>
+            </li>
+        </ul>
+    </div>
+</div>

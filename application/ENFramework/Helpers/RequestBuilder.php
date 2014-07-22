@@ -13,7 +13,7 @@ namespace Rentatool\Application\ENFramework\Helpers;
 use Rentatool\Application\Collections\RequestMethodCollection;
 use Rentatool\Application\ENFramework\Models\Request;
 
-class RequestBuilder{
+class RequestBuilder {
    private $buildSource;
    /**
     * @var \Rentatool\Application\ENFramework\Models\Request
@@ -26,7 +26,7 @@ class RequestBuilder{
     * @param RequestMethodCollection $requestMethodCollection
     * @internal param $_SERVER |array $buildSource
     */
-   public function __construct(array $buildSource, RequestMethodCollection $requestMethodCollection){
+   public function __construct(array $buildSource, RequestMethodCollection $requestMethodCollection) {
       $this->requestModel = new Request(array(), $requestMethodCollection);
       $this->buildSource  = $buildSource;
    }
@@ -35,7 +35,7 @@ class RequestBuilder{
    /**
     * @return mixed
     */
-   public function build(){
+   public function build() {
       $this->setURI();
       $this->setRequestMethod();
       $this->setResource();
@@ -48,7 +48,7 @@ class RequestBuilder{
     * Sets if the request method is PUT/POST/etc.
     * @return $this
     */
-   private function setRequestMethod(){
+   private function setRequestMethod() {
       $requestMethod = $this->buildSource['REQUEST_METHOD'];
       $this->requestModel->setRequestMethod($requestMethod);
 
@@ -56,7 +56,7 @@ class RequestBuilder{
    }
 
 
-   private function setURI(){
+   private function setURI() {
       $this->requestModel->setRequestURI(ltrim($this->buildSource['REQUEST_URI'], '/'));
 
       return $this;
@@ -67,12 +67,13 @@ class RequestBuilder{
     * The url params as an array /user/1 becomes array('user', '1').
     * @return $this
     */
-   private function setResource(){
+   private function setResource() {
       $parsedURL = parse_url($this->buildSource['REQUEST_URI']);
       $urlParams = array_values(array_filter(explode('/', $parsedURL['path'])));
 
       $this->requestModel->setURLParams($urlParams);
-      $this->requestModel->setResource(array_pop($urlParams));
+      $urlParamsCopy = $urlParams;
+      $this->requestModel->setResource(array_shift($urlParamsCopy));
 
       return $this;
    }

@@ -15,8 +15,8 @@ $routes['caughtfish'] = array(
    'controllerName' => 'CaughtFishController'
 );
 
-$routes['fish'] = array(
-   'controllerName' => 'FishController'
+$routes['rentalobjects'] = array(
+   'controllerName' => 'RentalObjectController'
 );
 
 $routes['authorization'] = array(
@@ -25,11 +25,11 @@ $routes['authorization'] = array(
 );
 
 $routes['user'] = array(
-   'controllerName' => 'UserController'
+   'controllerName' => 'UserController',
+   'requiresAuthorization' => false
 );
 
 $routes['database'] = array(
-   'resource'              => 'database',
    'controllerName'        => 'DatabaseController',
    'requiresAuthorization' => false
 );

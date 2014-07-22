@@ -8,7 +8,7 @@ rentaTool.controller("AuthorizationController", ['$scope', '$location', 'Authori
         authorizationResource = new Authorization($scope.login);
         authorizationResource.$save({action:'login'}, function (data) {
             if (data.isLoggedIn) {
-                $location.path('/fish/new');
+                $location.path('/rentalobjects/new');
             } else {
                 alert('Misslyckad inloggning!');
             }

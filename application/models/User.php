@@ -11,24 +11,26 @@ namespace Rentatool\Application\Models;
 use Rentatool\Application\ENFramework\Collections\PropertyValidationCollection;
 use Rentatool\Application\ENFramework\Models\GeneralModel;
 
-class User extends GeneralModel
-{
+class User extends GeneralModel {
 
-    protected $id;
-    protected $username;
-    protected $email;
-    protected $password;
+   protected $id;
+   protected $username;
+   protected $email;
+   protected $password;
 
-    protected function setUpValidation()
-    {
-        $this->setValidation(new PropertyValidationCollection(array()));
-    }
+   protected function setUpValidation() {
+      $this->setValidation(new PropertyValidationCollection(array()));
+   }
 
-    /**
-     * @param $password
-     * @return bool
-     */
-    public function isValidPassword($password){
-        return password_verify($password, $this->password);
-    }
+   /**
+    * @param $password
+    * @return bool
+    */
+   public function isValidPassword($password) {
+      return password_verify($password, $this->password);
+   }
+
+   public function getId() {
+      return $this->id;
+   }
 } 

@@ -37,11 +37,11 @@ class DatabaseConnection implements IDatabaseConnection {
          $stmt = $DBConnection->prepare($query);
          $stmt->execute($params);
 
-         if($stmt->rowCount() > 0){
-            while ($result = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-               $queryResult[] = $result;
-            }
-         }
+//         if($stmt->rowCount() > 0){
+//            while ($result = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+//               $queryResult[] = $result;
+//            }
+//         }
 
       }catch(\PDOException $exception){
          throw new ApplicationException('Kunde inte läsa databas.');

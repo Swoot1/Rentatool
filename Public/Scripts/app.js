@@ -5,9 +5,9 @@
 var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute'])
     .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
         $routeProvider
-            .when('/fish/new', {
-                templateUrl: 'public/Templates/fish.html',
-                controller: 'FishController'
+            .when('/rentalobjects/new', {
+                templateUrl: 'public/Templates/rentalObject.html',
+                controller: 'RentalObjectController'
             })
             .when('/caughtfish/new', {
                 templateUrl: 'public/Templates/caughtFish.html',

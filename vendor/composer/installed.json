@@ -1,56 +1,5 @@
 [
     {
-        "name": "symfony/yaml",
-        "version": "v2.4.2",
-        "version_normalized": "2.4.2.0",
-        "target-dir": "Symfony/Component/Yaml",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/Yaml.git",
-            "reference": "bb6ddaf8956139d1b8c360b4b713ed0138e876b3"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/Yaml/zipball/bb6ddaf8956139d1b8c360b4b713ed0138e876b3",
-            "reference": "bb6ddaf8956139d1b8c360b4b713ed0138e876b3",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "time": "2014-01-07 13:28:54",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.4-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Symfony\\Component\\Yaml\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com",
-                "homepage": "http://fabien.potencier.org",
-                "role": "Lead Developer"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "http://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Yaml Component",
-        "homepage": "http://symfony.com"
-    },
-    {
         "name": "phpunit/php-text-template",
         "version": "1.2.0",
         "version_normalized": "1.2.0.0",
@@ -293,18 +242,69 @@
         ]
     },
     {
-        "name": "phpunit/php-code-coverage",
-        "version": "1.2.16",
-        "version_normalized": "1.2.16.0",
+        "name": "symfony/yaml",
+        "version": "v2.5.2",
+        "version_normalized": "2.5.2.0",
+        "target-dir": "Symfony/Component/Yaml",
         "source": {
             "type": "git",
-            "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-            "reference": "69e55e68481cf708a6db43aff0b504e31402fe27"
+            "url": "https://github.com/symfony/Yaml.git",
+            "reference": "f868ecdbcc0276b6158dfbf08b9e98ce07f014e1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/69e55e68481cf708a6db43aff0b504e31402fe27",
-            "reference": "69e55e68481cf708a6db43aff0b504e31402fe27",
+            "url": "https://api.github.com/repos/symfony/Yaml/zipball/f868ecdbcc0276b6158dfbf08b9e98ce07f014e1",
+            "reference": "f868ecdbcc0276b6158dfbf08b9e98ce07f014e1",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2014-07-09 09:05:48",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.5-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Component\\Yaml\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com",
+                "homepage": "http://fabien.potencier.org",
+                "role": "Lead Developer"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Yaml Component",
+        "homepage": "http://symfony.com"
+    },
+    {
+        "name": "phpunit/php-code-coverage",
+        "version": "1.2.17",
+        "version_normalized": "1.2.17.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
+            "reference": "6ef2bf3a1c47eca07ea95f0d8a902a6340390b34"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/6ef2bf3a1c47eca07ea95f0d8a902a6340390b34",
+            "reference": "6ef2bf3a1c47eca07ea95f0d8a902a6340390b34",
             "shasum": ""
         },
         "require": {
@@ -320,7 +320,7 @@
             "ext-dom": "*",
             "ext-xdebug": ">=2.0.5"
         },
-        "time": "2014-02-25 03:34:05",
+        "time": "2014-03-28 10:53:45",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -357,42 +357,41 @@
     },
     {
         "name": "phpunit/phpunit",
-        "version": "3.7.32",
-        "version_normalized": "3.7.32.0",
+        "version": "3.7.37",
+        "version_normalized": "3.7.37.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/phpunit.git",
-            "reference": "2752cbb9ea5bd84c2811b34b6953f76965ec7a2f"
+            "reference": "ae6cefd7cc84586a5ef27e04bae11ee940ec63dc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2752cbb9ea5bd84c2811b34b6953f76965ec7a2f",
-            "reference": "2752cbb9ea5bd84c2811b34b6953f76965ec7a2f",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ae6cefd7cc84586a5ef27e04bae11ee940ec63dc",
+            "reference": "ae6cefd7cc84586a5ef27e04bae11ee940ec63dc",
             "shasum": ""
         },
         "require": {
+            "ext-ctype": "*",
             "ext-dom": "*",
+            "ext-json": "*",
             "ext-pcre": "*",
             "ext-reflection": "*",
             "ext-spl": "*",
             "php": ">=5.3.3",
-            "phpunit/php-code-coverage": "~1.2.1",
-            "phpunit/php-file-iterator": ">=1.3.1",
-            "phpunit/php-text-template": ">=1.1.1",
-            "phpunit/php-timer": ">=1.0.4",
-            "phpunit/phpunit-mock-objects": "~1.2.0",
+            "phpunit/php-code-coverage": "~1.2",
+            "phpunit/php-file-iterator": "~1.3",
+            "phpunit/php-text-template": "~1.1",
+            "phpunit/php-timer": "~1.0",
+            "phpunit/phpunit-mock-objects": "~1.2",
             "symfony/yaml": "~2.0"
         },
         "require-dev": {
             "pear-pear.php.net/pear": "1.9.4"
         },
         "suggest": {
-            "ext-json": "*",
-            "ext-simplexml": "*",
-            "ext-tokenizer": "*",
-            "phpunit/php-invoker": ">=1.1.0,<1.2.0"
+            "phpunit/php-invoker": "~1.1"
         },
-        "time": "2014-02-25 03:47:29",
+        "time": "2014-04-30 12:24:19",
         "bin": [
             "composer/bin/phpunit"
         ],
