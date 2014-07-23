@@ -29,12 +29,6 @@ class RentalObject extends GeneralModel
         $validation = new PropertyValidationCollection(array(
             new PropertyValidation(array(
                     'dataType' => 'integer',
-                    'genericName' => 'Uthyrningsobjektets ID',
-                    'propertyName' => 'id'
-                )
-            ),
-            new PropertyValidation(array(
-                    'dataType' => 'integer',
                     'genericName' => 'Uthyrningsobjektets namn',
                     'propertyName' => 'name'
                 )

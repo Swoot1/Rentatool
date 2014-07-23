@@ -41,7 +41,7 @@ class UserController
     {
         $userService = $this->userService;
         $user = $userService->create($data);
-        $response = new Response(); // TODO instantiate elsewhere?
+        $response = new Response(); 
         $response->setData($user->toArray())->setStatusCode(201);
         return $response;
     }
@@ -50,7 +50,7 @@ class UserController
     {
         $userService = $this->userService;
         $user = $userService->read($id);
-        $response = new Response(); // TODO instantiate elsewhere?
+        $response = new Response(); 
         $response->setData($user->toArray());
         return $response;
     }
@@ -59,7 +59,7 @@ class UserController
     {
         $userService = $this->userService;
         $user = $userService->update($id, $requestData);
-        $response = new Response(); // TODO instantiate elsewhere?
+        $response = new Response(); 
         $response->setData($user->toArray());
         return $response;
     }
@@ -68,7 +68,7 @@ class UserController
     {
         $userService = $this->userService;
         $userService->delete($id);
-        $response = new Response(); // TODO instantiate elsewhere?
+        $response = new Response(); 
         $response->setStatusCode(204);
         return $response;
     }

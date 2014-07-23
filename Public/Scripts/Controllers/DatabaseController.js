@@ -10,5 +10,11 @@ rentaTool.controller('DatabaseController', ['$scope', 'Database', function ($sco
             alert('Skapat databas!');
         });
     };
+
+    $scope.createDatabaseWithSeeds = function () {
+        database.$save({action: 'createwithseeds'}, function () {
+            alert('Skapat databas!');
+        });
+    };
 }])
 ;

@@ -1,23 +1,33 @@
 <?php
+/**
+ * User: Elin
+ * Date: 2014-07-17
+ * Time: 18:58
+ */
+
+namespace Rentatool\Application\Services;
+
+use Rentatool\Application\Mappers\DatabaseMapper;
+use Rentatool\Application\Mappers\RentalObjectMapper;
+use Rentatool\Application\Mappers\UserMapper;
+
+class DatabaseService {
+
    /**
-    * User: Elin
-    * Date: 2014-07-17
-    * Time: 18:58
+    * @var \Rentatool\Application\Mappers\DatabaseMapper
     */
+   protected $databaseMapper;
 
-   namespace Rentatool\Application\Services;
-
-   use Rentatool\Application\Mappers\DatabaseMapper;
-
-   class DatabaseService {
-
-      protected $databaseMapper;
-
-      public function __construct(DatabaseMapper $databaseMapper) {
-         $this->databaseMapper = $databaseMapper;
-      }
-
-      public function create() {
-         $this->databaseMapper->create();
-      }
+   public function __construct(DatabaseMapper $databaseMapper) {
+      $this->databaseMapper = $databaseMapper;
    }
+
+   public function create() {
+//      $this->databaseMapper->createDatabase();
+      $this->databaseMapper->createTables();
+   }
+
+   public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper) {
+      $this->databaseMapper->insertSeeds($userMapper, $rentalObjectMapper);
+   }
+}

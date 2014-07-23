@@ -13,14 +13,6 @@ namespace Rentatool\Application\ENFramework\Models;
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
 /**
- * Note
- * When creating db remember to set the following.
- * CREATE DATABASE mydbname
- * DEFAULT CHARACTER SET utf8
- * DEFAULT COLLATE utf8_general_ci;
- */
-
-/**
  * Class DatabaseConnection
  * @package Rentatool\Application\ENFramework\Models
  */
@@ -36,7 +28,13 @@ class DatabaseConnection implements IDatabaseConnection {
       $password     = '';
       $databaseName = 'Rentatool';
 
-      $PDOOptions               = array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION, \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC, \PDO::MYSQL_ATTR_FOUND_ROWS => true);
+      $PDOOptions = array(
+         \PDO::ATTR_ERRMODE                  => \PDO::ERRMODE_EXCEPTION,
+         \PDO::ATTR_DEFAULT_FETCH_MODE       => \PDO::FETCH_ASSOC,
+         \PDO::MYSQL_ATTR_FOUND_ROWS         => true,
+         \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true
+      );
+
       $databaseConnection       = new \PDO(sprintf('mysql:host=%s;dbname=%s', $host, $databaseName), $userName, $password, $PDOOptions);
       $this->databaseConnection = $databaseConnection;
    }
@@ -48,9 +46,9 @@ class DatabaseConnection implements IDatabaseConnection {
          $stmt = $this->databaseConnection->prepare($query);
          $stmt->execute($params);
 
-         $numberOfFoundRows = $this->getNumberOfFoundRows();
+         $queryHasResultRows = $stmt->columnCount() > 0;
 
-         if ($numberOfFoundRows > 0) {
+         if ($queryHasResultRows) {
             while ($row = $stmt->fetch()) {
                $queryResult[] = $row;
             }
@@ -61,15 +59,5 @@ class DatabaseConnection implements IDatabaseConnection {
       }
 
       return $queryResult;
-   }
-
-   /**
-    * This will return the actual number of resulting rows.
-    * MySQL rowCount() returns 1 on insert and 2 on update. That's why it can't be used.
-    * Read the comments at php.net - rowCount() for more info.
-    * @return int
-    */
-   private function getNumberOfFoundRows() {
-      return (int)$this->databaseConnection->query('SELECT FOUND_ROWS()')->fetchColumn();
    }
 }
