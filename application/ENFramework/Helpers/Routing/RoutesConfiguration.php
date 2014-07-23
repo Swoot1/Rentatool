@@ -20,12 +20,12 @@ $routes['authorization'] = array(
    'requiresAuthorization' => false
 );
 
-$routes['user'] = array(
+$routes['users'] = array(
    'controllerName' => 'UserController',
    'requiresAuthorization' => false
 );
 
-$routes['database'] = array(
+$routes['databases'] = array(
    'controllerName'        => 'DatabaseController',
    'requiresAuthorization' => false
 );

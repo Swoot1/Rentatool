@@ -13,15 +13,15 @@ var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute']
                 templateUrl: 'public/Templates/rentalObjectList.html',
                 controller: 'RentalObjectListController'
             })
-            .when('/user/new', {
+            .when('/users/new', {
                 templateUrl: 'public/Templates/userCreate.html',
                 controller: 'UserController'
             })
-            .when('/user/:id', {
+            .when('/users/:id', {
                 templateUrl: 'public/Templates/userUpdate.html',
                 controller: 'UserController'
             })
-            .when('/user', {
+            .when('/users', {
                 templateUrl: 'public/Templates/userList.html',
                 controller: 'UserListController'
             })
@@ -29,7 +29,7 @@ var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute']
                 templateUrl: 'public/Templates/login.html',
                 controller: 'AuthorizationController'
             })
-            .when('/database/new', {
+            .when('/databases/new', {
                 templateUrl: 'public/Templates/database.html',
                 controller: 'DatabaseController'
             })
