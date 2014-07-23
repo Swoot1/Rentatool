@@ -24,29 +24,40 @@ class DatabaseConnection implements IDatabaseConnection {
       $password     = '';
       $databaseName = 'Rentatool';
 
-      $databaseConnection = new \PDO(sprintf('mysql:host=%s;dbname=%s', $host, $databaseName), $userName, $password);
-      $databaseConnection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+      $PDOOptions               = array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION, \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC, \PDO::MYSQL_ATTR_FOUND_ROWS => true);
+      $databaseConnection       = new \PDO(sprintf('mysql:host=%s;dbname=%s', $host, $databaseName), $userName, $password, $PDOOptions);
       $this->databaseConnection = $databaseConnection;
    }
 
    public function runQuery($query, $params = array()) {
-      try{
-         $queryResult  = array();
-         $DBConnection = $this->databaseConnection;
+      try {
+         $queryResult = [];
 
-         $stmt = $DBConnection->prepare($query);
+         $stmt = $this->databaseConnection->prepare($query);
          $stmt->execute($params);
 
-//         if($stmt->rowCount() > 0){
-//            while ($result = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-//               $queryResult[] = $result;
-//            }
-//         }
+         $numberOfFoundRows = $this->getNumberOfFoundRows();
 
-      }catch(\PDOException $exception){
+         if ($numberOfFoundRows > 0) {
+            while ($row = $stmt->fetch()) {
+               $queryResult[] = $row;
+            }
+         }
+
+      } catch (\PDOException $exception) {
          throw new ApplicationException('Kunde inte läsa databas.');
       }
 
       return $queryResult;
+   }
+
+   /**
+    * This will return the actual number of resulting rows.
+    * MySQL rowCount() returns 1 on insert and 2 on update. That's why it can't be used.
+    * Read the comments at php.net - rowCount() for more info.
+    * @return int
+    */
+   private function getNumberOfFoundRows() {
+      return (int)$this->databaseConnection->query('SELECT FOUND_ROWS()')->fetchColumn();
    }
 }
