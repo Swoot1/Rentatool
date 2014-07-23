@@ -38,7 +38,6 @@ class RequestBuilder {
    public function build() {
       $this->setURI();
       $this->setRequestMethod();
-      $this->setResource();
 
       return $this->requestModel;
    }
@@ -58,22 +57,6 @@ class RequestBuilder {
 
    private function setURI() {
       $this->requestModel->setRequestURI(ltrim($this->buildSource['REQUEST_URI'], '/'));
-
-      return $this;
-   }
-
-
-   /**
-    * The url params as an array /user/1 becomes array('user', '1').
-    * @return $this
-    */
-   private function setResource() {
-      $parsedURL = parse_url($this->buildSource['REQUEST_URI']);
-      $urlParams = array_values(array_filter(explode('/', $parsedURL['path'])));
-
-      $this->requestModel->setURLParams($urlParams);
-      $urlParamsCopy = $urlParams;
-      $this->requestModel->setResource(array_shift($urlParamsCopy));
 
       return $this;
    }

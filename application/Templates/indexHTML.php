@@ -13,7 +13,7 @@ echo '<!DOCTYPE html>
 <body>
 <div id="content">
     <div ng-controller="AuthorizationController">
-        <span logoutbutton>Should be a button</span>
+        <span logoutbutton></span>
     </div>
     <div ng-controller="NavigationController">
         <ul>

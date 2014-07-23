@@ -13,98 +13,130 @@ use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\Applicati
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
 use Rentatool\Application\ENFramework\Models\Request;
 
-class Routing
-{
+class Routing {
 
-    private $request;
-    private $dependencyInjector;
+   private $request;
+   private $dependencyInjector;
 
-    public function __construct(Request $request, \SimpleXMLElement $dependencyInjector)
-    {
-        $this->request = $request;
-        $this->dependencyInjector = $dependencyInjector;
-    }
+   public function __construct(Request $request, \SimpleXMLElement $dependencyInjector) {
+      $this->request            = $request;
+      $this->dependencyInjector = $dependencyInjector;
+   }
 
-    /**
-     * @param $id
-     * @param Request $request
-     * @return mixed
-     * @throws ApplicationException
-     */
-    public function callMethod(Route $route)
-    {
-        $controller = $this->getController($route);
-        $requestURIAsArray = explode('/', $this->request->getRequestURI());
-        $id = isset($requestURIAsArray[1]) ? $requestURIAsArray[1] : false;
-        $requestMethod = $this->request->getRequestMethod();
-        $requestData = $this->request->getRequestData();
+   /**
+    * @param $id
+    * @param Request $request
+    * @return mixed
+    * @throws ApplicationException
+    */
+   public function callMethod(Route $route) {
+      $controller    = $this->getController($route);
+      $requestMethod = $this->request->getRequestMethod();
 
-        if ($requestMethod === 'GET') {
-            if ($id) {
-
-                if(is_numeric($id)){
-                    $result = $controller->read($id);
-                }else{
-                    $isSubString = array_key_exists(1, $requestURIAsArray) && preg_match('/^[a-z0-9]+$/', $requestURIAsArray[1], $matches);
-
-                    if($isSubString){
-                        if(method_exists($controller, $matches[0])){
-                            $result = call_user_func(array($controller, $matches[0]), $requestData);
-                        }else{
-                            throw new NoSuchRouteException('Ogiltig url.');
-                        }
-                    }
-                }
-
-            } else {
-                $result = $controller->index();
-            }
-        } else if ($requestMethod === 'DELETE') {
-            if ($id) {
-                $result = $controller->delete($id);
-            } else {
-                throw new ApplicationException('Ange ett id för borttagning.');
-            }
-        } else if ($requestMethod === 'POST') {
-            $result = $this->casePOST($requestData, $controller, $requestURIAsArray);
-        } else if ($requestMethod === 'PUT') {
-            if ($id) {
-                $result = $controller->update($id, $requestData);
-            } else {
-                throw new ApplicationException('Ange ett id för uppdatering.');
-            }
-        } else {
+      switch ($requestMethod) {
+         case 'GET':
+            $result = $this->callGetMethod($controller);
+            break;
+         case 'DELETE':
+            $result = $this->callDeleteMethod($controller);
+            break;
+         case 'POST':
+            $result = $this->callPostMethod($controller);
+            break;
+         case 'PUT':
+            $result = $this->callPutMethod($controller);
+            break;
+         default:
             throw new NoSuchRouteException('Ogiltigt request.');
-        }
+      }
 
-        return $result;
+      return $result;
 
-    }
+   }
 
-    private function casePOST(array $requestData, $controller, array $requestURIAsArray){
+   /**
+    * @param String $controllerName
+    * @return null|object
+    */
+   private function getController(Route $route) {
+      $dependencyInjectionContainer = new DependencyInjection($this->dependencyInjector);
 
-        $isSubString = array_key_exists(1, $requestURIAsArray) && preg_match('/^[a-z0-9]+$/', $requestURIAsArray[1], $matches);
+      return $dependencyInjectionContainer->getInstantiatedClass($route->getController());
+   }
 
-        if($isSubString){
-            if(method_exists($controller, $matches[0])){
-                $result = call_user_func(array($controller, $matches[0]), $requestData);
-            }else{
-                throw new NoSuchRouteException('Ogiltig url.');
-            }
-        }else{
-            $result = $controller->create($requestData);
-        }
+   /**
+    * @param $controller
+    * @return mixed
+    */
+   private function callGetMethod($controller) {
+      $id          = $this->request->getId();
+      $action      = $this->request->getAction();
+      $requestData = $this->request->getRequestData();
 
-        return $result;
-    }
+      if ($id || $action) {
 
-    /**
-     * @param String $controllerName
-     * @return null|object
-     */
-    private function getController(Route $route)
-    {
-        $dependencyInjectionContainer = new DependencyInjection($this->dependencyInjector);
-        return $dependencyInjectionContainer->getInstantiatedClass($route->getController());
-    }
+         if ($id) {
+            $result = $controller->read($id);
+         } else {
+            $result = call_user_func(array($controller, $action), $requestData);
+         }
+
+      } else {
+         $result = $controller->index();
+      }
+
+      return $result;
+   }
+
+   /**
+    * @param $controller
+    * @return mixed
+    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    */
+   private function callDeleteMethod($controller) {
+      $id = $this->request->getId();
+
+      if ($id) {
+         $result = $controller->delete($id);
+      } else {
+         throw new ApplicationException('Ange ett id för borttagning.');
+      }
+
+      return $result;
+   }
+
+   /**
+    * @param $controller
+    * @return mixed
+    */
+   private function callPostMethod($controller) {
+      $action      = $this->request->getAction();
+      $requestData = $this->request->getRequestData();
+
+      if ($action) {
+         $result = call_user_func(array($controller, $action), $requestData);
+      } else {
+         $result = $controller->create($requestData);
+      }
+
+      return $result;
+   }
+
+   /**
+    * @param $controller
+    * @return mixed
+    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    */
+   private function callPutMethod($controller) {
+      $id          = $this->request->getId();
+      $requestData = $this->request->getRequestData();
+
+      if ($id) {
+         $result = $controller->update($id, $requestData);
+      } else {
+         throw new ApplicationException('Ange ett id för uppdatering.');
+      }
+
+      return $result;
+   }
 } 
