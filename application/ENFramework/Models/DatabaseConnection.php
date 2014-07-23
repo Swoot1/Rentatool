@@ -31,8 +31,7 @@ class DatabaseConnection implements IDatabaseConnection {
       $PDOOptions = array(
          \PDO::ATTR_ERRMODE                  => \PDO::ERRMODE_EXCEPTION,
          \PDO::ATTR_DEFAULT_FETCH_MODE       => \PDO::FETCH_ASSOC,
-         \PDO::MYSQL_ATTR_FOUND_ROWS         => true,
-         \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true
+         \PDO::MYSQL_ATTR_FOUND_ROWS         => true
       );
 
       $databaseConnection       = new \PDO(sprintf('mysql:host=%s;dbname=%s', $host, $databaseName), $userName, $password, $PDOOptions);
