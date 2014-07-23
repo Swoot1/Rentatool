@@ -24,10 +24,9 @@ class Routing {
    }
 
    /**
-    * @param $id
-    * @param Request $request
+    * @param Route $route
     * @return mixed
-    * @throws ApplicationException
+    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException
     */
    public function callMethod(Route $route) {
       $controller    = $this->getController($route);
@@ -55,7 +54,7 @@ class Routing {
    }
 
    /**
-    * @param String $controllerName
+    * @param Route $route
     * @return null|object
     */
    private function getController(Route $route) {
