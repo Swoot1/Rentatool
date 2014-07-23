@@ -57,21 +57,6 @@ class RouteTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test that it's possible to submit an id and still get matching route.
-     */
-    public function testIsMatchingRouteWithId()
-    {
-        $caughtFishRoute = new Route(array(
-            'resource' => 'caughtfish',
-            'controllerName' => 'CaughtFishController'
-        ));
-
-        $isMatchingRoute = $caughtFishRoute->isMatchingRoute('caughtfish/123');
-
-        $this->assertTrue($isMatchingRoute);
-    }
-
-    /**
      * Test that a route that doesn't match the route model returns false when calling
      * isMatchingRoute.
      */

@@ -12,12 +12,6 @@
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Controllers" class="CaughtFishController">
-            <dependencies>
-                <dependency namespace="Rentatool\Application\Services" class="CaughtFishService"/>
-            </dependencies>
-        </dependency>
-
         <dependency namespace="Rentatool\Application\Controllers" class="AuthorizationController">
             <dependencies>
                 <dependency namespace="Rentatool\Application\Services" class="AuthorizationService"/>
@@ -38,12 +32,6 @@
 
 
         <!-- Services -->
-        <dependency namespace="Rentatool\Application\Services" class="CaughtFishService">
-            <dependencies>
-                <dependency namespace="Rentatool\Application\Mappers" class="CaughtFishMapper"/>
-            </dependencies>
-        </dependency>
-
         <dependency namespace="Rentatool\Application\Services" class="RentalObjectService">
             <dependencies>
                 <dependency namespace="Rentatool\Application\Mappers" class="RentalObjectMapper"/>
@@ -70,12 +58,6 @@
 
 
         <!-- Mappers -->
-        <dependency namespace="Rentatool\Application\Mappers" class="CaughtFishMapper">
-            <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
-            </dependencies>
-        </dependency>
-
         <dependency namespace="Rentatool\Application\Mappers" class="RentalObjectMapper">
             <dependencies>
                 <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>

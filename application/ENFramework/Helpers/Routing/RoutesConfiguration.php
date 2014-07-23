@@ -11,10 +11,6 @@ use Rentatool\Application\ENFramework\Helpers\Routing\RouteCollection;
 
 $routes = array();
 
-$routes['caughtfish'] = array(
-   'controllerName' => 'CaughtFishController'
-);
-
 $routes['rentalobjects'] = array(
    'controllerName' => 'RentalObjectController'
 );

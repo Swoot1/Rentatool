@@ -19,7 +19,6 @@ echo '<!DOCTYPE html>
         <ul>
             <li ng-click="navigateToUserList()">Användare</li>
             <li ng-click="navigateToFishList()">Fiskar</li>
-            <li ng-click="navigateToCaughtFishList()">Fångade fiskar</li>
         </ul>
     </div>
     <div ng-view>
@@ -33,7 +32,6 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Directives/Focus.js"></script>
 <script type="text/javascript" src="Public/Scripts/Filters.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RentalObjectFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/CaughtFishFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/UserFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/DatabaseFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/AuthorizationFactory.js"></script>
@@ -44,7 +42,6 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/NavigationController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserListController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/CaughtFishListController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/AuthorizationController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/MenuController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/LogOutButton.js"></script>

@@ -6,10 +6,6 @@ rentaTool.controller('NavigationController', ['$scope', '$location', function ($
         $location.path('/user');
     };
 
-    $scope.navigateToCaughtFishList = function () {
-        $location.path('/caughtfish');
-    };
-
     $scope.navigateToFishList = function () {
         $location.path('/fish');
     };
