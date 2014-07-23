@@ -9,13 +9,9 @@ var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute']
                 templateUrl: 'public/Templates/rentalObject.html',
                 controller: 'RentalObjectController'
             })
-            .when('/caughtfish/new', {
-                templateUrl: 'public/Templates/caughtFish.html',
-                controller: 'CaughtFishController'
-            })
-            .when('/caughtfish', {
-                templateUrl: 'public/Templates/caughtFishList.html',
-                controller: 'CaughtFishListController'
+            .when('/rentalobjects', {
+                templateUrl: 'public/Templates/rentalObjectList.html',
+                controller: 'RentalObjectListController'
             })
             .when('/user/new', {
                 templateUrl: 'public/Templates/userCreate.html',

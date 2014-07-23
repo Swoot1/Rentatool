@@ -40,7 +40,7 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Factories/RequestErrorInterceptorFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/DatabaseController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/CaughtFishController.js"></script>
+<script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectListController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/NavigationController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserListController.js"></script>

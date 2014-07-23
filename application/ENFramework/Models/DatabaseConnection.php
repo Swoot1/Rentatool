@@ -12,6 +12,18 @@ namespace Rentatool\Application\ENFramework\Models;
 
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
+/**
+ * Note
+ * When creating db remember to set the following.
+ * CREATE DATABASE mydbname
+ * DEFAULT CHARACTER SET utf8
+ * DEFAULT COLLATE utf8_general_ci;
+ */
+
+/**
+ * Class DatabaseConnection
+ * @package Rentatool\Application\ENFramework\Models
+ */
 class DatabaseConnection implements IDatabaseConnection {
    /**
     * @var \PDO

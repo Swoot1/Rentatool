@@ -12,8 +12,6 @@ rentaTool.controller('RentalObjectController', ['$scope', 'RentalObject', functi
         $scope.rentalObject.$save({}, function (data) {
             alert('Sparat objekt!');
             $scope.rentalObjectCollection.push(data);
-        }, function () {
-            alert('Något gick snett.');
         });
     };
 
@@ -25,9 +23,6 @@ rentaTool.controller('RentalObjectController', ['$scope', 'RentalObject', functi
                 alert('Objekt borttagen.');
                 indexOfRentalObject = $scope.rentalObjectCollection.indexOf(rentalObject);
                 $scope.rentalObjectCollection.splice(indexOfRentalObject, 1);
-            },
-            function () {
-                alert('Något gick snett.');
             });
     };
 }]);

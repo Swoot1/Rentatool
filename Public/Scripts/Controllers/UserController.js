@@ -5,25 +5,20 @@ rentaTool.controller('UserController', ['$scope', '$routeParams', '$location', '
 
     if ($routeParams.id) {
         $scope.user = User.get({id: $routeParams.id});
-    }else{
+    } else {
         $scope.user = new User({});
     }
-
 
 
     $scope.createUser = function () {
         $scope.user.$save({}, function () {
             alert('Lagt till användare');
-        }, function () {
-            alert('Något gick snett.');
         });
     };
 
     $scope.updateUser = function () {
         $scope.user.$update({}, function () {
             alert('Uppdaterat användare');
-        }, function () {
-            alert('Något gick snett.');
         });
     };
 

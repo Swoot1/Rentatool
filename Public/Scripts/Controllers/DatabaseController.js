@@ -8,8 +8,6 @@ rentaTool.controller('DatabaseController', ['$scope', 'Database', function ($sco
     $scope.createDatabase = function () {
         database.$save({}, function (data) {
             alert('Skapat databas!');
-        }, function () {
-            alert('Något gick snett.');
         });
     };
 }])
