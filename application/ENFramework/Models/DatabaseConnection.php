@@ -39,23 +39,24 @@ class DatabaseConnection implements IDatabaseConnection {
       $this->databaseConnection = $databaseConnection;
    }
 
+   /**
+    * Prepares and executes the provided query and params and returns the result from the query.
+    * @param $query
+    * @param array $params
+    * @return array
+    */
    public function runQuery($query, $params = array()) {
-      try {
-         $queryResult = [];
 
-         $stmt = $this->databaseConnection->prepare($query);
-         $stmt->execute($params);
+      $stmt = $this->databaseConnection->prepare($query);
+      $stmt->execute($params);
 
-         $queryHasResultRows = $stmt->columnCount() > 0;
+      $queryResult        = [];
+      $queryHasResultRows = $stmt->columnCount() > 0;
 
-         if ($queryHasResultRows) {
-            while ($row = $stmt->fetch()) {
-               $queryResult[] = $row;
-            }
+      if ($queryHasResultRows) {
+         while ($row = $stmt->fetch()) {
+            $queryResult[] = $row;
          }
-
-      } catch (\PDOException $exception) {
-         throw new ApplicationException('Kunde inte läsa databas.');
       }
 
       return $queryResult;
