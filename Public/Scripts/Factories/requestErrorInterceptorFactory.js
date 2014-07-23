@@ -5,11 +5,11 @@ rentaTool.factory('requestErrorInterceptor', function () {
     var requestErrorInterceptor = {
         requestError: function (response) {
             requestErrorInterceptor.writeError(response.data);
-            return response;
+            return {};
         },
         responseError: function (response) {
             requestErrorInterceptor.writeError(response.data);
-            return response;
+            return {};
         },
         writeError: function (errorData) {
             if (errorData) {
