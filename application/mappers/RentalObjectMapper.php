@@ -87,8 +87,6 @@ class RentalObjectMapper
     public function create(array $DBParameters)
     {
         unset($DBParameters['id']);
-         $DBParameters['available'] = (int)$DBParameters['available']; // TODO remove two lines.
-         $DBParameters['userId'] = (int)$DBParameters['userId'];
         $query = $this->createSQL;
         return $this->databaseConnection->runQuery($query, $DBParameters);
     }
