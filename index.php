@@ -26,7 +26,7 @@ try{
          throw new UserIsNotAllowedException('Du måste logga in för att fortsätta.');
       }
    } else{
-      include 'Application\Templates\indexHTML.php';
+      include 'Application/Templates/indexHTML.php';
    }
 } catch (Exception $exception){
    $errorHTTPStatusCodeFactory = new ErrorHTTPStatusCodeFactory($exception);
