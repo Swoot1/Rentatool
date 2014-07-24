@@ -9,7 +9,5 @@
  *
  */
 
-$_SERVER['REQUEST_URI'] = '';
-
-require_once 'ENFramework/Helpers/Configuration.php';
+require_once '../ENFramework/Helpers/Configuration.php';
 
