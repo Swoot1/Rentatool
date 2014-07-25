@@ -9,6 +9,10 @@
 
 require_once 'PersonalConfiguration.php';
 
+
+// Set default character encoding.
+mb_internal_encoding('UTF-8');
+
 // Set where the project folder is found on disk.
 set_include_path(PROJECT_ROOT);
 

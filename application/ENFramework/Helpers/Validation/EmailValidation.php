@@ -24,9 +24,7 @@ class EmailValidation extends ValueValidation{
     * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function validateEmail($value){
-
-      // TODO use the regex before the @ behind the @ to validate the site name the same way.
-      $result              = preg_match('/^(([a-z\d])|(?:[a-z\d](?:[a-z\-\d]+)?[a-z\d]))@[\w-]+\.\w+$/', $value);
+      $result              = preg_match('/^(([a-z\d])|(?:[a-z\d](?:[a-z\-\d]+)?[a-z\d]))@(([a-z\d])|(?:[a-z\d](?:[a-z\-\d]+)?[a-z\d]))\.\w+$/', $value);
       $valueIsInvalidEmail = $result < 1 || $result === false;
 
       if ($valueIsInvalidEmail){

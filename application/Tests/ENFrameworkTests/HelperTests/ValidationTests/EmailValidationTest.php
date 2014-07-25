@@ -76,7 +76,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
       $this->assertTrue($result);
    }
 
-   public function testValidateNumberEmail(){ // TODO why does this work? The way the regex looks now it shouldn't.
+   public function testValidateNumberEmail(){
       $emailValidation = new EmailValidation(array('genericName' => 'propertyName'));
       $result          = $emailValidation->validate('99@hej.visitsmaland');
       $this->assertTrue($result);
