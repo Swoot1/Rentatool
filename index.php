@@ -15,14 +15,13 @@ try{
    $requestDispatcher = new RequestDispatcher();
    $requestModel      = $requestDispatcher->getRequestModel();
 
-   $dependencyInjectionContainer = simplexml_load_file('Application/ENFramework/Helpers/DependencyInjection/DependencyInjectionContainer.xml');
-
-   $routing         = new Routing($requestModel, $dependencyInjectionContainer);
    $routeCollection = include_once 'Application/ENFramework/Helpers/Routing/RoutesConfiguration.php';
    $route           = $routeCollection->getRoute($requestModel);
 
    if ($route){
       if ($route->isUserAllowed()){
+         $dependencyInjectionContainer = simplexml_load_file('Application/ENFramework/Helpers/DependencyInjection/DependencyInjectionContainer.xml');
+         $routing         = new Routing($requestModel, $dependencyInjectionContainer);
          $response = $routing->callMethod($route);
          $response->sendResponse();
       } else{
