@@ -29,7 +29,6 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-route.js"></script>
 <script type="text/javascript" src="Public/Scripts/app.js"></script>
-<script type="text/javascript" src="Public/Scripts/Directives/EnsureUniqueFish.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/Focus.js"></script>
 <script type="text/javascript" src="Public/Scripts/Filters.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RentalObjectFactory.js"></script>

@@ -20,7 +20,7 @@ class RequestDispatcher
     public function __construct()
     {
         $this->_serverArray = $_SERVER;
-        $requestMethodCollection = new RequestMethodCollection();
+        $requestMethodCollection = new RequestMethodCollection(array('PUT', 'POST', 'GET', 'DELETE'));
         $requestBuilder = new RequestBuilder($_SERVER, $requestMethodCollection);
         $this->requestModel = $requestBuilder->build();
     }

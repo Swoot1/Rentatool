@@ -7,27 +7,32 @@
  * To change this template use File | Settings | File Templates.
  */
 
+use Rentatool\Application\Collections\RequestMethodCollection;
 use Rentatool\Application\ENFramework\Helpers\Routing\RouteCollection;
 
 $routes = array();
 
 $routes['rentalobjects'] = array(
-   'controllerName' => 'RentalObjectController'
+   'controllerName'          => 'RentalObjectController',
+   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET'))
 );
 
 $routes['authorization'] = array(
-   'controllerName'        => 'AuthorizationController',
-   'requiresAuthorization' => false
+   'controllerName'          => 'AuthorizationController',
+   'requiresAuthorization'   => false,
+   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET'))
 );
 
 $routes['users'] = array(
-   'controllerName' => 'UserController',
-   'requiresAuthorization' => false
+   'controllerName'          => 'UserController',
+   'requiresAuthorization'   => false,
+   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET'))
 );
 
 $routes['databases'] = array(
-   'controllerName'        => 'DatabaseController',
-   'requiresAuthorization' => false
+   'controllerName'          => 'DatabaseController',
+   'requiresAuthorization'   => false,
+   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET'))
 );
 
 return new RouteCollection($routes);

@@ -19,7 +19,7 @@ try{
 
    $routing         = new Routing($requestModel, $dependencyInjectionContainer);
    $routeCollection = include_once 'Application/ENFramework/Helpers/Routing/RoutesConfiguration.php';
-   $route           = $routeCollection->getRoute($requestModel->getResource());
+   $route           = $routeCollection->getRoute($requestModel);
 
    if ($route){
       if ($route->isUserAllowed()){

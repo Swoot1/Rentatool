@@ -10,28 +10,34 @@
 namespace Rentatool\Application\ENFramework\Helpers\Routing;
 
 
-class RouteCollection{
+use Rentatool\Application\ENFramework\Models\Request;
+
+class RouteCollection {
 
    private $routes = [];
 
 
-   public function __construct(array $routes){
-      foreach ($routes as $path => $route){
+   public function __construct(array $routes) {
+      foreach ($routes as $path => $route) {
          $this->addRoute($path, $route);
       }
    }
 
 
-   public function getRoute($route){
-      if (!array_key_exists($route, $this->routes)){
+   public function getRoute(Request $request) {
+      $resource = $request->getResource();
+      if (!array_key_exists($resource, $this->routes)) {
          return false;
       }
 
-      return $this->routes[$route];
+      $route = $this->routes[$resource];
+      $route->validateRequest($request);
+
+      return $route;
    }
 
 
-   private function addRoute($path, array $route){
+   private function addRoute($path, array $route) {
       $this->routes[$path] = new Route($route);
    }
 

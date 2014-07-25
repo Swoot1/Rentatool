@@ -12,17 +12,17 @@ namespace Rentatool\Application\Collections;
 
 class RequestMethodCollection {
 
-    private $data = array('PUT', 'POST', 'GET', 'DELETE');
+   private $data;
 
-    private function getData(){
-        return $this->data;
-    }
+   public function __construct(array $allowedMethods) {
+      $this->data = $allowedMethods;
+   }
 
-    /**
-     * @param $methodName
-     * @return bool
-     */
-    public function isValidRequestMethod($methodName){
-        return array_search($methodName, $this->getData()) !== false;
-    }
+   /**
+    * @param $methodName
+    * @return bool
+    */
+   public function isValidRequestMethod($methodName) {
+      return array_search($methodName, $this->data) !== false;
+   }
 }
