@@ -9,6 +9,91 @@
 namespace Rentatool\Tests\ENFrameworkTests\HelperTests\ValidationTests;
 
 
-class EmailValidationTest {
+use Rentatool\Application\ENFramework\Helpers\Validation\EmailValidation;
 
+class EmailValidationTest extends \PHPUnit_Framework_TestCase{
+
+   public function testValidateNormalCase(){
+      $emailValidation = new EmailValidation(array('genericName' => 'propertyName'));
+      $result          = $emailValidation->validate('someemail@cooldomain.sexy');
+      $this->assertTrue($result);
+   }
+
+   /**
+    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig email-adress.
+    */
+   public function testValidateMissingAtCharacter(){
+      $emailValidation = new EmailValidation(array('genericName' => 'propertyName'));
+      $emailValidation->validate('svänskmejlsvensson.se');
+   }
+
+   /**
+    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig email-adress.
+    */
+   public function testValidateMissingDomain(){
+      $emailValidation = new EmailValidation(array('genericName' => 'propertyName'));
+      $emailValidation->validate('rocky@star.');
+   }
+
+   /**
+    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig email-adress.
+    */
+   public function testValidateRepeatedEmail(){
+      $emailValidation = new EmailValidation(array('genericName' => 'propertyName'));
+      $emailValidation->validate('missuniverse@g.comissuniverse@g.co');
+   }
+
+   public function testDashIsAllowed(){
+      $emailValidation = new EmailValidation(array('genericName' => 'propertyName'));
+      $result          = $emailValidation->validate('some-email@cool-domain.sexy');
+      $this->assertTrue($result);
+   }
+
+   /**
+    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig email-adress.
+    */
+   public function testDashIsNotAllowedAsStart(){
+      $emailValidation = new EmailValidation(array('genericName' => 'propertyName'));
+      $emailValidation->validate('-someemail@cooldomain.sexy');
+   }
+
+   /**
+    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig email-adress.
+    */
+   public function testDashIsNotAllowedAsEnd(){
+      $emailValidation = new EmailValidation(array('genericName' => 'propertyName'));
+      $emailValidation->validate('someemail-@cooldomain.sexy');
+   }
+
+   public function testValidateShortEmail(){
+      $emailValidation = new EmailValidation(array('genericName' => 'propertyName'));
+      $result          = $emailValidation->validate('e@cooldomain.sexy');
+      $this->assertTrue($result);
+   }
+
+   public function testValidateNumberEmail(){ // TODO why does this work? The way the regex looks now it shouldn't.
+      $emailValidation = new EmailValidation(array('genericName' => 'propertyName'));
+      $result          = $emailValidation->validate('99@hej.visitsmaland');
+      $this->assertTrue($result);
+   }
+
+   public function testValidateAllowedSiteName(){
+      $emailValidation = new EmailValidation(array('genericName' => 'propertyName'));
+      $result          = $emailValidation->validate('elin@999-hundred-99hours.visitsmaland');
+      $this->assertTrue($result);
+   }
+
+   /**
+    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig email-adress.
+    */
+   public function testValidateMissingName(){
+      $emailValidation = new EmailValidation(array('genericName' => 'propertyName'));
+      $emailValidation->validate('@stackoverflow.com');
+   }
 } 

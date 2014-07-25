@@ -6,9 +6,9 @@
  * Time: 20:32
  * To change this template use File | Settings | File Templates.
  */
-namespace Rentatool\Application\ENFramework\Helpers;
+namespace Rentatool\Application\ENFramework\Helpers\Validation;
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+// TODO remove this class.
 
 class PropertyValidation
 {
@@ -28,51 +28,6 @@ class PropertyValidation
 
     public function validate($value)
     {
-        $this->validateNull($value);
-        $this->validateMinLength($value);
-        $this->validateMaxLength($value);
-    }
-
-    /**
-     * @param $value
-     * @return bool
-     * @throws ApplicationException
-     */
-    private function validateNull($value)
-    {
-        if ($value === null && $this->allowNull === false) {
-            throw new ApplicationException(sprintf('Ange ett värde för %s.', $this->genericName));
-        }
-
-        return true;
-    }
-
-    /**
-     * @param $value
-     * @return bool
-     * @throws ApplicationException
-     */
-    private function validateMinLength($value)
-    {
-        if (strlen($value) < $this->minLength) {
-            throw new ApplicationException(sprintf('%s måste vara minst %s tecken långt.', $this->genericName, $this->minLength));
-        }
-
-        return true;
-    }
-
-    /**
-     * @param $value
-     * @return bool
-     * @throws ApplicationException
-     */
-    private function validateMaxLength($value)
-    {
-        if ($this->maxLength && strlen($value > $this->maxLength)) {
-            throw new ApplicationException(sprintf('%s får vara högst %s långt.', $this->genericName, $this->maxLength));
-        }
-
-        return true;
     }
 
     /**

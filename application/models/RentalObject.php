@@ -11,47 +11,45 @@ namespace Rentatool\Application\Models;
 
 use Rentatool\Application\ENFramework\Collections\PropertyValidationCollection;
 use Rentatool\Application\ENFramework\Models\GeneralModel;
-use Rentatool\Application\ENFramework\Helpers\PropertyValidation;
+use Rentatool\Application\ENFramework\Helpers\Validation\PropertyValidation;
 
-class RentalObject extends GeneralModel
-{
-    protected $id;
-    protected $userId;
-    protected $name;
-    protected $available;
+class RentalObject extends GeneralModel{
+   protected $id;
+   protected $userId;
+   protected $name;
+   protected $available;
 
-    /**
-     * Sets the type and length validation on all properties.
-     * @return $this
-     */
-    protected function setUpValidation()
-    {
-        $validation = new PropertyValidationCollection(array(
-            new PropertyValidation(array(
-                    'dataType' => 'integer',
-                    'genericName' => 'Uthyrningsobjektets namn',
-                    'propertyName' => 'name'
-                )
-            ),
-            new PropertyValidation(array(
-                                      'dataType' => 'boolean',
-                                      'genericName' => 'Uthyrningsobjektets tillgänglighetsstatus',
-                                      'propertyName' => 'available'
-                                   )
-            )
-        ));
-        $this->setValidation($validation);
-        return $this;
-    }
+   /**
+    * Sets the type and length validation on all properties.
+    * @return $this
+    */
+   protected function setUpValidation(){
+      $validation = new PropertyValidationCollection(array(
+                                                        new PropertyValidation(array(
+                                                                                  'dataType'     => 'integer',
+                                                                                  'genericName'  => 'Uthyrningsobjektets namn',
+                                                                                  'propertyName' => 'name'
+                                                                               )
+                                                        ),
+                                                        new PropertyValidation(array(
+                                                                                  'dataType'     => 'boolean',
+                                                                                  'genericName'  => 'Uthyrningsobjektets tillgänglighetsstatus',
+                                                                                  'propertyName' => 'available'
+                                                                               )
+                                                        )
+                                                     ));
+      $this->setValidation($validation);
 
-    protected function setUpDefaultValues()
-    {
-        $defaultValues = array(
-            'id' => null,
-            'name' => null,
-            'available' => 1
-        );
+      return $this;
+   }
 
-        $this->setDefaultValues($defaultValues);
-    }
+   protected function setUpDefaultValues(){
+      $defaultValues = array(
+         'id'        => null,
+         'name'      => null,
+         'available' => 1
+      );
+
+      $this->setDefaultValues($defaultValues);
+   }
 }

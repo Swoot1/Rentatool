@@ -9,6 +9,7 @@ echo '<!DOCTYPE html>
     <meta charset="utf-8"/>
     <link href="Public/Foundation/css/foundation.css" type="text/css" rel="stylesheet"/>
     <link href="Public/test.css" type="text/css" rel="stylesheet"/>
+    <base href="/rentatool/" />
 </head>
 <body>
 <div id="content">

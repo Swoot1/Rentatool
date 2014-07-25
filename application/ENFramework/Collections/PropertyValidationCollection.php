@@ -10,48 +10,45 @@
 namespace Rentatool\Application\ENFramework\Collections;
 
 
-class PropertyValidationCollection
-{
+class PropertyValidationCollection{
 
-    protected $data;
+   protected $data;
 
-    public function __construct(array $data)
-    {
-        $this->data = $data;
-    }
+   public function __construct(array $data){
+      $this->data = $data;
+   }
 
-    /**
-     * Validates the properties validation rules.
-     * @param $name
-     * @param $value
-     * @return bool
-     */
-    public function validate($name, $value)
-    {
-        $validations = $this->where(array('propertyName' => $name));
-        foreach ($validations as $validation) {
-            $validation->validate($value);
-        }
+   /**
+    * Validates the properties validation rules.
+    * @param $name
+    * @param $value
+    * @return bool
+    */
+   public function validate($name, $value){
+      $validations = $this->where(array('propertyName' => $name));
+      foreach ($validations as $validation){
+         $validation->validate($value);
+      }
 
-        return true;
-    }
+      return true;
+   }
 
-    private function where(array $data)
-    {
-        $result = array();
+   private function where(array $data) //TODO this should be replaced by an associative data array instead.
+   {
+      $result = array();
 
-        foreach ($this->data as $model) {
-            $isMatch = true;
+      foreach ($this->data as $model){
+         $isMatch = true;
 
-            if ($model->hasMatchingData($data) === false) {
-                $isMatch = false;
-            }
+         if ($model->hasMatchingData($data) === false){
+            $isMatch = false;
+         }
 
-            if ($isMatch) {
-                $result[] = $model;
-            }
-        }
+         if ($isMatch){
+            $result[] = $model;
+         }
+      }
 
-        return $result;
-    }
+      return $result;
+   }
 }
