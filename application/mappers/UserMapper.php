@@ -109,6 +109,7 @@ class UserMapper {
       $result = $this->databaseConnection->runQuery($this->readSQL, array('id' => $id));
       $result = array_shift($result);
       $result['id'] = (int)$result['id']; // TODO this needs a general solution. MySQL always returns everything as a string!!1111one!1111!
+      // TODO http://stackoverflow.com/questions/5323146/mysql-integer-field-is-returned-as-string-in-php
       return $result;
    }
 
