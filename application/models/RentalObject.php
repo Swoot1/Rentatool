@@ -9,11 +9,12 @@
 
 namespace Rentatool\Application\Models;
 
-use Rentatool\Application\ENFramework\Collections\PropertyValidationCollection;
+use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
+use Rentatool\Application\ENFramework\Helpers\Validation\BooleanValidation;
+use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
 use Rentatool\Application\ENFramework\Models\GeneralModel;
-use Rentatool\Application\ENFramework\Helpers\Validation\PropertyValidation;
 
-class RentalObject extends GeneralModel{
+class RentalObject extends GeneralModel {
    protected $id;
    protected $userId;
    protected $name;
@@ -23,27 +24,25 @@ class RentalObject extends GeneralModel{
     * Sets the type and length validation on all properties.
     * @return $this
     */
-   protected function setUpValidation(){
-      $validation = new PropertyValidationCollection(array(
-                                                        new PropertyValidation(array(
-                                                                                  'dataType'     => 'integer',
-                                                                                  'genericName'  => 'Uthyrningsobjektets namn',
-                                                                                  'propertyName' => 'name'
-                                                                               )
-                                                        ),
-                                                        new PropertyValidation(array(
-                                                                                  'dataType'     => 'boolean',
-                                                                                  'genericName'  => 'Uthyrningsobjektets tillgänglighetsstatus',
-                                                                                  'propertyName' => 'available'
-                                                                               )
-                                                        )
-                                                     ));
+   protected function setUpValidation() {
+      $validation = new ValueValidationCollection(array(
+                                                     new IntegerValidation(array(
+                                                                              'genericName'  => 'Uthyrningsobjektets namn',
+                                                                              'propertyName' => 'name'
+                                                                           )
+                                                     ),
+                                                     new BooleanValidation(array(
+                                                                              'genericName'  => 'Uthyrningsobjektets tillgänglighetsstatus',
+                                                                              'propertyName' => 'available'
+                                                                           )
+                                                     )
+                                                  ));
       $this->setValidation($validation);
 
       return $this;
    }
 
-   protected function setUpDefaultValues(){
+   protected function setUpDefaultValues() {
       $defaultValues = array(
          'id'        => null,
          'name'      => null,

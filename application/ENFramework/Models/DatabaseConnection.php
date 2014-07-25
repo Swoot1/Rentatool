@@ -13,16 +13,16 @@ namespace Rentatool\Application\ENFramework\Models;
  * Class DatabaseConnection
  * @package Rentatool\Application\ENFramework\Models
  */
-class DatabaseConnection implements IDatabaseConnection{
+class DatabaseConnection implements IDatabaseConnection {
    /**
     * @var \PDO
     */
    private $databaseConnection;
 
-   public function __construct(){
+   public function __construct() {
       $host         = 'localhost';
       $userName     = 'root';
-      $password = 'root';
+      $password     = '';
       $databaseName = 'Rentatool';
 
       $PDOOptions = array(
@@ -41,7 +41,7 @@ class DatabaseConnection implements IDatabaseConnection{
     * @param array $params
     * @return array
     */
-   public function runQuery($query, $params = array()){
+   public function runQuery($query, $params = array()) {
 
       $stmt = $this->databaseConnection->prepare($query);
       $stmt->execute($params);
@@ -49,8 +49,8 @@ class DatabaseConnection implements IDatabaseConnection{
       $queryResult        = [];
       $queryHasResultRows = $stmt->columnCount() > 0;
 
-      if ($queryHasResultRows){
-         while ($row = $stmt->fetch()){
+      if ($queryHasResultRows) {
+         while ($row = $stmt->fetch()) {
             $queryResult[] = $row;
          }
       }

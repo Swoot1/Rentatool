@@ -10,14 +10,13 @@ namespace Rentatool\Application\Mappers;
 
 use Rentatool\Application\ENFramework\Models\IDatabaseConnection;
 
-class UserMapper
-{
+class UserMapper {
 
-    /**
-     * @var \Rentatool\Application\ENFramework\Models\IDatabaseConnection
-     */
-    private $databaseConnection;
-    private $indexSQL = '
+   /**
+    * @var \Rentatool\Application\ENFramework\Models\IDatabaseConnection
+    */
+   private $databaseConnection;
+   private $indexSQL = '
     SELECT
        id,
        username,
@@ -25,7 +24,7 @@ class UserMapper
     FROM
       user';
 
-    private $createSQL = '
+   private $createSQL = '
        INSERT INTO
         user
           (
@@ -41,7 +40,7 @@ class UserMapper
         )
     ';
 
-    private $readSQL = '
+   private $readSQL = '
     SELECT
        id,
        username,
@@ -51,7 +50,7 @@ class UserMapper
     WHERE
       id = :id';
 
-    private $getUserByEmailSQL = '
+   private $getUserByEmailSQL = '
         SELECT
             id,
             username,
@@ -63,7 +62,7 @@ class UserMapper
           email = :email
     ';
 
-    private $updateSQL = '
+   private $updateSQL = '
        UPDATE
            user
         SET
@@ -74,7 +73,7 @@ class UserMapper
           id = :id
     ';
 
-    private $deleteSQL = '
+   private $deleteSQL = '
         DELETE
           FROM
             user
@@ -83,45 +82,46 @@ class UserMapper
 
     ';
 
-    public function __construct(IDatabaseConnection $databaseConnection)
-    {
-        $this->databaseConnection = $databaseConnection;
-    }
+   public function __construct(IDatabaseConnection $databaseConnection) {
+      $this->databaseConnection = $databaseConnection;
+   }
 
-    public function index()
-    {
-        $users = $this->databaseConnection->runQuery($this->indexSQL, array());
-        return $users;
-    }
+   public function index() {
+      $users = $this->databaseConnection->runQuery($this->indexSQL, array());
 
-    public function create(array $DBParameters)
-    {
-        unset($DBParameters['id']);
-        $query = $this->createSQL;
-        return $this->databaseConnection->runQuery($query, $DBParameters);
-    }
+      return $users;
+   }
 
-    public function update(array $DBParameters)
-    {
-        $query = $this->updateSQL;
-        return $this->databaseConnection->runQuery($query, $DBParameters);
-    }
+   public function create(array $DBParameters) {
+      unset($DBParameters['id']);
+      $query = $this->createSQL;
 
-    public function read($id)
-    {
-        $result = $this->databaseConnection->runQuery($this->readSQL, array('id' => $id));
-        return array_shift($result);
-    }
+      return $this->databaseConnection->runQuery($query, $DBParameters);
+   }
 
-    public function getUserByEmail($email)
-    {
-        $result = $this->databaseConnection->runQuery($this->getUserByEmailSQL, array('email' => $email));
-        return array_shift($result);
-    }
+   public function update(array $DBParameters) {
+      $query = $this->updateSQL;
 
-    public function delete($id)
-    {
-        $query = $this->deleteSQL;
-        return $this->databaseConnection->runQuery($query, array('id' => $id));
-    }
+      return $this->databaseConnection->runQuery($query, $DBParameters);
+   }
+
+   public function read($id) {
+      $result = $this->databaseConnection->runQuery($this->readSQL, array('id' => $id));
+      $result = array_shift($result);
+      $result['id'] = (int)$result['id']; // TODO this needs a general solution. MySQL always returns everything as a string!!1111one!1111!
+      return $result;
+   }
+
+   public function getUserByEmail($email) {
+      $result = $this->databaseConnection->runQuery($this->getUserByEmailSQL, array('email' => $email));
+      $result = array_shift($result);
+      $result['id'] = (int)$result['id']; // TODO this needs a general solution. MySQL always returns everything as a string!!1111one!1111!
+      return $result;
+   }
+
+   public function delete($id) {
+      $query = $this->deleteSQL;
+
+      return $this->databaseConnection->runQuery($query, array('id' => $id));
+   }
 } 

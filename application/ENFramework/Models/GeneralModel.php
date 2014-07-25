@@ -9,7 +9,7 @@
 
 namespace Rentatool\Application\ENFramework\Models;
 
-use Rentatool\Application\ENFramework\Collections\PropertyValidationCollection;
+use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
 
 abstract class GeneralModel
 {
@@ -23,7 +23,7 @@ abstract class GeneralModel
         $this->setData($data);
     }
 
-    protected function setValidation(PropertyValidationCollection $validation)
+    protected function setValidation(ValueValidationCollection $validation)
     {
         $this->_validation = $validation;
     }

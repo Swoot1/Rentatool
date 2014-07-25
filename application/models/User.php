@@ -8,7 +8,10 @@
 
 namespace Rentatool\Application\Models;
 
-use Rentatool\Application\ENFramework\Collections\PropertyValidationCollection;
+use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
+use Rentatool\Application\ENFramework\Helpers\Validation\EmailValidation;
+use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
+use Rentatool\Application\ENFramework\Helpers\Validation\StringValidation;
 use Rentatool\Application\ENFramework\Models\GeneralModel;
 
 class User extends GeneralModel {
@@ -19,7 +22,24 @@ class User extends GeneralModel {
    protected $password;
 
    protected function setUpValidation() {
-      $this->setValidation(new PropertyValidationCollection(array()));
+      $this->setValidation(new ValueValidationCollection(array(
+                                                            new IntegerValidation(array(
+                                                                                     'genericName'  => 'Användarid',
+                                                                                     'propertyName' => 'id'
+                                                                                  )),
+                                                            new StringValidation(array(
+                                                                                    'genericName'  => 'Användarnamn',
+                                                                                    'propertyName' => 'username'
+                                                                                 )),
+                                                            new EmailValidation(array(
+                                                                                   'genericName'  => 'Epost-adress',
+                                                                                   'propertyName' => 'email'
+                                                                                )),
+                                                            new StringValidation(array(
+                                                                                    'genericName'  => 'Lösenord',
+                                                                                    'propertyName' => 'password'
+                                                                                 ))
+                                                         )));
    }
 
    /**

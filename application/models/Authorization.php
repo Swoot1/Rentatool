@@ -9,22 +9,21 @@
 namespace Rentatool\Application\Models;
 
 
-use Rentatool\Application\ENFramework\Collections\PropertyValidationCollection;
+use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
+use Rentatool\Application\ENFramework\Helpers\Validation\BooleanValidation;
 use Rentatool\Application\ENFramework\Models\GeneralModel;
-use Rentatool\Application\ENFramework\Helpers\Validation\PropertyValidation;
 
-class Authorization extends GeneralModel{
+class Authorization extends GeneralModel {
    protected $isLoggedIn = false;
 
 
-   protected function setUpValidation(){
-      $this->setValidation(new PropertyValidationCollection(array(
-                                                               new PropertyValidation(array(
-                                                                                         'dataType'     => 'boolean',
-                                                                                         'genericName'  => 'Inloggad-flagga',
-                                                                                         'propertyName' => 'isLoggedIn'
-                                                                                      )
-                                                               )
-                                                            )));
+   protected function setUpValidation() {
+      $this->setValidation(new ValueValidationCollection(array(
+                                                            new BooleanValidation(array(
+                                                                                     'genericName'  => 'Inloggad-flagga',
+                                                                                     'propertyName' => 'isLoggedIn'
+                                                                                  )
+                                                            )
+                                                         )));
    }
 }

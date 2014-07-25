@@ -11,7 +11,7 @@ namespace Rentatool\Application\ENFramework\Helpers\Validation;
 
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
-abstract class ValueValidation{
+abstract class ValueValidation {
 
    protected $genericName;
    protected $propertyName;
@@ -20,16 +20,20 @@ abstract class ValueValidation{
    /**
     * @param array $data
     */
-   public function __construct(array $data){
+   public function __construct(array $data) {
 
-      foreach ($data as $key => $value){
+      foreach ($data as $key => $value) {
          $this->$key = $value;
       }
 
       return $this;
    }
 
-   public function validate($value){
+   public function getPropertyName() {
+      return $this->propertyName;
+   }
+
+   public function validate($value) {
       $this->validateNull($value);
       $this->objectValidation($value);
 
@@ -43,8 +47,8 @@ abstract class ValueValidation{
     * @return bool
     * @throws ApplicationException
     */
-   private function validateNull($value){
-      if ($value === null && $this->allowNull === false){
+   private function validateNull($value) {
+      if ($value === null && $this->allowNull === false) {
          throw new ApplicationException(sprintf('Ange ett värde för %s.', $this->genericName));
       }
 
