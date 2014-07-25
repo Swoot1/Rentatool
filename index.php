@@ -11,26 +11,26 @@ require_once 'Application/ENFramework/Helpers/Configuration.php';
 
 SessionManager::startSession('User');
 
-try{
+try {
    $requestDispatcher = new RequestDispatcher();
    $requestModel      = $requestDispatcher->getRequestModel();
 
    $routeCollection = include_once 'Application/ENFramework/Helpers/Routing/RoutesConfiguration.php';
    $route           = $routeCollection->getRoute($requestModel);
 
-   if ($route){
-      if ($route->isUserAllowed()){
+   if ($route) {
+      if ($route->isUserAllowed()) {
          $dependencyInjectionContainer = simplexml_load_file('Application/ENFramework/Helpers/DependencyInjection/DependencyInjectionContainer.xml');
-         $routing         = new Routing($requestModel, $dependencyInjectionContainer);
-         $response = $routing->callMethod($route);
+         $routing                      = new Routing($requestModel, $dependencyInjectionContainer);
+         $response                     = $routing->callMethod($route);
          $response->sendResponse();
-      } else{
+      } else {
          throw new UserIsNotAllowedException('Du måste logga in för att fortsätta.');
       }
-   } else{
+   } else {
       include 'Application/Templates/indexHTML.php';
    }
-} catch (Exception $exception){
+} catch (Exception $exception) {
    $errorHTTPStatusCodeFactory = new ErrorHTTPStatusCodeFactory($exception);
    $HTTPStatusCode             = $errorHTTPStatusCodeFactory->getHTTPStatusCode();
    $response                   = new Response();
