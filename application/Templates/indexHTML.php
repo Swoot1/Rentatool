@@ -19,7 +19,7 @@ echo '<!DOCTYPE html>
     <div ng-controller="NavigationController">
         <ul>
             <li ng-click="navigateToUserList()">Användare</li>
-            <li ng-click="navigateToFishList()">Fiskar</li>
+            <li ng-click="navigateToRentalObjectList()">Uthyrningsobjekt</li>
         </ul>
     </div>
     <div ng-view>

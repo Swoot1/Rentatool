@@ -34,12 +34,12 @@ class ValueValidationCollection {
     * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    public function validate($name, $value) {
-
-      if (array_key_exists($name, $this->data)) {
-         $this->data[$name]->validate($value);
-      } else {
-         throw new ApplicationException(sprintf('Det finns ingen validering för angivet propertynamn %s.', $name));
-      }
+// TODO just gonna have this commented out until mysql only returning strings is solved.
+//      if (array_key_exists($name, $this->data)) {
+//         $this->data[$name]->validate($value);
+//      } else {
+//         throw new ApplicationException(sprintf('Det finns ingen validering för angivet propertynamn %s.', $name));
+//      }
 
       return true;
    }

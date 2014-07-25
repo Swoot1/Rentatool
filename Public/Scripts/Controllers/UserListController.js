@@ -5,6 +5,6 @@ rentaTool.controller('UserListController', ['$scope', '$resource', '$location', 
     $scope.userCollection = User.query();
 
     $scope.editUser = function(user){
-        $location.path('/user/' + user.id);
+        $location.path('/users/' + user.id);
     };
 }]);

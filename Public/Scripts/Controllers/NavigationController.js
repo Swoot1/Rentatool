@@ -3,10 +3,10 @@
  */
 rentaTool.controller('NavigationController', ['$scope', '$location', function ($scope, $location) {
     $scope.navigateToUserList = function () {
-        $location.path('/user');
+        $location.path('/users');
     };
 
-    $scope.navigateToFishList = function () {
-        $location.path('/fish');
+    $scope.navigateToRentalObjectList = function () {
+        $location.path('/rentalobjects');
     };
 }]);
