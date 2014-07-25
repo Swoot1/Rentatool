@@ -4,22 +4,22 @@
 rentaTool.factory('requestErrorInterceptor', function () {
     var requestErrorInterceptor = {
         requestError: function (response) {
-            requestErrorInterceptor.writeError(response.data);
+            requestErrorInterceptor.writeErrorToConsole(response.data);
             return {};
         },
         responseError: function (response) {
-            requestErrorInterceptor.writeError(response.data);
+            requestErrorInterceptor.writeErrorToConsole(response.data);
             return {};
         },
-        writeError: function (errorData) {
+        writeErrorToConsole: function (errorData) {
             if (errorData) {
                 for (var propertyName in errorData) {
                     if (errorData.hasOwnProperty(propertyName)) {
                         if (typeof errorData[propertyName] === 'object') {
-                            requestErrorInterceptor.writeError(errorData[propertyName]);
+                            requestErrorInterceptor.writeErrorToConsole(errorData[propertyName]);
                         } else if (errorData[propertyName] instanceof Array) {
                             errorData[propertyName].forEach(function (errorData) {
-                                requestErrorInterceptor.writeError(errorData);
+                                requestErrorInterceptor.writeErrorToConsole(errorData);
                             });
                         } else {
                             console.log(propertyName + ': ' + errorData[propertyName] + '\n');

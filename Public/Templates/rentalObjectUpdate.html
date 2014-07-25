@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="large-12 columns">
+        <h1>Redigera uthyrningsobjekt {{rentalObject.name}}</h1>
+    </div>
+</div>
+<form name="rental_object_form" ng-submit="updateRentalObject()">
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="error" ng-show="rental_object_form.name.$dirty && rental_object_form.$invalid">
+            </div>
+            <input id="rentalObject" ng-model="rentalObject.name" type="text" ng-placeholder="Namn" ng-focus/>
+            <button type="submit" ng-disabled="rental_object_form.$invalid">Spara ändringar</button>
+        </div>
+    </div>
+</form>

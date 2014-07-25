@@ -13,6 +13,10 @@ var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute']
                 templateUrl: 'public/Templates/rentalObjectList.html',
                 controller: 'RentalObjectListController'
             })
+            .when('/rentalobjects/:id', {
+                templateUrl: 'public/Templates/rentalObjectUpdate.html',
+                controller: 'RentalObjectController'
+            })
             .when('/users/new', {
                 templateUrl: 'public/Templates/userCreate.html',
                 controller: 'UserController'

@@ -1,8 +1,19 @@
 <div class="row">
     <div class="12-columns large">
-        <h2>Uthyrningsobjekt</h2>
+        <h2>Uthyrningsobjekt
+            <button type="button" ng-click="navigateToCreateNewRentalObject()">Skapa nytt uthyrningsobjekt</button>
+        </h2>
         <ul ng-repeat="rentalObject in rentalObjectCollection">
-            <li><p>{{rentalObject.name}} {{rentalObject.available}}</p></li>
+            <li>
+                <p>{{rentalObject.name}} {{rentalObject.available}}
+                    <button type="button" class="tiny" ng-click="editRentalObject(rentalObject)">Redigera
+                        uthyrningsobjekt
+                    </button>
+                    <button type="button" ng-click="deleteRentalObject(rentalObject)" class="alert tiny">Ta bort
+                        uthyrningsobjekt
+                    </button>
+                </p>
+            </li>
         </ul>
     </div>
 </div>

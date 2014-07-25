@@ -21,6 +21,7 @@ rentaTool.controller("AuthorizationController", ['$scope', '$location', 'Authori
         authorizationResource = new Authorization();
         authorizationResource.$get({action:'logout'}, function () {
             alert('Utloggad!');
+            $location.path('/authorization/login');
         }, function () {
             alert('Det där gick inte bra!');
         });

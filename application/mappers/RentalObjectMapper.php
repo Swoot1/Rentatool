@@ -46,7 +46,7 @@ class RentalObjectMapper
     private $readSQL = '
     SELECT
        id,
-       user_id
+       user_id AS "userId",
        name,
        available
     FROM
