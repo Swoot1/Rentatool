@@ -8,3 +8,4 @@
 .idea
 tmp/
 application/ENFramework/Helpers/PersonalConfiguration.php
+application/ENFramework/Helpers/DatabaseConfiguration.php
