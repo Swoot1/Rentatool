@@ -9,6 +9,8 @@
 
 namespace Rentatool\Application\ENFramework\Models;
 
+use Rentatool\Application\ENFramework\Helpers\DatabaseConfiguration;
+
 /**
  * Class DatabaseConnection
  * @package Rentatool\Application\ENFramework\Models
@@ -20,18 +22,12 @@ class DatabaseConnection implements IDatabaseConnection {
    private $databaseConnection;
 
    public function __construct() {
-      $host         = 'localhost';
-      $userName     = 'root';
-      $password     = '';
-      $databaseName = 'Rentatool';
-
-      $PDOOptions = array(
-         \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
-         \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
-         \PDO::MYSQL_ATTR_FOUND_ROWS   => true
-      );
-
-      $databaseConnection       = new \PDO(sprintf('mysql:host=%s;dbname=%s', $host, $databaseName), $userName, $password, $PDOOptions);
+      $databaseConnection       = new \PDO(sprintf('mysql:host=%s;dbname=%s',
+                                                   DatabaseConfiguration::$host,
+                                                   DatabaseConfiguration::$databaseName),
+                                           DatabaseConfiguration::$username,
+                                           DatabaseConfiguration::$password,
+                                           DatabaseConfiguration::getPDOOptions());
       $this->databaseConnection = $databaseConnection;
    }
 
