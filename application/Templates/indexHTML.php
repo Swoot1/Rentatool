@@ -7,7 +7,7 @@ echo '<!DOCTYPE html>
 <head>
     <title>Rentatool</title>
     <meta charset="utf-8"/>
-    <link href="Public/Foundation/css/foundation.css" type="text/css" rel="stylesheet"/>
+    <link href="Public/css/Foundation/css/foundation.css" type="text/css" rel="stylesheet"/>
     <link href="Public/test.css" type="text/css" rel="stylesheet"/>
     <base href="/rentatool/" />
 </head>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Frontend tests</title>
+    <link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.14.0.css">
+    <link rel="shortcut icon" type="image/png" href="jasmine/lib/jasmine-2.0.1/jasmine_favicon.png">
+    <link rel="stylesheet" type="text/css" href="jasmine/lib/jasmine-2.0.1/jasmine.css">
+</head>
+<body>
+    <!-- Jasmine core and HTML -->
+    <script type="text/javascript" src="jasmine/lib/jasmine-2.0.1/jasmine.js"></script>
+    <script type="text/javascript" src="jasmine/lib/jasmine-2.0.1/jasmine-html.js"></script>
+    <script type="text/javascript" src="jasmine/lib/jasmine-2.0.1/boot.js"></script>
+
+    <!-- JavaScript libraries on which source depends -->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.js"></script>
+    <script type="text/javascript"
+            src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-route.js"></script>
+
+    <!-- Script source to test and other files on which source depends -->
+    <script type="text/javascript" src="../../Scripts/app.js"></script>
+    <script type="text/javascript" src="../../Scripts/Factories/UserFactory.js"></script>
+
+    <!-- Test script -->
+    <script type="text/javascript" src="../../Scripts/FrontendTests/unit/FactoryTests/UserFactoryTest.js"></script>
+
+</body>
+</html>
