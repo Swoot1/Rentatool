@@ -9,6 +9,7 @@
 
 use Rentatool\Application\Collections\RequestMethodCollection;
 use Rentatool\Application\ENFramework\Helpers\Routing\RouteCollection;
+use Rentatool\Application\ENFramework\Helpers\Routing\SubRouteCollection;
 
 $routes = array();
 
@@ -20,7 +21,21 @@ $routes['rentalobjects'] = array(
 $routes['authorization'] = array(
    'controllerName'          => 'AuthorizationController',
    'requiresAuthorization'   => false,
-   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET'))
+   'requestMethodCollection' => new RequestMethodCollection(array()),
+   'subRoutesCollection'     => new SubRouteCollection(
+         array(
+            'login'  => array(
+               'controllerName'          => 'AuthorizationController',
+               'requiresAuthorization'   => false,
+               'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+               'subRoutesCollection'     => new SubRouteCollection(array())),
+            'logout' => array(
+               'controllerName'          => 'AuthorizationController',
+               'requiresAuthorization'   => false,
+               'requestMethodCollection' => new RequestMethodCollection(array('GET')),
+               'subRoutesCollection'     => new SubRouteCollection(array()))
+         )
+      )
 );
 
 $routes['users'] = array(

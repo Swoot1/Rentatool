@@ -36,16 +36,19 @@ class Route {
     * @return bool
     * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
-   public function validateRequest(Request $request) {
+   public function validateRequestMethod(Request $request) {
       $isValidRequestMethod = $this->requestMethodCollection->isValidRequestMethod($request->getRequestMethod());
 
-      if($isValidRequestMethod === false){
+      if ($isValidRequestMethod === false) {
          throw new ApplicationException('Ogiltig request method.');
       }
 
       return true;
    }
 
+   public function getSubRoute(Request $request) {
+      return $this->subRoutesCollection->getSubRouteFromRequest($request);
+   }
 
    // TODO this function should be moved and improved.
    public function isUserAllowed() {
