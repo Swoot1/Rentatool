@@ -1,15 +1,16 @@
 /**
  * Created by Elin on 2014-07-16.
  */
-rentaTool.factory('requestErrorInterceptor', function () {
+rentaTool.factory('RequestErrorInterceptor', ['$q', function ($q) {
+    var deferred = $q.defer();
     var requestErrorInterceptor = {
         requestError: function (response) {
             requestErrorInterceptor.writeErrorToConsole(response.data);
-            return {};
+            return deferred.promise;
         },
         responseError: function (response) {
             requestErrorInterceptor.writeErrorToConsole(response.data);
-            return {};
+            return deferred.promise;
         },
         writeErrorToConsole: function (errorData) {
             if (errorData) {
@@ -31,4 +32,4 @@ rentaTool.factory('requestErrorInterceptor', function () {
     };
 
     return requestErrorInterceptor;
-});
+}]);

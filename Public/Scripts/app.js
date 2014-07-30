@@ -41,5 +41,5 @@ var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute']
                 redirectTo: '/authorization/login'
             });
 
-        $httpProvider.interceptors.push('requestErrorInterceptor');
+        $httpProvider.interceptors.push('RequestErrorInterceptor');
     }]);
