@@ -51,7 +51,7 @@ class DatabaseConnection implements IDatabaseConnection {
          while ($row = $stmt->fetch()) {
             $columnMeta = $stmt->getColumnMeta($i);
 
-            if (is_array($row)) {
+            if (is_array($row)) { // TODO refactor
                $k = 0;
                foreach ($row as $key => $column) {
                   $columnMeta = $stmt->getColumnMeta($k); // getColumnMeta() is experimental and can change in a future release of php.

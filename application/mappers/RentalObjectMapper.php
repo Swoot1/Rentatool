@@ -58,7 +58,7 @@ class RentalObjectMapper
        UPDATE
            rental_object
         SET
-          user_id = user_id,
+          user_id = :userId,
           name = :name,
           available = :available
         WHERE
