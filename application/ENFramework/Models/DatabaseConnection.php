@@ -22,7 +22,7 @@ class DatabaseConnection implements IDatabaseConnection {
    private $databaseConnection;
 
    public function __construct() {
-      $databaseConnection       = new \PDO(sprintf('mysql:host=%s;dbname=%s',
+      $databaseConnection       = new \PDO(sprintf('mysql:host=%s;dbname=%s', // TODO this should be dependency injected.
                                                    DatabaseConfiguration::$host,
                                                    DatabaseConfiguration::$databaseName),
                                            DatabaseConfiguration::$username,
@@ -46,11 +46,60 @@ class DatabaseConnection implements IDatabaseConnection {
       $queryHasResultRows = $stmt->columnCount() > 0;
 
       if ($queryHasResultRows) {
+         $i = 0;
+
          while ($row = $stmt->fetch()) {
+            $columnMeta = $stmt->getColumnMeta($i);
+
+            if (is_array($row)) {
+               $k = 0;
+               foreach ($row as $key => $column) {
+                  $columnMeta = $stmt->getColumnMeta($k); // getColumnMeta() is experimental and can change in a future release of php.
+                  $row[$key]  = $this->convertStringToType($column, $columnMeta);
+                  $k++;
+               }
+            } else {
+               $row = $this->convertStringToType($row, $columnMeta);
+            }
+
             $queryResult[] = $row;
+            $i++;
          }
       }
 
       return $queryResult;
+   }
+
+   /**
+    * Since mySQL only returns string the values has to be cast to their proper type. I.e. integer '1' will return 1.
+    * @param $value
+    * @param array $columnMeta
+    * @return string
+    */
+   private function convertStringToType($value, array $columnMeta) {
+      $type = $this->getTypeFromColumnMeta($columnMeta);
+
+      if ($type !== 'string' && is_string($value)) {
+         settype($value, $type);
+      }
+
+      return $value;
+   }
+
+   /**
+    * Return the php type that the database type represents.
+    * @param array $columnMeta
+    * @return string
+    */
+   private function getTypeFromColumnMeta(array $columnMeta) {
+
+      $nativeType = $columnMeta['native_type'];
+      $typeMap    = array(
+         'LONG'       => 'int',
+         'TINY'       => 'bool',
+         'VAR_STRING' => 'string'
+      );
+
+      return array_key_exists($nativeType, $typeMap) ? $typeMap[$nativeType] : 'string';
    }
 }

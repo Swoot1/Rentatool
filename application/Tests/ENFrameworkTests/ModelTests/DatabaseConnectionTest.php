@@ -8,6 +8,10 @@
 namespace Rentatool\Tests\ENFrameworkTests\ModelTests;
 
 
-class DatabaseConnectionTest {
+use Rentatool\Application\ENFramework\Models\DatabaseConnection;
 
+class DatabaseConnectionTest extends \PHPUnit_Framework_TestCase {
+   public function testCastInteger() {
+      $databaseConnection = new DatabaseConnection();
+   }
 } 
