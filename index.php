@@ -16,7 +16,7 @@ try {
    $requestModel      = $requestDispatcher->getRequestModel();
 
    $routeCollection = include_once 'Application/ENFramework/Helpers/Routing/RoutesConfiguration.php';
-   $route           = $routeCollection->getRoute($requestModel);
+   $route           = $routeCollection->getRouteFromRequest($requestModel);
 
    if ($route) {
       if ($route->isUserAllowed()) {
