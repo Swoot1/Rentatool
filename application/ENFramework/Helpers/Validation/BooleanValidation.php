@@ -5,10 +5,7 @@
  * Time: 13:32
  */
 
-
- // TODO replace this with http://php.net/manual/en/function.filter-var.php
 namespace Rentatool\Application\ENFramework\Helpers\Validation;
-
 
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 

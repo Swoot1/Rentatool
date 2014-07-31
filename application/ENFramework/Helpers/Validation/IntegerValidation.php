@@ -15,8 +15,6 @@ class IntegerValidation extends ValueValidation{
 
    protected $allowNegativeInteger = false;
 
-   // TODO 64/32 bitars
-
    public function objectValidation($value){
       $this->validateIsNumber($value);
       $this->validateIsInteger($value);
