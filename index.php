@@ -3,6 +3,7 @@ use Rentatool\Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeF
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
 use Rentatool\Application\ENFramework\Helpers\RequestDispatcher;
 use Rentatool\Application\ENFramework\Helpers\Response;
+use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
 use Rentatool\Application\ENFramework\Helpers\Routing\Routing;
 use Rentatool\Application\ENFramework\Helpers\SessionManager;
 
@@ -33,7 +34,8 @@ try {
 } catch (Exception $exception) {
    $errorHTTPStatusCodeFactory = new ErrorHTTPStatusCodeFactory($exception);
    $HTTPStatusCode             = $errorHTTPStatusCodeFactory->getHTTPStatusCode();
-   $response                   = new Response();
+   $responseFactory            = new ResponseFactory();
+   $response                   = $responseFactory->createResponse();
    $response->setStatusCode($HTTPStatusCode);
    $response->setData(array('message' => $exception->getMessage(), 'file' => $exception->getFile(), 'line' => $exception->getLine(), 'trace' => $exception->getTrace()));
    $response->sendResponse();

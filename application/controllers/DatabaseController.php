@@ -9,6 +9,7 @@ namespace Rentatool\Application\Controllers;
 
 
 use Rentatool\Application\ENFramework\Helpers\Response;
+use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
 use Rentatool\Application\ENFramework\Models\DatabaseConnection;
 use Rentatool\Application\Mappers\RentalObjectMapper;
 use Rentatool\Application\Mappers\UserMapper;
@@ -27,8 +28,9 @@ class DatabaseController {
 
    public function create() {
       $this->databaseService->create();
+      $responseFactory = new ResponseFactory();
 
-      return new Response();
+      return $responseFactory->createResponse();
    }
 
    /**
@@ -43,6 +45,7 @@ class DatabaseController {
       $userMapper         = new UserMapper($databaseConnection);
       $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper);
 
-      return new Response();
+      $responseFactory = new ResponseFactory();
+      return $responseFactory->createResponse();
    }
 }

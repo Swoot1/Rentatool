@@ -10,6 +10,7 @@
 namespace Rentatool\Application\Controllers;
 
 use Rentatool\Application\ENFramework\Helpers\Response;
+use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
 use Rentatool\Application\ENFramework\Helpers\SessionManager;
 use Rentatool\Application\Services\rentalObjectService;
 
@@ -28,7 +29,8 @@ class RentalObjectController {
     */
    public function index() {
       $rentalObjectService    = $this->rentalObjectService;
-      $response               = new Response();
+      $responseFactory        = new ResponseFactory();
+      $response               = $responseFactory->createResponse();
       $rentalObjectCollection = $rentalObjectService->index();
       $response->setData($rentalObjectCollection->toArray());
 
@@ -39,7 +41,8 @@ class RentalObjectController {
       $rentalObjectService = $this->rentalObjectService;
       $currentUser         = SessionManager::getCurrentUser();
       $rentalObject        = $rentalObjectService->create($data, $currentUser);
-      $response            = new Response();
+      $responseFactory     = new ResponseFactory();
+      $response            = $responseFactory->createResponse();
       $response->setData($rentalObject->toArray())->setStatusCode(201);
 
       return $response;
@@ -48,7 +51,8 @@ class RentalObjectController {
    public function read($id) {
       $rentalObjectService = $this->rentalObjectService;
       $rentalObject        = $rentalObjectService->read($id);
-      $response            = new Response();
+      $responseFactory     = new ResponseFactory();
+      $response            = $responseFactory->createResponse();
       $response->setData($rentalObject->toArray());
 
       return $response;
@@ -57,7 +61,8 @@ class RentalObjectController {
    public function update($id, $requestData) {
       $rentalObjectService = $this->rentalObjectService;
       $rentalObject        = $rentalObjectService->update($id, $requestData);
-      $response            = new Response();
+      $responseFactory     = new ResponseFactory();
+      $response            = $responseFactory->createResponse();
       $response->setData($rentalObject->toArray());
 
       return $response;
@@ -65,7 +70,8 @@ class RentalObjectController {
 
    public function delete($id) {
       $this->rentalObjectService->delete($id);
-      $response = new Response();
+      $responseFactory = new ResponseFactory();
+      $response        = $responseFactory->createResponse();
       $response->setStatusCode(204);
 
       return $response;
