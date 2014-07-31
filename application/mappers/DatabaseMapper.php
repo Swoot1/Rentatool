@@ -24,8 +24,8 @@ class DatabaseMapper {
       CREATE TABLE IF NOT EXISTS user(
           id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
           username VARCHAR(50) NOT NULL UNIQUE,
-          email VARCHAR(50) NOT NULL UNIQUE,
-          password CHAR(60) NOT NULL
+          email VARCHAR(64) NOT NULL UNIQUE,
+          password VARCHAR(60) NOT NULL
       );
 
       CREATE TABLE IF NOT EXISTS category(
