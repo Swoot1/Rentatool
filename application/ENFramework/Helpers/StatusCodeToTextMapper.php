@@ -8,11 +8,14 @@
 namespace Rentatool\Application\ENFramework\Helpers;
 
 
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+
 class StatusCodeToTextMapper {
    /**
     * Returns the text that should go with the response code.
     * @param $statusCode
     * @return string
+    * @throws ErrorHandling\Exceptions\ApplicationException
     */
    public function getResponseCodeText($statusCode) {
       switch ($statusCode) {
@@ -128,7 +131,7 @@ class StatusCodeToTextMapper {
             $text = 'HTTP Version not supported';
             break;
          default:
-            exit('Unknown http status code "' . htmlentities($statusCode) . '"');
+            throw new ApplicationException('Okänd http status code "' . htmlentities($statusCode) . '".');
             break;
       }
 
