@@ -30,7 +30,7 @@ class FloatValidation extends ValueValidation{
     * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function validateIsNumber($value){
-      $valueIsNotANumber = is_numeric($value) == false;
+      $valueIsNotANumber = is_numeric($value) === false;
       if ($valueIsNotANumber){
          throw new ApplicationException(sprintf('%s måste vara ett decimaltal.', $this->genericName));
       }

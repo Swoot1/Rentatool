@@ -12,7 +12,7 @@ namespace Rentatool\Application\Models;
 use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
 use Rentatool\Application\ENFramework\Helpers\Validation\BooleanValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
-use Rentatool\Application\ENFramework\Helpers\Validation\StringValidation;
+use Rentatool\Application\ENFramework\Helpers\Validation\TextValidation;
 use Rentatool\Application\ENFramework\Models\GeneralModel;
 
 class RentalObject extends GeneralModel {
@@ -28,23 +28,23 @@ class RentalObject extends GeneralModel {
    protected function setUpValidation() {
       $validation = new ValueValidationCollection(array(
                                                      new IntegerValidation(array(
-                                                                              'genericName'  => 'Uthyrningsobjektets id',
+                                                                              'genericName'  => 'uthyrningsobjektets id',
                                                                               'propertyName' => 'id'
                                                                            )
                                                      ),
                                                      new IntegerValidation(array(
-                                                                              'genericName'  => 'Uthyrningsobjektets användarid',
+                                                                              'genericName'  => 'uthyrningsobjektets användarid',
                                                                               'propertyName' => 'userId'
                                                                            )
                                                      ),
-                                                     new StringValidation(array(
-                                                                             'genericName'  => 'Uthyrningsobjektets namn',
+                                                     new TextValidation(array(
+                                                                             'genericName'  => 'uthyrningsobjektets namn',
                                                                              'propertyName' => 'name',
                                                                              'maxLength'    => 30
                                                                           )
                                                      ),
                                                      new BooleanValidation(array(
-                                                                              'genericName'  => 'Uthyrningsobjektets tillgänglighetsstatus',
+                                                                              'genericName'  => 'uthyrningsobjektets tillgänglighetsstatus',
                                                                               'propertyName' => 'available'
                                                                            )
                                                      )
