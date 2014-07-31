@@ -1,15 +1,17 @@
 /**
  * Created by Elin on 2014-07-16.
  */
-rentaTool.factory('RequestErrorInterceptor', ['$q', function ($q) {
+rentaTool.factory('RequestErrorInterceptor', ['$q', 'AlertBoxService', function ($q, alertBoxService) {
     var deferred = $q.defer();
     var requestErrorInterceptor = {
         requestError: function (response) {
             requestErrorInterceptor.writeErrorToConsole(response.data);
+            requestErrorInterceptor.displayAlertBox(response);
             return deferred.promise;
         },
         responseError: function (response) {
             requestErrorInterceptor.writeErrorToConsole(response.data);
+            requestErrorInterceptor.displayAlertBox(response);
             return deferred.promise;
         },
         writeErrorToConsole: function (errorData) {
@@ -28,7 +30,14 @@ rentaTool.factory('RequestErrorInterceptor', ['$q', function ($q) {
                     }
                 }
             }
+        },
+
+        displayAlertBox: function (response) {
+            var message = response.data && response.data.message ? response.data.message : 'Okänt fel.'
+            alertBoxService.addAlertBox('alert', message);
         }
+
+
     };
 
     return requestErrorInterceptor;

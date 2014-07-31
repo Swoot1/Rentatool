@@ -6,24 +6,20 @@ rentaTool.controller("AuthorizationController", ['$scope', '$location', 'Authori
 
     $scope.attemptLogin = function () {
         authorizationResource = new Authorization($scope.login);
-        authorizationResource.$save({action:'login'}, function (data) {
+        authorizationResource.$save({action: 'login'}, function (data) {
             if (data.isLoggedIn) {
                 $location.path('/rentalobjects/new');
             } else {
                 alert('Misslyckad inloggning!');
             }
-        }, function () {
-            alert('Det där gick inte bra!');
         });
     };
 
     $scope.attemptLogOut = function () {
         authorizationResource = new Authorization();
-        authorizationResource.$get({action:'logout'}, function () {
+        authorizationResource.$get({action: 'logout'}, function () {
             alert('Utloggad!');
             $location.path('/authorization/login');
-        }, function () {
-            alert('Det där gick inte bra!');
         });
     }
 }]);

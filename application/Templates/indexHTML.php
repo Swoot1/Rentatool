@@ -16,6 +16,11 @@ echo '<!DOCTYPE html>
     <div ng-controller="AuthorizationController">
         <span logoutbutton></span>
     </div>
+    <div class="row">
+       <div class="12-columns large">
+         <span alertbox></span>
+       </div>
+    </div>
     <div ng-controller="NavigationController">
         <ul>
             <li ng-click="navigateToUserList()">Användare</li>
@@ -29,13 +34,14 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-route.js"></script>
 <script type="text/javascript" src="Public/Scripts/app.js"></script>
+<script type="text/javascript" src="Public/Scripts/Directives/AlertBox.js"></script>
+<script type="text/javascript" src="Public/Scripts/Services/AlertBoxService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/Focus.js"></script>
 <script type="text/javascript" src="Public/Scripts/Filters.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RentalObjectFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/UserFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/DatabaseFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/AuthorizationFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/RequestErrorInterceptorFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/DatabaseController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectListController.js"></script>
@@ -45,5 +51,6 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Controllers/AuthorizationController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/MenuController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/LogOutButton.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/RequestErrorInterceptorFactory.js"></script>
 </body>
 </html>';
