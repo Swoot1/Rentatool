@@ -8,7 +8,7 @@ rentaTool.controller('UserListController', ['$scope', '$resource', '$location', 
         $location.path('/users/new');
     };
 
-    $scope.editUser = function (user) {
+    $scope.updateUser = function (user) {
         $location.path('/users/' + user.id);
     };
 

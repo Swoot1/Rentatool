@@ -12,9 +12,10 @@
                 </small>
             </div>
             <input id="rentalObject" ng-model="rentalObject.name" type="text" ng-placeholder="Namn" ng-focus/>
-            <button type="button" ng-click="addRentalObject()" ng-disabled="rental_object_form.$invalid">
+            <button type="button" ng-click="createRentalObject()" ng-disabled="rental_object_form.$invalid">
                 Spara uthyrningsobjekt
             </button>
+            <button type="button" ng-click="returnToRentalObjectList()">Avbryt</button>
         </div>
     </div>
 </form>

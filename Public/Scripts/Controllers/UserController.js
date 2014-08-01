@@ -23,6 +23,6 @@ rentaTool.controller('UserController', ['$scope', '$routeParams', '$location', '
     };
 
     $scope.returnToUserList = function () {
-        $location.path('/user');
+        $location.path('/users');
     }
 }]);

@@ -33,7 +33,7 @@ rentaTool.factory('RequestErrorInterceptor', ['$q', 'AlertBoxService', function 
         },
 
         displayAlertBox: function (response) {
-            var message = response.data && response.data.message ? response.data.message : 'Okänt fel.'
+            var message = response.data && response.data.message ? response.data.message : 'Okänt fel.';
             alertBoxService.addAlertBox('alert', message);
         }
 
