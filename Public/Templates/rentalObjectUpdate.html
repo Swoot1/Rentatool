@@ -10,6 +10,7 @@
             </div>
             <input id="rentalObject" ng-model="rentalObject.name" type="text" ng-placeholder="Namn" ng-focus/>
             <button type="submit" ng-disabled="rental_object_form.$invalid">Spara ändringar</button>
+            <button type="button" ng-click="returnToRentalObjectList()">Avbryt</button>
         </div>
     </div>
 </form>

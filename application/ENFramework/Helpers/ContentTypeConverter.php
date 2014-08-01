@@ -11,10 +11,10 @@ namespace Rentatool\Application\ENFramework\Helpers;
 class ContentTypeConverter {
    /**
     * Returns the data array as json.
-    * @param array $data
+    * @param $data
     * @return string
     */
-   public function convertDataToJSON(array $data) {
+   public function convertDataToJSON($data) {
       return json_encode($data, JSON_UNESCAPED_UNICODE);
    }
 

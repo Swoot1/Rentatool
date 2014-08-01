@@ -39,7 +39,7 @@ class DatabaseMapper {
         user_id INTEGER NOT NULL,
         CONSTRAINT owner FOREIGN KEY (user_id) REFERENCES user(id),
         name VARCHAR(30) NOT NULL,
-        available TINYINT DEFAULT 1 NOT NULL
+        available BOOLEAN DEFAULT true NOT NULL
       );
    ";
 

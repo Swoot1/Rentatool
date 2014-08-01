@@ -23,8 +23,10 @@ echo '<!DOCTYPE html>
     </div>
     <div ng-controller="NavigationController">
         <ul>
+            <li ng-click="navigateToLogIn()">Inloggningssida</li>
             <li ng-click="navigateToUserList()">Användare</li>
             <li ng-click="navigateToRentalObjectList()">Uthyrningsobjekt</li>
+            <li ng-click="navigateToCreateDatabase()">Databasskapning</li>
         </ul>
     </div>
     <div ng-view>
@@ -49,7 +51,6 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Controllers/NavigationController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserListController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/AuthorizationController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/MenuController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/LogOutButton.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RequestErrorInterceptorFactory.js"></script>
 </body>

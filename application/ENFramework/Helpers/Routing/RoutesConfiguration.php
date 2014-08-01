@@ -47,7 +47,16 @@ $routes['users'] = array(
 $routes['databases'] = array(
    'controllerName'          => 'DatabaseController',
    'requiresAuthorization'   => false,
-   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET'))
+   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
+   'subRoutesCollection'     => new SubRouteCollection(
+         array(
+            'createwithseeds' => array(
+               'controllerName'          => 'DatabaseController',
+               'requiresAuthorization'   => false,
+               'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+               'subRoutesCollection'     => new SubRouteCollection(array()))
+         )
+      )
 );
 
 return new RouteCollection($routes);
