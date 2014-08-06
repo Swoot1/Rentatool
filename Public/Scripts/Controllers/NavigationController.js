@@ -1,5 +1,5 @@
 /**
- * Created by Elin on 2014-07-09.
+ * Created by Elin on 2014-07-09
  */
 rentaTool.controller('NavigationController', ['$scope', '$location', function ($scope, $location) {
     $scope.navigateToLogIn = function () {
@@ -16,5 +16,9 @@ rentaTool.controller('NavigationController', ['$scope', '$location', function ($
 
     $scope.navigateToCreateDatabase = function () {
         $location.path('/databases/new');
+    }
+
+    if(true) {
+        var variabel = true;
     }
 }]);
