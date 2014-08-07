@@ -53,5 +53,6 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Controllers/AuthorizationController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/LogOutButton.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RequestErrorInterceptorFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/RequestSuccessInterceptorFactory.js"></script>
 </body>
 </html>';

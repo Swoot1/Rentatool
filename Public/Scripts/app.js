@@ -42,4 +42,5 @@ var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute']
             });
 
         $httpProvider.interceptors.push('RequestErrorInterceptor');
+        $httpProvider.interceptors.push('RequestSuccessInterceptor');
     }]);

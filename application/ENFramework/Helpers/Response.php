@@ -20,9 +20,10 @@ class Response implements IResponse {
    private $statusCode = 200;
    private $contentType = 'application/json';
    private $charset = 'utf-8';
-   private $data;
+   private $data = array();
    private $contentTypeConverter;
    private $statusCodeToTextMapper;
+   private $notifiers = array();
 
    public function __construct(ContentTypeConverter $contentTypeConverter, StatusCodeToTextMapper $statusCodeToTextMapper) {
       $this->contentTypeConverter   = $contentTypeConverter;
@@ -53,6 +54,14 @@ class Response implements IResponse {
 
       return $this;
    }
+
+
+   public function addNotifier(Notifier $notifier) {
+      array_push($this->notifiers, $notifier->toArray());
+
+      return $this;
+   }
+
 
    /**
     * Returns a response to the user based on the objects data.
@@ -110,6 +119,8 @@ class Response implements IResponse {
    private function getFormattedData() {
       $contentType = mb_strtolower($this->contentType);
 
+      $this->setNotifiers();
+
       switch ($contentType) {
          case 'application/json':
             $formattedData = $this->contentTypeConverter->convertDataToJSON($this->data);
@@ -123,5 +134,15 @@ class Response implements IResponse {
       }
 
       return $formattedData;
+   }
+
+
+   /**
+    * @return $this
+    */
+   private function setNotifiers() {
+      $this->data['notifiers'] = $this->notifiers;
+
+      return $this;
    }
 } 
