@@ -24,5 +24,13 @@ rentaTool.factory('AlertBoxService', ['$rootScope', function ($rootScope) {
         $rootScope.alertBoxes.splice(index, 1);
     };
 
+    alertBoxService.isAllowedType = function(type) {
+        return ['alert', 'success', 'warning', 'info', 'secondary'].indexOf(type) !== -1;
+    };
+
+    alertBoxService.getDefaultType = function() {
+      return 'success';
+    };
+
     return alertBoxService;
 }]);
