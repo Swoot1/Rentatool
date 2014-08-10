@@ -9,21 +9,20 @@
 namespace Rentatool\Application\Models;
 
 use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
-use Rentatool\Application\ENFramework\Helpers\Validation\AlfaNumericValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\AlphaNumericValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\EmailValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\PasswordValidation;
 use Rentatool\Application\ENFramework\Models\GeneralModel;
 
-class User extends GeneralModel {
+class User extends GeneralModel{
 
    protected $id;
    protected $username;
    protected $email;
    protected $password;
 
-   protected function setUpValidation() {
+   protected function setUpValidation(){
       $this->setValidation(new ValueValidationCollection(array(
                                                             new IntegerValidation(array(
                                                                                      'genericName'  => 'Användarid',
@@ -49,11 +48,11 @@ class User extends GeneralModel {
     * @param $password
     * @return bool
     */
-   public function isValidPassword($password) {
+   public function isValidPassword($password){
       return password_verify($password, $this->password);
    }
 
-   public function getId() {
+   public function getId(){
       return $this->id;
    }
 } 

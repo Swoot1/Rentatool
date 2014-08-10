@@ -7,14 +7,12 @@
 
 namespace Rentatool\Tests\ENFrameworkTests\HelperTests\ValidationTests;
 
-
 use Rentatool\Application\ENFramework\Helpers\Validation\AlphaNumericValidation;
-use Rentatool\Application\ENFramework\Helpers\Validation\StringLengthValidation;
 
-class AlphaNumericValidationTest extends \PHPUnit_Framework_TestCase {
+class AlphaNumericValidationTest extends \PHPUnit_Framework_TestCase{
 
 
-   public function testNormalCaseAlphaNumeric() {
+   public function testNormalCaseAlphaNumeric(){
 
       $alphaNumericValidation = new AlphaNumericValidation(
          array(
@@ -32,7 +30,7 @@ class AlphaNumericValidationTest extends \PHPUnit_Framework_TestCase {
     * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Användarnamn måste vara alfanumeriskt.
     */
-   public function testUnAllowedAlphaNumeric() {
+   public function testUnAllowedAlphaNumeric(){
 
       $alphaNumericValidation = new AlphaNumericValidation(
          array(

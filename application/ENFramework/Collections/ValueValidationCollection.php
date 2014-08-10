@@ -12,12 +12,12 @@ namespace Rentatool\Application\ENFramework\Collections;
 
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
-class ValueValidationCollection {
+class ValueValidationCollection{
 
    protected $data;
 
-   public function __construct(array $data) {
-      foreach ($data as $key => $validation) {
+   public function __construct(array $data = array()){
+      foreach ($data as $key => $validation){
          $propertyName        = $validation->getPropertyName();
          $data[$propertyName] = $validation;
          unset($data[$key]);
@@ -33,10 +33,10 @@ class ValueValidationCollection {
     * @return bool
     * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
-   public function validate($name, $value) {
-      if (array_key_exists($name, $this->data)) {
+   public function validate($name, $value){
+      if (array_key_exists($name, $this->data)){
          $this->data[$name]->validate($value);
-      } else {
+      } else{
          throw new ApplicationException(sprintf('Det finns ingen validering för angivet propertynamn %s.', $name));
       }
 

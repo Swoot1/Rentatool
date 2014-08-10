@@ -7,7 +7,8 @@
 
 namespace Rentatool\Application\ENFramework\Helpers;
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Rentatool\Application\ENFramework\Helpers\Interfaces\IToArray;
+
 
 /**
  * Class Header
@@ -20,48 +21,42 @@ class Response implements IResponse {
    private $statusCode = 200;
    private $contentType = 'application/json';
    private $charset = 'utf-8';
-   private $data = array();
-   private $contentTypeConverter;
+   /**
+    * @var \Rentatool\Application\ENFramework\Helpers\MetaData
+    */
+   private $noName;
    private $statusCodeToTextMapper;
-   private $notifiers = array();
 
-   public function __construct(ContentTypeConverter $contentTypeConverter, StatusCodeToTextMapper $statusCodeToTextMapper) {
-      $this->contentTypeConverter   = $contentTypeConverter;
+   public function __construct(StatusCodeToTextMapper $statusCodeToTextMapper, NoName $noName){
+      $this->noName = $noName;
       $this->statusCodeToTextMapper = $statusCodeToTextMapper;
       $this->setProtocol();
    }
 
-   private function setProtocol() {
+   public function setResponseData(IToArray $data){
+      $this->noName->setResponseData($data);
+
+      return $this;
+   }
+
+   public function addNotifier(Notifier $notifier){
+      $this->noName->addNotifier($notifier);
+
+      return $this;
+
+   }
+
+   private function setProtocol(){
       $this->protocol = isset($_SERVER["SERVER_PROTOCOL"]) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0';
 
       return $this;
    }
 
-   public function setStatusCode($code) {
+   public function setStatusCode($code){
       $this->statusCode = $code;
 
       return $this;
    }
-
-   public function setData($data) {
-      $this->data = $data;
-
-      return $this;
-   }
-
-   public function setContentType($contentType) {
-      $this->contentType = $contentType;
-
-      return $this;
-   }
-
-
-   public function addNotifier(Notifier $notifier) {
-      array_push($this->notifiers, $notifier->toArray());
-
-      return $this;
-   }
-
 
    /**
     * Returns a response to the user based on the objects data.
@@ -90,8 +85,11 @@ class Response implements IResponse {
       return $this;
    }
 
+   /**
+    * @return $this
+    */
    private function sendData() {
-      echo $this->getFormattedData();
+      echo $this->noName->getFormattedData($this->contentType);
 
       return $this;
    }
@@ -110,39 +108,4 @@ class Response implements IResponse {
       return $this->charset ? sprintf('Charset:%s', $this->charset) : '';
    }
 
-   /**
-    * Returns the data as a string formatted in the correct contentType.
-    * @return string
-    * @throws ErrorHandling\Exceptions\ApplicationException
-    * @throws \Exception
-    */
-   private function getFormattedData() {
-      $contentType = mb_strtolower($this->contentType);
-
-      $this->setNotifiers();
-
-      switch ($contentType) {
-         case 'application/json':
-            $formattedData = $this->contentTypeConverter->convertDataToJSON($this->data);
-            break;
-         case 'application/xml':
-            $formattedData = $this->contentTypeConverter->convertDataToXML($this->data);
-            break;
-         default:
-            throw new ApplicationException('Ange en giltig content-type.');
-            break;
-      }
-
-      return $formattedData;
-   }
-
-
-   /**
-    * @return $this
-    */
-   private function setNotifiers() {
-      $this->data['notifiers'] = $this->notifiers;
-
-      return $this;
-   }
 } 
