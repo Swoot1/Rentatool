@@ -8,6 +8,7 @@
 namespace Rentatool\Application\Controllers;
 
 
+use Rentatool\Application\ENFramework\Helpers\Notifier;
 use Rentatool\Application\ENFramework\Helpers\Response;
 use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
 use Rentatool\Application\ENFramework\Models\DatabaseConnection;
@@ -29,8 +30,11 @@ class DatabaseController {
    public function create() {
       $this->databaseService->create();
       $responseFactory = new ResponseFactory();
+      $response = $responseFactory->createResponse();
+      $successNotifier = new Notifier(array('message' => 'Databastabeller har skapats.'));
+      $response->addNotifier($successNotifier);
 
-      return $responseFactory->createResponse();
+      return $response;
    }
 
    /**
@@ -46,6 +50,10 @@ class DatabaseController {
       $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper);
 
       $responseFactory = new ResponseFactory();
-      return $responseFactory->createResponse();
+      $response = $responseFactory->createResponse();
+      $successNotifier = new Notifier(array('message' => 'Databas med demodata har skapats.'));
+      $response->addNotifier($successNotifier);
+
+      return $response;
    }
 }

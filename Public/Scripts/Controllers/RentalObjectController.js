@@ -4,27 +4,25 @@
 
 rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'RentalObject', '$location', function ($scope, $routeParams, RentalObject, $location) {
 
-    if ($routeParams.id) {
-        $scope.rentalObject = RentalObject.get({id: $routeParams.id});
-    } else {
-        $scope.rentalObject = new RentalObject({});
-        $scope.rentalObject.available = true;
-    }
+   if ($routeParams.id) {
+      $scope.rentalObject = RentalObject.get({id: $routeParams.id});
+   } else {
+      $scope.rentalObject = new RentalObject({});
+      $scope.rentalObject.available = true;
+   }
 
-    $scope.createRentalObject = function () {
-        $scope.rentalObject.$save({}, function (data) {
-            alert('Sparat objekt!');
-            $scope.rentalObjectCollection.push(data);
-        });
-    };
+   $scope.createRentalObject = function () {
+      $scope.rentalObject.$save({}, function (data) {
+         $scope.rentalObjectCollection.push(data);
+      });
+   };
 
-    $scope.updateRentalObject = function () {
-        $scope.rentalObject.$update({}, function () {
-            alert('Uppdaterat uthyrningsobjektet');
-        });
-    };
+   $scope.updateRentalObject = function () {
+      $scope.rentalObject.$update({}, function () {
+      });
+   };
 
-    $scope.returnToRentalObjectList = function(){
-        $location.path('/rentalobjects');
-    }
+   $scope.returnToRentalObjectList = function () {
+      $location.path('/rentalobjects');
+   };
 }]);

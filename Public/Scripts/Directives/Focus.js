@@ -12,7 +12,7 @@ rentaTool.directive('ngFocus', [function () {
                 element.removeClass(FOCUS_CLASS);
                 scope.$apply(function () {
                     ctrl.$focused = false;
-                })
+                });
             });
         }
     };
