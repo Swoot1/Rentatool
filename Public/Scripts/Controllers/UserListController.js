@@ -17,7 +17,6 @@ rentaTool.controller('UserListController', ['$scope', '$resource', '$location', 
         var userResource = new User(user);
         userResource.$delete({id: user.id},
             function () {
-                alert('Användare borttagen.');
                 indexOfUser = $scope.userCollection.indexOf(user);
                 $scope.userCollection.splice(indexOfUser, 1);
             });

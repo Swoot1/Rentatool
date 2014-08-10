@@ -41,7 +41,9 @@ class UserController {
       $userService     = $this->userService;
       $user            = $userService->create($data);
       $responseFactory = new ResponseFactory();
+      $successNotifier = new Notifier(array('message' =>'Användaren har skapats.'));
       $response        = $responseFactory->createResponse();
+      $response->addNotifier($successNotifier);
       $response->setResponseData($user)->setStatusCode(201);
 
       return $response;
@@ -72,7 +74,9 @@ class UserController {
       $userService = $this->userService;
       $userService->delete($id);
       $responseFactory = new ResponseFactory();
+      $successNotifier = new Notifier(array('message' => 'Användaren har tagits bort.'));
       $response        = $responseFactory->createResponse();
+      $response->addNotifier($successNotifier);
       $response->setStatusCode(204);
 
       return $response;

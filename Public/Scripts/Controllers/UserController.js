@@ -9,20 +9,15 @@ rentaTool.controller('UserController', ['$scope', '$routeParams', '$location', '
         $scope.user = new User({});
     }
 
-
     $scope.createUser = function () {
-        $scope.user.$save({}, function () {
-            alert('Lagt till användare');
-        });
+        $scope.user.$save({});
     };
 
     $scope.updateUser = function () {
-        $scope.user.$update({}, function () {
-            alert('Uppdaterat användare');
-        });
+        $scope.user.$update({});
     };
 
     $scope.returnToUserList = function () {
         $location.path('/users');
-    }
+    };
 }]);

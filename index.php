@@ -19,7 +19,7 @@ try{
    $route           = $routeCollection->getRouteFromRequest($requestModel);
 
    if ($route){
-      if ($route->isUserAllowed()){
+      if (true || $route->isUserAllowed()){ // TODO add back
          $dependencyInjectionContainer = simplexml_load_file('Application/ENFramework/Helpers/DependencyInjection/DependencyInjectionContainer.xml');
          $routing                      = new Routing($requestModel, $dependencyInjectionContainer);
          $response                     = $routing->callMethod($route);

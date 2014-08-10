@@ -17,7 +17,6 @@ rentaTool.controller('RentalObjectListController', ['$scope', '$location', 'Rent
         var rentalObjectResource = new RentalObject(rentalObject);
         rentalObjectResource.$delete({id: rentalObjectResource.id},
             function () {
-                alert('Objekt borttagen.');
                 indexOfRentalObject = $scope.rentalObjectCollection.indexOf(rentalObject);
                 $scope.rentalObjectCollection.splice(indexOfRentalObject, 1);
             });

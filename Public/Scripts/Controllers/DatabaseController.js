@@ -6,15 +6,11 @@ rentaTool.controller('DatabaseController', ['$scope', 'Database', function ($sco
     var database = new Database({});
 
     $scope.createDatabase = function () {
-        database.$save({}, function (data) {
-            alert('Skapat databas!');
-        });
+        database.$save({});
     };
 
     $scope.createDatabaseWithSeeds = function () {
-        database.$save({action: 'createwithseeds'}, function () {
-            alert('Skapat databas!');
-        });
+        database.$save({action: 'createwithseeds'});
     };
 }])
 ;

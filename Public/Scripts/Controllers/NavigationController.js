@@ -17,8 +17,4 @@ rentaTool.controller('NavigationController', ['$scope', '$location', function ($
     $scope.navigateToCreateDatabase = function () {
         $location.path('/databases/new');
     }
-
-    if(true) {
-        var variabel = true;
-    }
 }]);
