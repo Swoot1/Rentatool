@@ -15,13 +15,13 @@ use Rentatool\Application\ENFramework\Helpers\DatabaseConfiguration;
  * Class DatabaseConnection
  * @package Rentatool\Application\ENFramework\Models
  */
-class DatabaseConnection implements IDatabaseConnection {
+class DatabaseConnection implements IDatabaseConnection{
    /**
     * @var \PDO
     */
    private $databaseConnection;
 
-   public function __construct() {
+   public function __construct(){
       $databaseConnection       = new \PDO(sprintf('mysql:host=%s;dbname=%s', // TODO this should be dependency injected.
                                                    DatabaseConfiguration::$host,
                                                    DatabaseConfiguration::$databaseName),
@@ -37,7 +37,7 @@ class DatabaseConnection implements IDatabaseConnection {
     * @param array $params
     * @return array
     */
-   public function runQuery($query, $params = array()) {
+   public function runQuery($query, $params = array()){
 
       $stmt = $this->databaseConnection->prepare($query);
       $stmt->execute($params);
@@ -45,20 +45,20 @@ class DatabaseConnection implements IDatabaseConnection {
       $queryResult        = [];
       $queryHasResultRows = $stmt->columnCount() > 0;
 
-      if ($queryHasResultRows) {
+      if ($queryHasResultRows){
          $i = 0;
 
-         while ($row = $stmt->fetch()) {
+         while ($row = $stmt->fetch()){
             $columnMeta = $stmt->getColumnMeta($i);
 
-            if (is_array($row)) { // TODO refactor
+            if (is_array($row)){ // TODO refactor
                $k = 0;
-               foreach ($row as $key => $column) {
+               foreach ($row as $key => $column){
                   $columnMeta = $stmt->getColumnMeta($k); // getColumnMeta() is experimental and can change in a future release of php.
                   $row[$key]  = $this->convertStringToType($column, $columnMeta);
                   $k++;
                }
-            } else {
+            } else{
                $row = $this->convertStringToType($row, $columnMeta);
             }
 
@@ -71,15 +71,16 @@ class DatabaseConnection implements IDatabaseConnection {
    }
 
    /**
-    * Since mySQL only returns string the values has to be cast to their proper type. I.e. integer '1' will return 1.
+    * Since mySQL only returns string the values has to be cast to their proper type.
+    * I.e. $value integer '1' will return 1.
     * @param $value
     * @param array $columnMeta
     * @return string
     */
-   private function convertStringToType($value, array $columnMeta) {
+   private function convertStringToType($value, array $columnMeta){
       $type = $this->getTypeFromColumnMeta($columnMeta);
 
-      if ($type !== 'string' && is_string($value)) {
+      if ($type !== 'string' && is_string($value)){
          settype($value, $type);
       }
 
@@ -91,7 +92,7 @@ class DatabaseConnection implements IDatabaseConnection {
     * @param array $columnMeta
     * @return string
     */
-   private function getTypeFromColumnMeta(array $columnMeta) {
+   private function getTypeFromColumnMeta(array $columnMeta){
 
       $nativeType = $columnMeta['native_type'];
       $typeMap    = array(

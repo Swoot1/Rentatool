@@ -6,24 +6,23 @@
  * To change this template use File | Settings | File Templates.
  */
 
-rentaTool.factory('RequestSuccessInterceptor', ['$q', 'AlertBoxService', function($q, AlertBoxService) {
-    var requestSuccessInterceptor = {
-        response: function(response) {
+angular.module('Rentatool').factory('RequestSuccessInterceptor', ['$q', 'AlertBoxService', function ($q, AlertBoxService) {
+   var requestSuccessInterceptor = {
+      response: function (response) {
+         var notifiers = response.data.metadata ? response.data.metadata.notificationCollection : [];
 
-            if(response.data.hasOwnProperty('notifiers') && response.data.notifiers.length > 0) {
-                for(var i = 0; i < response.data.notifiers.length; i++) {
-                    requestSuccessInterceptor.displayNotifier(response.data.notifiers[i].message, response.data.notifiers[i].type)
-                }
-            }
+         requestSuccessInterceptor.addNotifiers(notifiers);
+         response.data = response.data.responseData || response.data;
 
-            return response;
-        },
+         return response;
+      },
 
-        displayNotifier: function (message, type) {
-            type = AlertBoxService.isAllowedType(type) ? type : AlertBoxService.getDefaultType();
-            AlertBoxService.addAlertBox(type, message);
-        }
-    };
+      addNotifiers: function (notifiers) {
+         notifiers.forEach(function (notifier) {
+            AlertBoxService.addAlertBox(notifier.type, notifier.message);
+         });
+      }
+   };
 
-    return requestSuccessInterceptor;
+   return requestSuccessInterceptor;
 }]);

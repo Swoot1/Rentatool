@@ -8,7 +8,7 @@
 
 namespace Rentatool\Application\Controllers;
 
-use Rentatool\Application\ENFramework\Helpers\Response;
+use Rentatool\Application\ENFramework\Helpers\Notifier;
 use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
 use Rentatool\Application\Services\UserService;
 
@@ -31,7 +31,7 @@ class UserController {
       $userCollection  = $userService->index();
       $responseFactory = new ResponseFactory();
       $response        = $responseFactory->createResponse();
-      $response->setData($userCollection->toArray());
+      $response->setResponseData($userCollection);
 
       return $response;
 
@@ -42,7 +42,7 @@ class UserController {
       $user            = $userService->create($data);
       $responseFactory = new ResponseFactory();
       $response        = $responseFactory->createResponse();
-      $response->setData($user->toArray())->setStatusCode(201);
+      $response->setResponseData($user)->setStatusCode(201);
 
       return $response;
    }
@@ -52,7 +52,7 @@ class UserController {
       $user            = $userService->read($id);
       $responseFactory = new ResponseFactory();
       $response        = $responseFactory->createResponse();
-      $response->setData($user->toArray());
+      $response->setResponseData($user);
 
       return $response;
    }
@@ -62,7 +62,8 @@ class UserController {
       $user            = $userService->update($id, $requestData);
       $responseFactory = new ResponseFactory();
       $response        = $responseFactory->createResponse();
-      $response->setData($user->toArray());
+      $successNotifier = new Notifier(array('message' => 'Användaren har uppdaterats.'));
+      $response->setResponseData($user)->addNotifier($successNotifier);
 
       return $response;
    }

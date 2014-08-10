@@ -9,33 +9,52 @@
 
 namespace Rentatool\Application\ENFramework\Collections;
 
-class GeneralCollection
-{
+use Rentatool\Application\ENFramework\Helpers\Interfaces\IGetDBParameters;
+use Rentatool\Application\ENFramework\Helpers\Interfaces\IToArray;
 
-    protected $data = array();
-    protected $model;
+abstract class GeneralCollection implements IToArray, IGetDBParameters{
 
-    public function __construct(array $data)
-    {
-        foreach ($data as $modelData) {
-            if ($modelData instanceof $this->model) {
-                $this->data[] = $modelData;
-            } else {
-                $this->data[] = new $this->model($modelData);
-            }
-        }
+   protected $data = array();
+   protected $model;
 
-        return $this;
-    }
+   /**
+    * @param array $data
+    */
+   public function __construct(array $data = array()){
+      foreach ($data as $modelData){
+         if ($modelData instanceof $this->model){
+            $this->data[] = $modelData;
+         } else{
+            $this->data[] = new $this->model($modelData);
+         }
+      }
 
-    public function toArray()
-    {
-        $result = array();
+      return $this;
+   }
 
-        foreach ($this->data as $model) {
-            $result[] = $model->toArray();
-        }
+   /**
+    * @return array
+    */
+   public function toArray(){
+      $result = array();
 
-        return $result;
-    }
+      foreach ($this->data as $model){
+         $result[] = $model->toArray();
+      }
+
+      return $result;
+   }
+
+   /**
+    * @return array
+    */
+   public function getDBParameters(){
+      $result = array();
+
+      foreach ($this->data as $model){
+         $result[] = $model->getDBParameters();
+      }
+
+      return $result;
+   }
 }

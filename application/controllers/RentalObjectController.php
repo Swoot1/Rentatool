@@ -32,7 +32,7 @@ class RentalObjectController {
       $responseFactory        = new ResponseFactory();
       $response               = $responseFactory->createResponse();
       $rentalObjectCollection = $rentalObjectService->index();
-      $response->setData($rentalObjectCollection->toArray());
+      $response->setResponseData($rentalObjectCollection);
 
       return $response;
    }
@@ -43,7 +43,7 @@ class RentalObjectController {
       $rentalObject        = $rentalObjectService->create($data, $currentUser);
       $responseFactory     = new ResponseFactory();
       $response            = $responseFactory->createResponse();
-      $response->setData($rentalObject->toArray())->setStatusCode(201);
+      $response->setResponseData($rentalObject)->setStatusCode(201);
 
       return $response;
    }
@@ -53,7 +53,7 @@ class RentalObjectController {
       $rentalObject        = $rentalObjectService->read($id);
       $responseFactory     = new ResponseFactory();
       $response            = $responseFactory->createResponse();
-      $response->setData($rentalObject->toArray());
+      $response->setResponseData($rentalObject);
 
       return $response;
    }
@@ -63,7 +63,7 @@ class RentalObjectController {
       $rentalObject        = $rentalObjectService->update($id, $requestData);
       $responseFactory     = new ResponseFactory();
       $response            = $responseFactory->createResponse();
-      $response->setData($rentalObject->toArray());
+      $response->setResponseData($rentalObject);
 
       return $response;
    }
