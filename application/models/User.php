@@ -52,7 +52,24 @@ class User extends GeneralModel{
       return password_verify($password, $this->password);
    }
 
+   /**
+    * @return mixed
+    */
    public function getId(){
       return $this->id;
+   }
+
+   /**
+    * @return mixed
+    */
+   public function getEmail(){
+      return $this->email;
+   }
+
+   /**
+    * @return mixed
+    */
+   public function getUsername(){
+      return $this->username;
    }
 } 

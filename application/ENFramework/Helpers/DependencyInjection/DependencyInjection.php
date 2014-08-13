@@ -91,17 +91,21 @@ class DependencyInjection{
    private function getClassDependencies(\SimpleXMLElement $matchingXMLElement){
       $dependencies = array();
 
-      foreach ($matchingXMLElement->dependencies->dependency as $dependency){
-         $dependencyClass = $this->getClassFromXML(array(
-                                                      'namespace' => (string)$dependency['namespace'],
-                                                      'class'     => (string)$dependency['class'])
-         );
+      foreach ($matchingXMLElement->dependencies as $dependencyArray){
+         if ($dependencyArray->dependency){
 
-         if ($dependencyClass == null){
-            throw new ApplicationException('Hittade inte dependency.');
+            $dependency      = $dependencyArray->dependency;
+            $dependencyClass = $this->getClassFromXML(array(
+                                                         'namespace' => (string)$dependency['namespace'],
+                                                         'class'     => (string)$dependency['class'])
+            );
+
+            if ($dependencyClass == null){
+               throw new ApplicationException('Hittade inte dependency.');
+            }
+
+            $dependencies[] = $dependencyClass;
          }
-
-         $dependencies[] = $dependencyClass;
       }
 
       return $dependencies;
