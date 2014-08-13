@@ -14,74 +14,111 @@ use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundE
 use Rentatool\Application\Mappers\UserMapper;
 use Rentatool\Application\Models\User;
 
-class UserService
-{
-    private $userMapper;
+class UserService{
+   private $userMapper;
+   private $userValidationService;
 
-    public function __construct(UserMapper $userMapper)
-    {
-        $this->userMapper = $userMapper;
-    }
+   public function __construct(UserMapper $userMapper, UserValidationService $userValidationService){
+      $this->userMapper            = $userMapper;
+      $this->userValidationService = $userValidationService;
+   }
 
-    public function index()
-    {
-        $userMapper = $this->userMapper;
-        $userData = $userMapper->index();
+   /**
+    * @return UserCollection
+    */
+   public function index(){
+      $userMapper = $this->userMapper;
+      $userData   = $userMapper->index();
 
-        return new UserCollection($userData);
-    }
+      return new UserCollection($userData);
+   }
 
-    public function create(array $data)
-    {
-        $data = $this->hashPassword($data);
-        $userModel = new User($data);
-        $userMapper = $this->userMapper;
-        $DBParameters = $userModel->getDBParameters();
-        $result = $userMapper->create($DBParameters);
-        return $userModel;
-    }
+   /**
+    * @param array $data
+    * @return User
+    */
+   public function create(array $data){
+      $data         = $this->hashPassword($data);
+      $userModel    = new User($data);
+      $userMapper   = $this->userMapper;
+      $DBParameters = $userModel->getDBParameters();
+      $this->userValidationService->validateUser($userModel);
+      $result = $userMapper->create($DBParameters);
 
-    private function hashPassword(array $data)
-    {
-        $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
+      return $userModel;
+   }
 
-        return $data;
-    }
+   /**
+    * @param array $data
+    * @return array
+    */
+   private function hashPassword(array $data){
+      $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
 
-    public function read($id)
-    {
-        $userMapper = $this->userMapper;
-        $userData = $userMapper->read($id);
+      return $data;
+   }
 
-        return $userData ? new User($userData) : null;
-    }
 
-    public function getUserByEmail($email)
-    {
-        $userMapper = $this->userMapper;
-        $userData = $userMapper->getUserByEmail($email);
-        return $userData = $userData ? new User($userData) : null;
-    }
+   /**
+    * @param $id
+    * @return null|User
+    */
+   public function read($id){
+      $userMapper = $this->userMapper;
+      $userData   = $userMapper->read($id);
 
-    public function update($id, $requestData)
-    {
-        $userMapper = $this->userMapper;
+      return $userData ? new User($userData) : null;
+   }
 
-        $savedUser = $this->read($id);
+   /**
+    * @param $email
+    * @return null|User
+    */
+   public function getUserByEmail($email){
+      $userMapper = $this->userMapper;
+      $userData   = $userMapper->getUserByEmail($email);
 
-        if ($savedUser == null) {
-            throw new NotFoundException('Användaren finns inte.');
-        }
-        $requestData = $this->hashPassword($requestData);
-        $user = new User($requestData);
+      return $userData = $userData ? new User($userData) : null;
+   }
 
-        $userMapper->update($user->getDBParameters());
-        return $requestData ? new User($requestData) : null;
-    }
+   /**
+    * @param $id
+    * @param $requestData
+    * @return null|User
+    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
+    */
+   public function update($id, $requestData){
 
-    public function delete($id)
-    {
-        $userMapper = $this->userMapper;
-        $userMapper->delete($id);
-    }
+      $this->checkThatUserExists($id);
+
+      $requestData = $this->hashPassword($requestData);
+      $userModel   = new User($requestData);
+      $this->userValidationService->validateUser($userModel);
+
+      $this->userMapper->update($userModel->getDBParameters());
+
+      return $requestData ? new User($requestData) : null;
+   }
+
+   /**
+    * @param $id
+    * @return bool
+    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
+    */
+   private function checkThatUserExists($id){
+      $savedUser = $this->read($id);
+
+      if ($savedUser == null){
+         throw new NotFoundException('Användaren finns inte.');
+      }
+
+      return true;
+   }
+
+   /**
+    * @param $id
+    */
+   public function delete($id){
+      $this->userMapper->delete($id);
+   }
 } 

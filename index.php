@@ -36,7 +36,7 @@ try{
    $responseFactory            = new ResponseFactory();
    $response                   = $responseFactory->createResponse();
    $response->setStatusCode($HTTPStatusCode);
-   $response->setData(array('message' => $exception->getMessage(), 'file' => $exception->getFile(), 'line' => $exception->getLine(), 'trace' => $exception->getTrace()));
+   $response->setResponseData(new \Rentatool\Application\ENFramework\Helpers\ErrorHandling\ErrorTrace(array('message' => $exception->getMessage(), 'file' => $exception->getFile(), 'line' => $exception->getLine(), 'trace' => $exception->getTrace())));
    $response->sendResponse();
 }
 
