@@ -14,11 +14,11 @@ use Rentatool\Application\ENFramework\Models\IDatabaseConnection;
 class UserValidationMapper {
 
    private $isUniqueUsernameSQL = '
-      SELECT (SELECT COUNT(username) FROM user WHERE username = :username AND id != :userId) AS "numberOfUsers";
+      SELECT (SELECT COUNT(username) FROM user WHERE username = :username AND id != COALESCE(:userId, 0)) AS "numberOfUsers";
    ';
 
    private $isUniqueEmailSQL = '
-      SELECT (SELECT COUNT(email) FROM user WHERE email = :email AND id != :userId) AS "numberOfUsers";
+      SELECT (SELECT COUNT(email) FROM user WHERE email = :email AND id != COALESCE(:userId, 0)) AS "numberOfUsers";
    ';
 
    public function __construct(IDatabaseConnection $databaseConnection) {
