@@ -13,24 +13,25 @@ use Rentatool\Application\ENFramework\Helpers\Response;
 use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
 use Rentatool\Application\ENFramework\Models\DatabaseConnection;
 use Rentatool\Application\Mappers\RentalObjectMapper;
+use Rentatool\Application\Mappers\UserGroupMapper;
 use Rentatool\Application\Mappers\UserMapper;
 use Rentatool\Application\Services\DatabaseService;
 
-class DatabaseController {
+class DatabaseController{
 
    /**
     * @var \Rentatool\Application\Services\DatabaseService
     */
    private $databaseService;
 
-   public function __construct(DatabaseService $databaseService) {
+   public function __construct(DatabaseService $databaseService){
       $this->databaseService = $databaseService;
    }
 
-   public function create() {
+   public function create(){
       $this->databaseService->create();
       $responseFactory = new ResponseFactory();
-      $response = $responseFactory->createResponse();
+      $response        = $responseFactory->createResponse();
       $successNotifier = new Notifier(array('message' => 'Databastabeller har skapats.'));
       $response->addNotifier($successNotifier);
 
@@ -41,16 +42,17 @@ class DatabaseController {
     * Creates a database with dummy values.
     * @return Response
     */
-   public function createWithSeeds() {
+   public function createWithSeeds(){
       $this->databaseService->create();
 
       $databaseConnection = new DatabaseConnection();
       $rentalObjectMapper = new RentalObjectMapper($databaseConnection);
       $userMapper         = new UserMapper($databaseConnection);
-      $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper);
+      $userGroupMapper    = new UserGroupMapper($databaseConnection);
+      $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper, $userGroupMapper);
 
       $responseFactory = new ResponseFactory();
-      $response = $responseFactory->createResponse();
+      $response        = $responseFactory->createResponse();
       $successNotifier = new Notifier(array('message' => 'Databas med demodata har skapats.'));
       $response->addNotifier($successNotifier);
 

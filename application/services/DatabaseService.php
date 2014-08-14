@@ -10,6 +10,7 @@ namespace Rentatool\Application\Services;
 use Rentatool\Application\Mappers\DatabaseMapper;
 use Rentatool\Application\Mappers\RentalObjectMapper;
 use Rentatool\Application\Mappers\UserMapper;
+use Rentatool\Application\Mappers\UserGroupMapper;
 
 class DatabaseService {
 
@@ -27,7 +28,7 @@ class DatabaseService {
       $this->databaseMapper->createTables();
    }
 
-   public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper) {
-      $this->databaseMapper->insertSeeds($userMapper, $rentalObjectMapper);
+   public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper, UserGroupMapper $userGroupMapper) {
+      $this->databaseMapper->insertSeeds($userMapper, $rentalObjectMapper, $userGroupMapper);
    }
 }
