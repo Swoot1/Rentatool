@@ -96,9 +96,9 @@ class DatabaseMapper{
          )
       );
 
-//      foreach ($users as $userData){
-//         $userMapper->create($userData);
-//      }
+      foreach ($users as $userData){
+         $userMapper->create($userData);
+      }
 
       $rentalObjects = array(
          array(
