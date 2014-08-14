@@ -30,6 +30,11 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Rentatool\Application\Controllers" class="UserGroupController">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\Services" class="UserGroupService"/>
+            </dependencies>
+        </dependency>
 
         <!-- Services -->
         <dependency namespace="Rentatool\Application\Services" class="RentalObjectService">
@@ -65,6 +70,11 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Rentatool\Application\Services" class="UserGroupService">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\Mappers" class="UserGroupMapper"/>
+            </dependencies>
+        </dependency>
 
         <!-- Mappers -->
         <dependency namespace="Rentatool\Application\Mappers" class="RentalObjectMapper">
@@ -91,6 +101,11 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Rentatool\Application\Mappers" class="UserGroupMapper">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+            </dependencies>
+        </dependency>
 
         <!-- Others -->
         <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection">
