@@ -12,73 +12,66 @@ use Rentatool\Application\ENFramework\Helpers\Notifier;
 use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
 use Rentatool\Application\Services\UserService;
 
-class UserController {
+class UserController{
 
    /**
     * @var \Rentatool\Application\Services\UserService
     */
    private $userService;
+   private $response;
 
    /**
     * @param UserService $userService
+    * @param ResponseFactory $responseFactory
     */
-   public function __construct(UserService $userService) {
+   public function __construct(UserService $userService, ResponseFactory $responseFactory){
       $this->userService = $userService;
+      $this->response    = $responseFactory->createResponse();
    }
 
-   public function index() {
-      $userService     = $this->userService;
-      $userCollection  = $userService->index();
-      $responseFactory = new ResponseFactory();
-      $response        = $responseFactory->createResponse();
-      $response->setResponseData($userCollection);
+   public function index(){
+      $userService    = $this->userService;
+      $userCollection = $userService->index();
+      $this->response->setResponseData($userCollection);
 
-      return $response;
+      return $this->response;
 
    }
 
-   public function create(array $data) {
+   public function create(array $data){
       $userService     = $this->userService;
       $user            = $userService->create($data);
-      $responseFactory = new ResponseFactory();
       $successNotifier = new Notifier(array('message' => 'Användaren har skapats.'));
-      $response        = $responseFactory->createResponse();
-      $response->addNotifier($successNotifier);
-      $response->setResponseData($user)->setStatusCode(201);
+      $this->response->addNotifier($successNotifier);
+      $this->response->setResponseData($user)->setStatusCode(201);
 
-      return $response;
+      return $this->response;
    }
 
-   public function read($id) {
-      $userService     = $this->userService;
-      $user            = $userService->read($id);
-      $responseFactory = new ResponseFactory();
-      $response        = $responseFactory->createResponse();
-      $response->setResponseData($user);
+   public function read($id){
+      $userService = $this->userService;
+      $user        = $userService->read($id);
+      $this->response->setResponseData($user);
 
-      return $response;
+      return $this->response;
    }
 
-   public function update($id, $requestData) {
+   public function update($id, $requestData){
       $userService     = $this->userService;
       $user            = $userService->update($id, $requestData);
-      $responseFactory = new ResponseFactory();
-      $response        = $responseFactory->createResponse();
       $successNotifier = new Notifier(array('message' => 'Användaren har uppdaterats.'));
-      $response->setResponseData($user)->addNotifier($successNotifier);
+      $this->response->setResponseData($user)->addNotifier($successNotifier);
 
-      return $response;
+      return $this->response;
    }
 
-   public function delete($id) {
+   public function delete($id){
       $userService = $this->userService;
       $userService->delete($id);
-      $responseFactory = new ResponseFactory();
       $successNotifier = new Notifier(array('message' => 'Användaren har tagits bort.'));
-      $response        = $responseFactory->createResponse();
-      $response->addNotifier($successNotifier);
-      $response->setStatusCode(204);
+      $this->response->addNotifier($successNotifier);
+      $this->response->setStatusCode(204);
 
-      return $response;
+      return $this->response;
    }
 } 

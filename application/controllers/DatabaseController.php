@@ -22,19 +22,19 @@ class DatabaseController {
     * @var \Rentatool\Application\Services\DatabaseService
     */
    private $databaseService;
+   private $response;
 
-   public function __construct(DatabaseService $databaseService) {
+   public function __construct(DatabaseService $databaseService, ResponseFactory $responseFactory) {
       $this->databaseService = $databaseService;
+      $this->response = $responseFactory->createResponse();
    }
 
    public function create() {
       $this->databaseService->create();
-      $responseFactory = new ResponseFactory();
-      $response = $responseFactory->createResponse();
       $successNotifier = new Notifier(array('message' => 'Databastabeller har skapats.'));
-      $response->addNotifier($successNotifier);
+      $this->response->addNotifier($successNotifier);
 
-      return $response;
+      return $this->response;
    }
 
    /**
@@ -48,12 +48,9 @@ class DatabaseController {
       $rentalObjectMapper = new RentalObjectMapper($databaseConnection);
       $userMapper         = new UserMapper($databaseConnection);
       $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper);
-
-      $responseFactory = new ResponseFactory();
-      $response = $responseFactory->createResponse();
       $successNotifier = new Notifier(array('message' => 'Databas med demodata har skapats.'));
-      $response->addNotifier($successNotifier);
+      $this->response->addNotifier($successNotifier);
 
-      return $response;
+      return $this->response;
    }
 }

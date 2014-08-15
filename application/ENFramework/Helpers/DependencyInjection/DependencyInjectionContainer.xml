@@ -9,24 +9,28 @@
         <dependency namespace="Rentatool\Application\Controllers" class="RentalObjectController">
             <dependencies>
                 <dependency namespace="Rentatool\Application\Services" class="RentalObjectService"/>
+                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Rentatool\Application\Controllers" class="AuthorizationController">
             <dependencies>
                 <dependency namespace="Rentatool\Application\Services" class="AuthorizationService"/>
+                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Rentatool\Application\Controllers" class="UserController">
             <dependencies>
                 <dependency namespace="Rentatool\Application\Services" class="UserService"/>
+                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Rentatool\Application\Controllers" class="DatabaseController">
             <dependencies>
                 <dependency namespace="Rentatool\Application\Services" class="DatabaseService"/>
+                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
@@ -41,8 +45,6 @@
         <dependency namespace="Rentatool\Application\Services" class="UserService">
             <dependencies>
                 <dependency namespace="Rentatool\Application\Mappers" class="UserMapper"/>
-            </dependencies>
-            <dependencies>
                 <dependency namespace="Rentatool\Application\Services" class="UserValidationService"/>
             </dependencies>
         </dependency>
@@ -96,6 +98,7 @@
         <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection">
             <dependencies/>
         </dependency>
-
-    </dependencies>
+        <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+            <dependencies/>
+        </dependencies>
 </rentatool>

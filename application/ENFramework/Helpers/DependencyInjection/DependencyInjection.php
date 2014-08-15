@@ -91,10 +91,8 @@ class DependencyInjection{
    private function getClassDependencies(\SimpleXMLElement $matchingXMLElement){
       $dependencies = array();
 
-      foreach ($matchingXMLElement->dependencies as $dependencyArray){
-         if ($dependencyArray->dependency){
-
-            $dependency      = $dependencyArray->dependency;
+      if (count($matchingXMLElement->dependencies) > 0){
+         foreach ($matchingXMLElement->dependencies->dependency as $dependency){
             $dependencyClass = $this->getClassFromXML(array(
                                                          'namespace' => (string)$dependency['namespace'],
                                                          'class'     => (string)$dependency['class'])
