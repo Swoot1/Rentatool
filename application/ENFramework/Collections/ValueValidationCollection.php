@@ -36,10 +36,9 @@ class ValueValidationCollection{
    public function validate($name, $value){
       if (array_key_exists($name, $this->data)){
          $this->data[$name]->validate($value);
+      } else{
+         throw new ApplicationException(sprintf('Det finns ingen validering för angivet propertynamn %s.', $name));
       }
-//      else{
-//         throw new ApplicationException(sprintf('Det finns ingen validering för angivet propertynamn %s.', $name));
-//      }
 
       return true;
    }
