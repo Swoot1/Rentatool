@@ -16,5 +16,9 @@ rentaTool.controller('NavigationController', ['$scope', '$location', function ($
 
    $scope.navigateToCreateDatabase = function () {
       $location.path('/databases/new');
-   }
+   };
+
+   $scope.navigateToUserGroupList = function() {
+      $location.path('/usergroups');
+   };
 }]);

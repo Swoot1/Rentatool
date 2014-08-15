@@ -25,6 +25,7 @@ echo '<!DOCTYPE html>
         <ul>
             <li ng-click="navigateToLogIn()">Inloggningssida</li>
             <li ng-click="navigateToUserList()">Användare</li>
+            <li ng-click="navigateToUserGroupList()">Användargrupper</li>
             <li ng-click="navigateToRentalObjectList()">Uthyrningsobjekt</li>
             <li ng-click="navigateToCreateDatabase()">Databasskapning</li>
         </ul>
@@ -44,6 +45,7 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Factories/UserFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/DatabaseFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/AuthorizationFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/UserGroupFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/DatabaseController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectListController.js"></script>
@@ -51,6 +53,8 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Controllers/NavigationController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserListController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/AuthorizationController.js"></script>
+<script type="text/javascript" src="Public/Scripts/Controllers/UserGroupListController.js"></script>
+<script type="text/javascript" src="Public/Scripts/Controllers/UserGroupController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/LogOutButton.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RequestErrorInterceptorFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RequestSuccessInterceptorFactory.js"></script>
