@@ -18,25 +18,22 @@ class AuthorizationController{
     */
    private $authorizationService;
 
-   public function __construct(AuthorizationService $authorizationService){
+   public function __construct(AuthorizationService $authorizationService, ResponseFactory $responseFactory){
       $this->authorizationService = $authorizationService;
+      $this->response = $responseFactory->createResponse();
    }
 
    public function login(array $data){
       $authorization   = $this->authorizationService->login($data);
-      $responseFactory = new ResponseFactory();
-      $response        = $responseFactory->createResponse();
-      $response->setResponseData($authorization);
+      $this->response->setResponseData($authorization);
 
-      return $response;
+      return $this->response;
 
    }
 
    public function logout(){
       $this->authorizationService->logout();
-      $responseFactory = new ResponseFactory();
-      $response        = $responseFactory->createResponse();
 
-      return $response;
+      return $this->response;
    }
 } 

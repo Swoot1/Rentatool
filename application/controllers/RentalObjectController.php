@@ -20,9 +20,11 @@ class RentalObjectController{
     * @var \Rentatool\Application\Services\RentalObjectService
     */
    private $rentalObjectService;
+   private $response;
 
-   public function __construct(RentalObjectService $rentalObjectService){
+   public function __construct(RentalObjectService $rentalObjectService, ResponseFactory $responseFactory){
       $this->rentalObjectService = $rentalObjectService;
+      $this->response            = $responseFactory->createResponse();
    }
 
    /**
@@ -30,57 +32,47 @@ class RentalObjectController{
     */
    public function index(){
       $rentalObjectService    = $this->rentalObjectService;
-      $responseFactory        = new ResponseFactory();
-      $response               = $responseFactory->createResponse();
       $rentalObjectCollection = $rentalObjectService->index();
-      $response->setResponseData($rentalObjectCollection);
+      $this->response->setResponseData($rentalObjectCollection);
 
-      return $response;
+      return $this->response;
    }
 
    public function create(array $data){
       $rentalObjectService = $this->rentalObjectService;
       $currentUser         = SessionManager::getCurrentUser();
       $rentalObject        = $rentalObjectService->create($data, $currentUser);
-      $responseFactory     = new ResponseFactory();
-      $response            = $responseFactory->createResponse();
-      $successNotifier = new Notifier(array('message' => 'Uthyrningsobjektet har skapats.'));
-      $response->addNotifier($successNotifier);
-      $response->setResponseData($rentalObject)->setStatusCode(201);
+      $successNotifier     = new Notifier(array('message' => 'Uthyrningsobjektet har skapats.'));
+      $this->response->addNotifier($successNotifier);
+      $this->response->setResponseData($rentalObject)->setStatusCode(201);
 
-      return $response;
+      return $this->response;
    }
 
    public function read($id){
       $rentalObjectService = $this->rentalObjectService;
       $rentalObject        = $rentalObjectService->read($id);
-      $responseFactory     = new ResponseFactory();
-      $response            = $responseFactory->createResponse();
-      $response->setResponseData($rentalObject);
+      $this->response->setResponseData($rentalObject);
 
-      return $response;
+      return $this->response;
    }
 
    public function update($id, $requestData){
       $rentalObjectService = $this->rentalObjectService;
       $rentalObject        = $rentalObjectService->update($id, $requestData);
-      $responseFactory     = new ResponseFactory();
-      $response            = $responseFactory->createResponse();
-      $successNotifier = new Notifier(array('message' => 'Uthyrningsobjektet har uppdaterats.'));
-      $response->addNotifier($successNotifier);
-      $response->setResponseData($rentalObject);
+      $successNotifier     = new Notifier(array('message' => 'Uthyrningsobjektet har uppdaterats.'));
+      $this->response->addNotifier($successNotifier);
+      $this->response->setResponseData($rentalObject);
 
-      return $response;
+      return $this->response;
    }
 
    public function delete($id){
       $this->rentalObjectService->delete($id);
-      $responseFactory = new ResponseFactory();
-      $response        = $responseFactory->createResponse();
       $successNotifier = new Notifier(array('message' => 'Uthyrningsobjektet har tagits bort.'));
-      $response->addNotifier($successNotifier);
-      $response->setStatusCode(204);
+      $this->response->addNotifier($successNotifier);
+      $this->response->setStatusCode(204);
 
-      return $response;
+      return $this->response;
    }
 }
