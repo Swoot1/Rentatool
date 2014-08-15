@@ -26,5 +26,5 @@ interface IResponse{
 
    public function setResponseData(IToArray $data);
 
-   public function addNotifier(Notifier $notifier);
+   public function addNotifier(array $notifierData);
 }

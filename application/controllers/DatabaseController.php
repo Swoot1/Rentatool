@@ -17,7 +17,7 @@ use Rentatool\Application\Mappers\UserGroupMapper;
 use Rentatool\Application\Mappers\UserMapper;
 use Rentatool\Application\Services\DatabaseService;
 
-class DatabaseController {
+class DatabaseController{
 
    /**
     * @var \Rentatool\Application\Services\DatabaseService
@@ -25,15 +25,14 @@ class DatabaseController {
    private $databaseService;
    private $response;
 
-   public function __construct(DatabaseService $databaseService, ResponseFactory $responseFactory) {
+   public function __construct(DatabaseService $databaseService, ResponseFactory $responseFactory){
       $this->databaseService = $databaseService;
-      $this->response = $responseFactory->createResponse();
+      $this->response        = $responseFactory->createResponse();
    }
 
-   public function create() {
+   public function create(){
       $this->databaseService->create();
-      $successNotifier = new Notifier(array('message' => 'Databastabeller har skapats.'));
-      $this->response->addNotifier($successNotifier);
+      $this->response->addNotifier(['message' => 'Databastabeller har skapats.']);
 
       return $this->response;
    }
@@ -42,7 +41,7 @@ class DatabaseController {
     * Creates a database with dummy values.
     * @return Response
     */
-   public function createWithSeeds() {
+   public function createWithSeeds(){
       $this->databaseService->create();
 
       $databaseConnection = new DatabaseConnection();
@@ -50,8 +49,7 @@ class DatabaseController {
       $userMapper         = new UserMapper($databaseConnection);
       $userGroupMapper    = new UserGroupMapper($databaseConnection);
       $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper, $userGroupMapper);
-      $successNotifier = new Notifier(array('message' => 'Databas med demodata har skapats.'));
-      $this->response->addNotifier($successNotifier);
+      $this->response->addNotifier(['message' => 'Databas med demodata har skapats.']);
 
       return $this->response;
    }
