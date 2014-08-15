@@ -31,46 +31,41 @@ class RentalObjectController{
     * @return Response
     */
    public function index(){
-      $rentalObjectService    = $this->rentalObjectService;
-      $rentalObjectCollection = $rentalObjectService->index();
+      $rentalObjectCollection = $this->rentalObjectService->index();
       $this->response->setResponseData($rentalObjectCollection);
 
       return $this->response;
    }
 
    public function create(array $data){
-      $rentalObjectService = $this->rentalObjectService;
-      $currentUser         = SessionManager::getCurrentUser();
-      $rentalObject        = $rentalObjectService->create($data, $currentUser);
-      $successNotifier     = new Notifier(array('message' => 'Uthyrningsobjektet har skapats.'));
-      $this->response->addNotifier($successNotifier);
+      $currentUser  = SessionManager::getCurrentUser();
+      $rentalObject = $this->rentalObjectService->create($data, $currentUser);
       $this->response->setResponseData($rentalObject)->setStatusCode(201);
+      $this->response->addNotifier(['message' => 'Uthyrningsobjektet har skapats.']);
 
       return $this->response;
    }
 
    public function read($id){
-      $rentalObjectService = $this->rentalObjectService;
-      $rentalObject        = $rentalObjectService->read($id);
+      $rentalObject = $this->rentalObjectService->read($id);
       $this->response->setResponseData($rentalObject);
 
       return $this->response;
    }
 
    public function update($id, $requestData){
-      $rentalObjectService = $this->rentalObjectService;
-      $rentalObject        = $rentalObjectService->update($id, $requestData);
-      $successNotifier     = new Notifier(array('message' => 'Uthyrningsobjektet har uppdaterats.'));
-      $this->response->addNotifier($successNotifier);
+      $rentalObject = $this->rentalObjectService->update($id, $requestData);
+
       $this->response->setResponseData($rentalObject);
+      $this->response->addNotifier(['message' => 'Uthyrningsobjektet har uppdaterats.']);
 
       return $this->response;
    }
 
    public function delete($id){
       $this->rentalObjectService->delete($id);
-      $successNotifier = new Notifier(array('message' => 'Uthyrningsobjektet har tagits bort.'));
-      $this->response->addNotifier($successNotifier);
+
+      $this->response->addNotifier(['message' => 'Uthyrningsobjektet har tagits bort.']);
       $this->response->setStatusCode(204);
 
       return $this->response;

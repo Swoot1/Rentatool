@@ -30,8 +30,7 @@ class UserController{
    }
 
    public function index(){
-      $userService    = $this->userService;
-      $userCollection = $userService->index();
+      $userCollection = $this->userService->index();
       $this->response->setResponseData($userCollection);
 
       return $this->response;
@@ -39,37 +38,30 @@ class UserController{
    }
 
    public function create(array $data){
-      $userService     = $this->userService;
-      $user            = $userService->create($data);
-      $successNotifier = new Notifier(array('message' => 'Användaren har skapats.'));
-      $this->response->addNotifier($successNotifier);
+      $user = $this->userService->create($data);
+      $this->response->addNotifier(['message' => 'Användaren har skapats.']);
       $this->response->setResponseData($user)->setStatusCode(201);
 
       return $this->response;
    }
 
    public function read($id){
-      $userService = $this->userService;
-      $user        = $userService->read($id);
+      $user = $this->userService->read($id);
       $this->response->setResponseData($user);
 
       return $this->response;
    }
 
    public function update($id, $requestData){
-      $userService     = $this->userService;
-      $user            = $userService->update($id, $requestData);
-      $successNotifier = new Notifier(array('message' => 'Användaren har uppdaterats.'));
-      $this->response->setResponseData($user)->addNotifier($successNotifier);
+      $user = $this->userService->update($id, $requestData);
+      $this->response->setResponseData($user)->addNotifier(['message' => 'Användaren har uppdaterats.']);
 
       return $this->response;
    }
 
    public function delete($id){
-      $userService = $this->userService;
-      $userService->delete($id);
-      $successNotifier = new Notifier(array('message' => 'Användaren har tagits bort.'));
-      $this->response->addNotifier($successNotifier);
+      $this->userService->delete($id);
+      $this->response->addNotifier(['message' => 'Användaren har tagits bort.']);
       $this->response->setStatusCode(204);
 
       return $this->response;

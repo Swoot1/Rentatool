@@ -21,7 +21,7 @@ class UserGroupController{
 
    public function __construct(UserGroupService $userGroupService, ResponseFactory $responseFactory){
       $this->userGroupService = $userGroupService;
-      $this->response = $responseFactory->createResponse();
+      $this->response         = $responseFactory->createResponse();
    }
 
 
@@ -43,10 +43,9 @@ class UserGroupController{
 
    public function create(array $data){
       $userGroup = $this->userGroupService->create($data);
-      $successNotifier = new Notifier(['message' => 'Gruppen har skapats.']);
 
       $this->response->setResponseData($userGroup);
-      $this->response->addNotifier($successNotifier);
+      $this->response->addNotifier(['message' => 'Gruppen har skapats.']);
 
       return $this->response;
    }
@@ -54,10 +53,9 @@ class UserGroupController{
 
    public function update($id, array $data){
       $userGroup = $this->userGroupService->update($id, $data);
-      $successNotifier = new Notifier(['message' => 'Gruppen har uppdaterats.']);
 
       $this->response->setResponseData($userGroup);
-      $this->response->addNotifier($successNotifier);
+      $this->response->addNotifier(['message' => 'Gruppen har uppdaterats.']);
 
       return $this->response;
    }
@@ -66,8 +64,7 @@ class UserGroupController{
    public function delete($id){
       $this->userGroupService->delete($id);
 
-      $successNotifier = new Notifier(['message' => 'Gruppen har tagits bort.']);
-      $this->response->addNotifier($successNotifier);
+      $this->response->addNotifier(['message' => 'Gruppen har tagits bort.']);
       $this->response->setStatusCode(204);
 
       return $this->response;

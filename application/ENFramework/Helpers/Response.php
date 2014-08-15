@@ -15,7 +15,7 @@ use Rentatool\Application\ENFramework\Helpers\Interfaces\IToArray;
  * Creates and can execute a header() based on its data.
  * @package Rentatool\Application\ENFramework\Helpers
  */
-class Response implements IResponse {
+class Response implements IResponse{
 
    private $protocol;
    private $statusCode = 200;
@@ -28,7 +28,7 @@ class Response implements IResponse {
    private $statusCodeToTextMapper;
 
    public function __construct(StatusCodeToTextMapper $statusCodeToTextMapper, NoName $noName){
-      $this->noName = $noName;
+      $this->noName                 = $noName;
       $this->statusCodeToTextMapper = $statusCodeToTextMapper;
       $this->setProtocol();
    }
@@ -39,7 +39,8 @@ class Response implements IResponse {
       return $this;
    }
 
-   public function addNotifier(Notifier $notifier){
+   public function addNotifier(array $notifierData){
+      $notifier = new Notifier($notifierData);
       $this->noName->addNotifier($notifier);
 
       return $this;
@@ -62,7 +63,7 @@ class Response implements IResponse {
     * Returns a response to the user based on the objects data.
     * @return $this
     */
-   public function sendResponse() {
+   public function sendResponse(){
       $this->sendHeaders();
       $this->sendData();
 
@@ -73,7 +74,7 @@ class Response implements IResponse {
     * Sends the appropriate headers based on the objects data.
     * @return $this
     */
-   private function sendHeaders() {
+   private function sendHeaders(){
       $statusCodeText = $this->getResponseCodeString();
       $charset        = $this->getCharsetString();
       $contentType    = $this->getContentTypeString();
@@ -88,23 +89,23 @@ class Response implements IResponse {
    /**
     * @return $this
     */
-   private function sendData() {
+   private function sendData(){
       echo $this->noName->getFormattedData($this->contentType);
 
       return $this;
    }
 
-   private function getContentTypeString() {
+   private function getContentTypeString(){
       return $this->contentType ? sprintf('Content-Type: %s', $this->contentType) : '';
    }
 
-   private function getResponseCodeString() {
+   private function getResponseCodeString(){
       $statusCodeText = $this->statusCodeToTextMapper->getResponseCodeText($this->statusCode);
 
       return $this->statusCode ? sprintf('%s %s', $this->statusCode, $statusCodeText) : '';
    }
 
-   private function getCharsetString() {
+   private function getCharsetString(){
       return $this->charset ? sprintf('Charset:%s', $this->charset) : '';
    }
 
