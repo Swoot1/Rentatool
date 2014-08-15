@@ -10,7 +10,7 @@ namespace Rentatool\Application\Mappers;
 
 use Rentatool\Application\ENFramework\Models\DatabaseConnection;
 
-class DatabaseMapper {
+class DatabaseMapper{
 
    private $databaseConnection;
 
@@ -41,16 +41,30 @@ class DatabaseMapper {
         name VARCHAR(30) NOT NULL,
         available BOOLEAN DEFAULT true NOT NULL
       );
+
+      CREATE TABLE IF NOT EXISTS user_groups (
+        id  INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        name VARCHAR(30) NOT NULL UNIQUE,
+        description varchar(200) NOT NULL
+      );
+
+      CREATE TABLE IF NOT EXISTS users_groups_maps (
+        id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        user_id INTEGER NOT NULL,
+        group_id INTEGER NOT NULL,
+        CONSTRAINT user_group_maps_user_fk FOREIGN KEY (user_id) REFERENCES user(id),
+        CONSTRAINT user_group_maps_group_fk FOREIGN KEY (group_id) REFERENCES user_groups(id)
+      );
    ";
 
-   public function __construct(DatabaseConnection $databaseConnection) {
+   public function __construct(DatabaseConnection $databaseConnection){
       $this->databaseConnection = $databaseConnection;
    }
 
-   public function createDatabase() {
-      $host         = 'localhost';
-      $username     = 'root';
-      $password     = '';
+   public function createDatabase(){
+      $host     = 'localhost';
+      $username = 'root';
+      $password = '';
 
       $PDOOptions         = array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION, \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC, \PDO::MYSQL_ATTR_FOUND_ROWS => true);
       $databaseConnection = new \PDO(sprintf('mysql:host=%s;', $host), $username, $password, $PDOOptions);
@@ -58,7 +72,7 @@ class DatabaseMapper {
       $databaseConnection->exec($this->createDatabaseSQL);
    }
 
-   public function createTables() {
+   public function createTables(){
       $this->databaseConnection->runQuery($this->createTableSQL);
    }
 
@@ -66,8 +80,9 @@ class DatabaseMapper {
     * Insert seed values so that you don't have to start with an empty db.
     * @param UserMapper $userMapper
     * @param RentalObjectMapper $rentalObjectMapper
+    * @param UserGroupMapper $userGroupMapper
     */
-   public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper) {
+   public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper, UserGroupMapper $userGroupMapper){
       $users = array(
          array(
             'username' => 'andy',
@@ -81,7 +96,7 @@ class DatabaseMapper {
          )
       );
 
-      foreach ($users as $userData) {
+      foreach ($users as $userData){
          $userMapper->create($userData);
       }
 
@@ -118,8 +133,23 @@ class DatabaseMapper {
          )
       );
 
-      foreach ($rentalObjects as $rentalObjectData) {
+      foreach ($rentalObjects as $rentalObjectData){
          $rentalObjectMapper->create($rentalObjectData);
+      }
+
+      $userGroups = array(
+         array(
+            'name'        => 'administrators',
+            'description' => 'They have the power'
+         ),
+         array(
+            'name'        => 'users',
+            'description' => 'They bring the money'
+         )
+      );
+
+      foreach ($userGroups as $userGroup){
+         $userGroupMapper->create($userGroup);
       }
    }
 } 
