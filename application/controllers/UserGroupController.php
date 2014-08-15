@@ -63,8 +63,6 @@ class UserGroupController{
 
    public function delete($id){
       $this->userGroupService->delete($id);
-
-      $this->response->addNotifier(['message' => 'Gruppen har tagits bort.']);
       $this->response->setStatusCode(204);
 
       return $this->response;

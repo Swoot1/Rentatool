@@ -64,8 +64,6 @@ class RentalObjectController{
 
    public function delete($id){
       $this->rentalObjectService->delete($id);
-
-      $this->response->addNotifier(['message' => 'Uthyrningsobjektet har tagits bort.']);
       $this->response->setStatusCode(204);
 
       return $this->response;

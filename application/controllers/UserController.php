@@ -61,7 +61,6 @@ class UserController{
 
    public function delete($id){
       $this->userService->delete($id);
-      $this->response->addNotifier(['message' => 'Användaren har tagits bort.']);
       $this->response->setStatusCode(204);
 
       return $this->response;
