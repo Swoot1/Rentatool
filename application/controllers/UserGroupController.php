@@ -19,72 +19,58 @@ class UserGroupController{
    private $userGroupService;
 
 
-   public function __construct(UserGroupService $userGroupService){
+   public function __construct(UserGroupService $userGroupService, ResponseFactory $responseFactory){
       $this->userGroupService = $userGroupService;
+      $this->response = $responseFactory->createResponse();
    }
 
 
    public function index(){
       $userGroups = $this->userGroupService->index();
+      $this->response->setResponseData($userGroups);
 
-      $responseFactory = new ResponseFactory();
-      $response        = $responseFactory->createResponse();
-      $response->setResponseData($userGroups);
-
-      return $response;
+      return $this->response;
    }
 
 
    public function read($id){
       $userGroup = $this->userGroupService->read($id);
+      $this->response->setResponseData($userGroup);
 
-      $responseFactory = new ResponseFactory();
-      $response        = $responseFactory->createResponse();
-      $response->setResponseData($userGroup);
-
-      return $response;
+      return $this->response;
    }
 
 
    public function create(array $data){
       $userGroup = $this->userGroupService->create($data);
-
-      $responseFactory = new ResponseFactory();
       $successNotifier = new Notifier(['message' => 'Gruppen har skapats.']);
-      $response        = $responseFactory->createResponse();
 
-      $response->setResponseData($userGroup);
-      $response->addNotifier($successNotifier);
+      $this->response->setResponseData($userGroup);
+      $this->response->addNotifier($successNotifier);
 
-      return $response;
+      return $this->response;
    }
 
 
    public function update($id, array $data){
       $userGroup = $this->userGroupService->update($id, $data);
-
-      $responseFactory = new ResponseFactory();
       $successNotifier = new Notifier(['message' => 'Gruppen har uppdaterats.']);
-      $response        = $responseFactory->createResponse();
 
-      $response->setResponseData($userGroup);
-      $response->addNotifier($successNotifier);
+      $this->response->setResponseData($userGroup);
+      $this->response->addNotifier($successNotifier);
 
-      return $response;
+      return $this->response;
    }
 
 
    public function delete($id){
       $this->userGroupService->delete($id);
 
-      $responseFactory = new ResponseFactory();
       $successNotifier = new Notifier(['message' => 'Gruppen har tagits bort.']);
-      $response        = $responseFactory->createResponse();
+      $this->response->addNotifier($successNotifier);
+      $this->response->setStatusCode(204);
 
-      $response->addNotifier($successNotifier);
-      $response->setStatusCode(204);
-
-      return $response;
+      return $this->response;
    }
 
 }

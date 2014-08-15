@@ -37,6 +37,7 @@
         <dependency namespace="Rentatool\Application\Controllers" class="UserGroupController">
             <dependencies>
                 <dependency namespace="Rentatool\Application\Services" class="UserGroupService"/>
+                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 

@@ -13,6 +13,7 @@ use Rentatool\Application\ENFramework\Helpers\Response;
 use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
 use Rentatool\Application\ENFramework\Models\DatabaseConnection;
 use Rentatool\Application\Mappers\RentalObjectMapper;
+use Rentatool\Application\Mappers\UserGroupMapper;
 use Rentatool\Application\Mappers\UserMapper;
 use Rentatool\Application\Services\DatabaseService;
 
@@ -47,7 +48,8 @@ class DatabaseController {
       $databaseConnection = new DatabaseConnection();
       $rentalObjectMapper = new RentalObjectMapper($databaseConnection);
       $userMapper         = new UserMapper($databaseConnection);
-      $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper);
+      $userGroupMapper    = new UserGroupMapper($databaseConnection);
+      $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper, $userGroupMapper);
       $successNotifier = new Notifier(array('message' => 'Databas med demodata har skapats.'));
       $this->response->addNotifier($successNotifier);
 
