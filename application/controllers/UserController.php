@@ -10,6 +10,7 @@ namespace Rentatool\Application\Controllers;
 
 use Rentatool\Application\ENFramework\Helpers\Notifier;
 use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
+use Rentatool\Application\ENFramework\Models\Request;
 use Rentatool\Application\Services\UserService;
 
 class UserController{
@@ -21,10 +22,12 @@ class UserController{
    private $response;
 
    /**
+    * @param Request $request
     * @param UserService $userService
     * @param ResponseFactory $responseFactory
     */
-   public function __construct(UserService $userService, ResponseFactory $responseFactory){
+   public function __construct(Request $request, UserService $userService, ResponseFactory $responseFactory){
+      $this->request     = $request;
       $this->userService = $userService;
       $this->response    = $responseFactory->createResponse();
    }

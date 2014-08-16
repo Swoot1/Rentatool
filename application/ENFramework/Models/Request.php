@@ -119,4 +119,8 @@ class Request extends GeneralModel {
    public function getRequestData() {
       return json_decode(file_get_contents("php://input"), true);
    }
+
+   public function getGETParameters(){
+      return $_GET;
+   }
 }

@@ -10,6 +10,7 @@ namespace Rentatool\Application\Services;
 
 use Rentatool\Application\Collections\RentalObjectCollection;
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
+use Rentatool\Application\Filters\RentalObjectFilter;
 use Rentatool\Application\Mappers\RentalObjectMapper;
 use Rentatool\Application\Models\RentalObject;
 use Rentatool\Application\Models\User;
@@ -24,8 +25,8 @@ class RentalObjectService {
       $this->rentalObjectMapper = $rentalObjectMapper;
    }
 
-   public function index() {
-      $rentalObjectData = $this->rentalObjectMapper->index();
+   public function index(RentalObjectFilter $rentalObjectFilter) {
+      $rentalObjectData = $this->rentalObjectMapper->index($rentalObjectFilter);
 
       return new RentalObjectCollection($rentalObjectData);
    }
