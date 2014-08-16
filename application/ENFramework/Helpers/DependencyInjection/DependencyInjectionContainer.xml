@@ -112,9 +112,18 @@
 
         <!-- Others -->
         <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\ENFramework\Factories"
+                            class="DatabaseConnectionFactory"/>
+            </dependencies>
+        </dependency>
+
+        <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory">
             <dependencies/>
         </dependency>
-        <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+
+        <dependency namespace="Rentatool\Application\ENFramework\Factories" class="DatabaseConnectionFactory">
             <dependencies/>
-        </dependencies>
+        </dependency>
+    </dependencies>
 </rentatool>
