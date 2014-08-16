@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="large-12 columns">
+        <h2>Redigera användargrupp</h2>
+
+        <form name="user_group_form" ng-submit="createUserGroup()">
+            <label>Namn</label>
+            <input ng-model="userGroup.name" name="name" type="text"/>
+
+            <label>Beskrivning</label>
+            <input ng-model="userGroup.description" name="description" type="text"/>
+
+            <p>Behörigheter: </p>
+
+            <button type="submit">Spara grupp</button>
+            <button type="button" ng-click="returnToUserGroupList()">Avbryt</button>
+        </form>
+    </div>
+</div>

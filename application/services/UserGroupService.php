@@ -45,21 +45,17 @@ class UserGroupService{
          throw new NotFoundException('Gruppen finns inte.');
       }
 
-      $result = $this->userGroupMapper->update($userGroup->getDBParameters());
+      $this->userGroupMapper->update($userGroup->getDBParameters());
 
-      return $result ? $userGroup : null;
+      return $userGroup;
    }
 
 
    public function create(array $data){
-      if (array_key_exists('id', $data)){
-         unset($data['id']);
-      }
-
       $userGroup = new UserGroup($data);
-      $result    = $this->userGroupMapper->create($userGroup->getDBParameters());
+      $this->userGroupMapper->create($userGroup->getDBParameters());
 
-      return $result ? $userGroup : null;
+      return $userGroup;
    }
 
 

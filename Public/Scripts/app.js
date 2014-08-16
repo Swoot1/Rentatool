@@ -37,6 +37,18 @@ var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute']
                 templateUrl: 'public/Templates/database.html',
                 controller: 'DatabaseController'
             })
+            .when('/usergroups', {
+                templateUrl: 'public/Templates/userGroupList.html',
+                controller: 'UserGroupListController'
+            })
+            .when('/usergroups/new', {
+                templateUrl: 'public/Templates/userGroupCreate.html',
+                controller: 'UserGroupController'
+            })
+            .when('/usergroups/:id', {
+                templateUrl: 'public/Templates/userGroupUpdate.html',
+                controller: 'UserGroupController'
+            })
             .otherwise({
                 redirectTo: '/authorization/login'
             });

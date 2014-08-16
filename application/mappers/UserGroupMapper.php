@@ -60,7 +60,7 @@ class UserGroupMapper{
 
    private $deleteSQL = '
       DELETE FROM
-        user
+        user_groups
       WHERE
         id = :id
    ';
@@ -86,22 +86,18 @@ class UserGroupMapper{
 
 
    public function create(array $DBParameters){
-      $userGroup = $this->databaseConnection->runQuery($this->createSQL, $DBParameters);
+      unset($DBParameters['id']);
 
-      return array_shift($userGroup);
+      return $this->databaseConnection->runQuery($this->createSQL, $DBParameters);
    }
 
 
    public function update(array $DBParameters){
-      $userGroup = $this->databaseConnection->runQuery($this->updateSQL, $DBParameters);
-
-      return array_shift($userGroup);
+      return $this->databaseConnection->runQuery($this->updateSQL, $DBParameters);
    }
 
 
    public function delete($id){
-      $result = $this->databaseConnection->runQuery($this->deleteSQL, ['id' => $id]);
-
-      return $result;
+      return $this->databaseConnection->runQuery($this->deleteSQL, ['id' => $id]);
    }
 }
