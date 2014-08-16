@@ -8,10 +8,11 @@
 namespace Rentatool\Application\Controllers;
 
 
-use Rentatool\Application\ENFramework\Helpers\Notifier;
+use Rentatool\Application\ENFramework\Factories\DatabaseConnectionFactory;
 use Rentatool\Application\ENFramework\Helpers\Response;
 use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
 use Rentatool\Application\ENFramework\Models\DatabaseConnection;
+use Rentatool\Application\ENFramework\Models\Request;
 use Rentatool\Application\Mappers\RentalObjectMapper;
 use Rentatool\Application\Mappers\UserGroupMapper;
 use Rentatool\Application\Mappers\UserMapper;
@@ -22,10 +23,17 @@ class DatabaseController{
    /**
     * @var \Rentatool\Application\Services\DatabaseService
     */
+   private $request;
    private $databaseService;
    private $response;
 
-   public function __construct(DatabaseService $databaseService, ResponseFactory $responseFactory){
+   /**
+    * @param Request $request
+    * @param DatabaseService $databaseService
+    * @param ResponseFactory $responseFactory
+    */
+   public function __construct(Request $request,DatabaseService $databaseService, ResponseFactory $responseFactory){
+      $this->request = $request;
       $this->databaseService = $databaseService;
       $this->response        = $responseFactory->createResponse();
    }
@@ -44,7 +52,8 @@ class DatabaseController{
    public function createWithSeeds(){
       $this->databaseService->create();
 
-      $databaseConnection = new DatabaseConnection();
+      $databaseConnectionFactory = new DatabaseConnectionFactory();
+      $databaseConnection = new DatabaseConnection($databaseConnectionFactory);
       $rentalObjectMapper = new RentalObjectMapper($databaseConnection);
       $userMapper         = new UserMapper($databaseConnection);
       $userGroupMapper    = new UserGroupMapper($databaseConnection);

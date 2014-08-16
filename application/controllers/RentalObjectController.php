@@ -13,16 +13,20 @@ use Rentatool\Application\ENFramework\Helpers\Notifier;
 use Rentatool\Application\ENFramework\Helpers\Response;
 use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
 use Rentatool\Application\ENFramework\Helpers\SessionManager;
+use Rentatool\Application\ENFramework\Models\Request;
+use Rentatool\Application\Filters\RentalObjectFilter;
 use Rentatool\Application\Services\rentalObjectService;
 
 class RentalObjectController{
    /**
     * @var \Rentatool\Application\Services\RentalObjectService
     */
+   private $request;
    private $rentalObjectService;
    private $response;
 
-   public function __construct(RentalObjectService $rentalObjectService, ResponseFactory $responseFactory){
+   public function __construct(Request $request, RentalObjectService $rentalObjectService, ResponseFactory $responseFactory){
+      $this->request             = $request;
       $this->rentalObjectService = $rentalObjectService;
       $this->response            = $responseFactory->createResponse();
    }
@@ -31,7 +35,9 @@ class RentalObjectController{
     * @return Response
     */
    public function index(){
-      $rentalObjectCollection = $this->rentalObjectService->index();
+      $GETParameters = $this->request->getGETParameters();
+      $rentalObjectFilter = new RentalObjectFilter($GETParameters);
+      $rentalObjectCollection = $this->rentalObjectService->index($rentalObjectFilter);
       $this->response->setResponseData($rentalObjectCollection);
 
       return $this->response;

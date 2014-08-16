@@ -8,12 +8,16 @@
 namespace Rentatool\Application\ENFramework\Helpers\DependencyInjection;
 
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Rentatool\Application\ENFramework\Models\Request;
 
 class DependencyInjection{
    private $dependencyInjectionXML;
 
-   public function __construct(\SimpleXMLElement $dependencyInjectionXML){
+   private $request;
+
+   public function __construct(\SimpleXMLElement $dependencyInjectionXML, Request $request){
       $this->dependencyInjectionXML = $dependencyInjectionXML;
+      $this->request = $request;
    }
 
    public function getInstantiatedClass($className){
@@ -26,13 +30,18 @@ class DependencyInjection{
     * @return null|object
     */
    private function getClassFromXML(array $attributes){
-      $matchingXMLElement = $this->getMatchingXMLElement($attributes);
 
-      if ($matchingXMLElement){
-         $result = $this->createClassInstanceFromXML($matchingXMLElement);
+      if(array_key_exists('class', $attributes) && $attributes['class'] === 'Request'){
+         $result = $this->request;
+      }else{
+         $matchingXMLElement = $this->getMatchingXMLElement($attributes);
 
-      } else{
-         $result = null;
+         if ($matchingXMLElement){
+            $result = $this->createClassInstanceFromXML($matchingXMLElement);
+
+         } else{
+            $result = null;
+         }
       }
 
       return $result;

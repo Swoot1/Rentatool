@@ -10,6 +10,7 @@
 namespace Rentatool\Application\Mappers;
 
 use Rentatool\Application\ENFramework\Models\IDatabaseConnection;
+use Rentatool\Application\Filters\RentalObjectFilter;
 
 class RentalObjectMapper
 {
@@ -78,9 +79,10 @@ class RentalObjectMapper
         $this->databaseConnection = $databaseConnection;
     }
 
-    public function index()
+    public function index(RentalObjectFilter $rentalObjectFilter)
     {
-        $rentalObjects = $this->databaseConnection->runQuery($this->indexSQL, array());
+        $query = $rentalObjectFilter->getFilterQuery($this->indexSQL);
+        $rentalObjects = $this->databaseConnection->runQuery($query, $rentalObjectFilter->getDBParameters());
         return $rentalObjects;
     }
 

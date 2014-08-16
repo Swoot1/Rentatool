@@ -58,7 +58,7 @@ class Routing {
     * @return null|object
     */
    private function getController(Route $route) {
-      $dependencyInjectionContainer = new DependencyInjection($this->dependencyInjector);
+      $dependencyInjectionContainer = new DependencyInjection($this->dependencyInjector, $this->request);
 
       return $dependencyInjectionContainer->getInstantiatedClass($route->getController());
    }

@@ -12,14 +12,18 @@ namespace Rentatool\Application\Controllers;
 
 use Rentatool\Application\ENFramework\Helpers\Notifier;
 use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
+use Rentatool\Application\ENFramework\Models\Request;
 use Rentatool\Application\Services\UserGroupService;
 
 class UserGroupController{
 
+   private $request;
    private $userGroupService;
+   private $response;
 
 
-   public function __construct(UserGroupService $userGroupService, ResponseFactory $responseFactory){
+   public function __construct(Request $request, UserGroupService $userGroupService, ResponseFactory $responseFactory){
+      $this->request          = $request;
       $this->userGroupService = $userGroupService;
       $this->response         = $responseFactory->createResponse();
    }

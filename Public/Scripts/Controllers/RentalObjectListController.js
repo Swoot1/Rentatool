@@ -3,6 +3,11 @@
  */
 rentaTool.controller('RentalObjectListController', ['$scope', '$location', 'RentalObject', function ($scope, $location, RentalObject) {
    $scope.rentalObjectCollection = RentalObject.query();
+   $scope.rentalObjectFilter = {};
+
+   $scope.searchRentalObject = function (rentalObjectFilter) {
+      $scope.rentalObjectCollection = RentalObject.query({'query': rentalObjectFilter.query});
+   };
 
    $scope.navigateToCreateNewRentalObject = function () {
       $location.path('/rentalobjects/new');
