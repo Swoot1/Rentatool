@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="large-12 columns">
+        <p>{{rentalObject.name}}</p>
+
+        <form ng-submit="createRentPeriod()">
+            <input type="text" ng-model="rentPeriod.fromDate" placeholder="Från datum"/>
+            <input type="text" ng-model="rentPeriod.toDate" placeholder="Till datum"/>
+            <button type="submit" class="success tiny">
+                Hyr
+            </button>
+            <button type="button" class="tiny" ng-click="returnToRentalObjectList()">Avbryt</button>
+        </form>
+    </div>
+</div>

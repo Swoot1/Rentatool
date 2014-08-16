@@ -46,6 +46,14 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Rentatool\Application\Controllers" class="RentPeriodController">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Rentatool\Application\Services" class="RentPeriodService"/>
+                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+            </dependencies>
+        </dependency>
+
         <!-- Services -->
         <dependency namespace="Rentatool\Application\Services" class="RentalObjectService">
             <dependencies>
@@ -63,6 +71,19 @@
         <dependency namespace="Rentatool\Application\Services" class="UserValidationService">
             <dependencies>
                 <dependency namespace="Rentatool\Application\Mappers" class="UserValidationMapper"/>
+            </dependencies>
+        </dependency>
+
+        <dependency namespace="Rentatool\Application\Services" class="RentPeriodService">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\Mappers" class="RentPeriodMapper"/>
+                <dependency namespace="Rentatool\Application\Services" class="RentPeriodValidationService"/>
+            </dependencies>
+        </dependency>
+
+        <dependency namespace="Rentatool\Application\Services" class="RentPeriodValidationService">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\Mappers" class="RentPeriodValidationMapper"/>
             </dependencies>
         </dependency>
 
@@ -98,6 +119,18 @@
         </dependency>
 
         <dependency namespace="Rentatool\Application\Mappers" class="UserValidationMapper">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+            </dependencies>
+        </dependency>
+
+        <dependency namespace="Rentatool\Application\Mappers" class="RentPeriodMapper">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+            </dependencies>
+        </dependency>
+
+        <dependency namespace="Rentatool\Application\Mappers" class="RentPeriodValidationMapper">
             <dependencies>
                 <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>

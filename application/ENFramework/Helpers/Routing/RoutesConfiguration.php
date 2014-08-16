@@ -59,6 +59,13 @@ $routes['databases'] = array(
    )
 );
 
+$routes['rentperiods'] = array(
+   'controllerName'          => 'RentPeriodController',
+   'requiresAuthorization'   => true,
+   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
+   'subRoutesCollection'     => new SubRouteCollection(array())
+);
+
 $routes['usergroups'] = array(
    'controllerName'          => 'UserGroupController',
    'requiresAuthorization'   => false,

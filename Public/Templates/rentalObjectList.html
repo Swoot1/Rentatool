@@ -16,6 +16,9 @@
         <ul ng-repeat="rentalObject in rentalObjectCollection">
             <li>
                 <p>{{rentalObject.name}} {{rentalObject.available}}
+                    <button type="button" ng-click="navigateToRentRentalObject(rentalObject)" class="success tiny">Hyr
+                        uthyrningsbjekt
+                    </button>
                     <button type="button" class="tiny" ng-click="editRentalObject(rentalObject)">Redigera
                         uthyrningsobjekt
                     </button>

@@ -13,6 +13,10 @@ rentaTool.controller('RentalObjectListController', ['$scope', '$location', 'Rent
       $location.path('/rentalobjects/new');
    };
 
+   $scope.navigateToRentRentalObject = function(rentalObject){
+      $location.path('/rentobjects/' + rentalObject.id);
+   };
+
    $scope.editRentalObject = function (rentalObject) {
       $location.path('/rentalobjects/' + rentalObject.id);
    };
