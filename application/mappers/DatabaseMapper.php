@@ -22,10 +22,10 @@ class DatabaseMapper{
 
    private $createTableSQL = "
       CREATE TABLE IF NOT EXISTS user(
-          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-          username VARCHAR(50) NOT NULL UNIQUE,
-          email VARCHAR(64) NOT NULL UNIQUE,
-          password VARCHAR(60) NOT NULL
+         id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+         username VARCHAR(50) NOT NULL UNIQUE,
+         email VARCHAR(64) NOT NULL UNIQUE,
+         password VARCHAR(60) NOT NULL
       );
 
       CREATE TABLE IF NOT EXISTS category(
@@ -35,26 +35,37 @@ class DatabaseMapper{
       );
 
       CREATE TABLE IF NOT EXISTS rental_object(
-        id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-        user_id INTEGER NOT NULL,
-        CONSTRAINT owner FOREIGN KEY (user_id) REFERENCES user(id),
-        name VARCHAR(30) NOT NULL,
-        available BOOLEAN DEFAULT true NOT NULL
+         id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+         user_id INTEGER NOT NULL,
+         CONSTRAINT owner FOREIGN KEY (user_id) REFERENCES user(id),
+         name VARCHAR(30) NOT NULL,
+         available BOOLEAN DEFAULT true NOT NULL
       );
 
       CREATE TABLE IF NOT EXISTS user_groups (
-        id  INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-        name VARCHAR(30) NOT NULL UNIQUE,
-        description varchar(200) NOT NULL
+         id  INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+         name VARCHAR(30) NOT NULL UNIQUE,
+         description varchar(200) NOT NULL
       );
 
       CREATE TABLE IF NOT EXISTS users_groups_maps (
-        id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-        user_id INTEGER NOT NULL,
-        group_id INTEGER NOT NULL,
-        CONSTRAINT user_group_maps_user_fk FOREIGN KEY (user_id) REFERENCES user(id),
-        CONSTRAINT user_group_maps_group_fk FOREIGN KEY (group_id) REFERENCES user_groups(id)
+         id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+         user_id INTEGER NOT NULL,
+         group_id INTEGER NOT NULL,
+         CONSTRAINT user_group_maps_user_fk FOREIGN KEY (user_id) REFERENCES user(id),
+         CONSTRAINT user_group_maps_group_fk FOREIGN KEY (group_id) REFERENCES user_groups(id)
       );
+
+      CREATE TABLE IF NOT EXISTS rent_period(
+         id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+         rental_object_id INTEGER NOT NULL,
+         CONSTRAINT rental_object FOREIGN KEY (rental_object_id) REFERENCES rental_object(id),
+         renter_id INTEGER NOT NULL,
+         CONSTRAINT renter FOREIGN KEY (renter_id) REFERENCES user(id),
+         from_date DATETIME NOT NULL,
+         to_date DATETIME NOT NULL
+      );
+
    ";
 
    public function __construct(DatabaseConnection $databaseConnection){
