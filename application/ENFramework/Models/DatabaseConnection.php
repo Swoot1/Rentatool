@@ -9,7 +9,7 @@
 
 namespace Rentatool\Application\ENFramework\Models;
 
-use Rentatool\Application\ENFramework\Helpers\DatabaseConfiguration;
+use Rentatool\Application\ENFramework\Factories\IDatabaseConnectionFactory;
 
 /**
  * Class DatabaseConnection
@@ -21,14 +21,8 @@ class DatabaseConnection implements IDatabaseConnection{
     */
    private $databaseConnection;
 
-   public function __construct(){
-      $databaseConnection       = new \PDO(sprintf('mysql:host=%s;dbname=%s', // TODO this should be dependency injected.
-                                                   DatabaseConfiguration::$host,
-                                                   DatabaseConfiguration::$databaseName),
-                                           DatabaseConfiguration::$username,
-                                           DatabaseConfiguration::$password,
-                                           DatabaseConfiguration::getPDOOptions());
-      $this->databaseConnection = $databaseConnection;
+   public function __construct(IDatabaseConnectionFactory $databaseConnectionFactory){
+      $this->databaseConnection = $databaseConnectionFactory->getDatabaseConnection();
    }
 
    /**
