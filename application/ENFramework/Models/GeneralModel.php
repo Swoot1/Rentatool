@@ -42,7 +42,7 @@ abstract class GeneralModel implements IToArray, IGetDBParameters{
       $this->_defaultValues = $defaultValues;
    }
 
-   private function setData(array $data){
+   protected function setData(array $data){
       foreach ($data as $propertyName => $value){
          $this->_validation->validate($propertyName, $value);
          $this->$propertyName = $value;

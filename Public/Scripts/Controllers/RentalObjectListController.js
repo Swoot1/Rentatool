@@ -6,14 +6,24 @@ rentaTool.controller('RentalObjectListController', ['$scope', '$location', 'Rent
    $scope.rentalObjectFilter = {};
 
    $scope.searchRentalObject = function (rentalObjectFilter) {
-      $scope.rentalObjectCollection = RentalObject.query({'query': rentalObjectFilter.query});
+
+      var GETParams = {};
+
+      for(var i in rentalObjectFilter){
+         if(rentalObjectFilter.hasOwnProperty(i) && rentalObjectFilter[i]){
+            GETParams[i] = rentalObjectFilter[i];
+         }
+      }
+
+      $scope.rentalObjectCollection = RentalObject.query(
+         GETParams);
    };
 
    $scope.navigateToCreateNewRentalObject = function () {
       $location.path('/rentalobjects/new');
    };
 
-   $scope.navigateToRentRentalObject = function(rentalObject){
+   $scope.navigateToRentRentalObject = function (rentalObject) {
       $location.path('/rentobjects/' + rentalObject.id);
    };
 
@@ -24,6 +34,7 @@ rentaTool.controller('RentalObjectListController', ['$scope', '$location', 'Rent
    $scope.deleteRentalObject = function (rentalObject) {
       var indexOfRentalObject;
       var rentalObjectResource = new RentalObject(rentalObject);
+
       rentalObjectResource.$delete({id: rentalObjectResource.id},
          function () {
             indexOfRentalObject = $scope.rentalObjectCollection.indexOf(rentalObject);
