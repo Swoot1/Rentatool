@@ -10,12 +10,19 @@ namespace Rentatool\Application\Filters;
 
 
 use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
+use Rentatool\Application\ENFramework\Helpers\Validation\DateTimeValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\TextValidation;
 use Rentatool\Application\ENFramework\Models\GeneralModel;
 
 class RentalObjectFilter extends GeneralModel{
-   protected $query;
+   protected $query = null;
+   protected $fromDate = null;
+   protected $toDate = null;
 
+   /**
+    * @param array $data
+    * @return $this
+    */
    protected function setData(array $data){
       foreach ($data as $propertyName => $value){
          if (property_exists($this, $propertyName)){
@@ -33,11 +40,27 @@ class RentalObjectFilter extends GeneralModel{
     */
    public function getFilterQuery($query){
 
-      if ($this->query){
-         $query .= ' WHERE name = :query';
+      $filters = array_merge($this->getDateStringFilters(), $this->getQueryFilters());
+
+      if(count($filters) > 0){
+         $filterString = implode(' AND ', $filters);
+         $query .= sprintf('%s%s', ' WHERE ', $filterString);
       }
 
       return $query;
+   }
+
+   /**
+    * @return array
+    */
+   private function getQueryFilters(){
+      $result = array();
+
+      if ($this->query){
+         $result[] = 'name = :query';
+      }
+
+      return $result;
    }
 
    /**
@@ -46,15 +69,117 @@ class RentalObjectFilter extends GeneralModel{
    public function setupValidation(){
       $this->_validation = new ValueValidationCollection(
          array(
-            new TextValidation(array(
-                                  'genericName'  => 'Söksträng',
-                                  'propertyName' => 'query',
-                                  'minLength' => 0
-                               )
+            new TextValidation(
+               array(
+                  'genericName'  => 'Söksträng',
+                  'propertyName' => 'query',
+                  'minLength'    => 0
+               )
+            ),
+            new DateTimeValidation(
+               array(
+                  'genericName'  => 'Från datum',
+                  'propertyName' => 'fromDate'
+               )
+            ),
+            new DateTimeValidation(
+               array(
+                  'genericName'  => 'Till datum',
+                  'propertyName' => 'toDate'
+               )
             )
          )
       );
 
       return $this;
+   }
+
+   private function getDateStringFilters(){
+
+      $filters = $this->getFromDateFilters();
+      $filters = array_merge($filters, $this->getToDateFilters());
+      $filters = array_merge($filters, $this->getFromAndToDateFilters());
+      $result = array();
+
+      if(count($filters) > 0){
+         $result[] = sprintf('NOT EXISTS(
+                  SELECT id
+                   FROM
+                     rent_period
+                  WHERE
+                        rental_object.id = rent_period.rental_object_id
+                     AND
+                     (
+
+                        %s
+
+                     )
+                 )', implode(' OR ', $filters));
+      }
+
+      return $result;
+
+   }
+
+   /**
+    * @return array
+    */
+   private function getFromDateFilters(){
+      $result = array();
+
+      if ($this->fromDate){
+         $result[] = '(
+                           :fromDate >= rent_period.from_date
+                        AND
+                           :fromDate <= rent_period.to_date
+                     )';
+      }
+
+      return $result;
+   }
+
+   /**
+    * @return array
+    */
+   private function getToDateFilters(){
+      $result = array();
+
+      if($this->toDate){
+         $result[] = '(
+                           :toDate <= rent_period.to_date
+                        AND
+                           :toDate >= rent_period.from_date
+                     )';
+      }
+
+      return $result;
+   }
+
+   /**
+    * @return array
+    */
+   private function getFromAndToDateFilters(){
+      $result = array();
+
+      if($this->fromDate && $this->toDate){
+         $result[] = '(
+                           :fromDate <= rent_period.to_date
+                        AND
+                           :toDate >= rent_period.from_date
+                     )';
+      }
+
+      return $result;
+   }
+
+   /**
+    * Returns the filters with a value.
+    * @return array
+    */
+   public function getFilterParams(){
+      $DBParams = $this->getDBParameters();
+      return array_filter($DBParams, function($value){
+         return $value != null;
+      });
    }
 } 

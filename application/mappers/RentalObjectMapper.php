@@ -12,23 +12,21 @@ namespace Rentatool\Application\Mappers;
 use Rentatool\Application\ENFramework\Models\IDatabaseConnection;
 use Rentatool\Application\Filters\RentalObjectFilter;
 
-class RentalObjectMapper
-{
-    /**
-     * @var \Rentatool\Application\ENFramework\Models\IDatabaseConnection
-     */
-    private $databaseConnection;
+class RentalObjectMapper{
+   /**
+    * @var \Rentatool\Application\ENFramework\Models\IDatabaseConnection
+    */
+   private $databaseConnection;
 
-    private $indexSQL = '
-    SELECT
-       id,
-       user_id AS userId,
-       name,
-       available
-    FROM
-      rental_object';
+   private $indexSQL = '
+              SELECT
+                  rental_object.id,
+                  user_id,
+                  name,
+                  available
+               FROM rental_object';
 
-    private $createSQL = '
+   private $createSQL = '
        INSERT INTO
         rental_object
           (
@@ -44,7 +42,7 @@ class RentalObjectMapper
         )
     ';
 
-    private $readSQL = '
+   private $readSQL = '
     SELECT
        id,
        user_id AS "userId",
@@ -55,7 +53,7 @@ class RentalObjectMapper
     WHERE
       id = :id';
 
-    private $updateSQL = '
+   private $updateSQL = '
        UPDATE
            rental_object
         SET
@@ -66,7 +64,7 @@ class RentalObjectMapper
           id = :id
     ';
 
-    private $deleteSQL = '
+   private $deleteSQL = '
         DELETE
           FROM
             rental_object
@@ -75,40 +73,39 @@ class RentalObjectMapper
 
     ';
 
-    public function __construct(IDatabaseConnection $databaseConnection){
-        $this->databaseConnection = $databaseConnection;
-    }
+   public function __construct(IDatabaseConnection $databaseConnection){
+      $this->databaseConnection = $databaseConnection;
+   }
 
-    public function index(RentalObjectFilter $rentalObjectFilter)
-    {
-        $query = $rentalObjectFilter->getFilterQuery($this->indexSQL);
-        $rentalObjects = $this->databaseConnection->runQuery($query, $rentalObjectFilter->getDBParameters());
-        return $rentalObjects;
-    }
+   public function index(RentalObjectFilter $rentalObjectFilter){
+      $query         = $rentalObjectFilter->getFilterQuery($this->indexSQL);
+      $rentalObjects = $this->databaseConnection->runQuery($query, $rentalObjectFilter->getFilterParams());
 
-    public function create(array $DBParameters)
-    {
-        unset($DBParameters['id']);
-        $query = $this->createSQL;
-        return $this->databaseConnection->runQuery($query, $DBParameters);
-    }
+      return $rentalObjects;
+   }
 
-    public function update(array $DBParameters)
-    {
-        $query = $this->updateSQL;
-        return $this->databaseConnection->runQuery($query, $DBParameters);
-    }
+   public function create(array $DBParameters){
+      unset($DBParameters['id']);
+      $query = $this->createSQL;
 
-    public function read($id)
-    {
-        $result = $this->databaseConnection->runQuery($this->readSQL, array('id' => $id));
+      return $this->databaseConnection->runQuery($query, $DBParameters);
+   }
 
-        return array_shift($result);
-    }
+   public function update(array $DBParameters){
+      $query = $this->updateSQL;
 
-    public function delete($id)
-    {
-        $query = $this->deleteSQL;
-        return $this->databaseConnection->runQuery($query, array('id' => $id));
-    }
+      return $this->databaseConnection->runQuery($query, $DBParameters);
+   }
+
+   public function read($id){
+      $result = $this->databaseConnection->runQuery($this->readSQL, array('id' => $id));
+
+      return array_shift($result);
+   }
+
+   public function delete($id){
+      $query = $this->deleteSQL;
+
+      return $this->databaseConnection->runQuery($query, array('id' => $id));
+   }
 }
