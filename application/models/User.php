@@ -9,6 +9,7 @@
 namespace Rentatool\Application\Models;
 
 use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
+use Rentatool\Application\Collections\UserGroupCollection;
 use Rentatool\Application\ENFramework\Helpers\Validation\AlphaNumericValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\EmailValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
@@ -21,6 +22,14 @@ class User extends GeneralModel{
    protected $username;
    protected $email;
    protected $password;
+   protected $groups;
+
+   public function __construct(array $data) {
+      parent::__construct($data);
+      $this->setNoDBProperties(array(
+                                    'groups'
+                               ));
+   }
 
    protected function setUpValidation(){
       $this->setValidation(new ValueValidationCollection(array(
@@ -71,5 +80,12 @@ class User extends GeneralModel{
     */
    public function getUsername(){
       return $this->username;
+   }
+
+   /**
+    * @param UserGroupCollection $userGroups
+    */
+   public function setGroups(UserGroupCollection $userGroups) {
+      $this->groups = $userGroups;
    }
 } 

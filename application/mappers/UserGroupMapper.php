@@ -65,6 +65,20 @@ class UserGroupMapper{
         id = :id
    ';
 
+   private $getGroupMembershipsSQL = '
+      SELECT
+         user.id,
+         user.username
+      FROM
+         user
+      LEFT JOIN
+         users_groups_maps map
+      ON
+         map.user_id = user.id
+      WHERE
+         map.group_id = :id
+   ';
+
 
    public function __construct(IDatabaseConnection $databaseConnection){
       $this->databaseConnection = $databaseConnection;
