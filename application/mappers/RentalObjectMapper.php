@@ -86,26 +86,21 @@ class RentalObjectMapper{
 
    public function create(array $DBParameters){
       unset($DBParameters['id']);
-      $query = $this->createSQL;
-
-      return $this->databaseConnection->runQuery($query, $DBParameters);
+      $result = $this->databaseConnection->runQuery($this->createSQL, $DBParameters);
+      return $this->read($result['lastInsertedId']);
    }
 
    public function update(array $DBParameters){
-      $query = $this->updateSQL;
-
-      return $this->databaseConnection->runQuery($query, $DBParameters);
+      $result = $this->databaseConnection->runQuery($this->updateSQL, $DBParameters);
+      return $this->read($result['lastInsertedId']);
    }
 
    public function read($id){
       $result = $this->databaseConnection->runQuery($this->readSQL, array('id' => $id));
-
       return array_shift($result);
    }
 
    public function delete($id){
-      $query = $this->deleteSQL;
-
-      return $this->databaseConnection->runQuery($query, array('id' => $id));
+      return $this->databaseConnection->runQuery($this->deleteSQL, array('id' => $id));
    }
 }

@@ -13,7 +13,7 @@ use Rentatool\Application\ENFramework\Helpers\DatabaseConfiguration;
 class DatabaseConnectionFactory implements IDatabaseConnectionFactory{
 
    public function getDatabaseConnection(){
-      return new \PDO(sprintf('mysql:host=%s;dbname=%s',
+      return new \PDO(sprintf('mysql:host=%s;dbname=%s;charset=utf8',
                               DatabaseConfiguration::$host,
                               DatabaseConfiguration::$databaseName),
                       DatabaseConfiguration::$username,

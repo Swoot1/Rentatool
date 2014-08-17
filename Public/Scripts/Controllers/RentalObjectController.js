@@ -2,7 +2,7 @@
  * Created by Elin on 2014-04-18.
  */
 
-rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'RentalObject', '$location', function ($scope, $routeParams, RentalObject, $location) {
+rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'RentalObject', '$location', 'TimeUnit', function ($scope, $routeParams, RentalObject, $location, TimeUnit) {
 
    if ($routeParams.id) {
       $scope.rentalObject = RentalObject.get({id: $routeParams.id});
@@ -10,6 +10,8 @@ rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'Renta
       $scope.rentalObject = new RentalObject({});
       $scope.rentalObject.available = true;
    }
+
+   $scope.timeUnitCollection = TimeUnit.query();
 
    $scope.createRentalObject = function () {
       $scope.rentalObject.$save({}, function (data) {

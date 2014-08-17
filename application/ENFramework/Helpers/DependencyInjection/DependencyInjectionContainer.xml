@@ -54,6 +54,14 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Rentatool\Application\Controllers" class="TimeUnitController">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Rentatool\Application\Services" class="TimeUnitService"/>
+                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+            </dependencies>
+        </dependency>
+
         <!-- Services -->
         <dependency namespace="Rentatool\Application\Services" class="RentalObjectService">
             <dependencies>
@@ -105,6 +113,12 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Rentatool\Application\Services" class="TimeUnitService">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\Mappers" class="TimeUnitMapper"/>
+            </dependencies>
+        </dependency>
+
         <!-- Mappers -->
         <dependency namespace="Rentatool\Application\Mappers" class="RentalObjectMapper">
             <dependencies>
@@ -143,6 +157,12 @@
         </dependency>
 
         <dependency namespace="Rentatool\Application\Mappers" class="UserGroupMapper">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+            </dependencies>
+        </dependency>
+
+        <dependency namespace="Rentatool\Application\Mappers" class="TimeUnitMapper">
             <dependencies>
                 <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>

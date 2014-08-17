@@ -20,6 +20,7 @@ class RentalObject extends GeneralModel {
    protected $userId;
    protected $name;
    protected $available;
+   protected $pricePlanCollection;
 
    /**
     * Sets the type and length validation on all properties.

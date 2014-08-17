@@ -12,10 +12,14 @@
                 </small>
             </div>
             <input id="rentalObject" ng-model="rentalObject.name" type="text" ng-placeholder="Namn" ng-focus/>
-            <button type="button" ng-click="createRentalObject()" ng-disabled="rental_object_form.$invalid">
+            <input type="text" placeholder="Ange pris"/>
+            <select>
+                <option ng-repeat="timeUnit in timeUnitCollection" value="{{timeUnit.id}}">{{timeUnit.name}}</option>
+            </select>
+            <button type="button" class="tiny" ng-click="createRentalObject()" ng-disabled="rental_object_form.$invalid">
                 Spara uthyrningsobjekt
             </button>
-            <button type="button" ng-click="returnToRentalObjectList()">Avbryt</button>
+            <button type="button" class="tiny" ng-click="returnToRentalObjectList()">Avbryt</button>
         </div>
     </div>
 </form>

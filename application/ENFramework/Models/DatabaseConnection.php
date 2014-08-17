@@ -59,6 +59,8 @@ class DatabaseConnection implements IDatabaseConnection{
             $queryResult[] = $row;
             $i++;
          }
+      } else{
+         $queryResult['lastInsertId'] = (int)$this->databaseConnection->lastInsertId();
       }
 
       return $queryResult;

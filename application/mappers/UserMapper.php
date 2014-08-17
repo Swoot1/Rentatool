@@ -94,15 +94,14 @@ class UserMapper {
 
    public function create(array $DBParameters) {
       unset($DBParameters['id']);
-      $query = $this->createSQL;
+      $result = $this->databaseConnection->runQuery($this->createSQL, $DBParameters);
+      return $this->read($result['lastInsertId']);
 
-      return $this->databaseConnection->runQuery($query, $DBParameters);
    }
 
    public function update(array $DBParameters) {
-      $query = $this->updateSQL;
-
-      return $this->databaseConnection->runQuery($query, $DBParameters);
+      $result = $this->databaseConnection->runQuery($this->updateSQL, $DBParameters);
+      return $this->read($result['lastInsertId']);
    }
 
    public function read($id) {

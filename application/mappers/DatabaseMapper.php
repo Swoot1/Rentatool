@@ -66,6 +66,19 @@ class DatabaseMapper{
          to_date DATETIME NOT NULL
       );
 
+      CREATE TABLE IF NOT EXISTS time_unit(
+       id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+       name varchar(30) NOT NULL
+      );
+
+      CREATE TABLE IF NOT EXISTS price_plan(
+       id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+       rental_object_id INTEGER NOT NULL,
+       CONSTRAINT rental_object_id FOREIGN KEY (rental_object_id) REFERENCES rental_object(id),
+       time_unit_id INTEGER NOT NULL,
+       CONSTRAINT time_unit_id FOREIGN KEY (time_unit_id) REFERENCES time_unit(id),
+       price FLOAT NOT NULL
+      )
    ";
 
    public function __construct(DatabaseConnection $databaseConnection){
@@ -92,8 +105,10 @@ class DatabaseMapper{
     * @param UserMapper $userMapper
     * @param RentalObjectMapper $rentalObjectMapper
     * @param UserGroupMapper $userGroupMapper
+    * @param TimeUnitMapper $timeUnitMapper
     */
-   public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper, UserGroupMapper $userGroupMapper){
+   public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper, UserGroupMapper $userGroupMapper,
+                               TimeUnitMapper $timeUnitMapper){
       $users = array(
          array(
             'username' => 'andy',
@@ -161,6 +176,25 @@ class DatabaseMapper{
 
       foreach ($userGroups as $userGroup){
          $userGroupMapper->create($userGroup);
+      }
+
+      $timeUnits = array(
+         array(
+            'name' => 'timme',
+         ),
+         array(
+            'name' => 'dag'
+         ),
+         array(
+            'name' => 'kalendermånad'
+         ),
+         array(
+            'name' => 'år'
+         )
+      );
+
+      foreach ($timeUnits as $timeUnit){
+         $timeUnitMapper->create($timeUnit);
       }
    }
 } 
