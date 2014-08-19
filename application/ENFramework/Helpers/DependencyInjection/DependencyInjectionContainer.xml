@@ -73,6 +73,7 @@
             <dependencies>
                 <dependency namespace="Rentatool\Application\Mappers" class="UserMapper"/>
                 <dependency namespace="Rentatool\Application\Services" class="UserValidationService"/>
+                <dependency namespace="Rentatool\Application\Mappers" class="UserGroupConnectionMapper"/>
             </dependencies>
         </dependency>
 
@@ -110,6 +111,7 @@
         <dependency namespace="Rentatool\Application\Services" class="UserGroupService">
             <dependencies>
                 <dependency namespace="Rentatool\Application\Mappers" class="UserGroupMapper"/>
+                <dependency namespace="Rentatool\Application\Mappers" class="UserGroupConnectionMapper"/>
             </dependencies>
         </dependency>
 
