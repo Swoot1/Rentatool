@@ -7,6 +7,8 @@
 
 namespace Rentatool\Application\Controllers;
 
+
+use Rentatool\Application\ENFramework\Helpers\Response;
 use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
 use Rentatool\Application\ENFramework\Models\Request;
 use Rentatool\Application\Services\AuthorizationService;
