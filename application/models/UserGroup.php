@@ -14,12 +14,21 @@ use Rentatool\Application\ENFramework\Helpers\Validation\AlphaNumericValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\TextValidation;
 use Rentatool\Application\ENFramework\Models\GeneralModel;
+use Rentatool\Application\Collections\UserCollection;
 
 class UserGroup extends GeneralModel{
 
    protected $id;
    protected $name;
    protected $description;
+   protected $members;
+
+   public function __construct(array $data) {
+      parent::__construct($data);
+      $this->setNoDBProperties(array(
+                                    'members'
+                               ));
+   }
 
    protected function setUpValidation(){
       $this->setValidation(new ValueValidationCollection(array(
@@ -43,5 +52,9 @@ class UserGroup extends GeneralModel{
 
    public function getId(){
       return $this->id;
+   }
+
+   public function setMembers(UserCollection $members) {
+      $this->members = $members;
    }
 }

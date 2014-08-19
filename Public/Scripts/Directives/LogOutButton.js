@@ -5,6 +5,6 @@ rentaTool.directive('logoutbutton', [function () {
     return {
         restrict: 'A',
         replace: 'true',
-        template: '<button ng-click="attemptLogOut()">Logga ut mig</button>'
+        template: '<li ng-click="attemptLogOut()" class="active"><a href="#">Logga ut mig</a></li>'
     };
 }]);

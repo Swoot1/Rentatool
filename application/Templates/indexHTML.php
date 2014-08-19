@@ -14,22 +14,37 @@ echo '<!DOCTYPE html>
 </head>
 <body>
 <div id="content">
-    <div ng-controller="AuthorizationController">
+   <nav class="top-bar" data-topbar ng-controller="NavigationController">
+     <ul class="title-area">
+       <li class="name">
+         <h1><a href="#">Rentatool</a></h1>
+       </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+       <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+     </ul>
+
+     <section class="top-bar-section">
+       <!-- Right Nav Section -->
+       <ul class="right">
+        <div ng-controller="AuthorizationController">
         <span logoutbutton></span>
-    </div>
+        </div>
+       </ul>
+
+       <!-- Left Nav Section -->
+       <ul class="left">
+         <li ng-click="navigateToLogIn()"><a>Inloggningssida</a></li>
+         <li ng-click="navigateToUserList()"><a>Användare</a></li>
+         <li ng-click="navigateToUserGroupList()"><a>Användargrupper</a></li>
+         <li ng-click="navigateToRentalObjectList()"><a>Uthyrningsobjekt</a></li>
+         <li ng-click="navigateToCreateDatabase()"><a>Databasskapning</a></li>
+       </ul>
+     </section>
+   </nav>
     <div class="row">
        <div class="12-columns large">
          <span alertbox></span>
        </div>
-    </div>
-    <div ng-controller="NavigationController">
-        <ul>
-            <li ng-click="navigateToLogIn()">Inloggningssida</li>
-            <li ng-click="navigateToUserList()">Användare</li>
-            <li ng-click="navigateToUserGroupList()">Användargrupper</li>
-            <li ng-click="navigateToRentalObjectList()">Uthyrningsobjekt</li>
-            <li ng-click="navigateToCreateDatabase()">Databasskapning</li>
-        </ul>
     </div>
     <div ng-view>
     </div>

@@ -10,17 +10,21 @@ namespace Rentatool\Application\Services;
 
 
 use Rentatool\Application\Collections\UserCollection;
+use Rentatool\Application\Collections\UserGroupCollection;
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
 use Rentatool\Application\Mappers\UserMapper;
+use Rentatool\Application\Mappers\UserGroupConnectionMapper;
 use Rentatool\Application\Models\User;
 
 class UserService{
    private $userMapper;
    private $userValidationService;
+   private $userGroupConnectionMapper;
 
-   public function __construct(UserMapper $userMapper, UserValidationService $userValidationService){
-      $this->userMapper            = $userMapper;
-      $this->userValidationService = $userValidationService;
+   public function __construct(UserMapper $userMapper, UserValidationService $userValidationService, UserGroupConnectionMapper $userGroupConnectionMapper){
+      $this->userMapper                = $userMapper;
+      $this->userValidationService     = $userValidationService;
+      $this->userGroupConnectionMapper = $userGroupConnectionMapper;
    }
 
    /**
@@ -64,10 +68,17 @@ class UserService{
     * @return null|User
     */
    public function read($id){
+      $user       = null;
       $userMapper = $this->userMapper;
-      $userData   = $userMapper->read($id);
+      $result     = $userMapper->read($id);
 
-      return $userData ? new User($userData) : null;
+      if ($result){
+         $user           = new User($result);
+         $userGroupsData = $this->userGroupConnectionMapper->getUserGroups($id);
+         $user->setGroups(new UserGroupCollection($userGroupsData));
+      }
+
+      return $user;
    }
 
    /**

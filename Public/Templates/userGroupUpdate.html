@@ -9,7 +9,10 @@
             <label>Beskrivning</label>
             <input ng-model="userGroup.description" name="description" type="text"/>
 
-            <p>Behörigheter: </p>
+            <p>Medlemmar</p>
+            <ul ng-repeat="user in userGroup.members">
+                <li>{{ user.username }}</li>
+            </ul>
 
             <button type="submit">Spara grupp</button>
             <button type="button" ng-click="returnToUserGroupList()">Avbryt</button>

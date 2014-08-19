@@ -168,6 +168,12 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Rentatool\Application\Mappers" class="UserGroupConnectionMapper">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+            </dependencies>
+        </dependency>
+
         <!-- Others -->
         <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection">
             <dependencies>
