@@ -17,7 +17,7 @@ use Rentatool\Application\ENFramework\Helpers\Interfaces\IToArray;
  */
 class Response implements IResponse{
 
-   private $protocol;
+   private $protocol = '';
    private $statusCode = 200;
    private $contentType = 'application/json';
    private $charset = 'utf-8';

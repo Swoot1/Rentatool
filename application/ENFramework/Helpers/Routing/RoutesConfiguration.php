@@ -68,8 +68,23 @@ $routes['rentperiods'] = array(
 
 $routes['usergroups'] = array(
    'controllerName'          => 'UserGroupController',
-   'requiresAuthorization'   => false,
-   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET'))
+   'requiresAuthorization'   => true,
+   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
+   'subRoutesCollection'     => new SubRouteCollection(
+      array(
+           'addMember' => array(
+              'controllerName'          => 'UserGroupController',
+              'requiresAuthorization'   => true,
+              'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+              'subRoutesCollection'     => new SubRouteCollection(array())
+           ),
+           'removeMember' => array(
+              'controllerName'          => 'UserGroupController',
+              'requiresAuthorization'   => true,
+              'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+              'subRoutesCollection'     => new SubRouteCollection(array())
+           )
+      ))
 );
 
 return new RouteCollection($routes);

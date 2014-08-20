@@ -15,6 +15,7 @@ use Rentatool\Application\Mappers\UserGroupConnectionMapper;
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
 use Rentatool\Application\Models\UserGroup;
 use Rentatool\Application\Collections\UserCollection;
+use Rentatool\Application\Models\UserGroupConnection;
 
 class UserGroupService{
 
@@ -77,6 +78,16 @@ class UserGroupService{
       }
 
       $this->userGroupMapper->delete($id);
+   }
+
+
+   public function addMember(UserGroupConnection $userGroupConnection) {
+      $this->userGroupConnectionMapper->addUserToGroup($userGroupConnection->getDBParameters());
+   }
+
+
+   public function removeMember(UserGroupConnection $userGroupConnection) {
+      $this->userGroupConnectionMapper->removeUserFromGroup($userGroupConnection->getDBParameters());
    }
 
 }

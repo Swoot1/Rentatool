@@ -14,6 +14,7 @@ use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
 use Rentatool\Application\ENFramework\Models\DatabaseConnection;
 use Rentatool\Application\ENFramework\Models\Request;
 use Rentatool\Application\Mappers\RentalObjectMapper;
+use Rentatool\Application\Mappers\UserGroupConnectionMapper;
 use Rentatool\Application\Mappers\UserGroupMapper;
 use Rentatool\Application\Mappers\UserMapper;
 use Rentatool\Application\Services\DatabaseService;
@@ -32,8 +33,8 @@ class DatabaseController{
     * @param DatabaseService $databaseService
     * @param ResponseFactory $responseFactory
     */
-   public function __construct(Request $request,DatabaseService $databaseService, ResponseFactory $responseFactory){
-      $this->request = $request;
+   public function __construct(Request $request, DatabaseService $databaseService, ResponseFactory $responseFactory){
+      $this->request         = $request;
       $this->databaseService = $databaseService;
       $this->response        = $responseFactory->createResponse();
    }
@@ -53,11 +54,12 @@ class DatabaseController{
       $this->databaseService->create();
 
       $databaseConnectionFactory = new DatabaseConnectionFactory();
-      $databaseConnection = new DatabaseConnection($databaseConnectionFactory);
-      $rentalObjectMapper = new RentalObjectMapper($databaseConnection);
-      $userMapper         = new UserMapper($databaseConnection);
-      $userGroupMapper    = new UserGroupMapper($databaseConnection);
-      $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper, $userGroupMapper);
+      $databaseConnection        = new DatabaseConnection($databaseConnectionFactory);
+      $rentalObjectMapper        = new RentalObjectMapper($databaseConnection);
+      $userMapper                = new UserMapper($databaseConnection);
+      $userGroupMapper           = new UserGroupMapper($databaseConnection);
+      $userGroupConnectionMapper = new UserGroupConnectionMapper($databaseConnection);
+      $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper, $userGroupMapper, $userGroupConnectionMapper);
       $this->response->addNotifier(['message' => 'Databas med demodata har skapats.']);
 
       return $this->response;

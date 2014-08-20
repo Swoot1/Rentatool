@@ -42,6 +42,7 @@
             <dependencies>
                 <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
                 <dependency namespace="Rentatool\Application\Services" class="UserGroupService"/>
+                <dependency namespace="Rentatool\Application\Services" class="UserService"/>
                 <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>

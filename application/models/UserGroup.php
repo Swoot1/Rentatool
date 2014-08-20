@@ -50,6 +50,10 @@ class UserGroup extends GeneralModel{
 
    }
 
+   public function getName() {
+      return $this->name;
+   }
+
    public function getId(){
       return $this->id;
    }

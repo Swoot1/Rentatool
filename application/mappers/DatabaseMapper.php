@@ -9,6 +9,7 @@ namespace Rentatool\Application\Mappers;
 
 
 use Rentatool\Application\ENFramework\Models\DatabaseConnection;
+use Rentatool\Application\Models\UserGroupConnection;
 
 class DatabaseMapper{
 
@@ -92,8 +93,9 @@ class DatabaseMapper{
     * @param UserMapper $userMapper
     * @param RentalObjectMapper $rentalObjectMapper
     * @param UserGroupMapper $userGroupMapper
+    * @param UserGroupConnectionMapper $userGroupConnectionMapper
     */
-   public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper, UserGroupMapper $userGroupMapper){
+   public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper, UserGroupMapper $userGroupMapper, UserGroupConnectionMapper $userGroupConnectionMapper){
       $users = array(
          array(
             'username' => 'andy',
@@ -161,6 +163,15 @@ class DatabaseMapper{
 
       foreach ($userGroups as $userGroup){
          $userGroupMapper->create($userGroup);
+      }
+
+      $userGroupConnections = array(
+         new UserGroupConnection(array('userId' => 1, 'groupId' => 1)),
+         new UserGroupConnection(array('userId' => 2, 'groupId' => 1))
+      );
+
+      foreach ($userGroupConnections as $userGroupConnection) {
+         $userGroupConnectionMapper->addUserToGroup($userGroupConnection->getDBParameters());
       }
    }
 } 

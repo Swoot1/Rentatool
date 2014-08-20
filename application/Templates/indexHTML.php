@@ -9,6 +9,7 @@ echo '<!DOCTYPE html>
     <meta charset="utf-8"/>
     <link href="Public/css/normalize.css" type="text/css" rel="stylesheet"/>
     <link href="Public/css/Foundation/css/foundation.css" type="text/css" rel="stylesheet"/>
+    <link href="Public/css/Foundation/css/foundation.multiselect.css" type="text/css" rel="stylesheet"/>
     <link href="Public/test.css" type="text/css" rel="stylesheet"/>
     <base href="/rentatool/" />
 </head>
@@ -79,5 +80,6 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Directives/LogOutButton.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RequestErrorInterceptorFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RequestSuccessInterceptorFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/UserGroupConnectionFactory.js"></script>
 </body>
 </html>';

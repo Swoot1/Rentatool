@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="large-12 columns">
-        <h2 ng-model="user">Uppdatera användare {{username}}</h2>
+    <h2 ng-model="user">Uppdatera användare {{username}}</h2>
 
-        <form name="user_form" ng-submit="updateUser()">
+    <form name="user_form" ng-submit="updateUser()">
+        <div class="large-6 columns">
             <label for="username">Namn</label>
             <input ng-model="user.username" name="username" type="text"/>
 
@@ -13,6 +13,22 @@
             <input ng-model="user.password" name="password" type="password"/>
             <button type="submit">Spara ändringar</button>
             <button type="button" ng-click="returnToUserList()">Avbryt</button>
-        </form>
-    </div>
+        </div>
+        <div class="large-6 columns">
+            <label>Grupper</label>
+            <ul ng-repeat="group in user.groups">
+                <li>
+                    <p>
+                        {{ group.name }}
+                        <button type="button" class="tiny alert" ng-click="removeUserFromGroup(group)">Ta bort</button>
+                    </p>
+                </li>
+            </ul>
+
+            <div class="large-5">
+                <select ng-model="userGroupConnection.groupId" ng-options="group.id as group.name for group in userGroupCollection"></select>
+                <button type="button" ng-click="addUserToGroup()">Lägg till</button>
+            </div>
+        </div>
+    </form>
 </div>

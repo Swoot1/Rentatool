@@ -51,7 +51,7 @@ class UserGroupConnectionMapper{
       )
       VALUES
       (
-         :groupId
+         :groupId,
          :userId
       )
    ';
@@ -78,8 +78,22 @@ class UserGroupConnectionMapper{
    }
 
 
-   public function getUserGroups($userId) {
+   public function getUserGroups($userId){
       $result = $this->databaseConnection->runQuery($this->getUserGroupsSQL, ['id' => $userId]);
+
+      return $result;
+   }
+
+
+   public function addUserToGroup(array $userGroupConnection){
+      $result = $this->databaseConnection->runQuery($this->addGroupMembershipQuery, $userGroupConnection);
+
+      return $result;
+   }
+
+
+   public function removeUserFromGroup(array $userGroupConnection){
+      $result = $this->databaseConnection->runQuery($this->removeGroupMembershipQuery, $userGroupConnection);
 
       return $result;
    }
