@@ -31,6 +31,18 @@ class PricePlanMapper {
 
    ';
 
+   private $readCollectionFromRentalObjectIdSQL = '
+      SELECT
+         id,
+         rental_object_id AS "rentalObjectId",
+         time_unit_id AS "timeUnitId",
+         price
+      FROM
+        price_plan
+      WHERE
+         rental_object_id = :rentalObjectId
+   ';
+
    public function __construct(IDatabaseConnection $databaseConnection){
       $this->databaseConnection = $databaseConnection;
    }
@@ -38,5 +50,10 @@ class PricePlanMapper {
    public function create(array $data){
       unset($data['id']);
       return $this->databaseConnection->runQuery($this->createSQL, $data);
+   }
+
+   public function readCollectionFromRentalObjectId($rentalObjectId){
+      return $this->databaseConnection->runQuery($this->readCollectionFromRentalObjectIdSQL,
+                                          array('rentalObjectId' => $rentalObjectId));
    }
 } 

@@ -20,9 +20,11 @@ class RentalObjectService{
     * @var \Rentatool\Application\Mappers\RentalObjectMapper
     */
    private $rentalObjectMapper;
+   private $pricePlanService;
 
-   public function __construct(RentalObjectMapper $rentalObjectMapper){
+   public function __construct(RentalObjectMapper $rentalObjectMapper, PricePlanService $pricePlanService){
       $this->rentalObjectMapper = $rentalObjectMapper;
+      $this->pricePlanService = $pricePlanService;
    }
 
    public function index(RentalObjectFilter $rentalObjectFilter){
@@ -32,15 +34,22 @@ class RentalObjectService{
    }
 
    public function create(array $data, User $currentUser){
-      $rentalObjectModel = new RentalObject(array_merge(array('userId' => $currentUser->getId()), $data));
-      $DBParameters      = $rentalObjectModel->getDBParameters();
-      $rentalObjectData  = $this->rentalObjectMapper->create($DBParameters);
+      $rentalObject = new RentalObject(array_merge(array('userId' => $currentUser->getId()), $data));
+      $DBParameters      = $rentalObject->getDBParameters();
 
-      return new RentalObject($rentalObjectData);
+      $pricePlanCollection = $rentalObject->getPricePlanCollection();
+      unset($DBParameters['pricePlanCollection']);
+      $rentalObjectData  = $this->rentalObjectMapper->create($DBParameters);
+      $rentalObject = new RentalObject($rentalObjectData);
+
+      $this->pricePlanService->createFromCollection($pricePlanCollection, $rentalObject->getId());
+
+      return $rentalObject;
    }
 
    public function read($id){
       $rentalObjectData = $this->rentalObjectMapper->read($id);
+      $rentalObjectData['pricePlanCollection'] = $this->pricePlanService->readCollectionFromRentalObjectId($id);;
       return $rentalObjectData ? new RentalObject($rentalObjectData) : null;
    }
 

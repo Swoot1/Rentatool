@@ -94,7 +94,8 @@ class DatabaseConnection implements IDatabaseConnection{
       $typeMap    = array(
          'LONG'       => 'int',
          'TINY'       => 'bool',
-         'VAR_STRING' => 'string'
+         'VAR_STRING' => 'string',
+         'FLOAT'      => 'float'
       );
 
       return array_key_exists($nativeType, $typeMap) ? $typeMap[$nativeType] : 'string';

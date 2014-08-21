@@ -11,18 +11,16 @@ namespace Rentatool\Tests\ENFrameworkTests\ModelTests;
 use Rentatool\Application\Collections\RequestMethodCollection;
 use Rentatool\Application\ENFramework\Models\Request;
 
-class RequestTest extends \PHPUnit_Framework_TestCase {
+class RequestTest extends \PHPUnit_Framework_TestCase{
 
-   public function testGetResource() {
-//      $requestMethodCollection = new RequestMethodCollection();
-//      $request                 = new Request(array(
-//                                                'REQUEST_URI'    => '/authorization/login',
-//                                                'REQUEST_METHOD' => 'POST'
-//                                             ),
-//                                             $requestMethodCollection);
-//
-//      $this->assertEquals('authorization', $request->getResource());
+   /**
+    * Test case that makes sure that ids with more than one number works.
+    * Earlier only the first number in the id was used.x
+    */
+   public function testMultiNumberId(){
+      $request = new Request(array(), new RequestMethodCollection(array()));
+      $request->setRequestURI('rentalobjects/14');
 
-      $this->assertTrue(true);
+      $this->assertEquals('14', $request->getId());
    }
 } 

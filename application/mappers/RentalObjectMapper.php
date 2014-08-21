@@ -87,12 +87,12 @@ class RentalObjectMapper{
    public function create(array $DBParameters){
       unset($DBParameters['id']);
       $result = $this->databaseConnection->runQuery($this->createSQL, $DBParameters);
-      return $this->read($result['lastInsertedId']);
+      return $this->read($result['lastInsertId']);
    }
 
    public function update(array $DBParameters){
       $result = $this->databaseConnection->runQuery($this->updateSQL, $DBParameters);
-      return $this->read($result['lastInsertedId']);
+      return $this->read($result['lastInsertId']);
    }
 
    public function read($id){
