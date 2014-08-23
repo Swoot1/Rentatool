@@ -24,11 +24,11 @@ class RentalObjectMapper{
                   user_id,
                   name,
                   available
-               FROM rental_object';
+               FROM rental_objects';
 
    private $createSQL = '
        INSERT INTO
-        rental_object
+        rental_objects
           (
             user_id,
             name,
@@ -49,13 +49,13 @@ class RentalObjectMapper{
        name,
        available
     FROM
-      rental_object
+      rental_objects
     WHERE
       id = :id';
 
    private $updateSQL = '
        UPDATE
-           rental_object
+           rental_objects
         SET
           user_id = :userId,
           name = :name,
@@ -67,7 +67,7 @@ class RentalObjectMapper{
    private $deleteSQL = '
         DELETE
           FROM
-            rental_object
+            rental_objects
         WHERE
           id = :id
 

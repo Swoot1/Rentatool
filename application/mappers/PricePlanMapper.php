@@ -16,7 +16,7 @@ class PricePlanMapper {
 
    private $createSQL = '
       INSERT INTO
-        price_plan
+        price_plans
           (
             rental_object_id,
             time_unit_id,
@@ -38,7 +38,7 @@ class PricePlanMapper {
          time_unit_id AS "timeUnitId",
          price
       FROM
-        price_plan
+        price_plans
       WHERE
          rental_object_id = :rentalObjectId
    ';
@@ -50,14 +50,14 @@ class PricePlanMapper {
          time_unit_id AS "timeUnitId",
          price
       FROM
-        price_plan
+        price_plans
       WHERE
          id = :id
    ';
 
    private $deleteSQL = '
       DELETE FROM
-         price_plan
+         price_plans
       WHERE
          id = :id
    ';
@@ -68,7 +68,7 @@ class PricePlanMapper {
         SELECT
           COUNT(id)
         FROM
-          price_plan
+          price_plans
         WHERE
           rental_object_id = :rentalObjectId
         AND

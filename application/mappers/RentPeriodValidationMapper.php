@@ -19,7 +19,7 @@ class RentPeriodValidationMapper{
         SELECT
           COUNT(id)
          FROM
-           rent_period
+           rent_periods
          WHERE
            from_date <= :toDate
          AND
