@@ -16,7 +16,7 @@ class RentPeriodMapper{
 
    private $createSQL = '
       INSERT INTO
-        rent_period
+        rent_periods
         (
             renter_id,
             rental_object_id,

@@ -22,11 +22,11 @@ class UserMapper {
        username,
        email
     FROM
-      user';
+      users';
 
    private $createSQL = '
        INSERT INTO
-        user
+        users
           (
           username,
           email,
@@ -46,7 +46,7 @@ class UserMapper {
        username,
        email
     FROM
-      user
+      users
     WHERE
       id = :id';
 
@@ -57,14 +57,14 @@ class UserMapper {
             email,
             password
         FROM
-          user
+          users
         WHERE
           email = :email
     ';
 
    private $updateSQL = '
        UPDATE
-           user
+           users
         SET
           username = :username,
           email = :email,
@@ -76,7 +76,7 @@ class UserMapper {
    private $deleteSQL = '
         DELETE
           FROM
-            user
+            users
         WHERE
           id = :id
 

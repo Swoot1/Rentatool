@@ -22,23 +22,23 @@ class DatabaseMapper{
    ";
 
    private $createTableSQL = "
-      CREATE TABLE IF NOT EXISTS user(
+      CREATE TABLE IF NOT EXISTS users(
          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
          username VARCHAR(50) NOT NULL UNIQUE,
          email VARCHAR(64) NOT NULL UNIQUE,
          password VARCHAR(60) NOT NULL
       );
 
-      CREATE TABLE IF NOT EXISTS category(
+      CREATE TABLE IF NOT EXISTS categories(
          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
          name VARCHAR(30) NOT NULL UNIQUE,
          description VARCHAR(140) NOT NULL
       );
 
-      CREATE TABLE IF NOT EXISTS rental_object(
+      CREATE TABLE IF NOT EXISTS rental_objects(
          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
          user_id INTEGER NOT NULL,
-         CONSTRAINT owner FOREIGN KEY (user_id) REFERENCES user(id),
+         CONSTRAINT owner FOREIGN KEY (user_id) REFERENCES users(id),
          name VARCHAR(30) NOT NULL,
          available BOOLEAN DEFAULT true NOT NULL
       );
@@ -53,32 +53,32 @@ class DatabaseMapper{
          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
          user_id INTEGER NOT NULL,
          group_id INTEGER NOT NULL,
-         CONSTRAINT user_group_maps_user_fk FOREIGN KEY (user_id) REFERENCES user(id),
+         CONSTRAINT user_group_maps_user_fk FOREIGN KEY (user_id) REFERENCES users(id),
          CONSTRAINT user_group_maps_group_fk FOREIGN KEY (group_id) REFERENCES user_groups(id)
       );
 
-      CREATE TABLE IF NOT EXISTS rent_period(
+      CREATE TABLE IF NOT EXISTS rent_periods(
          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
          rental_object_id INTEGER NOT NULL,
-         CONSTRAINT rental_object FOREIGN KEY (rental_object_id) REFERENCES rental_object(id),
+         CONSTRAINT rental_object FOREIGN KEY (rental_object_id) REFERENCES rental_objects(id),
          renter_id INTEGER NOT NULL,
-         CONSTRAINT renter FOREIGN KEY (renter_id) REFERENCES user(id),
+         CONSTRAINT renter FOREIGN KEY (renter_id) REFERENCES users(id),
          from_date DATETIME NOT NULL,
          to_date DATETIME NOT NULL
       );
 
-      CREATE TABLE IF NOT EXISTS time_unit(
+      CREATE TABLE IF NOT EXISTS time_units(
        id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
        name varchar(30) NOT NULL
       );
 
-      CREATE TABLE IF NOT EXISTS price_plan(
+      CREATE TABLE IF NOT EXISTS price_plans(
        id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
        rental_object_id INTEGER NOT NULL,
        time_unit_id INTEGER NOT NULL,
        price FLOAT NOT NULL,
-       CONSTRAINT rental_object_id FOREIGN KEY (rental_object_id) REFERENCES rental_object(id) ON DELETE CASCADE,
-       CONSTRAINT time_unit_id FOREIGN KEY (time_unit_id) REFERENCES time_unit(id),
+       CONSTRAINT rental_object_id FOREIGN KEY (rental_object_id) REFERENCES rental_objects(id) ON DELETE CASCADE,
+       CONSTRAINT time_unit_id FOREIGN KEY (time_unit_id) REFERENCES time_units(id),
        CONSTRAINT unique_price_plan UNIQUE (rental_object_id, time_unit_id)
       )
    ";

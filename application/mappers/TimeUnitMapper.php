@@ -15,7 +15,7 @@ class TimeUnitMapper{
 
    private $createSQL = '
       INSERT INTO
-        time_unit
+        time_units
         (
           name
         )
@@ -30,12 +30,12 @@ class TimeUnitMapper{
          id,
          name
       FROM
-        time_unit
+        time_units
    ';
 
    private $updateSQL = '
       UPDATE
-         time_unit
+         time_units
       SET
         name = :name
       WHERE
@@ -44,7 +44,7 @@ class TimeUnitMapper{
 
    private $deleteSQL = '
       DELETE FROM
-          time_unit
+          time_units
       WHERE
          id = :id
    ';
@@ -54,7 +54,7 @@ class TimeUnitMapper{
          id,
          name
       FROM
-        time_unit
+        time_units
    ';
 
    public function __construct(IDatabaseConnection $databaseConnection){
