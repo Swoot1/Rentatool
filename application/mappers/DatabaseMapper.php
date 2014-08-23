@@ -38,9 +38,9 @@ class DatabaseMapper{
       CREATE TABLE IF NOT EXISTS rental_objects(
          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
          user_id INTEGER NOT NULL,
-         CONSTRAINT owner FOREIGN KEY (user_id) REFERENCES users(id),
          name VARCHAR(30) NOT NULL,
-         available BOOLEAN DEFAULT true NOT NULL
+         available BOOLEAN DEFAULT true NOT NULL,
+         CONSTRAINT rental_object_owner_fk FOREIGN KEY (user_id) REFERENCES users(id)
       );
 
       CREATE TABLE IF NOT EXISTS user_groups (
@@ -60,11 +60,11 @@ class DatabaseMapper{
       CREATE TABLE IF NOT EXISTS rent_periods(
          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
          rental_object_id INTEGER NOT NULL,
-         CONSTRAINT rental_object FOREIGN KEY (rental_object_id) REFERENCES rental_objects(id),
          renter_id INTEGER NOT NULL,
-         CONSTRAINT renter FOREIGN KEY (renter_id) REFERENCES users(id),
          from_date DATETIME NOT NULL,
-         to_date DATETIME NOT NULL
+         to_date DATETIME NOT NULL,
+         CONSTRAINT rent_period_has_a_rental_object_fk FOREIGN KEY (rental_object_id) REFERENCES rental_objects(id),
+         CONSTRAINT renter_fk FOREIGN KEY (renter_id) REFERENCES users(id)
       );
 
       CREATE TABLE IF NOT EXISTS time_units(
@@ -77,8 +77,8 @@ class DatabaseMapper{
        rental_object_id INTEGER NOT NULL,
        time_unit_id INTEGER NOT NULL,
        price FLOAT NOT NULL,
-       CONSTRAINT rental_object_id FOREIGN KEY (rental_object_id) REFERENCES rental_objects(id) ON DELETE CASCADE,
-       CONSTRAINT time_unit_id FOREIGN KEY (time_unit_id) REFERENCES time_units(id),
+       CONSTRAINT price_plan_has_a_rental_object_fk FOREIGN KEY (rental_object_id) REFERENCES rental_objects(id) ON DELETE CASCADE,
+       CONSTRAINT price_plan_has_a_time_unit_fk FOREIGN KEY (time_unit_id) REFERENCES time_units(id),
        CONSTRAINT unique_price_plan UNIQUE (rental_object_id, time_unit_id)
       )
    ";
