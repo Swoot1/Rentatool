@@ -82,4 +82,11 @@ $routes['timeunits'] = array(
    'subRoutesCollection'     => new SubRouteCollection(array())
 );
 
+$routes['priceplans'] = array(
+   'controllerName'          => 'PricePlanController',
+   'requiresAuthorization'   => true,
+   'requestMethodCollection' => new RequestMethodCollection(array('POST', 'DELETE')),
+   'subRoutesCollection'     => new SubRouteCollection(array())
+);
+
 return new RouteCollection($routes);

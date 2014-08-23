@@ -91,8 +91,8 @@ class RentalObjectMapper{
    }
 
    public function update(array $DBParameters){
-      $result = $this->databaseConnection->runQuery($this->updateSQL, $DBParameters);
-      return $this->read($result['lastInsertId']);
+      $this->databaseConnection->runQuery($this->updateSQL, $DBParameters);
+      return $this;
    }
 
    public function read($id){

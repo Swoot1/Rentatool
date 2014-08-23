@@ -74,10 +74,11 @@ class DatabaseMapper{
       CREATE TABLE IF NOT EXISTS price_plan(
        id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
        rental_object_id INTEGER NOT NULL,
-       CONSTRAINT rental_object_id FOREIGN KEY (rental_object_id) REFERENCES rental_object(id),
        time_unit_id INTEGER NOT NULL,
+       price FLOAT NOT NULL,
+       CONSTRAINT rental_object_id FOREIGN KEY (rental_object_id) REFERENCES rental_object(id) ON DELETE CASCADE,
        CONSTRAINT time_unit_id FOREIGN KEY (time_unit_id) REFERENCES time_unit(id),
-       price FLOAT NOT NULL
+       CONSTRAINT unique_price_plan UNIQUE (rental_object_id, time_unit_id)
       )
    ";
 

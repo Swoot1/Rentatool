@@ -62,6 +62,14 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Rentatool\Application\Controllers" class="PricePlanController">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Rentatool\Application\Services" class="PricePlanService"/>
+                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+            </dependencies>
+        </dependency>
+
         <!-- Services -->
         <dependency namespace="Rentatool\Application\Services" class="RentalObjectService">
             <dependencies>

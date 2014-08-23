@@ -11,19 +11,38 @@ rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'Renta
       $scope.rentalObject.available = true;
    }
 
+   $scope.newPricePlan = new PricePlan();
+
    $scope.timeUnitCollection = TimeUnit.query();
    $scope.rentalObject.pricePlanCollection = [];
 
-   $scope.deletePricePlan = function(pricePlan){
-      var indexOfPricePlan = $scope.rentalObject.pricePlanCollection.indexOf(pricePlan);
-      $scope.rentalObject.pricePlanCollection.splice(indexOfPricePlan, 1);
+   $scope.deletePricePlan = function (pricePlan) {
+      var indexOfPricePlan;
+
+      if ($scope.rentalObject.id) {
+         $scope.newPricePlan.$delete({id: pricePlan.id}, function () {
+            indexOfPricePlan = $scope.rentalObject.pricePlanCollection.indexOf(pricePlan);
+            $scope.rentalObject.pricePlanCollection.splice(indexOfPricePlan, 1);
+         });
+      } else {
+         indexOfPricePlan = $scope.rentalObject.pricePlanCollection.indexOf(pricePlan);
+         $scope.rentalObject.pricePlanCollection.splice(indexOfPricePlan, 1);
+      }
    };
 
    $scope.addPricePlan = function (pricePlan) {
       pricePlan.price = parseFloat(pricePlan.price);
       pricePlan.timeUnitId = parseInt(pricePlan.timeUnitId, 10);
-      $scope.rentalObject.pricePlanCollection.push(pricePlan);
-      $scope.newPricePlan = {};
+
+      if ($scope.rentalObject.id) {
+         $scope.newPricePlan.rentalObjectId = $scope.rentalObject.id;
+         $scope.newPricePlan.$save({}, function () {
+            $scope.rentalObject.pricePlanCollection.push(pricePlan);
+            $scope.newPricePlan = new PricePlan();
+         });
+      } else {
+         $scope.rentalObject.pricePlanCollection.push(pricePlan);
+      }
    };
 
    $scope.createRentalObject = function () {

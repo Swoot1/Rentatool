@@ -3,5 +3,5 @@
  */
 angular.module('Rentatool').
    factory('PricePlan', ['$resource', function ($resource) {
-      return $resource();
+      return $resource('priceplans/:id', {id: '@id'});
    }]);

@@ -10,7 +10,7 @@
             </div>
             <input id="rentalObject" ng-model="rentalObject.name" type="text" ng-placeholder="Namn" ng-focus/>
             <div ng-repeat="pricePlan in rentalObject.pricePlanCollection">
-                <p>Kostnad {{pricePlan.price}} kr/{{pricePlan.timeUnitId}}
+                <p>Kostnad {{pricePlan.price}} kr/{{pricePlan.timeUnitId | timeunitmapper}}
                     <button type="button" class="tiny" ng-click="deletePricePlan(pricePlan)">
                         Ta bort
                     </button>

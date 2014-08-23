@@ -20,6 +20,14 @@ class PricePlan extends GeneralModel{
    protected $timeUnitId;
    protected $price;
 
+   public function getRentalObjectId(){
+      return $this->rentalObjectId;
+   }
+
+   public function getTimeUnitId(){
+      return $this->timeUnitId;
+   }
+
    public function setUpValidation(){
       $this->_validation = new ValueValidationCollection(
          array(

@@ -37,6 +37,7 @@ class RentalObjectService{
       $rentalObject = new RentalObject(array_merge(array('userId' => $currentUser->getId()), $data));
       $DBParameters      = $rentalObject->getDBParameters();
 
+      // TODO tidy up this function
       $pricePlanCollection = $rentalObject->getPricePlanCollection();
       unset($DBParameters['pricePlanCollection']);
       $rentalObjectData  = $this->rentalObjectMapper->create($DBParameters);
@@ -53,6 +54,7 @@ class RentalObjectService{
       return $rentalObjectData ? new RentalObject($rentalObjectData) : null;
    }
 
+   // TODO tidy up this function
    public function update($id, $requestData){
       $savedRentalObject = $this->read($id);
 
@@ -61,8 +63,11 @@ class RentalObjectService{
       }
 
       $rentalObject = new RentalObject($requestData);
-      $rentalObjectData = $this->rentalObjectMapper->update($rentalObject->getDBParameters());
-      return new RentalObject($rentalObjectData);
+
+      $DBData = $rentalObject->getDBParameters();
+      unset($DBData['pricePlanCollection']);
+      $this->rentalObjectMapper->update($DBData);
+      return $rentalObject;
    }
 
    public function delete($id){
