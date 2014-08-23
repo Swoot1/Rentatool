@@ -203,6 +203,8 @@
             <dependencies>
                 <dependency namespace="Rentatool\Application\ENFramework\Factories"
                             class="DatabaseConnectionFactory"/>
+                <dependency namespace="Rentatool\Application\ENFramework\Helpers"
+                            class="MySQLValueFormatter"/>
             </dependencies>
         </dependency>
 
@@ -211,6 +213,10 @@
         </dependency>
 
         <dependency namespace="Rentatool\Application\ENFramework\Factories" class="DatabaseConnectionFactory">
+            <dependencies/>
+        </dependency>
+
+        <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="MySQLValueFormatter">
             <dependencies/>
         </dependency>
     </dependencies>

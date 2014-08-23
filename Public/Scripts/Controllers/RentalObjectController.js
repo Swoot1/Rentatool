@@ -45,14 +45,11 @@ rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'Renta
    };
 
    $scope.createRentalObject = function () {
-      $scope.rentalObject.$save({}, function (data) {
-         $scope.rentalObjectCollection.push(data);
-      });
+      $scope.rentalObject.$save({});
    };
 
    $scope.updateRentalObject = function () {
-      $scope.rentalObject.$update({}, function () {
-      });
+      $scope.rentalObject.$update({});
    };
 
    $scope.returnToRentalObjectList = function () {

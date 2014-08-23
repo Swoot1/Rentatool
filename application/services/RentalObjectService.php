@@ -22,52 +22,80 @@ class RentalObjectService{
    private $rentalObjectMapper;
    private $pricePlanService;
 
+   /**
+    * @param RentalObjectMapper $rentalObjectMapper
+    * @param PricePlanService $pricePlanService
+    */
    public function __construct(RentalObjectMapper $rentalObjectMapper, PricePlanService $pricePlanService){
       $this->rentalObjectMapper = $rentalObjectMapper;
-      $this->pricePlanService = $pricePlanService;
+      $this->pricePlanService   = $pricePlanService;
+
+      return $this;
    }
 
+   /**
+    * @param RentalObjectFilter $rentalObjectFilter
+    * @return RentalObjectCollection
+    */
    public function index(RentalObjectFilter $rentalObjectFilter){
       $rentalObjectData = $this->rentalObjectMapper->index($rentalObjectFilter);
 
       return new RentalObjectCollection($rentalObjectData);
    }
 
+   /**
+    * @param array $data
+    * @param User $currentUser
+    * @return RentalObject
+    */
    public function create(array $data, User $currentUser){
-      $rentalObject = new RentalObject(array_merge(array('userId' => $currentUser->getId()), $data));
-      $DBParameters      = $rentalObject->getDBParameters();
-
-      // TODO tidy up this function
+      $rentalObject        = new RentalObject(array_merge(array('userId' => $currentUser->getId()), $data));
       $pricePlanCollection = $rentalObject->getPricePlanCollection();
-      unset($DBParameters['pricePlanCollection']);
-      $rentalObjectData  = $this->rentalObjectMapper->create($DBParameters);
-      $rentalObject = new RentalObject($rentalObjectData);
-
-      $this->pricePlanService->createFromCollection($pricePlanCollection, $rentalObject->getId());
+      $DBParameters        = $rentalObject->getDBParameters();
+      $rentalObjectData    = $this->rentalObjectMapper->create($DBParameters);
+      $rentalObject        = new RentalObject($rentalObjectData);
+      $this->pricePlanService->createFromCollection($pricePlanCollection, $rentalObject);
 
       return $rentalObject;
    }
 
+   /**
+    * @param $id
+    * @return null|RentalObject
+    */
    public function read($id){
-      $rentalObjectData = $this->rentalObjectMapper->read($id);
+      $rentalObjectData                        = $this->rentalObjectMapper->read($id);
       $rentalObjectData['pricePlanCollection'] = $this->pricePlanService->readCollectionFromRentalObjectId($id);;
+
       return $rentalObjectData ? new RentalObject($rentalObjectData) : null;
    }
 
-   // TODO tidy up this function
+   /**
+    * @param $id
+    * @param $requestData
+    * @return RentalObject
+    */
    public function update($id, $requestData){
+      $this->checkIfRentalObjectExist($id);
+      $rentalObject = new RentalObject($requestData);
+      $this->rentalObjectMapper->update($rentalObject->getDBParameters());
+
+      return $rentalObject;
+   }
+
+   /**
+    * @param $id
+    * @return $this
+    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
+    */
+   private function checkIfRentalObjectExist($id){
       $savedRentalObject = $this->read($id);
 
       if ($savedRentalObject == null){
          throw new NotFoundException('Kunde inte hitta uthyrningsobjekt.');
       }
 
-      $rentalObject = new RentalObject($requestData);
-
-      $DBData = $rentalObject->getDBParameters();
-      unset($DBData['pricePlanCollection']);
-      $this->rentalObjectMapper->update($DBData);
-      return $rentalObject;
+      return $this;
    }
 
    public function delete($id){

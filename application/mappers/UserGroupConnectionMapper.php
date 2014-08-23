@@ -16,14 +16,14 @@ class UserGroupConnectionMapper{
 
    private $getGroupMembershipsSQL = '
       SELECT
-         user.id,
-         user.username
+         users.id,
+         users.username
       FROM
-         user
+         users
       LEFT JOIN
          users_groups_maps map
       ON
-         map.user_id = user.id
+         map.user_id = users.id
       WHERE
          map.group_id = :id
    ';

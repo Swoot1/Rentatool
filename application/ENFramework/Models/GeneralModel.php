@@ -20,10 +20,12 @@ abstract class GeneralModel implements IToArray, IGetDBParameters{
    protected $_validation;
    protected $_noDBProperties = array();
    protected $_defaultValues = array();
+   protected $_setters = array();
 
    public function __construct(array $data = array()){
       $this->setUpValidation();
       $this->setData($data);
+      return $this;
    }
 
    protected function setValidation(ValueValidationCollection $validation){
@@ -44,8 +46,12 @@ abstract class GeneralModel implements IToArray, IGetDBParameters{
 
    protected function setData(array $data){
       foreach ($data as $propertyName => $value){
-         $this->_validation->validate($propertyName, $value);
-         $this->$propertyName = $value;
+         if (array_key_exists($propertyName, $this->_setters)){
+            call_user_func(array($this, $this->_setters[$propertyName]), $value);
+         } else{
+            $this->_validation->validate($propertyName, $value);
+            $this->$propertyName = $value;
+         }
       }
 
       return $this;

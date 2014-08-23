@@ -21,6 +21,13 @@ class RentalObject extends GeneralModel{
    protected $userId;
    protected $name;
    protected $pricePlanCollection;
+   protected $_setters = array('pricePlanCollection' => 'setPricePlanCollection');
+
+   public function __construct(array $data = array()){
+      parent::__construct($data);
+      $this->_noDBProperties = array('pricePlanCollection');
+      return $this;
+   }
 
    /**
     * Sets the type and length validation on all properties.
@@ -50,29 +57,11 @@ class RentalObject extends GeneralModel{
       return $this;
    }
 
-
-   // TODO better solution that overriden
-   protected function setData(array $data){
-
-      $map = array('pricePlanCollection' => 'setPricePlanCollection');
-
-      foreach ($data as $propertyName => $value){
-         if (array_key_exists($propertyName, $map)){
-            call_user_func(array($this, $map[$propertyName]), $value);
-         } else{
-            $this->_validation->validate($propertyName, $value);
-            $this->$propertyName = $value;
-         }
-      }
-
-      return $this;
-   }
-
    /**
     * @param $data
     * @return $this
     */
-   private function setPricePlanCollection($data){
+   protected function setPricePlanCollection($data){
 
       if ($data instanceof \Rentatool\Application\Collections\PricePlanCollection){
          $this->pricePlanCollection = $data;
