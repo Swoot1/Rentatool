@@ -107,7 +107,7 @@ class RentalObjectFilter extends GeneralModel{
                    FROM
                      rent_period
                   WHERE
-                        rental_object.id = rent_period.rental_object_id
+                        rental_objects.id = rent_period.rental_object_id
                      AND
                      (
 
