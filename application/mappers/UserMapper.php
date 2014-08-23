@@ -10,7 +10,7 @@ namespace Rentatool\Application\Mappers;
 
 use Rentatool\Application\ENFramework\Models\IDatabaseConnection;
 
-class UserMapper {
+class UserMapper{
 
    /**
     * @var \Rentatool\Application\ENFramework\Models\IDatabaseConnection
@@ -82,43 +82,43 @@ class UserMapper {
 
     ';
 
-   public function __construct(IDatabaseConnection $databaseConnection) {
+   public function __construct(IDatabaseConnection $databaseConnection){
       $this->databaseConnection = $databaseConnection;
+
+      return $this;
    }
 
-   public function index() {
-      $users = $this->databaseConnection->runQuery($this->indexSQL, array());
-
-      return $users;
+   public function index(){
+      return $this->databaseConnection->runQuery($this->indexSQL, array());
    }
 
-   public function create(array $DBParameters) {
+   public function create(array $DBParameters){
       unset($DBParameters['id']);
       $result = $this->databaseConnection->runQuery($this->createSQL, $DBParameters);
+
       return $this->read($result['lastInsertId']);
 
    }
 
-   public function update(array $DBParameters) {
+   public function update(array $DBParameters){
       $result = $this->databaseConnection->runQuery($this->updateSQL, $DBParameters);
+
       return $this->read($result['lastInsertId']);
    }
 
-   public function read($id) {
+   public function read($id){
       $result = $this->databaseConnection->runQuery($this->readSQL, array('id' => $id));
 
       return array_shift($result);
    }
 
-   public function getUserByEmail($email) {
+   public function getUserByEmail($email){
       $result = $this->databaseConnection->runQuery($this->getUserByEmailSQL, array('email' => $email));
 
       return array_shift($result);
    }
 
-   public function delete($id) {
-      $query = $this->deleteSQL;
-
-      return $this->databaseConnection->runQuery($query, array('id' => $id));
+   public function delete($id){
+      return $this->databaseConnection->runQuery($this->deleteSQL, array('id' => $id));
    }
 } 

@@ -8,13 +8,11 @@
 
 namespace Rentatool\Application\Services;
 
-
 use Rentatool\Application\Collections\PricePlanCollection;
-use Rentatool\Application\Collections\RentalObjectCollection;
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
 use Rentatool\Application\Mappers\PricePlanMapper;
 use Rentatool\Application\Models\PricePlan;
+use Rentatool\Application\Models\RentalObject;
 
 class PricePlanService{
    /**
@@ -26,14 +24,23 @@ class PricePlanService{
       $this->pricePlanMapper = $pricePlanMapper;
    }
 
+   /**
+    * @param array $data
+    * @return PricePlan
+    */
    public function create(array $data){
       $pricePlan = new PricePlan($data);
       $this->checkIsUniquePricePlan($pricePlan);
       $data = $this->pricePlanMapper->create($pricePlan->getDBParameters());
-
       return new PricePlan($data);
    }
 
+   /**
+    * Checks that there's not an existing priceplan with the same time unit.
+    * @param PricePlan $pricePlan
+    * @return bool
+    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    */
    private function checkIsUniquePricePlan(PricePlan $pricePlan){
       $isUniquePricePlan = $this->pricePlanMapper->isUniquePlan(
                                                $pricePlan->getRentalObjectId(),
@@ -47,19 +54,28 @@ class PricePlanService{
       return true;
    }
 
+   /**
+    * @param $rentalObjectId
+    * @return PricePlanCollection
+    */
    public function readCollectionFromRentalObjectId($rentalObjectId){
       $rentalObjectCollectionData = $this->pricePlanMapper->readCollectionFromRentalObjectId($rentalObjectId);
 
       return new PricePlanCollection($rentalObjectCollectionData);
    }
 
-   public function createFromCollection(PricePlanCollection $pricePlanCollection, $rentalObjectId){
+   /**
+    * @param PricePlanCollection $pricePlanCollection
+    * @param RentalObject $rentalObject
+    * @return PricePlanCollection
+    */
+   public function createFromCollection(PricePlanCollection $pricePlanCollection, RentalObject $rentalObject){
 
       $pricePlanCollectionData = $pricePlanCollection->getDBParameters();
       $result                  = array();
 
       foreach ($pricePlanCollectionData as $pricePlanData){
-         $pricePlanData['rentalObjectId'] = $rentalObjectId;
+         $pricePlanData['rentalObjectId'] = $rentalObject->getId();
          unset($pricePlanData['id']);
          $result[]                        = $this->create($pricePlanData);
       }
@@ -67,6 +83,10 @@ class PricePlanService{
       return new PricePlanCollection($result);
    }
 
+   /**
+    * @param $id
+    * @return $this
+    */
    public function delete($id){
       $this->pricePlanMapper->delete($id);
 

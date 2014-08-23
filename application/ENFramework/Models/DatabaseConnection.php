@@ -10,6 +10,7 @@
 namespace Rentatool\Application\ENFramework\Models;
 
 use Rentatool\Application\ENFramework\Factories\IDatabaseConnectionFactory;
+use Rentatool\Application\ENFramework\Helpers\IMySQLValueFormatter;
 
 /**
  * Class DatabaseConnection
@@ -20,9 +21,11 @@ class DatabaseConnection implements IDatabaseConnection{
     * @var \PDO
     */
    private $databaseConnection;
+   private $mySQLValueFormatter;
 
-   public function __construct(IDatabaseConnectionFactory $databaseConnectionFactory){
+   public function __construct(IDatabaseConnectionFactory $databaseConnectionFactory, IMySQLValueFormatter $mySQLValueFormatter){
       $this->databaseConnection = $databaseConnectionFactory->getDatabaseConnection();
+      $this->mySQLValueFormatter = $mySQLValueFormatter;
    }
 
    /**
@@ -32,33 +35,17 @@ class DatabaseConnection implements IDatabaseConnection{
     * @return array
     */
    public function runQuery($query, $params = array()){
-
       $stmt = $this->databaseConnection->prepare($query);
       $stmt->execute($params);
 
-      $queryResult        = [];
+      return $this->getResult($stmt);
+   }
+
+   private function getResult($stmt){
       $queryHasResultRows = $stmt->columnCount() > 0;
 
       if ($queryHasResultRows){
-         $i = 0;
-
-         while ($row = $stmt->fetch()){
-            $columnMeta = $stmt->getColumnMeta($i);
-
-            if (is_array($row)){ // TODO refactor
-               $k = 0;
-               foreach ($row as $key => $column){
-                  $columnMeta = $stmt->getColumnMeta($k); // getColumnMeta() is experimental and can change in a future release of php.
-                  $row[$key]  = $this->convertStringToType($column, $columnMeta);
-                  $k++;
-               }
-            } else{
-               $row = $this->convertStringToType($row, $columnMeta);
-            }
-
-            $queryResult[] = $row;
-            $i++;
-         }
+         $queryResult = $this->getRows($stmt);
       } else{
          $queryResult['lastInsertId'] = (int)$this->databaseConnection->lastInsertId();
       }
@@ -66,38 +53,16 @@ class DatabaseConnection implements IDatabaseConnection{
       return $queryResult;
    }
 
-   /**
-    * Since mySQL only returns string the values has to be cast to their proper type.
-    * I.e. $value integer '1' will return 1.
-    * @param $value
-    * @param array $columnMeta
-    * @return string
-    */
-   private function convertStringToType($value, array $columnMeta){
-      $type = $this->getTypeFromColumnMeta($columnMeta);
+   private function getRows($stmt){
+      $queryResult = [];
+      $i           = 0;
 
-      if ($type !== 'string' && is_string($value)){
-         settype($value, $type);
+      while ($row = $stmt->fetch()){
+         $columnMeta    = $stmt->getColumnMeta($i);
+         $queryResult[] = $this->mySQLValueFormatter->formatValue($row, $stmt, $columnMeta);
+         $i++;
       }
 
-      return $value;
-   }
-
-   /**
-    * Return the php type that the database type represents.
-    * @param array $columnMeta
-    * @return string
-    */
-   private function getTypeFromColumnMeta(array $columnMeta){
-
-      $nativeType = $columnMeta['native_type'];
-      $typeMap    = array(
-         'LONG'       => 'int',
-         'TINY'       => 'bool',
-         'VAR_STRING' => 'string',
-         'FLOAT'      => 'float'
-      );
-
-      return array_key_exists($nativeType, $typeMap) ? $typeMap[$nativeType] : 'string';
+      return $queryResult;
    }
 }
