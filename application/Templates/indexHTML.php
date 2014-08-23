@@ -56,12 +56,15 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-route.js"></script>
 <script type="text/javascript" src="Public/Scripts/app.js"></script>
+<script type="text/javascript" src="Public/Scripts/Filters/TimeUnitFilter.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/AlertBox.js"></script>
 <script type="text/javascript" src="Public/Scripts/Services/AlertBoxService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/Focus.js"></script>
 <script type="text/javascript" src="Public/Scripts/Filters.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RentalObjectFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RentPeriodFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/PricePlanFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/TimeUnitFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/UserFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/DatabaseFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/AuthorizationFactory.js"></script>

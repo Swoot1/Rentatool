@@ -46,7 +46,7 @@ class Request extends GeneralModel {
     * @return $this
     */
    private function setURLSubParts() {
-      preg_match('/(\w+)(?:\/(\d|\w+))?/', $this->requestURI, $matches);
+      preg_match('/(\w+)(?:\/(\d+|\w+))?/', $this->requestURI, $matches);
 
       if (count($matches) > 0) {
          $this->resource = array_key_exists(1, $matches) ? $matches[1] : false;

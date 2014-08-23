@@ -45,7 +45,7 @@ class FloatValidation extends ValueValidation{
     * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function validateIsFloat($value){
-      $valueIsNotAFloat = (float)$value !== $value;
+      $valueIsNotAFloat = (float)$value != $value || is_string($value);
       if ($valueIsNotAFloat){
          throw new ApplicationException(sprintf('%s måste vara ett decimaltal.', $this->genericName));
       }
@@ -76,11 +76,11 @@ class FloatValidation extends ValueValidation{
     */
    private function validateNumberOfDecimals($value){
       $valueAsString                 = (string)$value;
-      $numberOfDecimals              = strlen(substr(strrchr($valueAsString, "."), 1));
-      $valueHasWrongNumberOfDecimals = $numberOfDecimals !== $this->numberOfDecimals;
+      $actualNumberOfDecimals              = strlen(substr(strrchr($valueAsString, "."), 1));
+      $valueHasWrongNumberOfDecimals = $this->numberOfDecimals < $actualNumberOfDecimals;
 
       if ($valueHasWrongNumberOfDecimals){
-         throw new ApplicationException(sprintf('Ange %s decimaler för %s.', $this->numberOfDecimals, $this->genericName));
+         throw new ApplicationException(sprintf('Ange %s eller färre decimaler för %s.', $this->numberOfDecimals, $this->genericName));
       }
 
       return true;

@@ -47,9 +47,9 @@ class UserService{
       $userMapper   = $this->userMapper;
       $DBParameters = $userModel->getDBParameters();
       $this->userValidationService->validateUser($userModel);
-      $result = $userMapper->create($DBParameters);
+      $userData = $userMapper->create($DBParameters);
 
-      return $userModel;
+      return new User($userData);
    }
 
    /**

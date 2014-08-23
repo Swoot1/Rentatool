@@ -40,5 +40,5 @@ rentaTool.controller('RentalObjectListController', ['$scope', '$location', 'Rent
             indexOfRentalObject = $scope.rentalObjectCollection.indexOf(rentalObject);
             $scope.rentalObjectCollection.splice(indexOfRentalObject, 1);
          });
-   };
+      };
 }]);

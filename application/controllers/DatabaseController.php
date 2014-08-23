@@ -15,6 +15,7 @@ use Rentatool\Application\ENFramework\Models\DatabaseConnection;
 use Rentatool\Application\ENFramework\Models\Request;
 use Rentatool\Application\Mappers\RentalObjectMapper;
 use Rentatool\Application\Mappers\UserGroupConnectionMapper;
+use Rentatool\Application\Mappers\TimeUnitMapper;
 use Rentatool\Application\Mappers\UserGroupMapper;
 use Rentatool\Application\Mappers\UserMapper;
 use Rentatool\Application\Services\DatabaseService;
@@ -54,12 +55,14 @@ class DatabaseController{
       $this->databaseService->create();
 
       $databaseConnectionFactory = new DatabaseConnectionFactory();
-      $databaseConnection        = new DatabaseConnection($databaseConnectionFactory);
-      $rentalObjectMapper        = new RentalObjectMapper($databaseConnection);
-      $userMapper                = new UserMapper($databaseConnection);
-      $userGroupMapper           = new UserGroupMapper($databaseConnection);
+      $databaseConnection = new DatabaseConnection($databaseConnectionFactory);
+      $rentalObjectMapper = new RentalObjectMapper($databaseConnection);
+      $userMapper         = new UserMapper($databaseConnection);
+      $userGroupMapper    = new UserGroupMapper($databaseConnection);
       $userGroupConnectionMapper = new UserGroupConnectionMapper($databaseConnection);
-      $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper, $userGroupMapper, $userGroupConnectionMapper);
+      $timeUnitMapper            = new TimeUnitMapper($databaseConnection);
+      $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper, $userGroupMapper, 
+                                          $userGroupConnectionMapper, $timeUnitMapper);
       $this->response->addNotifier(['message' => 'Databas med demodata har skapats.']);
 
       return $this->response;

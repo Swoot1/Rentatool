@@ -15,7 +15,8 @@ $routes = array();
 
 $routes['rentalobjects'] = array(
    'controllerName'          => 'RentalObjectController',
-   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET'))
+   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
+   'subRoutesCollection'     => new SubRouteCollection(array())
 );
 
 $routes['authorization'] = array(
@@ -41,7 +42,8 @@ $routes['authorization'] = array(
 $routes['users'] = array(
    'controllerName'          => 'UserController',
    'requiresAuthorization'   => false,
-   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET'))
+   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
+   'subRoutesCollection'     => new SubRouteCollection(array())
 );
 
 $routes['databases'] = array(
@@ -71,20 +73,34 @@ $routes['usergroups'] = array(
    'requiresAuthorization'   => true,
    'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
    'subRoutesCollection'     => new SubRouteCollection(
-      array(
-           'addMember' => array(
-              'controllerName'          => 'UserGroupController',
-              'requiresAuthorization'   => true,
-              'requestMethodCollection' => new RequestMethodCollection(array('POST')),
-              'subRoutesCollection'     => new SubRouteCollection(array())
-           ),
-           'removeMember' => array(
-              'controllerName'          => 'UserGroupController',
-              'requiresAuthorization'   => true,
-              'requestMethodCollection' => new RequestMethodCollection(array('POST')),
-              'subRoutesCollection'     => new SubRouteCollection(array())
-           )
-      ))
+         array(
+            'addMember' => array(
+               'controllerName'          => 'UserGroupController',
+               'requiresAuthorization'   => true,
+               'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+               'subRoutesCollection'     => new SubRouteCollection(array())
+            ),
+            'removeMember' => array(
+               'controllerName'          => 'UserGroupController',
+               'requiresAuthorization'   => true,
+               'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+               'subRoutesCollection'     => new SubRouteCollection(array())
+            )
+         ))
+);
+
+$routes['timeunits'] = array(
+   'controllerName'          => 'TimeUnitController',
+   'requiresAuthorization'   => false,
+   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
+   'subRoutesCollection'     => new SubRouteCollection(array())
+);
+
+$routes['priceplans'] = array(
+   'controllerName'          => 'PricePlanController',
+   'requiresAuthorization'   => true,
+   'requestMethodCollection' => new RequestMethodCollection(array('POST', 'DELETE')),
+   'subRoutesCollection'     => new SubRouteCollection(array())
 );
 
 return new RouteCollection($routes);

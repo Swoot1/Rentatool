@@ -42,11 +42,11 @@ class FloatValidationTest extends \PHPUnit_Framework_TestCase{
 
    /**
     * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
-    * @expectedExceptionMessage Ange 3 decimaler för propertyName.
+    * @expectedExceptionMessage Ange 3 eller färre decimaler för propertyName.
     */
    public function testWrongNumberOfDecimals(){
       $floatValidation = new FloatValidation(array('genericName' => 'propertyName', 'numberOfDecimals' => 3));
-      $floatValidation->validate(677444.13);
+      $floatValidation->validate(677444.1332);
    }
 
    /**

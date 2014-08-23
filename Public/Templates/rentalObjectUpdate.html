@@ -9,8 +9,20 @@
             <div class="error" ng-show="rental_object_form.name.$dirty && rental_object_form.$invalid">
             </div>
             <input id="rentalObject" ng-model="rentalObject.name" type="text" ng-placeholder="Namn" ng-focus/>
-            <button type="submit" ng-disabled="rental_object_form.$invalid">Spara ändringar</button>
-            <button type="button" ng-click="returnToRentalObjectList()">Avbryt</button>
+            <div ng-repeat="pricePlan in rentalObject.pricePlanCollection">
+                <p>Kostnad {{pricePlan.price}} kr/{{pricePlan.timeUnitId | timeunitmapper}}
+                    <button type="button" class="tiny" ng-click="deletePricePlan(pricePlan)">
+                        Ta bort
+                    </button>
+                </p>
+            </div>
+            <input type="text" ng-model="newPricePlan.price" placeholder="Ange pris"/>
+            <select ng-model="newPricePlan.timeUnitId">
+                <option ng-repeat="timeUnit in timeUnitCollection" value="{{timeUnit.id}}">{{timeUnit.name}}</option>
+            </select>
+            <button type="button" class="tiny" ng-click="addPricePlan(newPricePlan)">Lägg till prisplan</button>
+            <button type="submit" class="tiny" ng-disabled="rental_object_form.$invalid">Spara ändringar</button>
+            <button type="button" class="tiny" ng-click="returnToRentalObjectList()">Avbryt</button>
         </div>
     </div>
 </form>
