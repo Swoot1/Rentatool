@@ -20,7 +20,6 @@ class RentalObject extends GeneralModel{
    protected $id;
    protected $userId;
    protected $name;
-   protected $available;
    protected $pricePlanCollection;
 
    /**
@@ -44,11 +43,6 @@ class RentalObject extends GeneralModel{
                                                                            'propertyName' => 'name',
                                                                            'maxLength'    => 30
                                                                         )
-                                                     ),
-                                                     new BooleanValidation(array(
-                                                                              'genericName'  => 'uthyrningsobjektets tillgänglighetsstatus',
-                                                                              'propertyName' => 'available'
-                                                                           )
                                                      )
                                                   ));
       $this->setValidation($validation);
@@ -95,8 +89,7 @@ class RentalObject extends GeneralModel{
    protected function setUpDefaultValues(){
       $defaultValues = array(
          'id'        => null,
-         'name'      => null,
-         'available' => 1
+         'name'      => null
       );
 
       $this->setDefaultValues($defaultValues);

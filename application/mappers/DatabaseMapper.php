@@ -39,7 +39,6 @@ class DatabaseMapper{
          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
          user_id INTEGER NOT NULL,
          name VARCHAR(30) NOT NULL,
-         available BOOLEAN DEFAULT true NOT NULL,
          CONSTRAINT rental_object_owner_fk FOREIGN KEY (user_id) REFERENCES users(id)
       );
 
@@ -132,33 +131,27 @@ UserGroupConnectionMapper $userGroupConnectionMapper, TimeUnitMapper $timeUnitMa
       $rentalObjects = array(
          array(
             'name'      => 'Stiga gräsklippare',
-            'userId'    => 1,
-            'available' => 1
+            'userId'    => 1
          ),
          array(
             'name'      => 'Hästtransport',
-            'userId'    => 1,
-            'available' => 1
+            'userId'    => 1
          ),
          array(
             'name'      => 'Slagborr',
-            'userId'    => 1,
-            'available' => 0
+            'userId'    => 1
          ),
          array(
             'name'      => 'Slipmaskin',
-            'userId'    => 2,
-            'available' => 1
+            'userId'    => 2
          ),
          array(
             'name'      => 'Utemöbler',
-            'userId'    => 2,
-            'available' => 1
+            'userId'    => 2
          ),
          array(
             'name'      => 'Tvätthall',
-            'userId'    => 2,
-            'available' => 0
+            'userId'    => 2
          )
       );
 

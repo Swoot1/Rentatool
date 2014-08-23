@@ -8,7 +8,6 @@ rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'Renta
       $scope.rentalObject = RentalObject.get({id: $routeParams.id});
    } else {
       $scope.rentalObject = new RentalObject({});
-      $scope.rentalObject.available = true;
    }
 
    $scope.newPricePlan = new PricePlan();
