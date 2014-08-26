@@ -9,6 +9,7 @@
 namespace Rentatool\Application\Models;
 
 
+use Rentatool\Application\Collections\PricePlanCollection;
 use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
 use Rentatool\Application\ENFramework\Helpers\Validation\DateTimeValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
@@ -20,6 +21,14 @@ class RentPeriod extends GeneralModel{
    protected $renterId;
    protected $fromDate;
    protected $toDate;
+   protected $price;
+   protected $_pricePlanCollection;
+   protected $_rentPeriodPriceCalculator;
+
+   public function __construct(array $data = array(), RentPeriodPriceCalculator $rentPeriodPriceCalculator){
+      $this->_rentPeriodPriceCalculator = $rentPeriodPriceCalculator;
+      return parent::__construct($data);
+   }
 
    // TODO add validation so that the from date is not after the to date.
    public function setUpValidation(){
@@ -69,5 +78,12 @@ class RentPeriod extends GeneralModel{
 
    public function getRentalObjectId(){
       return $this->rentalObjectId;
+   }
+
+   public function setPricePlanCollection(PricePlanCollection $pricePlanCollection){
+      $this->_pricePlanCollection = $pricePlanCollection;
+      $this->price = $this->_rentPeriodPriceCalculator->getCalculatedPrice($this, $this->_pricePlanCollection);
+
+      return $this;
    }
 } 

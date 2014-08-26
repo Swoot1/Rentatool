@@ -2,18 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: elinnilsson
- * Date: 16/08/14
- * Time: 20:38
+ * Date: 26/08/14
+ * Time: 15:13
  */
 
 namespace Rentatool\Application\Controllers;
+
 
 use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
 use Rentatool\Application\ENFramework\Helpers\SessionManager;
 use Rentatool\Application\ENFramework\Models\Request;
 use Rentatool\Application\Services\RentPeriodService;
 
-class RentPeriodController{
+class RentPeriodCalculatorController{
 
    private $request;
    /**
@@ -30,16 +31,8 @@ class RentPeriodController{
 
    public function create(array $data){
       $currentUser = SessionManager::getCurrentUser();
-      $this->rentPeriodService->create($data, $currentUser);
+      $rentPeriod  = $this->rentPeriodService->getCalculatedPricePlan($data, $currentUser);
 
-      return $this->response
-         ->setStatusCode(201)
-         ->addNotifier(array('message' => 'Objektet har hyrts wohoo!'));
-   }
-
-   public function getCalculatedRentPeriod(array $data){
-      $currentUser = SessionManager::getCurrentUser();
-      $rentPeriod = $this->rentPeriodService->getCalculatedPricePlan($data, $currentUser);
       return $this->response
          ->setStatusCode(201)
          ->setResponseData($rentPeriod);

@@ -9,6 +9,7 @@ namespace Rentatool\Application\Controllers;
 
 
 use Rentatool\Application\ENFramework\Factories\DatabaseConnectionFactory;
+use Rentatool\Application\ENFramework\Helpers\MySQLValueFormatter;
 use Rentatool\Application\ENFramework\Helpers\Response;
 use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
 use Rentatool\Application\ENFramework\Models\DatabaseConnection;
@@ -55,7 +56,7 @@ class DatabaseController{
       $this->databaseService->create();
 
       $databaseConnectionFactory = new DatabaseConnectionFactory();
-      $databaseConnection = new DatabaseConnection($databaseConnectionFactory);
+      $databaseConnection = new DatabaseConnection($databaseConnectionFactory, new MySQLValueFormatter());
       $rentalObjectMapper = new RentalObjectMapper($databaseConnection);
       $userMapper         = new UserMapper($databaseConnection);
       $userGroupMapper    = new UserGroupMapper($databaseConnection);

@@ -21,14 +21,16 @@ class RentPeriodMapper{
             renter_id,
             rental_object_id,
             from_date,
-            to_date
+            to_date,
+            price
         )
         VALUES
         (
            :renterId,
            :rentalObjectId,
            :fromDate,
-           :toDate
+           :toDate,
+           :price
         )
    ';
 

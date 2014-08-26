@@ -18,6 +18,9 @@ class PricePlanController {
     * @var \Rentatool\Application\Services\RentalObjectService
     */
    private $request;
+   /**
+    * @var \Rentatool\Application\Services\PricePlanService
+    */
    private $pricePlanService;
    private $response;
 

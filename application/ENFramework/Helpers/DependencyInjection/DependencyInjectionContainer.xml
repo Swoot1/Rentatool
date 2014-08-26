@@ -55,6 +55,14 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Rentatool\Application\Controllers" class="RentPeriodCalculatorController">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Rentatool\Application\Services" class="RentPeriodService"/>
+                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+            </dependencies>
+        </dependency>
+
         <dependency namespace="Rentatool\Application\Controllers" class="TimeUnitController">
             <dependencies>
                 <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
@@ -103,6 +111,7 @@
             <dependencies>
                 <dependency namespace="Rentatool\Application\Mappers" class="RentPeriodMapper"/>
                 <dependency namespace="Rentatool\Application\Services" class="RentPeriodValidationService"/>
+                <dependency namespace="Rentatool\Application\Services" class="PricePlanService"/>
             </dependencies>
         </dependency>
 
