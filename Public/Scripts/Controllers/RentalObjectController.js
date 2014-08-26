@@ -30,6 +30,9 @@ rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'Renta
    };
 
    $scope.addPricePlan = function (pricePlan) {
+      pricePlan.price = parseFloat(pricePlan.price);
+      pricePlan.timeUnitId = parseInt(pricePlan.timeUnitId, 10);
+
       if ($scope.rentalObject.id) {
          $scope.newPricePlan.rentalObjectId = $scope.rentalObject.id;
          $scope.newPricePlan.$save({}, function () {
