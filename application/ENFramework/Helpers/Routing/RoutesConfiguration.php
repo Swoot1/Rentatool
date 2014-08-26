@@ -24,19 +24,19 @@ $routes['authorization'] = array(
    'requiresAuthorization'   => false,
    'requestMethodCollection' => new RequestMethodCollection(array()),
    'subRoutesCollection'     => new SubRouteCollection(
-      array(
-           'login'  => array(
-              'controllerName'          => 'AuthorizationController',
-              'requiresAuthorization'   => false,
-              'requestMethodCollection' => new RequestMethodCollection(array('POST')),
-              'subRoutesCollection'     => new SubRouteCollection(array())),
-           'logout' => array(
-              'controllerName'          => 'AuthorizationController',
-              'requiresAuthorization'   => false,
-              'requestMethodCollection' => new RequestMethodCollection(array('GET')),
-              'subRoutesCollection'     => new SubRouteCollection(array()))
+         array(
+            'login'  => array(
+               'controllerName'          => 'AuthorizationController',
+               'requiresAuthorization'   => false,
+               'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+               'subRoutesCollection'     => new SubRouteCollection(array())),
+            'logout' => array(
+               'controllerName'          => 'AuthorizationController',
+               'requiresAuthorization'   => false,
+               'requestMethodCollection' => new RequestMethodCollection(array('GET')),
+               'subRoutesCollection'     => new SubRouteCollection(array()))
+         )
       )
-   )
 );
 
 $routes['users'] = array(
@@ -51,14 +51,14 @@ $routes['databases'] = array(
    'requiresAuthorization'   => false,
    'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
    'subRoutesCollection'     => new SubRouteCollection(
-      array(
-           'createwithseeds' => array(
-              'controllerName'          => 'DatabaseController',
-              'requiresAuthorization'   => false,
-              'requestMethodCollection' => new RequestMethodCollection(array('POST')),
-              'subRoutesCollection'     => new SubRouteCollection(array()))
+         array(
+            'createwithseeds' => array(
+               'controllerName'          => 'DatabaseController',
+               'requiresAuthorization'   => false,
+               'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+               'subRoutesCollection'     => new SubRouteCollection(array()))
+         )
       )
-   )
 );
 
 $routes['rentperiods'] = array(
@@ -68,13 +68,20 @@ $routes['rentperiods'] = array(
    'subRoutesCollection'     => new SubRouteCollection(array())
 );
 
+$routes['rentperiodcalculators'] = array(
+   'controllerName'          => 'RentPeriodCalculatorController',
+   'requiresAuthorization'   => true,
+   'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+   'subRoutesCollection'     => new SubRouteCollection(array())
+);
+
 $routes['usergroups'] = array(
    'controllerName'          => 'UserGroupController',
    'requiresAuthorization'   => true,
    'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
    'subRoutesCollection'     => new SubRouteCollection(
          array(
-            'addMember' => array(
+            'addMember'    => array(
                'controllerName'          => 'UserGroupController',
                'requiresAuthorization'   => true,
                'requestMethodCollection' => new RequestMethodCollection(array('POST')),

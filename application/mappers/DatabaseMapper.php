@@ -62,6 +62,7 @@ class DatabaseMapper{
          renter_id INTEGER NOT NULL,
          from_date DATETIME NOT NULL,
          to_date DATETIME NOT NULL,
+         price FLOAT NOT NULL,
          CONSTRAINT rent_period_has_a_rental_object_fk FOREIGN KEY (rental_object_id) REFERENCES rental_objects(id),
          CONSTRAINT renter_fk FOREIGN KEY (renter_id) REFERENCES users(id)
       );
@@ -110,7 +111,7 @@ class DatabaseMapper{
     * @param TimeUnitMapper $timeUnitMapper
     */
    public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper, UserGroupMapper $userGroupMapper,
-UserGroupConnectionMapper $userGroupConnectionMapper, TimeUnitMapper $timeUnitMapper){
+                               UserGroupConnectionMapper $userGroupConnectionMapper, TimeUnitMapper $timeUnitMapper){
       $users = array(
          array(
             'username' => 'andy',
@@ -130,28 +131,28 @@ UserGroupConnectionMapper $userGroupConnectionMapper, TimeUnitMapper $timeUnitMa
 
       $rentalObjects = array(
          array(
-            'name'      => 'Stiga gräsklippare',
-            'userId'    => 1
+            'name'   => 'Stiga gräsklippare',
+            'userId' => 1
          ),
          array(
-            'name'      => 'Hästtransport',
-            'userId'    => 1
+            'name'   => 'Hästtransport',
+            'userId' => 1
          ),
          array(
-            'name'      => 'Slagborr',
-            'userId'    => 1
+            'name'   => 'Slagborr',
+            'userId' => 1
          ),
          array(
-            'name'      => 'Slipmaskin',
-            'userId'    => 2
+            'name'   => 'Slipmaskin',
+            'userId' => 2
          ),
          array(
-            'name'      => 'Utemöbler',
-            'userId'    => 2
+            'name'   => 'Utemöbler',
+            'userId' => 2
          ),
          array(
-            'name'      => 'Tvätthall',
-            'userId'    => 2
+            'name'   => 'Tvätthall',
+            'userId' => 2
          )
       );
 
@@ -179,22 +180,25 @@ UserGroupConnectionMapper $userGroupConnectionMapper, TimeUnitMapper $timeUnitMa
          new UserGroupConnection(array('userId' => 2, 'groupId' => 1))
       );
 
-      foreach ($userGroupConnections as $userGroupConnection) {
+      foreach ($userGroupConnections as $userGroupConnection){
          $userGroupConnectionMapper->addUserToGroup($userGroupConnection->getDBParameters());
       }
 
       $timeUnits = array(
          array(
-            'name' => 'timme',
+            'name'    => 'timme'
          ),
          array(
-            'name' => 'dag'
+            'name'    => 'dag'
          ),
          array(
-            'name' => 'kalendermånad'
+            'name'    => 'vecka'
          ),
          array(
-            'name' => 'år'
+            'name'    => 'kalendermånad'
+         ),
+         array(
+            'name'    => 'år'
          )
       );
 

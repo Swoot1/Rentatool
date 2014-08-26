@@ -19,8 +19,8 @@ class DateTimeValidation extends ValueValidation{
    }
 
    private function validateDate($value){
-      $formattedDate = \DateTime::createFromFormat('Y-m-d G:i:s', $value);
-      $isInvalidDate = $formattedDate === false || $formattedDate->format('Y-m-d G:i:s') !== $value;
+      $formattedDate = \DateTime::createFromFormat('Y-m-d H:i:s', $value);
+      $isInvalidDate = $formattedDate === false || $formattedDate->format('Y-m-d H:i:s') !== $value;
 
       if ($isInvalidDate){
          throw new ApplicationException(sprintf('Ogiltigt datum angivet för %s.', $this->genericName));

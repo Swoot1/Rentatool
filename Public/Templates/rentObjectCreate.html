@@ -3,8 +3,11 @@
         <p>{{rentalObject.name}}</p>
 
         <form ng-submit="createRentPeriod()">
-            <input type="text" ng-model="rentPeriod.fromDate" placeholder="Från datum"/>
-            <input type="text" ng-model="rentPeriod.toDate" placeholder="Till datum"/>
+            <!-- days, calendar month, year -->
+            <input type="text" ng-model="rentPeriod.fromDate" placeholder="Från och med"/>
+            <input type="text" ng-model="rentPeriod.toDate" placeholder="Till och med"/>
+
+            <p>Pris {{rentPeriod.price}} kr</p>
             <button type="submit" class="success tiny">
                 Hyr
             </button>

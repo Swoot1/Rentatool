@@ -2,10 +2,29 @@
  * Created by elinnilsson on 16/08/14.
  */
 angular.module('Rentatool')
-   .controller('RentObjectController', ['$scope', '$routeParams', '$location', 'RentalObject', 'RentPeriod', function ($scope, $routeParams, $location, RentalObject, RentPeriod) {
+   .controller('RentObjectController', ['$scope', '$routeParams', '$location', 'RentalObject', 'RentPeriod', 'TimeUnit', 'RentPeriodCalculator', function ($scope, $routeParams, $location, RentalObject, RentPeriod, TimeUnit, RentPeriodCalculator) {
       $scope.rentalObject = RentalObject.get({id: $routeParams.id});
       $scope.rentPeriod = new RentPeriod({});
       $scope.rentPeriod.rentalObjectId = parseInt($routeParams.id, 10);
+      $scope.timeUnitCollection = TimeUnit.query();
+
+      $scope.$watch('rentPeriod.fromDate', function(newFromDate){
+        if(newFromDate && newFromDate.length === 19 && $scope.rentPeriod.toDate.length === 19){
+           $scope.calculatePrice();
+        }
+      });
+
+      $scope.$watch('rentPeriod.toDate', function(newToDate){
+         if(newToDate && newToDate.length === 19 && $scope.rentPeriod.toDate.length === 19){
+            $scope.calculatePrice();
+         }
+      });
+      $scope.calculatePrice = function(){
+         var rentPeriodCalculator = new RentPeriodCalculator($scope.rentPeriod);
+         rentPeriodCalculator.$save(function(data){
+            $scope.rentPeriod.price = data.price;
+         });
+      };
 
       $scope.createRentPeriod = function () {
          $scope.rentPeriod.$save({});

@@ -2,7 +2,7 @@
  * Created by Elin on 2014-04-18.
  */
 
-rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'RentalObject', '$location', 'TimeUnit', 'PricePlan', function ($scope, $routeParams, RentalObject, $location, TimeUnit, PricePlan) {
+rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'RentalObject', '$location', 'PricePlan', function ($scope, $routeParams, RentalObject, $location, PricePlan) {
 
    if ($routeParams.id) {
       $scope.rentalObject = RentalObject.get({id: $routeParams.id});
@@ -11,8 +11,6 @@ rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'Renta
    }
 
    $scope.newPricePlan = new PricePlan();
-
-   $scope.timeUnitCollection = TimeUnit.query();
    $scope.rentalObject.pricePlanCollection = [];
 
    $scope.deletePricePlan = function (pricePlan) {
@@ -30,9 +28,6 @@ rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'Renta
    };
 
    $scope.addPricePlan = function (pricePlan) {
-      pricePlan.price = parseFloat(pricePlan.price);
-      pricePlan.timeUnitId = parseInt(pricePlan.timeUnitId, 10);
-
       if ($scope.rentalObject.id) {
          $scope.newPricePlan.rentalObjectId = $scope.rentalObject.id;
          $scope.newPricePlan.$save({}, function () {

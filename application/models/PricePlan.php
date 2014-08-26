@@ -28,6 +28,10 @@ class PricePlan extends GeneralModel{
       return $this->timeUnitId;
    }
 
+   public function getPrice(){
+      return $this->price;
+   }
+
    public function setUpValidation(){
       $this->_validation = new ValueValidationCollection(
          array(
