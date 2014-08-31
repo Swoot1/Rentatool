@@ -15,9 +15,9 @@ use Rentatool\Application\ENFramework\Models\Request;
 
 class Route {
    private $controllerName;
-   private $requiresAuthorization = true;
    private $requestMethodCollection;
    private $subRoutesCollection;
+   private $accessRule;
 
    public function __construct(array $data) {
       foreach ($data as $key => $value) {
@@ -50,8 +50,11 @@ class Route {
       return $this->subRoutesCollection->getSubRouteFromRequest($request);
    }
 
-   // TODO this function should be moved and improved.
    public function isUserAllowed() {
-      return $this->requiresAuthorization == false || SessionManager::isUserLoggedIn();
+      if(SessionManager::isUserLoggedIn() && !is_null($this->accessRule)) {
+         return $this->accessRule->isAccessAllowed(SessionManager::getCurrentUser());
+      }
+
+      return !is_null($this->accessRule);
    }
 }
