@@ -8,20 +8,27 @@ angular.module('Rentatool')
       $scope.rentPeriod.rentalObjectId = parseInt($routeParams.id, 10);
       $scope.timeUnitCollection = TimeUnit.query();
 
-      $scope.$watch('rentPeriod.fromDate', function(newFromDate){
-        if(newFromDate && newFromDate.length === 19 && $scope.rentPeriod.toDate.length === 19){
-           $scope.calculatePrice();
-        }
-      });
+      $('.js-rent-period-from-date').datepicker();
+      $('.js-rent-period-to-date').datepicker();
 
-      $scope.$watch('rentPeriod.toDate', function(newToDate){
-         if(newToDate && newToDate.length === 19 && $scope.rentPeriod.toDate.length === 19){
+      $scope.$watch('rentPeriod.fromDate', function (newFromDate) {
+         if (newFromDate && $scope.rentPeriod.toDate) {
             $scope.calculatePrice();
          }
       });
-      $scope.calculatePrice = function(){
+
+      $scope.$watch('rentPeriod.toDate', function (newToDate) {
+         if (newToDate && $scope.rentPeriod.fromDate) {
+            $scope.calculatePrice();
+         }
+      });
+
+      $scope.calculatePrice = function () {
+         var isDateRegex = /^\d\d\d\d-\d\d-\d\d$/;
+         $scope.rentPeriod.fromDate = isDateRegex.test($scope.rentPeriod.fromDate) ? $scope.rentPeriod.fromDate + ' 00:00:00' : $scope.rentPeriod.fromDate; // TODO ugly
+         $scope.rentPeriod.toDate = isDateRegex.test($scope.rentPeriod.toDate) ? $scope.rentPeriod.toDate + ' 00:00:00' : $scope.rentPeriod.toDate;
          var rentPeriodCalculator = new RentPeriodCalculator($scope.rentPeriod);
-         rentPeriodCalculator.$save(function(data){
+         rentPeriodCalculator.$save(function (data) {
             $scope.rentPeriod.price = data.price;
          });
       };

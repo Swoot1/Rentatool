@@ -9,6 +9,8 @@ echo '<!DOCTYPE html>
     <meta charset="utf-8"/>
     <link href="Public/css/normalize.css" type="text/css" rel="stylesheet"/>
     <link href="Public/css/Foundation/css/foundation.css" type="text/css" rel="stylesheet"/>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
     <link href="Public/test.css" type="text/css" rel="stylesheet"/>
     <base href="/rentatool/" />
 </head>
@@ -52,6 +54,7 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/css/Foundation/js/vendor/modernizr.js"></script>
 <script type="text/javascript" src="Public/css/Foundation/js/vendor/fastclick.js"></script>
 <script type="text/javascript" src="Public/css/Foundation/js/vendor/jquery.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-route.js"></script>
@@ -59,7 +62,7 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Filters/TimeUnitFilter.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/AlertBox.js"></script>
 <script type="text/javascript" src="Public/Scripts/Services/AlertBoxService.js"></script>
-<script type="text/javascript" src="Public/Scripts/Directives/Focus.js"></script>
+<script type="text/javascript" src="Public/Scripts/Directives/Datepicker.js"></script>
 <script type="text/javascript" src="Public/Scripts/Filters.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RentalObjectFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RentPeriodFactory.js"></script>
