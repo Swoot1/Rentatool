@@ -69,7 +69,8 @@ class RentalObjectController{
    }
 
    public function delete($id){
-      $this->rentalObjectService->delete($id);
+      $currentUser = SessionManager::getCurrentUser();
+      $this->rentalObjectService->delete($id, $currentUser);
       $this->response->setStatusCode(204);
 
       return $this->response;

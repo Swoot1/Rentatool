@@ -9,6 +9,7 @@
 namespace Rentatool\Application\Services;
 
 use Rentatool\Application\Collections\RentalObjectCollection;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
 use Rentatool\Application\Filters\RentalObjectFilter;
 use Rentatool\Application\Mappers\RentalObjectMapper;
@@ -98,7 +99,18 @@ class RentalObjectService{
       return $this;
    }
 
-   public function delete($id){
-      return $this->rentalObjectMapper->delete($id);
+   public function delete($id, $currentUser){
+
+      $rentalObject = $this->read($id);
+
+      if($rentalObject === null){
+         throw new NotFoundException('Kunde inte hitta valt uthyrningsobjekt för borttagning.');
+      }
+
+      if($rentalObject->isOwner($currentUser)){
+         $this->rentalObjectMapper->delete($id);
+      }else{
+         throw new ApplicationException('Kan inte ta bort objekt som du inte är ägare av.');
+      }
    }
 }
