@@ -87,4 +87,12 @@ class RentalObject extends GeneralModel{
    public function getPricePlanCollection(){
       return $this->pricePlanCollection;
    }
+
+   /**
+    * @param User $user
+    * @return bool
+    */
+   public function isOwner(User $user){
+      return $user->getId() === $this->userId;
+   }
 }

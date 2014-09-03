@@ -105,9 +105,9 @@ class RentalObjectFilter extends GeneralModel{
          $result[] = sprintf('NOT EXISTS(
                   SELECT id
                    FROM
-                     rent_period
+                     rent_periods
                   WHERE
-                        rental_objects.id = rent_period.rental_object_id
+                        rental_objects.id = rent_periods.rental_object_id
                      AND
                      (
 
@@ -129,9 +129,9 @@ class RentalObjectFilter extends GeneralModel{
 
       if ($this->fromDate){
          $result[] = '(
-                           :fromDate >= rent_period.from_date
+                           :fromDate >= rent_periods.from_date
                         AND
-                           :fromDate <= rent_period.to_date
+                           :fromDate <= rent_periods.to_date
                      )';
       }
 
@@ -146,9 +146,9 @@ class RentalObjectFilter extends GeneralModel{
 
       if($this->toDate){
          $result[] = '(
-                           :toDate <= rent_period.to_date
+                           :toDate <= rent_periods.to_date
                         AND
-                           :toDate >= rent_period.from_date
+                           :toDate >= rent_periods.from_date
                      )';
       }
 
@@ -163,9 +163,9 @@ class RentalObjectFilter extends GeneralModel{
 
       if($this->fromDate && $this->toDate){
          $result[] = '(
-                           :fromDate <= rent_period.to_date
+                           :fromDate <= rent_periods.to_date
                         AND
-                           :toDate >= rent_period.from_date
+                           :toDate >= rent_periods.from_date
                      )';
       }
 

@@ -9,6 +9,7 @@
 namespace Rentatool\Application\Services;
 
 use Rentatool\Application\Collections\RentalObjectCollection;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
 use Rentatool\Application\Filters\RentalObjectFilter;
 use Rentatool\Application\Mappers\RentalObjectMapper;
@@ -54,7 +55,7 @@ class RentalObjectService{
       $DBParameters        = $rentalObject->getDBParameters();
       $rentalObjectData    = $this->rentalObjectMapper->create($DBParameters);
       $rentalObject        = new RentalObject($rentalObjectData);
-      $this->pricePlanService->createFromCollection($pricePlanCollection, $rentalObject);
+      $this->pricePlanService->createFromCollection($pricePlanCollection, $rentalObject, $currentUser, $this);
 
       return $rentalObject;
    }
@@ -71,14 +72,20 @@ class RentalObjectService{
    }
 
    /**
-    * @param $id
     * @param $requestData
+    * @param $currentUser
     * @return RentalObject
+    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
-   public function update($id, $requestData){
-      $this->checkIfRentalObjectExist($id);
+   public function update($requestData, $currentUser){
+      $this->checkIfRentalObjectExist($requestData['id']);
       $rentalObject = new RentalObject($requestData);
-      $this->rentalObjectMapper->update($rentalObject->getDBParameters());
+      if($rentalObject->isOwner($currentUser)){
+         $this->rentalObjectMapper->update($rentalObject->getDBParameters());
+      }else{
+         throw new ApplicationException('Kan inte uppdatera objekt som du inte är ägare av.');
+      }
+
 
       return $rentalObject;
    }
@@ -98,7 +105,18 @@ class RentalObjectService{
       return $this;
    }
 
-   public function delete($id){
-      return $this->rentalObjectMapper->delete($id);
+   public function delete($id, $currentUser){
+
+      $rentalObject = $this->read($id);
+
+      if($rentalObject === null){
+         throw new NotFoundException('Kunde inte hitta valt uthyrningsobjekt för borttagning.');
+      }
+
+      if($rentalObject->isOwner($currentUser)){
+         $this->rentalObjectMapper->delete($id);
+      }else{
+         throw new ApplicationException('Kan inte ta bort objekt som du inte är ägare av.');
+      }
    }
 }

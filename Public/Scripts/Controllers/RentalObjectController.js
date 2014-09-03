@@ -37,11 +37,25 @@ rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'Renta
          $scope.newPricePlan.rentalObjectId = $scope.rentalObject.id;
          $scope.newPricePlan.$save({}, function () {
             $scope.rentalObject.pricePlanCollection.push(pricePlan);
-            $scope.newPricePlan = new PricePlan();
          });
       } else {
          $scope.rentalObject.pricePlanCollection.push(pricePlan);
       }
+
+      $scope.newPricePlan = new PricePlan();
+   };
+
+   $scope.filterUsedPricePlan = function (pricePlanCollection) {
+
+      return function (timeUnit) {
+         var alreadyExists = pricePlanCollection.some(function (pricePlan) {
+               return timeUnit.id === pricePlan.timeUnitId;
+            }
+         );
+
+         return alreadyExists === false;
+
+      };
    };
 
    $scope.createRentalObject = function () {

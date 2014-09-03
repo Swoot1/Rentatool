@@ -8,10 +8,15 @@
 
 namespace Rentatool\Application\Controllers;
 
-
+use Rentatool\Application\ENFramework\Factories\DatabaseConnectionFactory;
+use Rentatool\Application\ENFramework\Helpers\MySQLValueFormatter;
 use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
+use Rentatool\Application\ENFramework\Helpers\SessionManager;
+use Rentatool\Application\ENFramework\Models\DatabaseConnection;
 use Rentatool\Application\ENFramework\Models\Request;
+use Rentatool\Application\Mappers\RentalObjectMapper;
 use Rentatool\Application\Services\PricePlanService;
+use Rentatool\Application\Services\RentalObjectService;
 
 class PricePlanController {
    /**
@@ -32,7 +37,10 @@ class PricePlanController {
    }
 
    public function create(array $data){
-      $pricePlan = $this->pricePlanService->create($data);
+      $currentUser = SessionManager::getCurrentUser();
+      $rentalObjectMapper = new RentalObjectMapper(new DatabaseConnection(new DatabaseConnectionFactory(), new MySQLValueFormatter()));
+      $rentalObjectService = new RentalObjectService($rentalObjectMapper, $this->pricePlanService);
+      $pricePlan = $this->pricePlanService->create($data, $currentUser, $rentalObjectService);
       return $this->response
          ->setStatusCode(201)
          ->setResponseData($pricePlan)
@@ -40,7 +48,10 @@ class PricePlanController {
    }
 
    public function delete($id){
-      $this->pricePlanService->delete($id);
+      $currentUser = SessionManager::getCurrentUser();
+      $rentalObjectMapper = new RentalObjectMapper(new DatabaseConnection(new DatabaseConnectionFactory(), new MySQLValueFormatter()));
+      $rentalObjectService = new RentalObjectService($rentalObjectMapper, $this->pricePlanService);
+      $this->pricePlanService->delete($id, $currentUser, $rentalObjectService);
       return $this->response
          ->setStatusCode(204);
    }

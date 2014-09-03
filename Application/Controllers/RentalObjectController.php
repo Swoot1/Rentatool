@@ -60,7 +60,9 @@ class RentalObjectController{
    }
 
    public function update($id, $requestData){
-      $rentalObject = $this->rentalObjectService->update($id, $requestData);
+      $currentUser = SessionManager::getCurrentUser();
+      $requestData['id'] = $id;
+      $rentalObject = $this->rentalObjectService->update($requestData, $currentUser);
 
       $this->response->setResponseData($rentalObject);
       $this->response->addNotifier(['message' => 'Uthyrningsobjektet har uppdaterats.']);
@@ -69,7 +71,8 @@ class RentalObjectController{
    }
 
    public function delete($id){
-      $this->rentalObjectService->delete($id);
+      $currentUser = SessionManager::getCurrentUser();
+      $this->rentalObjectService->delete($id, $currentUser);
       $this->response->setStatusCode(204);
 
       return $this->response;

@@ -22,7 +22,7 @@
             </div>
             <input type="text" ng-model="newPricePlan.price" placeholder="Ange pris"/>
             <select ng-model="newPricePlan.timeUnitId">
-                <option ng-repeat="timeUnit in timeUnitCollection" value="{{timeUnit.id}}">{{timeUnit.name}}</option>
+                <option ng-repeat="timeUnit in timeUnitCollection | filter:filterUsedPricePlan(rentalObject.pricePlanCollection)" value="{{timeUnit.id}}">{{timeUnit.name}}</option>
             </select>
             <button type="button" class="tiny" ng-click="addPricePlan(newPricePlan)">Lägg till prisplan</button>
             <button type="button" class="tiny" ng-click="createRentalObject()"

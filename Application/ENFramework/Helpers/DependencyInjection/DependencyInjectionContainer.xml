@@ -98,6 +98,7 @@
         <dependency namespace="Rentatool\Application\Services" class="PricePlanService">
             <dependencies>
                 <dependency namespace="Rentatool\Application\Mappers" class="PricePlanMapper"/>
+                <dependency namespace="Rentatool\Application\Services" class="PricePlanValidationService"/>
             </dependencies>
         </dependency>
 
@@ -143,6 +144,12 @@
         <dependency namespace="Rentatool\Application\Services" class="TimeUnitService">
             <dependencies>
                 <dependency namespace="Rentatool\Application\Mappers" class="TimeUnitMapper"/>
+            </dependencies>
+        </dependency>
+
+        <dependency namespace="Rentatool\Application\Services" class="PricePlanValidationService">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\Mappers" class="PricePlanMapper"/>
             </dependencies>
         </dependency>
 

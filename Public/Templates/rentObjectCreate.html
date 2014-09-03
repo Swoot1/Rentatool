@@ -4,8 +4,8 @@
 
         <form ng-submit="createRentPeriod()">
 
-            <input class="js-rent-period-from-date" type="text" ng-model="rentPeriod.fromDate" datepicker placeholder="Från och med"/>
-            <input class="js-rent-period-to-date" type="text" ng-model="rentPeriod.toDate" datepicker placeholder="Till och med"/>
+            <input type="text" ng-model="rentPeriod.fromDate" datepicker placeholder="Från och med"/>
+            <input type="text" ng-model="rentPeriod.toDate" datepicker placeholder="Till och med"/>
 
             <p>Pris {{rentPeriod.price}} kr</p>
 

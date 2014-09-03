@@ -8,9 +8,6 @@ angular.module('Rentatool')
       $scope.rentPeriod.rentalObjectId = parseInt($routeParams.id, 10);
       $scope.timeUnitCollection = TimeUnit.query();
 
-      $('.js-rent-period-from-date').datepicker();
-      $('.js-rent-period-to-date').datepicker();
-
       $scope.$watch('rentPeriod.fromDate', function (newFromDate) {
          if (newFromDate && $scope.rentPeriod.toDate) {
             $scope.calculatePrice();
