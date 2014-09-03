@@ -37,11 +37,12 @@ rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'Renta
          $scope.newPricePlan.rentalObjectId = $scope.rentalObject.id;
          $scope.newPricePlan.$save({}, function () {
             $scope.rentalObject.pricePlanCollection.push(pricePlan);
-            $scope.newPricePlan = new PricePlan();
          });
       } else {
          $scope.rentalObject.pricePlanCollection.push(pricePlan);
       }
+
+      $scope.newPricePlan = new PricePlan();
    };
 
    $scope.createRentalObject = function () {
