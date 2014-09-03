@@ -5,7 +5,7 @@
         </h2>
         <ul ng-repeat="user in userCollection">
             <li>
-                <p>{{user.username}} med id {{user.id}}
+                <p>{{user.username}}
                     <button type="button" class="tiny" ng-click="updateUser(user)">Redigera användare</button>
                     <button type="button" class="tiny alert" ng-click="deleteUser(user)">Ta bort användare</button>
                 </p>
