@@ -7,9 +7,9 @@
             <form ng-submit="searchRentalObject(rentalObjectFilter)">
                 <div class="large-10 columns">
                     <input type="text" ng-model="rentalObjectFilter.query" name="query"/>
-                    <input type="datetime" ng-model="rentalObjectFilter.fromDate" name="fromDate"
+                    <input type="datetime" ng-model="rentalObjectFilter.fromDate" datepicker name="fromDate"
                            placeholder="Tillgänglig från"/>
-                    <input type="datetime" ng-model="rentalObjectFilter.toDate" name="toDate"
+                    <input type="datetime" ng-model="rentalObjectFilter.toDate"  datepicker name="toDate"
                            placeholder="Till och med"/>
                 </div>
                 <div class="large-2 columns">

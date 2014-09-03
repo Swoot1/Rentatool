@@ -6,11 +6,14 @@ rentaTool.controller('RentalObjectListController', ['$scope', '$location', 'Rent
    $scope.rentalObjectFilter = {};
 
    $scope.searchRentalObject = function (rentalObjectFilter) {
-
       var GETParams = {};
+      var isDateRegex = /^\d\d\d\d-\d\d-\d\d$/;
 
-      for(var i in rentalObjectFilter){
-         if(rentalObjectFilter.hasOwnProperty(i) && rentalObjectFilter[i]){
+      $scope.rentalObjectFilter.fromDate = isDateRegex.test($scope.rentalObjectFilter.fromDate) ? $scope.rentalObjectFilter.fromDate + ' 00:00:00' : $scope.rentalObjectFilter.fromDate; // TODO ugly
+      $scope.rentalObjectFilter.toDate = isDateRegex.test($scope.rentalObjectFilter.toDate) ? $scope.rentalObjectFilter.toDate + ' 00:00:00' : $scope.rentalObjectFilter.toDate;
+
+      for (var i in rentalObjectFilter) {
+         if (rentalObjectFilter.hasOwnProperty(i) && rentalObjectFilter[i]) {
             GETParams[i] = rentalObjectFilter[i];
          }
       }
@@ -40,5 +43,5 @@ rentaTool.controller('RentalObjectListController', ['$scope', '$location', 'Rent
             indexOfRentalObject = $scope.rentalObjectCollection.indexOf(rentalObject);
             $scope.rentalObjectCollection.splice(indexOfRentalObject, 1);
          });
-      };
+   };
 }]);
