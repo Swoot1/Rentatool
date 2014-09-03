@@ -60,7 +60,9 @@ class RentalObjectController{
    }
 
    public function update($id, $requestData){
-      $rentalObject = $this->rentalObjectService->update($id, $requestData);
+      $currentUser = SessionManager::getCurrentUser();
+      $requestData['id'] = $id;
+      $rentalObject = $this->rentalObjectService->update($requestData, $currentUser);
 
       $this->response->setResponseData($rentalObject);
       $this->response->addNotifier(['message' => 'Uthyrningsobjektet har uppdaterats.']);

@@ -55,7 +55,7 @@ class RentalObjectService{
       $DBParameters        = $rentalObject->getDBParameters();
       $rentalObjectData    = $this->rentalObjectMapper->create($DBParameters);
       $rentalObject        = new RentalObject($rentalObjectData);
-      $this->pricePlanService->createFromCollection($pricePlanCollection, $rentalObject);
+      $this->pricePlanService->createFromCollection($pricePlanCollection, $rentalObject, $currentUser, $this);
 
       return $rentalObject;
    }
@@ -72,14 +72,20 @@ class RentalObjectService{
    }
 
    /**
-    * @param $id
     * @param $requestData
+    * @param $currentUser
     * @return RentalObject
+    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
-   public function update($id, $requestData){
-      $this->checkIfRentalObjectExist($id);
+   public function update($requestData, $currentUser){
+      $this->checkIfRentalObjectExist($requestData['id']);
       $rentalObject = new RentalObject($requestData);
-      $this->rentalObjectMapper->update($rentalObject->getDBParameters());
+      if($rentalObject->isOwner($currentUser)){
+         $this->rentalObjectMapper->update($rentalObject->getDBParameters());
+      }else{
+         throw new ApplicationException('Kan inte uppdatera objekt som du inte är ägare av.');
+      }
+
 
       return $rentalObject;
    }

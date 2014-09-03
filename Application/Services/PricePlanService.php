@@ -9,49 +9,40 @@
 namespace Rentatool\Application\Services;
 
 use Rentatool\Application\Collections\PricePlanCollection;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 use Rentatool\Application\Mappers\PricePlanMapper;
 use Rentatool\Application\Models\PricePlan;
 use Rentatool\Application\Models\RentalObject;
+use Rentatool\Application\Models\User;
 
 class PricePlanService{
    /**
     * @var \Rentatool\Application\Mappers\PricePlanMapper
     */
    protected $pricePlanMapper;
+   /**
+    * @var PricePlanValidationService
+    */
+   protected $pricePlanValidationService;
 
-   public function __construct(PricePlanMapper $pricePlanMapper){
-      $this->pricePlanMapper = $pricePlanMapper;
+   public function __construct(PricePlanMapper $pricePlanMapper, PricePlanValidationService $pricePlanValidationService){
+      $this->pricePlanMapper     = $pricePlanMapper;
+      $this->pricePlanValidationService = $pricePlanValidationService;
    }
 
    /**
     * @param array $data
+    * @param User $currentUser
+    * @param RentalObjectService $rentalObjectService
     * @return PricePlan
     */
-   public function create(array $data){
+   public function create(array $data, User $currentUser, RentalObjectService $rentalObjectService){
+
       $pricePlan = new PricePlan($data);
-      $this->checkIsUniquePricePlan($pricePlan);
+      $this->pricePlanValidationService->checkIsOwnerOfRentalObject($pricePlan->getRentalObjectId(), $currentUser, $rentalObjectService);
+      $this->pricePlanValidationService->checkIsUniquePricePlan($pricePlan);
       $data = $this->pricePlanMapper->create($pricePlan->getDBParameters());
+
       return new PricePlan($data);
-   }
-
-   /**
-    * Checks that there's not an existing priceplan with the same time unit.
-    * @param PricePlan $pricePlan
-    * @return bool
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
-    */
-   private function checkIsUniquePricePlan(PricePlan $pricePlan){
-      $isUniquePricePlan = $this->pricePlanMapper->isUniquePlan(
-                                               $pricePlan->getRentalObjectId(),
-                                               $pricePlan->getTimeUnitId()
-      );
-
-      if ($isUniquePricePlan === false){
-         throw new ApplicationException('Det finns redan ett pris för vald tidsenhet.');
-      }
-
-      return true;
    }
 
    /**
@@ -67,9 +58,11 @@ class PricePlanService{
    /**
     * @param PricePlanCollection $pricePlanCollection
     * @param RentalObject $rentalObject
+    * @param User $currentUser
+    * @param RentalObjectService $rentalObjectService
     * @return PricePlanCollection
     */
-   public function createFromCollection(PricePlanCollection $pricePlanCollection, RentalObject $rentalObject){
+   public function createFromCollection(PricePlanCollection $pricePlanCollection, RentalObject $rentalObject, User $currentUser, RentalObjectService $rentalObjectService){
 
       $pricePlanCollectionData = $pricePlanCollection->getDBParameters();
       $result                  = array();
@@ -77,7 +70,7 @@ class PricePlanService{
       foreach ($pricePlanCollectionData as $pricePlanData){
          $pricePlanData['rentalObjectId'] = $rentalObject->getId();
          unset($pricePlanData['id']);
-         $result[]                        = $this->create($pricePlanData);
+         $result[] = $this->create($pricePlanData, $currentUser, $rentalObjectService);
       }
 
       return new PricePlanCollection($result);
@@ -85,11 +78,14 @@ class PricePlanService{
 
    /**
     * @param $id
+    * @param User $currentUser
+    * @param RentalObjectService $rentalObjectService
     * @return $this
     */
-   public function delete($id){
+   public function delete($id, User $currentUser, RentalObjectService $rentalObjectService){
+      $this->pricePlanValidationService->checkIsOwnerOfRentalObject($id, $currentUser, $rentalObjectService);
       $this->pricePlanMapper->delete($id);
 
       return $this;
    }
-} 
+}
