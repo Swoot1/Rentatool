@@ -1,8 +1,8 @@
 /**
  * Created by Elin on 2014-06-17.
  */
-rentaTool.controller("AuthorizationController", ['$scope', '$location', 'Authorization', 'AlertBoxService',
-   function ($scope, $location, Authorization, alertBoxService) {
+rentaTool.controller("AuthorizationController", ['$scope', '$location', 'Authorization', 'AlertBoxService', '$rootScope',
+   function ($scope, $location, Authorization, alertBoxService, $rootScope) {
       var authorizationResource;
 
       $scope.attemptLogin = function () {
@@ -10,6 +10,7 @@ rentaTool.controller("AuthorizationController", ['$scope', '$location', 'Authori
          authorizationResource.$save({action: 'login'}, function (data) {
             if (data.isLoggedIn) {
                $location.path('/rentalobjects/new');
+                $rootScope.$broadcast('EVENT_LOGINSTATE_CHANGED');
             } else {
                alertBoxService.addAlertBox('alert', 'Misslyckad inloggning!');
             }
@@ -20,6 +21,7 @@ rentaTool.controller("AuthorizationController", ['$scope', '$location', 'Authori
          authorizationResource = new Authorization();
          authorizationResource.$get({action: 'logout'}, function () {
             $location.path('/authorization/login');
+             $rootScope.$broadcast('EVENT_LOGINSTATE_CHANGED');
          });
       };
    }]);

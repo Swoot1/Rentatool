@@ -108,4 +108,10 @@ $routes['priceplans'] = array(
    'subRoutesCollection'     => new SubRouteCollection(array())
 );
 
+$routes['menuitems'] = array(
+   'controllerName'          => 'MenuController',
+   'requestMethodCollection' => new RequestMethodCollection(array('GET')),
+   'subRoutesCollection'     => new SubRouteCollection(array())
+);
+
 return new RouteCollection($routes);
