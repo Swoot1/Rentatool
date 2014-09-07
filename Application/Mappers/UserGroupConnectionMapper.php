@@ -31,7 +31,9 @@ class UserGroupConnectionMapper{
    private $getUserGroupsSQL = '
       SELECT
          usergroup.id,
-         usergroup.name
+         usergroup.name,
+         usergroup.description,
+         usergroup.administrative_access AS "administrativeAccess"
       FROM
         user_groups usergroup
       LEFT JOIN

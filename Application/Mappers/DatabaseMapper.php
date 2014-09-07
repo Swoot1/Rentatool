@@ -45,7 +45,8 @@ class DatabaseMapper{
       CREATE TABLE IF NOT EXISTS user_groups (
          id  INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
          name VARCHAR(30) NOT NULL UNIQUE,
-         description varchar(200) NOT NULL
+         description varchar(200) NOT NULL,
+        administrative_access tinyint(1) NOT NULL DEFAULT 0
       );
 
       CREATE TABLE IF NOT EXISTS users_groups_maps (
@@ -162,8 +163,9 @@ class DatabaseMapper{
 
       $userGroups = array(
          array(
-            'name'        => 'administrators',
-            'description' => 'They have the power'
+            'name'                 => 'administrators',
+            'description'          => 'They have the power',
+            'administrativeAccess' => true
          ),
          array(
             'name'        => 'users',
@@ -186,19 +188,19 @@ class DatabaseMapper{
 
       $timeUnits = array(
          array(
-            'name'    => 'timme'
+            'name' => 'timme'
          ),
          array(
-            'name'    => 'dag'
+            'name' => 'dag'
          ),
          array(
-            'name'    => 'vecka'
+            'name' => 'vecka'
          ),
          array(
-            'name'    => 'kalendermånad'
+            'name' => 'kalendermånad'
          ),
          array(
-            'name'    => 'år'
+            'name' => 'år'
          )
       );
 

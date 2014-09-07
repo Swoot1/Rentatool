@@ -86,10 +86,17 @@ class UserService{
     * @return null|User
     */
    public function getUserByEmail($email){
+      $user       = null;
       $userMapper = $this->userMapper;
       $userData   = $userMapper->getUserByEmail($email);
 
-      return $userData = $userData ? new User($userData) : null;
+      if ($userData){
+         $user       = new User($userData);
+         $userGroups = $this->userGroupConnectionMapper->getUserGroups($user->getId());
+         $user->setGroups(new UserGroupCollection($userGroups));
+      }
+
+      return $user;
    }
 
    /**

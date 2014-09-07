@@ -8,6 +8,7 @@
  */
 
 use Rentatool\Application\Collections\RequestMethodCollection;
+use Rentatool\Application\ENFramework\Helpers\AccessRules\AdministrativeAccessRule;
 use Rentatool\Application\ENFramework\Helpers\AccessRules\AuthorizedAccessRule;
 use Rentatool\Application\ENFramework\Helpers\Routing\RouteCollection;
 use Rentatool\Application\ENFramework\Helpers\Routing\SubRouteCollection;
@@ -40,6 +41,7 @@ $routes['authorization'] = array(
 
 $routes['users'] = array(
    'controllerName'          => 'UserController',
+   'accessRule'              => new AdministrativeAccessRule(),
    'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
    'subRoutesCollection'     => new SubRouteCollection(array())
 );
@@ -74,19 +76,19 @@ $routes['rentperiodcalculators'] = array(
 
 $routes['usergroups'] = array(
    'controllerName'          => 'UserGroupController',
-   'accessRule'              => new AuthorizedAccessRule(),
+   'accessRule'              => new AdministrativeAccessRule(),
    'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
    'subRoutesCollection'     => new SubRouteCollection(
       array(
            'addMember'    => array(
               'controllerName'          => 'UserGroupController',
-              'accessRule'              => new AuthorizedAccessRule(),
+              'accessRule'              => new AdministrativeAccessRule(),
               'requestMethodCollection' => new RequestMethodCollection(array('POST')),
               'subRoutesCollection'     => new SubRouteCollection(array())
            ),
            'removeMember' => array(
               'controllerName'          => 'UserGroupController',
-              'accessRule'              => new AuthorizedAccessRule(),
+              'accessRule'              => new AdministrativeAccessRule(),
               'requestMethodCollection' => new RequestMethodCollection(array('POST')),
               'subRoutesCollection'     => new SubRouteCollection(array())
            )
@@ -101,7 +103,7 @@ $routes['timeunits'] = array(
 
 $routes['priceplans'] = array(
    'controllerName'          => 'PricePlanController',
-   'accessRule'              => new AuthorizedAccessRule(),
+   'accessRule'              => new AdministrativeAccessRule(),
    'requestMethodCollection' => new RequestMethodCollection(array('POST', 'DELETE')),
    'subRoutesCollection'     => new SubRouteCollection(array())
 );
