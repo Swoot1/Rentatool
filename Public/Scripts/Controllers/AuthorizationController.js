@@ -10,7 +10,7 @@ rentaTool.controller("AuthorizationController", ['$scope', '$location', 'Authori
          authorizationResource.$save({action: 'login'}, function (data) {
             if (data.isLoggedIn) {
                $location.path('/rentalobjects/new');
-                $rootScope.$broadcast('EVENT_LOGINSTATE_CHANGED');
+                $rootScope.$broadcast('loginStateChanged');
             } else {
                alertBoxService.addAlertBox('alert', 'Misslyckad inloggning!');
             }
@@ -21,7 +21,7 @@ rentaTool.controller("AuthorizationController", ['$scope', '$location', 'Authori
          authorizationResource = new Authorization();
          authorizationResource.$get({action: 'logout'}, function () {
             $location.path('/authorization/login');
-             $rootScope.$broadcast('EVENT_LOGINSTATE_CHANGED');
+             $rootScope.$broadcast('loginStateChanged');
          });
       };
    }]);

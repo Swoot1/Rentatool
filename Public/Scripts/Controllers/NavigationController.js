@@ -10,7 +10,7 @@ rentaTool.controller('NavigationController', ['$scope', '$location', 'MenuItems'
       $scope[menuItem.callback]();
     };
 
-    $scope.$on('EVENT_LOGINSTATE_CHANGED', function(){
+    $scope.$on('loginStateChanged', function(){
         $scope.menuItems = MenuItems.query();
     });
 
