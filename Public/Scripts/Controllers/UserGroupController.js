@@ -14,12 +14,16 @@ rentaTool.controller('UserGroupController', ['$scope', '$resource', '$location',
         $scope.userGroup = new UserGroup({});
     }
 
-    $scope.returnToUserGroupList = function() {
+    $scope.returnToUserGroupList = function () {
         $location.path('/usergroups');
     };
 
     $scope.createUserGroup = function () {
         $scope.userGroup.$save({});
+    };
+
+    $scope.updateUserGroup = function () {
+        $scope.userGroup.$update({})
     };
 
 }]);

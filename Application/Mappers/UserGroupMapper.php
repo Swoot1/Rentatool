@@ -18,7 +18,8 @@ class UserGroupMapper{
       SELECT
          id,
          name,
-         description
+         description,
+         administrative_access AS "administrativeAccess"
       FROM
         user_groups
    ';
@@ -28,12 +29,14 @@ class UserGroupMapper{
         user_groups
         (
           name,
-          description
+          description,
+          administrative_access
         )
       VALUES
         (
           :name,
-          :description
+          :description,
+          :administrativeAccess
         )
    ';
 
@@ -41,7 +44,8 @@ class UserGroupMapper{
       SELECT
          id,
          name,
-         description
+         description,
+         administrative_access AS "administrativeAccess"
       FROM
         user_groups
       WHERE
@@ -53,7 +57,8 @@ class UserGroupMapper{
          user_groups
       SET
         name = :name,
-        description = :description
+        description = :description,
+        administrative_access = :administrativeAccess
       WHERE
         id = :id
    ';
@@ -63,20 +68,6 @@ class UserGroupMapper{
         user_groups
       WHERE
         id = :id
-   ';
-
-   private $getGroupMembershipsSQL = '
-      SELECT
-         users.id,
-         users.username
-      FROM
-         users
-      LEFT JOIN
-         users_groups_maps map
-      ON
-         map.user_id = users.id
-      WHERE
-         map.group_id = :id
    ';
 
 

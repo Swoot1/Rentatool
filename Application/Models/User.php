@@ -83,6 +83,13 @@ class User extends GeneralModel{
    }
 
    /**
+    * @return mixed
+    */
+   public function getGroups(){
+      return $this->groups;
+   }
+
+   /**
     * @param UserGroupCollection $userGroups
     */
    public function setGroups(UserGroupCollection $userGroups) {
