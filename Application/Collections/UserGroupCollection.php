@@ -16,4 +16,15 @@ class UserGroupCollection extends GeneralCollection{
 
    protected $model = 'Rentatool\Application\Models\UserGroup';
 
+   public function hasAdministrativeAccess(){
+      $hasAdministrativeAccess = false;
+
+      foreach ($this->data as $group){
+         if ($group->hasAdministrativeAccess()){
+            $hasAdministrativeAccess = true;
+         }
+      }
+
+      return $hasAdministrativeAccess;
+   }
 }

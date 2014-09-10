@@ -12,10 +12,13 @@ namespace Rentatool\Application\ENFramework\Helpers\AccessRules;
 
 use Rentatool\Application\Models\User;
 
-class PrivilegedAccessRule implements IAccessRule {
+class AdministrativeAccessRule implements IAccessRule {
 
+   /**
+    * @param User $user
+    * @return bool
+    */
    public function isAccessAllowed(User $user) {
-      return true;
+      return $user->hasAdministrativeAccess();
    }
-
 }

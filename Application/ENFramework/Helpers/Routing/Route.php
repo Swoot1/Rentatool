@@ -10,6 +10,7 @@
 namespace Rentatool\Application\ENFramework\Helpers\Routing;
 
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
 use Rentatool\Application\ENFramework\Helpers\SessionManager;
 use Rentatool\Application\ENFramework\Models\Request;
 
@@ -51,10 +52,16 @@ class Route {
    }
 
    public function isUserAllowed() {
+      $allowed = false;
+
       if(SessionManager::isUserLoggedIn() && !is_null($this->accessRule)) {
-         return $this->accessRule->isAccessAllowed(SessionManager::getCurrentUser());
+         $allowed = $this->accessRule->isAccessAllowed(SessionManager::getCurrentUser());
+
+         if(!$allowed) {
+            throw new UserIsNotAllowedException('Du saknar behörighet för denna resurs.');
+         }
       }
 
-      return !is_null($this->accessRule);
+      return is_null($this->accessRule) || $allowed;
    }
 }

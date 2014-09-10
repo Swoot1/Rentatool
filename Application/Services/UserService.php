@@ -31,8 +31,7 @@ class UserService{
     * @return UserCollection
     */
    public function index(){
-      $userMapper = $this->userMapper;
-      $userData   = $userMapper->index();
+      $userData = $this->userMapper->index();
 
       return new UserCollection($userData);
    }
@@ -44,10 +43,9 @@ class UserService{
    public function create(array $data){
       $data         = $this->hashPassword($data);
       $userModel    = new User($data);
-      $userMapper   = $this->userMapper;
       $DBParameters = $userModel->getDBParameters();
       $this->userValidationService->validateUser($userModel);
-      $userData = $userMapper->create($DBParameters);
+      $userData = $this->userMapper->create($DBParameters);
 
       return new User($userData);
    }
@@ -65,31 +63,38 @@ class UserService{
 
    /**
     * @param $id
-    * @return null|User
+    * @return User
+    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
     */
    public function read($id){
-      $user       = null;
-      $userMapper = $this->userMapper;
-      $result     = $userMapper->read($id);
+      $result = $this->userMapper->read($id);
 
-      if ($result){
-         $user           = new User($result);
-         $userGroupsData = $this->userGroupConnectionMapper->getUserGroups($id);
-         $user->setGroups(new UserGroupCollection($userGroupsData));
+      if ($result === null){
+         throw new NotFoundException('Kunde inte hitta användaren.');
       }
 
-      return $user;
+      $result['groups'] = $this->userGroupConnectionMapper->getUserGroups($id);
+
+      return new User($result);
    }
 
    /**
     * @param $email
     * @return null|User
+    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
     */
    public function getUserByEmail($email){
-      $userMapper = $this->userMapper;
-      $userData   = $userMapper->getUserByEmail($email);
+      $userData = $this->userMapper->getUserByEmail($email);
 
-      return $userData = $userData ? new User($userData) : null;
+      if ($userData === null){
+         throw new NotFoundException('Kunde inte hitta användaren.');
+      }
+
+      $user       = new User($userData);
+      $userGroups = $this->userGroupConnectionMapper->getUserGroups($user->getId());
+      $user->setGroups(new UserGroupCollection($userGroups));
+
+      return $user;
    }
 
    /**

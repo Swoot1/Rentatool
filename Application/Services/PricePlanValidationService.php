@@ -24,15 +24,34 @@ class PricePlanValidationService {
    }
 
    /**
-    * @param $rentalObjectId
+    * @param PricePlan $pricePlan
+    * @param User $currentUser
+    * @param RentalObjectService $rentalObjectService
+    * @return $this
+    */
+   public function validateCreate(PricePlan $pricePlan, User $currentUser, RentalObjectService $rentalObjectService){
+      $this->checkIsOwnerOfRentalObject($pricePlan, $currentUser, $rentalObjectService);
+      $this->checkIsUniquePricePlan($pricePlan);
+
+      return $this;
+   }
+
+   public function validateDelete(PricePlan $pricePlan, User $currentUser, RentalObjectService $rentalObjectService){
+      $this->checkIsOwnerOfRentalObject($pricePlan, $currentUser, $rentalObjectService);
+      $this->validateNumberOfPricePlans($pricePlan);
+      return $this;
+   }
+
+   /**
+    * @param PricePlan $pricePlan
     * @param User $currentUser
     * @param RentalObjectService $rentalObjectService
     * @return bool
     * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
     * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
-   public function checkIsOwnerOfRentalObject($rentalObjectId, User $currentUser, RentalObjectService $rentalObjectService){
-      $rentalObject = $rentalObjectService->read($rentalObjectId);
+   private function checkIsOwnerOfRentalObject(PricePlan $pricePlan, User $currentUser, RentalObjectService $rentalObjectService){
+      $rentalObject = $rentalObjectService->read($pricePlan->getRentalObjectId());
 
       if ($rentalObject === null){
          throw new NotFoundException('Kunde inte hitta uthyrningsobjektet.');
@@ -45,13 +64,24 @@ class PricePlanValidationService {
       return true;
    }
 
+   private function validateNumberOfPricePlans(PricePlan $pricePlan){
+      $numberOfPricePlans = $this->pricePlanMapper->getNumberOfPricePlans($pricePlan->getRentalObjectId());
+      $notAllowedToRemovePricePlan = $numberOfPricePlans < 2;
+
+      if($notAllowedToRemovePricePlan){
+         throw new ApplicationException('Kan inte ta bort prisplanen. Ett uthyrningsobjekt måste ha minst en prisplan');
+      }
+
+      return true;
+   }
+
    /**
     * Checks that there's not an existing priceplan with the same time unit.
     * @param PricePlan $pricePlan
     * @return bool
     * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
-   public function checkIsUniquePricePlan(PricePlan $pricePlan){
+   private function checkIsUniquePricePlan(PricePlan $pricePlan){
       $isUniquePricePlan = $this->pricePlanMapper->isUniquePlan(
                                                  $pricePlan->getRentalObjectId(),
                                                  $pricePlan->getTimeUnitId()

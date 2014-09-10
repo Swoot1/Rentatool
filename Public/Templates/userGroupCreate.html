@@ -1,8 +1,9 @@
 <div class="row">
-    <div class="large-12 columns">
-        <h2>Skapa ny användargrupp</h2>
+    <h2>Skapa ny användargrupp</h2>
 
-        <form name="user_group_form" ng-submit="createUserGroup()">
+    <form name="user_group_form" ng-submit="createUserGroup()">
+        <div class="large-4 columns">
+
             <label>Namn</label>
             <input ng-model="userGroup.name" name="name" type="text"/>
 
@@ -13,6 +14,10 @@
 
             <button type="submit">Spara grupp</button>
             <button type="button" ng-click="returnToUserGroupList()">Avbryt</button>
-        </form>
-    </div>
+        </div>
+        <div class="lagte-1">
+            <label>Administrativ grupp</label>
+            <input type="checkbox" ng-model="userGroup.administrativeAccess"/>
+        </div>
+    </form>
 </div>

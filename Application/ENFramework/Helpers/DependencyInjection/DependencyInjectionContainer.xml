@@ -79,6 +79,12 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Rentatool\Application\Controllers" class="MenuController">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+            </dependencies>
+        </dependency>
+
         <dependency namespace="Rentatool\Application\Controllers" class="UnavailableRentPeriodController">
             <dependencies>
                 <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>

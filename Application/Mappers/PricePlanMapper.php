@@ -11,8 +11,8 @@ namespace Rentatool\Application\Mappers;
 
 use Rentatool\Application\ENFramework\Models\IDatabaseConnection;
 
-class PricePlanMapper {
-   private  $databaseConnection;
+class PricePlanMapper{
+   private $databaseConnection;
 
    private $createSQL = '
       INSERT INTO
@@ -77,6 +77,19 @@ class PricePlanMapper {
        AS "numberOfExistingPricePlans";
    ';
 
+   private $getNumberOfExistingPricePlansSQL = '
+      SELECT
+         (
+           SELECT
+             COUNT(id)
+           FROM
+             price_plans
+           WHERE
+             rental_object_id = :rentalObjectId
+          )
+       AS "numberOfExistingPricePlans";
+      ';
+
    public function __construct(IDatabaseConnection $databaseConnection){
       $this->databaseConnection = $databaseConnection;
    }
@@ -90,25 +103,32 @@ class PricePlanMapper {
 
    public function read($id){
       $result = $this->databaseConnection->runQuery($this->readSQL, array('id' => $id));
+
       return array_shift($result);
    }
 
    public function readCollectionFromRentalObjectId($rentalObjectId){
       return $this->databaseConnection->runQuery($this->readCollectionFromRentalObjectIdSQL,
-                                          array('rentalObjectId' => $rentalObjectId));
+                                                 array('rentalObjectId' => $rentalObjectId));
    }
 
    public function delete($id){
       $this->databaseConnection->runQuery($this->deleteSQL, array('id' => $id));
+
       return $this;
    }
 
    public function isUniquePlan($rentalObjectId, $timeUnitId){
       $result = $this->databaseConnection->runQuery($this->pricePlanExistsSQL, array(
          'rentalObjectId' => $rentalObjectId,
-         'timeUnitId' => $timeUnitId
+         'timeUnitId'     => $timeUnitId
       ));
 
       return (int)array_pop($result)['numberOfExistingPricePlans'] === 0;
+   }
+
+   public function getNumberOfPricePlans($rentalObjectId){
+      $result = $this->databaseConnection->runQuery($this->getNumberOfExistingPricePlansSQL, array('rentalObjectId' => $rentalObjectId));
+      return (int)array_pop($result)['numberOfExistingPricePlans'];
    }
 } 

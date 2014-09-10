@@ -55,7 +55,8 @@ class RentalObjectService{
       $DBParameters        = $rentalObject->getDBParameters();
       $rentalObjectData    = $this->rentalObjectMapper->create($DBParameters);
       $rentalObject        = new RentalObject($rentalObjectData);
-      $this->pricePlanService->createFromCollection($pricePlanCollection, $rentalObject, $currentUser, $this);
+      $pricePlanCollection = $this->pricePlanService->createFromCollection($pricePlanCollection, $rentalObject, $currentUser, $this);
+      $rentalObject->setPricePlanCollection($pricePlanCollection);
 
       return $rentalObject;
    }
@@ -80,9 +81,9 @@ class RentalObjectService{
    public function update($requestData, $currentUser){
       $this->checkIfRentalObjectExist($requestData['id']);
       $rentalObject = new RentalObject($requestData);
-      if($rentalObject->isOwner($currentUser)){
+      if ($rentalObject->isOwner($currentUser)){
          $this->rentalObjectMapper->update($rentalObject->getDBParameters());
-      }else{
+      } else{
          throw new ApplicationException('Kan inte uppdatera objekt som du inte är ägare av.');
       }
 
@@ -109,13 +110,13 @@ class RentalObjectService{
 
       $rentalObject = $this->read($id);
 
-      if($rentalObject === null){
+      if ($rentalObject === null){
          throw new NotFoundException('Kunde inte hitta valt uthyrningsobjekt för borttagning.');
       }
 
-      if($rentalObject->isOwner($currentUser)){
+      if ($rentalObject->isOwner($currentUser)){
          $this->rentalObjectMapper->delete($id);
-      }else{
+      } else{
          throw new ApplicationException('Kan inte ta bort objekt som du inte är ägare av.');
       }
    }

@@ -11,6 +11,7 @@ namespace Rentatool\Application\Models;
 
 use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
 use Rentatool\Application\ENFramework\Helpers\Validation\AlphaNumericValidation;
+use Rentatool\Application\ENFramework\Helpers\Validation\BooleanValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\TextValidation;
 use Rentatool\Application\ENFramework\Models\GeneralModel;
@@ -22,6 +23,7 @@ class UserGroup extends GeneralModel{
    protected $name;
    protected $description;
    protected $members;
+   protected $administrativeAccess;
 
    public function __construct(array $data) {
       parent::__construct($data);
@@ -45,9 +47,17 @@ class UserGroup extends GeneralModel{
                                                                                       'genericName'  => 'Beskrivning',
                                                                                       'propertyName' => 'description',
                                                                                       'maxLength'    => 200
+                                                                                 )),
+                                                              new BooleanValidation(array(
+                                                                                      'genericName'  => 'Administrativ åtkomst',
+                                                                                      'propertyName' => 'administrativeAccess',
                                                                                  ))
                                                          )));
 
+   }
+
+   public function hasAdministrativeAccess() {
+      return $this->administrativeAccess === true;
    }
 
    public function getName() {
