@@ -19,7 +19,7 @@ $routes['rentalobjects'] = array(
    'controllerName'          => 'RentalObjectController',
    'accessRule'              => new AuthorizedAccessRule(),
    'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
-   'subRoutesCollection'     => new SubRouteCollection(array())
+   'subRoutesCollection'     => new SubRouteCollection()
 );
 
 $routes['authorization'] = array(
@@ -34,7 +34,7 @@ $routes['authorization'] = array(
            'logout' => array(
               'controllerName'          => 'AuthorizationController',
               'requestMethodCollection' => new RequestMethodCollection(array('GET')),
-              'subRoutesCollection'     => new SubRouteCollection(array()))
+              'subRoutesCollection'     => new SubRouteCollection())
       )
    )
 );
@@ -43,7 +43,7 @@ $routes['users'] = array(
    'controllerName'          => 'UserController',
    'accessRule'              => new AdministrativeAccessRule(),
    'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
-   'subRoutesCollection'     => new SubRouteCollection(array())
+   'subRoutesCollection'     => new SubRouteCollection()
 );
 
 $routes['databases'] = array(
@@ -55,7 +55,7 @@ $routes['databases'] = array(
               'controllerName'          => 'DatabaseController',
               'requiresAuthorization'   => false,
               'requestMethodCollection' => new RequestMethodCollection(array('POST')),
-              'subRoutesCollection'     => new SubRouteCollection(array()))
+              'subRoutesCollection'     => new SubRouteCollection())
       )
    )
 );
@@ -64,14 +64,14 @@ $routes['rentperiods'] = array(
    'controllerName'          => 'RentPeriodController',
    'accessRule'              => new AuthorizedAccessRule(),
    'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
-   'subRoutesCollection'     => new SubRouteCollection(array())
+   'subRoutesCollection'     => new SubRouteCollection()
 );
 
 $routes['rentperiodcalculators'] = array(
    'controllerName'          => 'RentPeriodCalculatorController',
    'accessRule'              => new AuthorizedAccessRule(),
    'requestMethodCollection' => new RequestMethodCollection(array('POST')),
-   'subRoutesCollection'     => new SubRouteCollection(array())
+   'subRoutesCollection'     => new SubRouteCollection()
 );
 
 $routes['usergroups'] = array(
@@ -98,14 +98,21 @@ $routes['usergroups'] = array(
 $routes['timeunits'] = array(
    'controllerName'          => 'TimeUnitController',
    'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
-   'subRoutesCollection'     => new SubRouteCollection(array())
+   'subRoutesCollection'     => new SubRouteCollection()
 );
 
 $routes['priceplans'] = array(
    'controllerName'          => 'PricePlanController',
    'accessRule'              => new AdministrativeAccessRule(),
    'requestMethodCollection' => new RequestMethodCollection(array('POST', 'DELETE')),
-   'subRoutesCollection'     => new SubRouteCollection(array())
+   'subRoutesCollection'     => new SubRouteCollection()
+);
+
+$routes['unavailablerentperiods'] = array(
+   'controllerName'          => 'UnavailableRentPeriodController',
+   'accessRule'              => new AuthorizedAccessRule(),
+   'requestMethodCollection' => new RequestMethodCollection(array('GET')),
+   'subRoutesCollection'     => new SubRouteCollection()
 );
 
 $routes['menuitems'] = array(

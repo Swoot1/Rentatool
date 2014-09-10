@@ -168,8 +168,9 @@ class DatabaseMapper{
             'administrativeAccess' => true
          ),
          array(
-            'name'        => 'users',
-            'description' => 'They bring the money'
+            'name'                 => 'users',
+            'description'          => 'They bring the money',
+            'administrativeAccess' => false
          )
       );
 

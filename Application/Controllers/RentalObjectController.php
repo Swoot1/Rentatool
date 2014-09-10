@@ -9,7 +9,6 @@
 
 namespace Rentatool\Application\Controllers;
 
-use Rentatool\Application\ENFramework\Helpers\Notifier;
 use Rentatool\Application\ENFramework\Helpers\Response;
 use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
 use Rentatool\Application\ENFramework\Helpers\SessionManager;

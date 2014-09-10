@@ -31,8 +31,7 @@ class UserService{
     * @return UserCollection
     */
    public function index(){
-      $userMapper = $this->userMapper;
-      $userData   = $userMapper->index();
+      $userData = $this->userMapper->index();
 
       return new UserCollection($userData);
    }
@@ -44,10 +43,9 @@ class UserService{
    public function create(array $data){
       $data         = $this->hashPassword($data);
       $userModel    = new User($data);
-      $userMapper   = $this->userMapper;
       $DBParameters = $userModel->getDBParameters();
       $this->userValidationService->validateUser($userModel);
-      $userData = $userMapper->create($DBParameters);
+      $userData = $this->userMapper->create($DBParameters);
 
       return new User($userData);
    }
@@ -69,8 +67,7 @@ class UserService{
     */
    public function read($id){
       $user       = null;
-      $userMapper = $this->userMapper;
-      $result     = $userMapper->read($id);
+      $result     = $this->userMapper->read($id);
 
       if ($result){
          $user           = new User($result);
@@ -87,8 +84,7 @@ class UserService{
     */
    public function getUserByEmail($email){
       $user       = null;
-      $userMapper = $this->userMapper;
-      $userData   = $userMapper->getUserByEmail($email);
+      $userData   = $this->userMapper->getUserByEmail($email);
 
       if ($userData){
          $user       = new User($userData);

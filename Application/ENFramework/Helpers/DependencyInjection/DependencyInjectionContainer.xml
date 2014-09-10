@@ -85,6 +85,14 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Rentatool\Application\Controllers" class="UnavailableRentPeriodController">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Rentatool\Application\Services" class="UnavailableRentPeriodService"/>
+                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+            </dependencies>
+        </dependency>
+
         <!-- Services -->
         <dependency namespace="Rentatool\Application\Services" class="RentalObjectService">
             <dependencies>
@@ -159,6 +167,12 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Rentatool\Application\Services" class="UnavailableRentPeriodService">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\Mappers" class="UnavailableRentPeriodMapper"/>
+            </dependencies>
+        </dependency>
+
         <!-- Mappers -->
         <dependency namespace="Rentatool\Application\Mappers" class="RentalObjectMapper">
             <dependencies>
@@ -215,6 +229,12 @@
         </dependency>
 
         <dependency namespace="Rentatool\Application\Mappers" class="UserGroupConnectionMapper">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+            </dependencies>
+        </dependency>
+
+        <dependency namespace="Rentatool\Application\Mappers" class="UnavailableRentPeriodMapper">
             <dependencies>
                 <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>

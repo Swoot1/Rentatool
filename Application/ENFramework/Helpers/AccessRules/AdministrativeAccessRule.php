@@ -11,7 +11,6 @@ namespace Rentatool\Application\ENFramework\Helpers\AccessRules;
 
 
 use Rentatool\Application\Models\User;
-use Rentatool\Application\Models\UserGroup;
 
 class AdministrativeAccessRule implements IAccessRule {
 
@@ -20,15 +19,6 @@ class AdministrativeAccessRule implements IAccessRule {
     * @return bool
     */
    public function isAccessAllowed(User $user) {
-      foreach($user->getGroups() as $group) {
-         $group = new UserGroup($group);
-
-         if($group->hasAdministrativeAccess()) {
-            return true;
-         }
-      }
-
-      return false;
+      return $user->hasAdministrativeAccess();
    }
-
 }
