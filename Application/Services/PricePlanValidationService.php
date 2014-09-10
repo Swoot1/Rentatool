@@ -30,7 +30,7 @@ class PricePlanValidationService {
     * @return $this
     */
    public function validateCreate(PricePlan $pricePlan, User $currentUser, RentalObjectService $rentalObjectService){
-      $this->checkIsOwnerOfRentalObject($pricePlan->getRentalObjectId(), $currentUser, $rentalObjectService);
+      $this->checkIsOwnerOfRentalObject($pricePlan, $currentUser, $rentalObjectService);
       $this->checkIsUniquePricePlan($pricePlan);
 
       return $this;

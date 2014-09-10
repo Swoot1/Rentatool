@@ -10,6 +10,7 @@
 namespace Rentatool\Application\Services;
 
 use Rentatool\Application\Collections\UserGroupCollection;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 use Rentatool\Application\Mappers\UserGroupMapper;
 use Rentatool\Application\Mappers\UserGroupConnectionMapper;
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
@@ -35,14 +36,15 @@ class UserGroupService{
 
 
    public function read($id){
-      $userGroup = null;
       $result    = $this->userGroupMapper->read($id);
 
-      if ($result){
-         $userGroup        = new UserGroup($result);
-         $userGroupMembers = $this->userGroupConnectionMapper->getGroupMembers($userGroup->getId());
-         $userGroup->setMembers(new UserCollection($userGroupMembers));
+      if ($result === null){
+         throw new NotFoundException('Kunde inte hitta gruppen.');
       }
+
+      $userGroup        = new UserGroup($result);
+      $userGroupMembers = $this->userGroupConnectionMapper->getGroupMembers($userGroup->getId());
+      $userGroup->setMembers(new UserCollection($userGroupMembers));
 
       return $userGroup;
    }
