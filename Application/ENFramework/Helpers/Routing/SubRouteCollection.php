@@ -16,7 +16,7 @@ class SubRouteCollection {
    private $routes = [];
 
 
-   public function __construct(array $routes) {
+   public function __construct(array $routes = array()) {
       foreach ($routes as $path => $route) {
          $this->addRoute($path, $route);
       }
