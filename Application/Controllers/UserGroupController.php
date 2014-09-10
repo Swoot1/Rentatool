@@ -86,14 +86,6 @@ class UserGroupController{
       $user      = $this->userService = $this->userService->read($userGroupConnection->getUserId());
       $userGroup = $this->userGroupService->read($userGroupConnection->getGroupId());
 
-      if (!$user instanceof User){
-         throw new NotFoundException(sprintf('Användare med id "%s" existerar ej', $userGroupConnection->getUserId()));
-      }
-
-      if (!$userGroup instanceof UserGroup){
-         throw new NotFoundException(sprintf('Grupp med id "%s" existerar ej', $userGroupConnection->getGroupId()));
-      }
-
       $this->userGroupService->addMember($userGroupConnection);
 
       $message = sprintf('%s har lagts till i %s', $user->getUsername(), $userGroup->getName());
@@ -103,19 +95,11 @@ class UserGroupController{
    }
 
 
-   public function removeMember(array $data) {
+   public function removeMember(array $data){
       $userGroupConnection = new UserGroupConnection($data);
 
       $user      = $this->userService = $this->userService->read($userGroupConnection->getUserId());
       $userGroup = $this->userGroupService->read($userGroupConnection->getGroupId());
-
-      if (!$user instanceof User){
-         throw new NotFoundException(sprintf('Användare med id "%s" existerar ej', $userGroupConnection->getUserId()));
-      }
-
-      if (!$userGroup instanceof UserGroup){
-         throw new NotFoundException(sprintf('Grupp med id "%s" existerar ej', $userGroupConnection->getGroupId()));
-      }
 
       $this->userGroupService->removeMember($userGroupConnection);
 

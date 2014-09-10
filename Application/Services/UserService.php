@@ -63,34 +63,36 @@ class UserService{
 
    /**
     * @param $id
-    * @return null|User
+    * @return User
+    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
     */
    public function read($id){
-      $user       = null;
-      $result     = $this->userMapper->read($id);
+      $result = $this->userMapper->read($id);
 
-      if ($result){
-         $user           = new User($result);
-         $userGroupsData = $this->userGroupConnectionMapper->getUserGroups($id);
-         $user->setGroups(new UserGroupCollection($userGroupsData));
+      if ($result === null){
+         throw new NotFoundException('Kunde inte hitta användaren.');
       }
 
-      return $user;
+      $result['groups'] = $this->userGroupConnectionMapper->getUserGroups($id);
+
+      return new User($result);
    }
 
    /**
     * @param $email
     * @return null|User
+    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
     */
    public function getUserByEmail($email){
-      $user       = null;
-      $userData   = $this->userMapper->getUserByEmail($email);
+      $userData = $this->userMapper->getUserByEmail($email);
 
-      if ($userData){
-         $user       = new User($userData);
-         $userGroups = $this->userGroupConnectionMapper->getUserGroups($user->getId());
-         $user->setGroups(new UserGroupCollection($userGroups));
+      if ($userData === null){
+         throw new NotFoundException('Kunde inte hitta användaren.');
       }
+
+      $user       = new User($userData);
+      $userGroups = $this->userGroupConnectionMapper->getUserGroups($user->getId());
+      $user->setGroups(new UserGroupCollection($userGroups));
 
       return $user;
    }
