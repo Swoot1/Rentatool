@@ -12,6 +12,7 @@ namespace Rentatool\Application\Models;
 use Rentatool\Application\Collections\PricePlanCollection;
 use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
 use Rentatool\Application\ENFramework\Helpers\Validation\DateTimeValidation;
+use Rentatool\Application\ENFramework\Helpers\Validation\FloatValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
 use Rentatool\Application\ENFramework\Models\GeneralModel;
 
@@ -62,6 +63,13 @@ class RentPeriod extends GeneralModel{
                array(
                   'genericName'  => 'till datum',
                   'propertyName' => 'toDate'
+               )
+            ),
+            new FloatValidation(
+               array(
+                  'genericName'  => 'Pris',
+                  'propertyName' => 'price',
+                  'numberOfDecimals' => 2
                )
             )
          )

@@ -69,6 +69,11 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Factories/DatabaseFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/AuthorizationFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/UserGroupFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/UnavailableRentPeriodFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/RequestErrorInterceptorFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/RequestSuccessInterceptorFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/UserGroupConnectionFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Services/UnavailableRentPeriodService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/DatabaseController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectListController.js"></script>

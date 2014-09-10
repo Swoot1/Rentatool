@@ -23,11 +23,12 @@ class User extends GeneralModel{
    protected $email;
    protected $password;
    protected $groups;
+   protected $_setters = array('groups' => 'setGroups');
 
-   public function __construct(array $data) {
+   public function __construct(array $data){
       parent::__construct($data);
       $this->setNoDBProperties(array(
-                                    'groups'
+                                  'groups'
                                ));
    }
 
@@ -90,9 +91,20 @@ class User extends GeneralModel{
    }
 
    /**
-    * @param UserGroupCollection $userGroups
+    * @param $userGroups
+    * @return $this
     */
-   public function setGroups(UserGroupCollection $userGroups) {
-      $this->groups = $userGroups;
+   public function setGroups($userGroups){
+      if ($userGroups instanceof UserGroupCollection){
+         $this->groups = $userGroups;
+      }else{
+         $this->groups = new UserGroupCollection($userGroups);
+      }
+
+      return $this;
    }
-} 
+
+   public function hasAdministrativeAccess(){
+      return $this->groups->hasAdministrativeAccess();
+   }
+}
