@@ -54,7 +54,7 @@ class Request extends GeneralModel {
          if (array_key_exists(2, $matches)) {
 
             if (is_numeric($matches[2])) {
-               $this->id = $matches[2];
+               $this->id = (int)$matches[2];
             } else {
                $this->action = $matches[2];
             }
