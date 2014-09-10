@@ -9,6 +9,7 @@
 namespace Rentatool\Application\Services;
 
 use Rentatool\Application\Collections\PricePlanCollection;
+use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
 use Rentatool\Application\Mappers\PricePlanMapper;
 use Rentatool\Application\Models\PricePlan;
 use Rentatool\Application\Models\RentalObject;
@@ -25,7 +26,7 @@ class PricePlanService{
    protected $pricePlanValidationService;
 
    public function __construct(PricePlanMapper $pricePlanMapper, PricePlanValidationService $pricePlanValidationService){
-      $this->pricePlanMapper     = $pricePlanMapper;
+      $this->pricePlanMapper            = $pricePlanMapper;
       $this->pricePlanValidationService = $pricePlanValidationService;
    }
 
@@ -38,8 +39,7 @@ class PricePlanService{
    public function create(array $data, User $currentUser, RentalObjectService $rentalObjectService){
 
       $pricePlan = new PricePlan($data);
-      $this->pricePlanValidationService->checkIsOwnerOfRentalObject($pricePlan->getRentalObjectId(), $currentUser, $rentalObjectService);
-      $this->pricePlanValidationService->checkIsUniquePricePlan($pricePlan);
+      $this->pricePlanValidationService->validateCreate($pricePlan, $currentUser, $rentalObjectService);
       $data = $this->pricePlanMapper->create($pricePlan->getDBParameters());
 
       return new PricePlan($data);
@@ -64,16 +64,16 @@ class PricePlanService{
     */
    public function createFromCollection(PricePlanCollection $pricePlanCollection, RentalObject $rentalObject, User $currentUser, RentalObjectService $rentalObjectService){
 
+      $pricePlanCollection->setRentalObjectId($rentalObject);
       $pricePlanCollectionData = $pricePlanCollection->getDBParameters();
-      $result                  = array();
+      $pricePlanCollection->validateNumberOfPricePlans();
 
-      foreach ($pricePlanCollectionData as $pricePlanData){
-         $pricePlanData['rentalObjectId'] = $rentalObject->getId();
+      foreach ($pricePlanCollectionData as $key => $pricePlanData){
          unset($pricePlanData['id']);
-         $result[] = $this->create($pricePlanData, $currentUser, $rentalObjectService);
+         $pricePlanCollectionData[$key] = $this->create($pricePlanData, $currentUser, $rentalObjectService);
       }
 
-      return new PricePlanCollection($result);
+      return new PricePlanCollection($pricePlanCollectionData);
    }
 
    /**
@@ -81,9 +81,16 @@ class PricePlanService{
     * @param User $currentUser
     * @param RentalObjectService $rentalObjectService
     * @return $this
+    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
     */
    public function delete($id, User $currentUser, RentalObjectService $rentalObjectService){
-      $this->pricePlanValidationService->checkIsOwnerOfRentalObject($id, $currentUser, $rentalObjectService);
+      $pricePlanData = $this->pricePlanMapper->read($id);
+
+      if ($pricePlanData === null){
+         throw new NotFoundException('Kunde inte hitta prisplanen.');
+      }
+
+      $this->pricePlanValidationService->validateDelete(new PricePlan($pricePlanData), $currentUser, $rentalObjectService);
       $this->pricePlanMapper->delete($id);
 
       return $this;

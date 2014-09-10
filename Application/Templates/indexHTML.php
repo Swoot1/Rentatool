@@ -34,12 +34,8 @@ echo '<!DOCTYPE html>
        </ul>
 
        <!-- Left Nav Section -->
-       <ul class="left">
-         <li ng-click="navigateToLogIn()"><a>Inloggningssida</a></li>
-         <li ng-click="navigateToUserList()"><a>Användare</a></li>
-         <li ng-click="navigateToUserGroupList()"><a>Användargrupper</a></li>
-         <li ng-click="navigateToRentalObjectList()"><a>Uthyrningsobjekt</a></li>
-         <li ng-click="navigateToCreateDatabase()"><a>Databasskapning</a></li>
+       <ul class="left" ng-show="menuLoaded" ng-repeat="menuItem in menuItems">
+        <li ng-click="navigate(menuItem)"><a ng-bind="menuItem.label"></a></li>
        </ul>
      </section>
    </nav>
@@ -78,6 +74,7 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Factories/RequestErrorInterceptorFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RequestSuccessInterceptorFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/UserGroupConnectionFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Services/UnavailableRentPeriodService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/DatabaseController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectListController.js"></script>
@@ -89,5 +86,6 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserGroupListController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserGroupController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/LogOutButton.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/MenuItemsFactory.js"></script>
 </body>
 </html>';

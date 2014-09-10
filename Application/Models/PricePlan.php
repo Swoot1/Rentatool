@@ -20,6 +20,11 @@ class PricePlan extends GeneralModel{
    protected $timeUnitId;
    protected $price;
 
+   public function setRentalObjectId(RentalObject $rentalObject){
+      $this->rentalObjectId = $rentalObject->getId();
+      return $this;
+   }
+
    public function getRentalObjectId(){
       return $this->rentalObjectId;
    }

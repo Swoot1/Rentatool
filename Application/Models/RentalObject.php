@@ -61,7 +61,7 @@ class RentalObject extends GeneralModel{
     * @param $data
     * @return $this
     */
-   protected function setPricePlanCollection($data){
+   public function setPricePlanCollection($data){
 
       if ($data instanceof \Rentatool\Application\Collections\PricePlanCollection){
          $this->pricePlanCollection = $data;
