@@ -38,7 +38,7 @@ class TimeUnitController {
       return $this->response->setResponseData($timeUnitCollection);
    }
 
-   public function update($id, array $data){ // TODO vad händer med valideringen om $id och $data['id'] inte är samma?
+   public function update($id, array $data){
       $timeUnit = $this->timeUnitService->update($id, $data);
       return $this->response
          ->addNotifier(array('message' => 'Tidsenheten har uppdaterats.'))

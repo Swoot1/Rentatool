@@ -13,12 +13,12 @@ use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\Applicati
 use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
 use Rentatool\Application\ENFramework\Models\Request;
 
-class Routing {
+class Routing{
 
    private $request;
    private $dependencyInjector;
 
-   public function __construct(Request $request, \SimpleXMLElement $dependencyInjector) {
+   public function __construct(Request $request, \SimpleXMLElement $dependencyInjector){
       $this->request            = $request;
       $this->dependencyInjector = $dependencyInjector;
    }
@@ -28,11 +28,11 @@ class Routing {
     * @return mixed
     * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException
     */
-   public function callMethod(Route $route) {
+   public function callMethod(Route $route){
       $controller    = $this->getController($route);
       $requestMethod = $this->request->getRequestMethod();
 
-      switch ($requestMethod) {
+      switch ($requestMethod){
          case 'GET':
             $result = $this->callGetMethod($controller);
             break;
@@ -57,7 +57,7 @@ class Routing {
     * @param Route $route
     * @return null|object
     */
-   private function getController(Route $route) {
+   private function getController(Route $route){
       $dependencyInjectionContainer = new DependencyInjection($this->dependencyInjector, $this->request);
 
       return $dependencyInjectionContainer->getInstantiatedClass($route->getController());
@@ -67,20 +67,20 @@ class Routing {
     * @param $controller
     * @return mixed
     */
-   private function callGetMethod($controller) {
+   private function callGetMethod($controller){
       $id          = $this->request->getId();
       $action      = $this->request->getAction();
       $requestData = $this->request->getRequestData();
 
-      if ($id || $action) {
+      if ($id || $action){
 
-         if ($id) {
+         if ($id){
             $result = $controller->read($id);
-         } else {
+         } else{
             $result = call_user_func(array($controller, $action), $requestData);
          }
 
-      } else {
+      } else{
          $result = $controller->index();
       }
 
@@ -92,12 +92,12 @@ class Routing {
     * @return mixed
     * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
-   private function callDeleteMethod($controller) {
+   private function callDeleteMethod($controller){
       $id = $this->request->getId();
 
-      if ($id) {
+      if ($id){
          $result = $controller->delete($id);
-      } else {
+      } else{
          throw new ApplicationException('Ange ett id för borttagning.');
       }
 
@@ -108,13 +108,13 @@ class Routing {
     * @param $controller
     * @return mixed
     */
-   private function callPostMethod($controller) {
+   private function callPostMethod($controller){
       $action      = $this->request->getAction();
       $requestData = $this->request->getRequestData();
 
-      if ($action) {
+      if ($action){
          $result = call_user_func(array($controller, $action), $requestData);
-      } else {
+      } else{
          $result = $controller->create($requestData);
       }
 
@@ -126,13 +126,14 @@ class Routing {
     * @return mixed
     * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
-   private function callPutMethod($controller) {
-      $id          = $this->request->getId();
-      $requestData = $this->request->getRequestData();
+   private function callPutMethod($controller){
+      $id = $this->request->getId();
 
-      if ($id) {
-         $result = $controller->update($id, $requestData);
-      } else {
+      if ($id){
+         $requestData       = $this->request->getRequestData();
+         $requestData['id'] = $id;
+         $result            = $controller->update($id, $requestData);
+      } else{
          throw new ApplicationException('Ange ett id för uppdatering.');
       }
 
