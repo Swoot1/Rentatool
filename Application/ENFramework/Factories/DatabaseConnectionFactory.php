@@ -6,9 +6,9 @@
  * Time: 19:26
  */
 
-namespace Rentatool\Application\ENFramework\Factories;
+namespace Application\ENFramework\Factories;
 
-use Rentatool\Application\ENFramework\Helpers\DatabaseConfiguration;
+use Application\ENFramework\Helpers\DatabaseConfiguration;
 
 class DatabaseConnectionFactory implements IDatabaseConnectionFactory{
 

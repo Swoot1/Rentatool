@@ -1,6 +1,6 @@
 <?php
 
-namespace Rentatool\Application\Templates;
+namespace Application\Templates;
 
 echo '<!DOCTYPE html>
 <html ng-app="Rentatool">

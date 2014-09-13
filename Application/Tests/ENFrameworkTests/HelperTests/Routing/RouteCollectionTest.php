@@ -5,12 +5,12 @@
  * Time: 16:38
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\HelperTests\Routing;
+namespace Tests\ENFrameworkTests\HelperTests\Routing;
 
 
-use Rentatool\Application\Collections\RequestMethodCollection;
-use Rentatool\Application\ENFramework\Helpers\Routing\RouteCollection;
-use Rentatool\Application\ENFramework\Helpers\Routing\SubRouteCollection;
+use Application\Collections\RequestMethodCollection;
+use Application\ENFramework\Helpers\Routing\RouteCollection;
+use Application\ENFramework\Helpers\Routing\SubRouteCollection;
 
 class RouteCollectionTest extends \PHPUnit_Framework_TestCase {
 
@@ -41,7 +41,7 @@ class RouteCollectionTest extends \PHPUnit_Framework_TestCase {
     */
    private function getUserRequestMock($resource, $requestMethod, $action = false) {
       $requestMock = $this
-         ->getMockBuilder('Rentatool\Application\ENFramework\Models\Request')
+         ->getMockBuilder('Application\ENFramework\Models\Request')
          ->disableOriginalConstructor()
          ->getMock();
 
@@ -64,7 +64,7 @@ class RouteCollectionTest extends \PHPUnit_Framework_TestCase {
    }
 
    /**
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ogiltig request method.
     */
    public function testGetRouteFromRequestWithWrongRequestMethod() {
@@ -112,7 +112,7 @@ class RouteCollectionTest extends \PHPUnit_Framework_TestCase {
 
    /**
     * Test that a request with wrong request method for the url raises an error.
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ogiltig request method.
     */
    public function testGetSubRouteWithWrongRequestMethod() {

@@ -7,15 +7,15 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\Models;
+namespace Application\Models;
 
-use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
-use Rentatool\Application\ENFramework\Helpers\Validation\AlphaNumericValidation;
-use Rentatool\Application\ENFramework\Helpers\Validation\BooleanValidation;
-use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
-use Rentatool\Application\ENFramework\Helpers\Validation\TextValidation;
-use Rentatool\Application\ENFramework\Models\GeneralModel;
-use Rentatool\Application\Collections\UserCollection;
+use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Helpers\Validation\AlphaNumericValidation;
+use Application\ENFramework\Helpers\Validation\BooleanValidation;
+use Application\ENFramework\Helpers\Validation\IntegerValidation;
+use Application\ENFramework\Helpers\Validation\TextValidation;
+use Application\ENFramework\Models\GeneralModel;
+use Application\Collections\UserCollection;
 
 class UserGroup extends GeneralModel{
 

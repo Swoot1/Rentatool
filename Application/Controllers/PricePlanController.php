@@ -6,25 +6,25 @@
  * Time: 22:34
  */
 
-namespace Rentatool\Application\Controllers;
+namespace Application\Controllers;
 
-use Rentatool\Application\ENFramework\Factories\DatabaseConnectionFactory;
-use Rentatool\Application\ENFramework\Helpers\MySQLValueFormatter;
-use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
-use Rentatool\Application\ENFramework\Helpers\SessionManager;
-use Rentatool\Application\ENFramework\Models\DatabaseConnection;
-use Rentatool\Application\ENFramework\Models\Request;
-use Rentatool\Application\Mappers\RentalObjectMapper;
-use Rentatool\Application\Services\PricePlanService;
-use Rentatool\Application\Services\RentalObjectService;
+use Application\ENFramework\Factories\DatabaseConnectionFactory;
+use Application\ENFramework\Helpers\MySQLValueFormatter;
+use Application\ENFramework\Helpers\ResponseFactory;
+use Application\ENFramework\Helpers\SessionManager;
+use Application\ENFramework\Models\DatabaseConnection;
+use Application\ENFramework\Models\Request;
+use Application\Mappers\RentalObjectMapper;
+use Application\Services\PricePlanService;
+use Application\Services\RentalObjectService;
 
 class PricePlanController {
    /**
-    * @var \Rentatool\Application\Services\RentalObjectService
+    * @var \Application\Services\RentalObjectService
     */
    private $request;
    /**
-    * @var \Rentatool\Application\Services\PricePlanService
+    * @var \Application\Services\PricePlanService
     */
    private $pricePlanService;
    private $response;

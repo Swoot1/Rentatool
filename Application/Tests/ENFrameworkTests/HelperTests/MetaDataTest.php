@@ -6,13 +6,13 @@
  * Time: 11:11
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\HelperTests;
+namespace Tests\ENFrameworkTests\HelperTests;
 
 
-use Rentatool\Application\ENFramework\Collections\NotificationCollection;
-use Rentatool\Application\ENFramework\Helpers\ContentTypeConverter;
-use Rentatool\Application\ENFramework\Helpers\Metadata;
-use Rentatool\Application\ENFramework\Helpers\Notifier;
+use Application\ENFramework\Collections\NotificationCollection;
+use Application\ENFramework\Helpers\ContentTypeConverter;
+use Application\ENFramework\Helpers\Metadata;
+use Application\ENFramework\Helpers\Notifier;
 
 class MetaDataTest extends \PHPUnit_Framework_TestCase{
 
@@ -28,7 +28,7 @@ class MetaDataTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ange en giltig content-type.
     */
    public function testInvalidContentType(){
@@ -53,7 +53,7 @@ class MetaDataTest extends \PHPUnit_Framework_TestCase{
    public function testResponseData(){
       $contentTypeConverter = new ContentTypeConverter();
       $metadata             = new Metadata($contentTypeConverter, new NotificationCollection());
-      $userMock             = $this->getMock('\Rentatool\Application\Models\User');
+      $userMock             = $this->getMock('\Application\Models\User');
       $userMock->expects($this->any())->method('toArray')->will($this->returnValue(array('id'       => 1,
                                                                                          'username' => 'Elin')));
       $metadata->setResponseData($userMock);

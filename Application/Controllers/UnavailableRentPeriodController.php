@@ -6,13 +6,13 @@
  * Time: 17:20
  */
 
-namespace Rentatool\Application\Controllers;
+namespace Application\Controllers;
 
 
-use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
-use Rentatool\Application\ENFramework\Models\Request;
-use Rentatool\Application\Filters\UnavailableRentPeriodFilter;
-use Rentatool\Application\Services\UnavailableRentPeriodService;
+use Application\ENFramework\Helpers\ResponseFactory;
+use Application\ENFramework\Models\Request;
+use Application\Filters\UnavailableRentPeriodFilter;
+use Application\Services\UnavailableRentPeriodService;
 
 class UnavailableRentPeriodController{
    protected $request;

@@ -7,13 +7,13 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\Services;
+namespace Application\Services;
 
 
-use Rentatool\Application\Collections\MenuItemCollection;
-use Rentatool\Application\ENFramework\Helpers\AccessRules\AdministrativeAccessRule;
-use Rentatool\Application\ENFramework\Helpers\AccessRules\AuthorizedAccessRule;
-use Rentatool\Application\ENFramework\Helpers\SessionManager;
+use Application\Collections\MenuItemCollection;
+use Application\ENFramework\Helpers\AccessRules\AdministrativeAccessRule;
+use Application\ENFramework\Helpers\AccessRules\AuthorizedAccessRule;
+use Application\ENFramework\Helpers\SessionManager;
 
 class MenuService {
    private $menuItems;

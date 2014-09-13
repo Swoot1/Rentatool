@@ -6,14 +6,14 @@
  * Time: 10:13
  */
 
-namespace Rentatool\Application\ENFramework\Helpers;
+namespace Application\ENFramework\Helpers;
 
 
-use Rentatool\Application\ENFramework\Collections\NotificationCollection;
-use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
-use Rentatool\Application\ENFramework\Helpers\Interfaces\IMetadata;
-use Rentatool\Application\ENFramework\Helpers\Interfaces\INotificationCollection;
-use Rentatool\Application\ENFramework\Models\GeneralModel;
+use Application\ENFramework\Collections\NotificationCollection;
+use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Helpers\Interfaces\IMetadata;
+use Application\ENFramework\Helpers\Interfaces\INotificationCollection;
+use Application\ENFramework\Models\GeneralModel;
 
 class Metadata extends GeneralModel implements IMetadata{
    /**

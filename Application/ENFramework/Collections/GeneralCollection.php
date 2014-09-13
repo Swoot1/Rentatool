@@ -7,10 +7,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\ENFramework\Collections;
+namespace Application\ENFramework\Collections;
 
-use Rentatool\Application\ENFramework\Helpers\Interfaces\IGetDBParameters;
-use Rentatool\Application\ENFramework\Helpers\Interfaces\IToArray;
+use Application\ENFramework\Helpers\Interfaces\IGetDBParameters;
+use Application\ENFramework\Helpers\Interfaces\IToArray;
 
 abstract class GeneralCollection implements IToArray, IGetDBParameters{
 

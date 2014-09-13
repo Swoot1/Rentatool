@@ -5,26 +5,26 @@
  * Time: 18:58
  */
 
-namespace Rentatool\Application\Controllers;
+namespace Application\Controllers;
 
 
-use Rentatool\Application\ENFramework\Factories\DatabaseConnectionFactory;
-use Rentatool\Application\ENFramework\Helpers\MySQLValueFormatter;
-use Rentatool\Application\ENFramework\Helpers\Response;
-use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
-use Rentatool\Application\ENFramework\Models\DatabaseConnection;
-use Rentatool\Application\ENFramework\Models\Request;
-use Rentatool\Application\Mappers\RentalObjectMapper;
-use Rentatool\Application\Mappers\UserGroupConnectionMapper;
-use Rentatool\Application\Mappers\TimeUnitMapper;
-use Rentatool\Application\Mappers\UserGroupMapper;
-use Rentatool\Application\Mappers\UserMapper;
-use Rentatool\Application\Services\DatabaseService;
+use Application\ENFramework\Factories\DatabaseConnectionFactory;
+use Application\ENFramework\Helpers\MySQLValueFormatter;
+use Application\ENFramework\Helpers\Response;
+use Application\ENFramework\Helpers\ResponseFactory;
+use Application\ENFramework\Models\DatabaseConnection;
+use Application\ENFramework\Models\Request;
+use Application\Mappers\RentalObjectMapper;
+use Application\Mappers\UserGroupConnectionMapper;
+use Application\Mappers\TimeUnitMapper;
+use Application\Mappers\UserGroupMapper;
+use Application\Mappers\UserMapper;
+use Application\Services\DatabaseService;
 
 class DatabaseController{
 
    /**
-    * @var \Rentatool\Application\Services\DatabaseService
+    * @var \Application\Services\DatabaseService
     */
    private $request;
    private $databaseService;

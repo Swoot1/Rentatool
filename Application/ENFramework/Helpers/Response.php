@@ -5,15 +5,15 @@
  * Time: 11:29
  */
 
-namespace Rentatool\Application\ENFramework\Helpers;
+namespace Application\ENFramework\Helpers;
 
-use Rentatool\Application\ENFramework\Helpers\Interfaces\IToArray;
+use Application\ENFramework\Helpers\Interfaces\IToArray;
 
 
 /**
  * Class Header
  * Creates and can execute a header() based on its data.
- * @package Rentatool\Application\ENFramework\Helpers
+ * @package Application\ENFramework\Helpers
  */
 class Response implements IResponse{
 
@@ -22,7 +22,7 @@ class Response implements IResponse{
    private $contentType = 'application/json';
    private $charset = 'utf-8';
    /**
-    * @var \Rentatool\Application\ENFramework\Helpers\MetaData
+    * @var \Application\ENFramework\Helpers\MetaData
     */
    private $noName;
    private $statusCodeToTextMapper;

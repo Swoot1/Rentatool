@@ -7,10 +7,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\Mappers;
+namespace Application\Mappers;
 
 
-use Rentatool\Application\ENFramework\Models\IDatabaseConnection;
+use Application\ENFramework\Models\IDatabaseConnection;
 
 class UserGroupConnectionMapper{
 

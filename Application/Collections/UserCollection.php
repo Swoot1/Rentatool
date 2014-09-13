@@ -6,11 +6,11 @@
  * Time: 20:52
  */
 
-namespace Rentatool\Application\Collections;
+namespace Application\Collections;
 
 
-use Rentatool\Application\ENFramework\Collections\GeneralCollection;
+use Application\ENFramework\Collections\GeneralCollection;
 
 class UserCollection extends GeneralCollection{
-    protected $model = 'Rentatool\Application\Models\User';
+    protected $model = 'Application\Models\User';
 } 

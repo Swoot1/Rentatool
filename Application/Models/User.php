@@ -6,15 +6,15 @@
  * Time: 20:40
  */
 
-namespace Rentatool\Application\Models;
+namespace Application\Models;
 
-use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
-use Rentatool\Application\Collections\UserGroupCollection;
-use Rentatool\Application\ENFramework\Helpers\Validation\AlphaNumericValidation;
-use Rentatool\Application\ENFramework\Helpers\Validation\EmailValidation;
-use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
-use Rentatool\Application\ENFramework\Helpers\Validation\PasswordValidation;
-use Rentatool\Application\ENFramework\Models\GeneralModel;
+use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\Collections\UserGroupCollection;
+use Application\ENFramework\Helpers\Validation\AlphaNumericValidation;
+use Application\ENFramework\Helpers\Validation\EmailValidation;
+use Application\ENFramework\Helpers\Validation\IntegerValidation;
+use Application\ENFramework\Helpers\Validation\PasswordValidation;
+use Application\ENFramework\Models\GeneralModel;
 
 class User extends GeneralModel{
 

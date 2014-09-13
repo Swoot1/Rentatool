@@ -5,15 +5,15 @@
  * Time: 19:48
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\ErrorHandling;
+namespace Application\ENFramework\Helpers\ErrorHandling;
 
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ConflictException;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\MethodNotAllowedException;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ConflictException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\MethodNotAllowedException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
 
 class ErrorHTTPStatusCodeFactory
 {

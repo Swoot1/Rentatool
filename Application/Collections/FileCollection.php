@@ -6,15 +6,15 @@
  * Time: 11:27
  */
 
-namespace Rentatool\Application\Collections;
+namespace Application\Collections;
 
 
-use Rentatool\Application\ENFramework\Collections\GeneralCollection;
-use Rentatool\Application\Models\File;
-use Rentatool\Application\Models\RentalObject;
+use Application\ENFramework\Collections\GeneralCollection;
+use Application\Models\File;
+use Application\Models\RentalObject;
 
 class FileCollection extends GeneralCollection{
-   protected $model = 'Rentatool\Application\Models\File';
+   protected $model = 'Application\Models\File';
 
    public function getDependencyCollection(RentalObject $rentalObject){
       $rentalObjectFileDependencies = array();

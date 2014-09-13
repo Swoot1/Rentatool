@@ -5,12 +5,12 @@
  * Time: 12:15
  */
 
-namespace Rentatool\Application\Services;
+namespace Application\Services;
 
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\ENFramework\Helpers\SessionManager;
-use Rentatool\Application\Models\Authorization;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\SessionManager;
+use Application\Models\Authorization;
 
 class AuthorizationService
 {

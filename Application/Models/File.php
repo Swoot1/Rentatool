@@ -6,11 +6,11 @@
  * Time: 18:02
  */
 
-namespace Rentatool\Application\Models;
+namespace Application\Models;
 
 
-use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
-use Rentatool\Application\ENFramework\Models\GeneralModel;
+use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Models\GeneralModel;
 
 class File extends GeneralModel{
 

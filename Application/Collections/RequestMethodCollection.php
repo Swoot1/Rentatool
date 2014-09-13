@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\Collections;
+namespace Application\Collections;
 
 
 class RequestMethodCollection {

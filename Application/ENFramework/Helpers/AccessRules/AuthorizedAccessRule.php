@@ -7,10 +7,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\AccessRules;
+namespace Application\ENFramework\Helpers\AccessRules;
 
 
-use Rentatool\Application\Models\User;
+use Application\Models\User;
 
 class AuthorizedAccessRule implements IAccessRule {
 

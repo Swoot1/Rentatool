@@ -5,10 +5,10 @@
  * Time: 08:21
  */
 
-namespace Rentatool\Application\ENFramework\Helpers;
+namespace Application\ENFramework\Helpers;
 
 
-use Rentatool\Application\ENFramework\Collections\NotificationCollection;
+use Application\ENFramework\Collections\NotificationCollection;
 
 class ResponseFactory{
 

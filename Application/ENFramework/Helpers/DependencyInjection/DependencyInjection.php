@@ -5,10 +5,10 @@
  * Time: 12:49
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\DependencyInjection;
+namespace Application\ENFramework\Helpers\DependencyInjection;
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\ENFramework\Models\Request;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Models\Request;
 
 class DependencyInjection{
    private $dependencyInjectionXML;
@@ -95,7 +95,7 @@ class DependencyInjection{
     * from matchingResource.
     * @param \SimpleXMLElement $matchingXMLElement
     * @return array
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function getClassDependencies(\SimpleXMLElement $matchingXMLElement){
       $dependencies = array();

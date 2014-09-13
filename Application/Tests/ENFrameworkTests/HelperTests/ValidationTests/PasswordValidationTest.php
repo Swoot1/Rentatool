@@ -5,9 +5,9 @@
  * Time: 09:52
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\HelperTests\ValidationTests;
+namespace Tests\ENFrameworkTests\HelperTests\ValidationTests;
 
-use Rentatool\Application\ENFramework\Helpers\Validation\PasswordValidation;
+use Application\ENFramework\Helpers\Validation\PasswordValidation;
 
 class PasswordValidationTest extends \PHPUnit_Framework_TestCase {
 
@@ -25,7 +25,7 @@ class PasswordValidationTest extends \PHPUnit_Framework_TestCase {
    }
 
    /**
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ogiltigt lösenord.
     */
    public function testUnAllowedPasswordCharacters() {

@@ -5,9 +5,9 @@
  * Time: 09:09
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\HelperTests;
+namespace Tests\ENFrameworkTests\HelperTests;
 
-use Rentatool\Application\ENFramework\Helpers\Routing\Route;
+use Application\ENFramework\Helpers\Routing\Route;
 
 class RouteTest extends \PHPUnit_Framework_TestCase
 {

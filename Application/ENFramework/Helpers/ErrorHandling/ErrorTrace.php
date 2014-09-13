@@ -6,11 +6,11 @@
  * Time: 22:39
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\ErrorHandling;
+namespace Application\ENFramework\Helpers\ErrorHandling;
 
 
-use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
-use Rentatool\Application\ENFramework\Models\GeneralModel;
+use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Models\GeneralModel;
 
 class ErrorTrace extends GeneralModel{
 

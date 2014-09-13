@@ -6,10 +6,10 @@
  * Time: 19:57
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\Validation;
+namespace Application\ENFramework\Helpers\Validation;
 
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
 abstract class ValueValidation {
 

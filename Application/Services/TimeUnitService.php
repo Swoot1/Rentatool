@@ -6,13 +6,13 @@
  * Time: 15:04
  */
 
-namespace Rentatool\Application\Services;
+namespace Application\Services;
 
-use Rentatool\Application\Collections\TimeUnitCollection;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
-use Rentatool\Application\Mappers\TimeUnitMapper;
-use Rentatool\Application\Models\RentalObject;
-use Rentatool\Application\Models\TimeUnit;
+use Application\Collections\TimeUnitCollection;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
+use Application\Mappers\TimeUnitMapper;
+use Application\Models\RentalObject;
+use Application\Models\TimeUnit;
 
 class TimeUnitService {
 

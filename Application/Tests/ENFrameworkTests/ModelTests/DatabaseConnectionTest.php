@@ -5,10 +5,10 @@
  * Time: 16:03
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\ModelTests;
+namespace Tests\ENFrameworkTests\ModelTests;
 
 
-use Rentatool\Application\ENFramework\Models\DatabaseConnection;
+use Application\ENFramework\Models\DatabaseConnection;
 
 class DatabaseConnectionTest extends \PHPUnit_Framework_TestCase {
    public function testCastInteger() {

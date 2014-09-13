@@ -6,9 +6,9 @@
  * Time: 20:39
  */
 
-namespace Rentatool\Application\Mappers;
+namespace Application\Mappers;
 
-use Rentatool\Application\ENFramework\Models\IDatabaseConnection;
+use Application\ENFramework\Models\IDatabaseConnection;
 
 class RentPeriodMapper{
 

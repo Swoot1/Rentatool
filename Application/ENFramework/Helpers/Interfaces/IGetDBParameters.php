@@ -6,7 +6,7 @@
  * Time: 12:03
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\Interfaces;
+namespace Application\ENFramework\Helpers\Interfaces;
 
 
 interface IGetDBParameters{

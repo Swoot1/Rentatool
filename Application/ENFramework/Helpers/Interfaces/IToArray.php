@@ -6,7 +6,7 @@
  * Time: 11:57
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\Interfaces;
+namespace Application\ENFramework\Helpers\Interfaces;
 
 
 interface IToArray{

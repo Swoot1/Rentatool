@@ -7,15 +7,15 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\ENFramework\Models;
+namespace Application\ENFramework\Models;
 
 
-use Rentatool\Application\Collections\RequestMethodCollection;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\MethodNotAllowedException;
+use Application\Collections\RequestMethodCollection;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\MethodNotAllowedException;
 
 class Request extends GeneralModel{
    /**
-    * @var \Rentatool\Application\Collections\RequestMethodCollection
+    * @var \Application\Collections\RequestMethodCollection
     */
    private $requestMethodCollection;
    private $requestMethod;
@@ -102,7 +102,7 @@ class Request extends GeneralModel{
 
    /**
     * @param $methodName
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\MethodNotAllowedException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\MethodNotAllowedException
     * @return bool
     */
    private function validateRequestMethod($methodName){

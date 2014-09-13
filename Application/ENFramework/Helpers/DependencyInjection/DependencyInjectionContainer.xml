@@ -6,280 +6,280 @@
     <dependencies>
 
         <!-- Controllers -->
-        <dependency namespace="Rentatool\Application\Controllers" class="RentalObjectController">
+        <dependency namespace="Application\Controllers" class="RentalObjectController">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
-                <dependency namespace="Rentatool\Application\Services" class="RentalObjectService"/>
-                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\Services" class="RentalObjectService"/>
+                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Controllers" class="AuthorizationController">
+        <dependency namespace="Application\Controllers" class="AuthorizationController">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
-                <dependency namespace="Rentatool\Application\Services" class="AuthorizationService"/>
-                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\Services" class="AuthorizationService"/>
+                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Controllers" class="UserController">
+        <dependency namespace="Application\Controllers" class="UserController">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
-                <dependency namespace="Rentatool\Application\Services" class="UserService"/>
-                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\Services" class="UserService"/>
+                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Controllers" class="DatabaseController">
+        <dependency namespace="Application\Controllers" class="DatabaseController">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
-                <dependency namespace="Rentatool\Application\Services" class="DatabaseService"/>
-                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\Services" class="DatabaseService"/>
+                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Controllers" class="UserGroupController">
+        <dependency namespace="Application\Controllers" class="UserGroupController">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
-                <dependency namespace="Rentatool\Application\Services" class="UserGroupService"/>
-                <dependency namespace="Rentatool\Application\Services" class="UserService"/>
-                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\Services" class="UserGroupService"/>
+                <dependency namespace="Application\Services" class="UserService"/>
+                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Controllers" class="RentPeriodController">
+        <dependency namespace="Application\Controllers" class="RentPeriodController">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
-                <dependency namespace="Rentatool\Application\Services" class="RentPeriodService"/>
-                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\Services" class="RentPeriodService"/>
+                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Controllers" class="RentPeriodCalculatorController">
+        <dependency namespace="Application\Controllers" class="RentPeriodCalculatorController">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
-                <dependency namespace="Rentatool\Application\Services" class="RentPeriodService"/>
-                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\Services" class="RentPeriodService"/>
+                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Controllers" class="TimeUnitController">
+        <dependency namespace="Application\Controllers" class="TimeUnitController">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
-                <dependency namespace="Rentatool\Application\Services" class="TimeUnitService"/>
-                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\Services" class="TimeUnitService"/>
+                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Controllers" class="PricePlanController">
+        <dependency namespace="Application\Controllers" class="PricePlanController">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
-                <dependency namespace="Rentatool\Application\Services" class="PricePlanService"/>
-                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\Services" class="PricePlanService"/>
+                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Controllers" class="MenuController">
+        <dependency namespace="Application\Controllers" class="MenuController">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Controllers" class="UnavailableRentPeriodController">
+        <dependency namespace="Application\Controllers" class="UnavailableRentPeriodController">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
-                <dependency namespace="Rentatool\Application\Services" class="UnavailableRentPeriodService"/>
-                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\Services" class="UnavailableRentPeriodService"/>
+                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Controllers" class="FileController">
+        <dependency namespace="Application\Controllers" class="FileController">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
-                <dependency namespace="Rentatool\Application\Services" class="FileService"/>
-                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\Services" class="FileService"/>
+                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
         <!-- Services -->
-        <dependency namespace="Rentatool\Application\Services" class="RentalObjectService">
+        <dependency namespace="Application\Services" class="RentalObjectService">
             <dependencies>
-                <dependency namespace="Rentatool\Application\Mappers" class="RentalObjectMapper"/>
-                <dependency namespace="Rentatool\Application\Services" class="PricePlanService"/>
-                <dependency namespace="Rentatool\Application\Services" class="FileService"/>
+                <dependency namespace="Application\Mappers" class="RentalObjectMapper"/>
+                <dependency namespace="Application\Services" class="PricePlanService"/>
+                <dependency namespace="Application\Services" class="FileService"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Services" class="UserService">
+        <dependency namespace="Application\Services" class="UserService">
             <dependencies>
-                <dependency namespace="Rentatool\Application\Mappers" class="UserMapper"/>
-                <dependency namespace="Rentatool\Application\Services" class="UserValidationService"/>
-                <dependency namespace="Rentatool\Application\Mappers" class="UserGroupConnectionMapper"/>
+                <dependency namespace="Application\Mappers" class="UserMapper"/>
+                <dependency namespace="Application\Services" class="UserValidationService"/>
+                <dependency namespace="Application\Mappers" class="UserGroupConnectionMapper"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Services" class="PricePlanService">
+        <dependency namespace="Application\Services" class="PricePlanService">
             <dependencies>
-                <dependency namespace="Rentatool\Application\Mappers" class="PricePlanMapper"/>
-                <dependency namespace="Rentatool\Application\Services" class="PricePlanValidationService"/>
+                <dependency namespace="Application\Mappers" class="PricePlanMapper"/>
+                <dependency namespace="Application\Services" class="PricePlanValidationService"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Services" class="UserValidationService">
+        <dependency namespace="Application\Services" class="UserValidationService">
             <dependencies>
-                <dependency namespace="Rentatool\Application\Mappers" class="UserValidationMapper"/>
+                <dependency namespace="Application\Mappers" class="UserValidationMapper"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Services" class="RentPeriodService">
+        <dependency namespace="Application\Services" class="RentPeriodService">
             <dependencies>
-                <dependency namespace="Rentatool\Application\Mappers" class="RentPeriodMapper"/>
-                <dependency namespace="Rentatool\Application\Services" class="RentPeriodValidationService"/>
-                <dependency namespace="Rentatool\Application\Services" class="PricePlanService"/>
+                <dependency namespace="Application\Mappers" class="RentPeriodMapper"/>
+                <dependency namespace="Application\Services" class="RentPeriodValidationService"/>
+                <dependency namespace="Application\Services" class="PricePlanService"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Services" class="RentPeriodValidationService">
+        <dependency namespace="Application\Services" class="RentPeriodValidationService">
             <dependencies>
-                <dependency namespace="Rentatool\Application\Mappers" class="RentPeriodValidationMapper"/>
+                <dependency namespace="Application\Mappers" class="RentPeriodValidationMapper"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Services" class="AuthorizationService">
+        <dependency namespace="Application\Services" class="AuthorizationService">
             <dependencies>
-                <dependency namespace="Rentatool\Application\Services" class="UserService"/>
+                <dependency namespace="Application\Services" class="UserService"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Services" class="DatabaseService">
+        <dependency namespace="Application\Services" class="DatabaseService">
             <dependencies>
-                <dependency namespace="Rentatool\Application\Mappers" class="DatabaseMapper"/>
+                <dependency namespace="Application\Mappers" class="DatabaseMapper"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Services" class="UserGroupService">
+        <dependency namespace="Application\Services" class="UserGroupService">
             <dependencies>
-                <dependency namespace="Rentatool\Application\Mappers" class="UserGroupMapper"/>
-                <dependency namespace="Rentatool\Application\Mappers" class="UserGroupConnectionMapper"/>
+                <dependency namespace="Application\Mappers" class="UserGroupMapper"/>
+                <dependency namespace="Application\Mappers" class="UserGroupConnectionMapper"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Services" class="TimeUnitService">
+        <dependency namespace="Application\Services" class="TimeUnitService">
             <dependencies>
-                <dependency namespace="Rentatool\Application\Mappers" class="TimeUnitMapper"/>
+                <dependency namespace="Application\Mappers" class="TimeUnitMapper"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Services" class="PricePlanValidationService">
+        <dependency namespace="Application\Services" class="PricePlanValidationService">
             <dependencies>
-                <dependency namespace="Rentatool\Application\Mappers" class="PricePlanMapper"/>
+                <dependency namespace="Application\Mappers" class="PricePlanMapper"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Services" class="UnavailableRentPeriodService">
+        <dependency namespace="Application\Services" class="UnavailableRentPeriodService">
             <dependencies>
-                <dependency namespace="Rentatool\Application\Mappers" class="UnavailableRentPeriodMapper"/>
+                <dependency namespace="Application\Mappers" class="UnavailableRentPeriodMapper"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Services" class="FileService">
+        <dependency namespace="Application\Services" class="FileService">
             <dependencies>
-                <dependency namespace="Rentatool\Application\Mappers" class="FileMapper"/>
+                <dependency namespace="Application\Mappers" class="FileMapper"/>
             </dependencies>
         </dependency>
 
         <!-- Mappers -->
-        <dependency namespace="Rentatool\Application\Mappers" class="RentalObjectMapper">
+        <dependency namespace="Application\Mappers" class="RentalObjectMapper">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Mappers" class="UserMapper">
+        <dependency namespace="Application\Mappers" class="UserMapper">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Mappers" class="UserValidationMapper">
+        <dependency namespace="Application\Mappers" class="UserValidationMapper">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Mappers" class="RentPeriodMapper">
+        <dependency namespace="Application\Mappers" class="RentPeriodMapper">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Mappers" class="RentPeriodValidationMapper">
+        <dependency namespace="Application\Mappers" class="RentPeriodValidationMapper">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Mappers" class="DatabaseMapper">
+        <dependency namespace="Application\Mappers" class="DatabaseMapper">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Mappers" class="UserGroupMapper">
+        <dependency namespace="Application\Mappers" class="UserGroupMapper">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Mappers" class="PricePlanMapper">
+        <dependency namespace="Application\Mappers" class="PricePlanMapper">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Mappers" class="TimeUnitMapper">
+        <dependency namespace="Application\Mappers" class="TimeUnitMapper">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Mappers" class="UserGroupConnectionMapper">
+        <dependency namespace="Application\Mappers" class="UserGroupConnectionMapper">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Mappers" class="UnavailableRentPeriodMapper">
+        <dependency namespace="Application\Mappers" class="UnavailableRentPeriodMapper">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\Mappers" class="FileMapper">
+        <dependency namespace="Application\Mappers" class="FileMapper">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <!-- Others -->
-        <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection">
+        <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection">
             <dependencies>
-                <dependency namespace="Rentatool\Application\ENFramework\Factories"
+                <dependency namespace="Application\ENFramework\Factories"
                             class="DatabaseConnectionFactory"/>
-                <dependency namespace="Rentatool\Application\ENFramework\Helpers"
+                <dependency namespace="Application\ENFramework\Helpers"
                             class="MySQLValueFormatter"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory">
+        <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory">
             <dependencies/>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\ENFramework\Factories" class="DatabaseConnectionFactory">
+        <dependency namespace="Application\ENFramework\Factories" class="DatabaseConnectionFactory">
             <dependencies/>
         </dependency>
 
-        <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="MySQLValueFormatter">
+        <dependency namespace="Application\ENFramework\Helpers" class="MySQLValueFormatter">
             <dependencies/>
         </dependency>
     </dependencies>

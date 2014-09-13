@@ -9,15 +9,15 @@
 namespace Tests\ServiceTests;
 
 
-use Rentatool\Application\Services\UserService;
+use Application\Services\UserService;
 
 class UserServiceTest extends \PHPUnit_Framework_TestCase{
    /**
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Användarnamnet är redan upptaget.
     */
    public function testUniqueUsername(){
-      $userMapperMock = $this->getMockBuilder('\Rentatool\Application\Mappers\UserMapper')->
+      $userMapperMock = $this->getMockBuilder('\Application\Mappers\UserMapper')->
          disableOriginalConstructor()->
          getMock();
       $userMapperMock->expects($this->any())->method('isUniqueUsername')->will($this->returnValue(false));

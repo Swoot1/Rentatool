@@ -7,12 +7,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\Routing;
+namespace Application\ENFramework\Helpers\Routing;
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
-use Rentatool\Application\ENFramework\Helpers\SessionManager;
-use Rentatool\Application\ENFramework\Models\Request;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
+use Application\ENFramework\Helpers\SessionManager;
+use Application\ENFramework\Models\Request;
 
 class Route {
    private $controllerName;
@@ -35,7 +35,7 @@ class Route {
     * Validate that the request method is allowed for the route.
     * @param Request $request
     * @return bool
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    public function validateRequestMethod(Request $request) {
       $isValidRequestMethod = $this->requestMethodCollection->isValidRequestMethod($request->getRequestMethod());

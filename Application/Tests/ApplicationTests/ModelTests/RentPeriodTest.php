@@ -9,9 +9,9 @@
 namespace Tests\ModelTests;
 
 
-use Rentatool\Application\Collections\PricePlanCollection;
-use Rentatool\Application\Models\RentPeriod;
-use Rentatool\Application\Models\RentPeriodPriceCalculator;
+use Application\Collections\PricePlanCollection;
+use Application\Models\RentPeriod;
+use Application\Models\RentPeriodPriceCalculator;
 
 class RentPeriodTest extends \PHPUnit_Framework_TestCase{
    public function testSetPricePlanCollectionWithDay(){

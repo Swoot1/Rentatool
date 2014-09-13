@@ -5,12 +5,12 @@
  * Time: 13:45
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\CollectionTests;
+namespace Tests\ENFrameworkTests\CollectionTests;
 
 
-use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
-use Rentatool\Application\ENFramework\Helpers\Validation\BooleanValidation;
-use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
+use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Helpers\Validation\BooleanValidation;
+use Application\ENFramework\Helpers\Validation\IntegerValidation;
 
 class ValueValidationCollectionTest extends \PHPUnit_Framework_TestCase {
 
@@ -27,7 +27,7 @@ class ValueValidationCollectionTest extends \PHPUnit_Framework_TestCase {
 
    /**
     * Try to validate a propertyName that doesn't have a validation. An exception should be thrown.
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Det finns ingen validering för angivet propertynamn flagg.
     */
    public function testWrongPropertyName() {
@@ -42,7 +42,7 @@ class ValueValidationCollectionTest extends \PHPUnit_Framework_TestCase {
 
    /**
     * An Exception should be thrown when the value is invalid.
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Antal måste bestå av siffror.
     */
    public function testInvalidValue() {

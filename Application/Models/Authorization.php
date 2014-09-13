@@ -6,12 +6,12 @@
  * Time: 20:44
  */
 
-namespace Rentatool\Application\Models;
+namespace Application\Models;
 
 
-use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
-use Rentatool\Application\ENFramework\Helpers\Validation\BooleanValidation;
-use Rentatool\Application\ENFramework\Models\GeneralModel;
+use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Helpers\Validation\BooleanValidation;
+use Application\ENFramework\Models\GeneralModel;
 
 class Authorization extends GeneralModel {
    protected $isLoggedIn = false;

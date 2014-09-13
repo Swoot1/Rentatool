@@ -5,11 +5,11 @@
  * Time: 17:34
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\Routing;
+namespace Application\ENFramework\Helpers\Routing;
 
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
-use Rentatool\Application\ENFramework\Models\Request;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
+use Application\ENFramework\Models\Request;
 
 class SubRouteCollection {
 
@@ -26,7 +26,7 @@ class SubRouteCollection {
     * Returns the route that corresponds with the request options.
     * @param Request $request
     * @return mixed
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException
     */
    public function getSubRouteFromRequest(Request $request) {
       $resource = $request->getAction();

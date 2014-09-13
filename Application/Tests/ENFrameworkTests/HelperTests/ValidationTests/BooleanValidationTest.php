@@ -5,10 +5,10 @@
  * Time: 13:33
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\HelperTests\ValidationTests;
+namespace Tests\ENFrameworkTests\HelperTests\ValidationTests;
 
 
-use Rentatool\Application\ENFramework\Helpers\Validation\BooleanValidation;
+use Application\ENFramework\Helpers\Validation\BooleanValidation;
 
 class BooleanValidationTest extends \PHPUnit_Framework_TestCase {
 
@@ -19,7 +19,7 @@ class BooleanValidationTest extends \PHPUnit_Framework_TestCase {
    }
 
    /**
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Flagga måste vara en boolean.
     */
    public function testValidateIntegerBoolean() {
@@ -28,7 +28,7 @@ class BooleanValidationTest extends \PHPUnit_Framework_TestCase {
    }
 
    /**
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Flagga måste vara en boolean.
     */
    public function testValidateBooleanAsString() {

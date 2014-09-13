@@ -6,10 +6,10 @@
  * Time: 12:52
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\Interfaces;
+namespace Application\ENFramework\Helpers\Interfaces;
 
 
-use Rentatool\Application\ENFramework\Helpers\Notifier;
+use Application\ENFramework\Helpers\Notifier;
 
 interface INotificationCollection{
 

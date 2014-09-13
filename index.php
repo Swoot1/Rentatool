@@ -1,10 +1,10 @@
 <?php
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeFactory;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
-use Rentatool\Application\ENFramework\Helpers\RequestDispatcher;
-use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
-use Rentatool\Application\ENFramework\Helpers\Routing\Routing;
-use Rentatool\Application\ENFramework\Helpers\SessionManager;
+use Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeFactory;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
+use Application\ENFramework\Helpers\RequestDispatcher;
+use Application\ENFramework\Helpers\ResponseFactory;
+use Application\ENFramework\Helpers\Routing\Routing;
+use Application\ENFramework\Helpers\SessionManager;
 
 require_once 'Application/ENFramework/Helpers/SessionManager.php';
 require_once 'Application/ENFramework/Helpers/Configuration.php';

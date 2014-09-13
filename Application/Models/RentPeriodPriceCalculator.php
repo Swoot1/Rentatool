@@ -6,11 +6,11 @@
  * Time: 14:51
  */
 
-namespace Rentatool\Application\Models;
+namespace Application\Models;
 
 
-use Rentatool\Application\Collections\PricePlanCollection;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\Collections\PricePlanCollection;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
 class RentPeriodPriceCalculator{
 

@@ -6,7 +6,7 @@
  * Time: 15:23
  */
 
-namespace Rentatool\Application\ENFramework\Helpers;
+namespace Application\ENFramework\Helpers;
 
 
 class MySQLValueFormatter implements IMySQLValueFormatter{

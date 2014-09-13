@@ -7,14 +7,14 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\ENFramework\Models;
+namespace Application\ENFramework\Models;
 
-use Rentatool\Application\ENFramework\Factories\IDatabaseConnectionFactory;
-use Rentatool\Application\ENFramework\Helpers\IMySQLValueFormatter;
+use Application\ENFramework\Factories\IDatabaseConnectionFactory;
+use Application\ENFramework\Helpers\IMySQLValueFormatter;
 
 /**
  * Class DatabaseConnection
- * @package Rentatool\Application\ENFramework\Models
+ * @package Application\ENFramework\Models
  */
 class DatabaseConnection implements IDatabaseConnection{
    /**

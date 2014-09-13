@@ -5,13 +5,13 @@
  * Time: 11:19
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\Routing;
+namespace Application\ENFramework\Helpers\Routing;
 
 
-use Rentatool\Application\ENFramework\Helpers\DependencyInjection\DependencyInjection;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
-use Rentatool\Application\ENFramework\Models\Request;
+use Application\ENFramework\Helpers\DependencyInjection\DependencyInjection;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
+use Application\ENFramework\Models\Request;
 
 class Routing{
 
@@ -26,7 +26,7 @@ class Routing{
    /**
     * @param Route $route
     * @return mixed
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException
     */
    public function callMethod(Route $route){
       $controller    = $this->getController($route);
@@ -90,7 +90,7 @@ class Routing{
    /**
     * @param $controller
     * @return mixed
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function callDeleteMethod($controller){
       $id = $this->request->getId();
@@ -124,7 +124,7 @@ class Routing{
    /**
     * @param $controller
     * @return mixed
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function callPutMethod($controller){
       $id = $this->request->getId();

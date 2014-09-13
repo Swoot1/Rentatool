@@ -6,10 +6,10 @@
  * Time: 19:56
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\Validation;
+namespace Application\ENFramework\Helpers\Validation;
 
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
 class IntegerValidation extends ValueValidation{
 
@@ -27,7 +27,7 @@ class IntegerValidation extends ValueValidation{
     * Validate that we're dealing with an actual number and not a string or the like.
     * @param $value
     * @return bool
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function validateIsNumber($value){
       $valueIsNotANumber = is_numeric($value) == false;
@@ -42,7 +42,7 @@ class IntegerValidation extends ValueValidation{
     * Validate that the number is an integer.
     * @param $value
     * @return bool
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function validateIsInteger($value){
       $valueIsFloat = (int)$value !== $value;
@@ -57,7 +57,7 @@ class IntegerValidation extends ValueValidation{
     * If the integer is negative validate that it's allowed to be that.
     * @param $value
     * @return bool
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function validateIsAllowedNegativeInteger($value){
       $valueIsUnAllowedNegativeNumber = $this->allowNegativeInteger == false && $value < 0;

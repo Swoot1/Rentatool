@@ -5,10 +5,10 @@
  * Time: 08:35
  */
 
-namespace Rentatool\Application\ENFramework\Helpers;
+namespace Application\ENFramework\Helpers;
 
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
 class StatusCodeToTextMapper {
    /**

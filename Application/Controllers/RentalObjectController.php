@@ -7,18 +7,18 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\Controllers;
+namespace Application\Controllers;
 
-use Rentatool\Application\ENFramework\Helpers\Response;
-use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
-use Rentatool\Application\ENFramework\Helpers\SessionManager;
-use Rentatool\Application\ENFramework\Models\Request;
-use Rentatool\Application\Filters\RentalObjectFilter;
-use Rentatool\Application\Services\rentalObjectService;
+use Application\ENFramework\Helpers\Response;
+use Application\ENFramework\Helpers\ResponseFactory;
+use Application\ENFramework\Helpers\SessionManager;
+use Application\ENFramework\Models\Request;
+use Application\Filters\RentalObjectFilter;
+use Application\Services\rentalObjectService;
 
 class RentalObjectController{
    /**
-    * @var \Rentatool\Application\Services\RentalObjectService
+    * @var \Application\Services\RentalObjectService
     */
    private $request;
    private $rentalObjectService;

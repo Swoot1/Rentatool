@@ -5,10 +5,10 @@
  * Time: 09:07
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\HelperTests;
+namespace Tests\ENFrameworkTests\HelperTests;
 
 
-use Rentatool\Application\ENFramework\Helpers\StatusCodeToTextMapper;
+use Application\ENFramework\Helpers\StatusCodeToTextMapper;
 
 class StatusCodeToTextMapperTest extends \PHPUnit_Framework_TestCase {
 
@@ -20,7 +20,7 @@ class StatusCodeToTextMapperTest extends \PHPUnit_Framework_TestCase {
 
    /**
     *
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Okänd http status code "600".
     */
    public function testGetNoneExistingResponseCodeText() {

@@ -5,11 +5,11 @@
  * Time: 09:48
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\ModelTests;
+namespace Tests\ENFrameworkTests\ModelTests;
 
 
-use Rentatool\Application\Collections\RequestMethodCollection;
-use Rentatool\Application\ENFramework\Models\Request;
+use Application\Collections\RequestMethodCollection;
+use Application\ENFramework\Models\Request;
 
 class RequestTest extends \PHPUnit_Framework_TestCase{
 
