@@ -81,7 +81,21 @@ class DatabaseMapper{
        CONSTRAINT price_plan_has_a_rental_object_fk FOREIGN KEY (rental_object_id) REFERENCES rental_objects(id) ON DELETE CASCADE,
        CONSTRAINT price_plan_has_a_time_unit_fk FOREIGN KEY (time_unit_id) REFERENCES time_units(id),
        CONSTRAINT unique_price_plan UNIQUE (rental_object_id, time_unit_id)
-      )
+      );
+
+      CREATE TABLE IF NOT EXISTS files(
+       id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+       file_size INTEGER NOT NULL,
+       file_type VARCHAR(30) NOT NULL
+      );
+
+      CREATE TABLE IF NOT EXISTS rental_object_file_dependencies(
+        id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        rental_object_id INTEGER NOT NULL,
+        file_id INTEGER NOT NULL,
+        CONSTRAINT connected_to_rental_object_fk FOREIGN KEY(rental_object_id) REFERENCES rental_objects(id) ON DELETE CASCADE,
+        CONSTRAINT connected_to_file_fk FOREIGN KEY(file_id) REFERENCES files(id) ON DELETE CASCADE
+      );
    ";
 
    public function __construct(DatabaseConnection $databaseConnection){

@@ -7,5 +7,6 @@
 # Ignore PHPStorm settings
 .idea
 tmp/
-application/ENFramework/Helpers/PersonalConfiguration.php
-application/ENFramework/Helpers/DatabaseConfiguration.php
+Application/ENFramework/Helpers/PersonalConfiguration.php
+Application/ENFramework/Helpers/DatabaseConfiguration.php
+Public/RentalObjectPhotos

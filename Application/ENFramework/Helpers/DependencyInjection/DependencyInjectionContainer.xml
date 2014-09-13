@@ -93,11 +93,20 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Rentatool\Application\Controllers" class="FileController">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Rentatool\Application\Services" class="FileService"/>
+                <dependency namespace="Rentatool\Application\ENFramework\Helpers" class="ResponseFactory"/>
+            </dependencies>
+        </dependency>
+
         <!-- Services -->
         <dependency namespace="Rentatool\Application\Services" class="RentalObjectService">
             <dependencies>
                 <dependency namespace="Rentatool\Application\Mappers" class="RentalObjectMapper"/>
                 <dependency namespace="Rentatool\Application\Services" class="PricePlanService"/>
+                <dependency namespace="Rentatool\Application\Services" class="FileService"/>
             </dependencies>
         </dependency>
 
@@ -173,6 +182,12 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Rentatool\Application\Services" class="FileService">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\Mappers" class="FileMapper"/>
+            </dependencies>
+        </dependency>
+
         <!-- Mappers -->
         <dependency namespace="Rentatool\Application\Mappers" class="RentalObjectMapper">
             <dependencies>
@@ -235,6 +250,12 @@
         </dependency>
 
         <dependency namespace="Rentatool\Application\Mappers" class="UnavailableRentPeriodMapper">
+            <dependencies>
+                <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
+            </dependencies>
+        </dependency>
+
+        <dependency namespace="Rentatool\Application\Mappers" class="FileMapper">
             <dependencies>
                 <dependency namespace="Rentatool\Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>

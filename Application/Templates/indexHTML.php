@@ -51,9 +51,14 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/css/Foundation/js/vendor/fastclick.js"></script>
 <script type="text/javascript" src="Public/css/Foundation/js/vendor/jquery.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.7/jquery.fileupload.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.7/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.7/jquery.fileupload-process.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.7/jquery.iframe-transport.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-route.js"></script>
+<script type="text/javascript" src="Public/Scripts/jquery.fileupload-angular.js"></script>
 <script type="text/javascript" src="Public/Scripts/app.js"></script>
 <script type="text/javascript" src="Public/Scripts/Filters/TimeUnitFilter.js"></script>
 <script type="text/javascript" src="Public/Scripts/Services/UnavailableRentPeriodService.js"></script>
@@ -75,7 +80,9 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Factories/RequestSuccessInterceptorFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/UserGroupConnectionFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Services/UnavailableRentPeriodService.js"></script>
+<script type="text/javascript" src="Public/Scripts/Services/RentalObjectService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectController.js"></script>
+<script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectPhotoController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/DatabaseController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectListController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserController.js"></script>

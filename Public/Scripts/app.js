@@ -2,7 +2,7 @@
  * Created by Elin on 2014-05-26.
  */
 
-var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute'])
+var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute', 'blueimp.fileupload'])
    .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
       $routeProvider
          .when('/rentalobjects/new', {
