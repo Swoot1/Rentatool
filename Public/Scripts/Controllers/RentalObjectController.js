@@ -2,7 +2,7 @@
  * Created by Elin on 2014-04-18.
  */
 
-rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'RentalObject', '$location', 'TimeUnit', 'PricePlan', function ($scope, $routeParams, RentalObject, $location, TimeUnit, PricePlan) {
+rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'RentalObject', '$location', 'TimeUnit', 'PricePlan', 'RentalObjectService', function ($scope, $routeParams, RentalObject, $location, TimeUnit, PricePlan, RentalObjectService) {
 
    if ($routeParams.id) {
       $scope.rentalObject = RentalObject.get({id: $routeParams.id});
@@ -69,4 +69,8 @@ rentaTool.controller('RentalObjectController', ['$scope', '$routeParams', 'Renta
    $scope.returnToRentalObjectList = function () {
       $location.path('/rentalobjects');
    };
+
+   $scope.$watch(RentalObjectService.getPhoto, function(photo){
+      $scope.rentalObject.fileCollection = [photo];
+   });
 }]);

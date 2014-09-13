@@ -121,4 +121,10 @@ $routes['menuitems'] = array(
    'subRoutesCollection'     => new SubRouteCollection(array())
 );
 
+$routes['files'] = array(
+   'controllerName'          => 'FileController',
+   'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+   'subRoutesCollection'     => new SubRouteCollection(array())
+);
+
 return new RouteCollection($routes);

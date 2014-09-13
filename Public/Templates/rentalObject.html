@@ -3,9 +3,13 @@
         <h1>Lägg till uthyrningsobjekt</h1>
     </div>
 </div>
-<form name="rental_object_form" ng-submit="createRentalObject()">
-    <div class="row">
-        <div class="large-12 columns">
+<div class="row">
+    <div class="large-12 columns">
+        <form id="fileupload" action="http://jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data" data-ng-app="Rentatool" data-ng-controller="RentalObjectPhotoController" data-file-upload="file.options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}" class="ng-scope ng-pristine ng-valid">
+            <input type="file" name="files[]" ng-disabled="disabled">
+        </form>
+        <img style="width:100px; height:100px" ng-repeat="file in rentalObject.fileCollection" src="Public/RentalObjectPhotos/{{file.id}}.JPG">
+        <form name="rental_object_form" ng-submit="createRentalObject()">
             <div class="error" ng-show="rental_object_form.name.$dirty && rental_object_form.$invalid">
                 <small class="error" ng-show="rental_object_form.$error.unique">
                     WOoow! Det uthyrningsobjektet finns redan!
@@ -22,7 +26,9 @@
             </div>
             <input type="text" ng-model="newPricePlan.price" placeholder="Ange pris"/>
             <select ng-model="newPricePlan.timeUnitId">
-                <option ng-repeat="timeUnit in timeUnitCollection | filter:filterUsedPricePlan(rentalObject.pricePlanCollection)" value="{{timeUnit.id}}">{{timeUnit.name}}</option>
+                <option ng-repeat="timeUnit in timeUnitCollection | filter:filterUsedPricePlan(rentalObject.pricePlanCollection)"
+                        value="{{timeUnit.id}}">{{timeUnit.name}}
+                </option>
             </select>
             <button type="button" class="tiny" ng-click="addPricePlan(newPricePlan)">Lägg till prisplan</button>
             <button type="button" class="tiny" ng-click="createRentalObject()"
@@ -30,6 +36,6 @@
                 Spara uthyrningsobjekt
             </button>
             <button type="button" class="tiny" ng-click="returnToRentalObjectList()">Avbryt</button>
-        </div>
+        </form>
     </div>
-</form>
+</div>

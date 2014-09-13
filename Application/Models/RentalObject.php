@@ -9,9 +9,9 @@
 
 namespace Rentatool\Application\Models;
 
+use Rentatool\Application\Collections\FileCollection;
 use Rentatool\Application\Collections\PricePlanCollection;
 use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
-use Rentatool\Application\ENFramework\Helpers\Validation\BooleanValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
 use Rentatool\Application\ENFramework\Helpers\Validation\TextValidation;
 use Rentatool\Application\ENFramework\Models\GeneralModel;
@@ -21,11 +21,16 @@ class RentalObject extends GeneralModel{
    protected $userId;
    protected $name;
    protected $pricePlanCollection;
-   protected $_setters = array('pricePlanCollection' => 'setPricePlanCollection');
+   protected $fileCollection;
+   protected $_setters = array(
+      'pricePlanCollection' => 'setPricePlanCollection',
+      'fileCollection'      => 'setFileCollection'
+   );
 
    public function __construct(array $data = array()){
       parent::__construct($data);
-      $this->_noDBProperties = array('pricePlanCollection');
+      $this->_noDBProperties = array('pricePlanCollection', 'fileCollection');
+
       return $this;
    }
 
@@ -65,9 +70,25 @@ class RentalObject extends GeneralModel{
 
       if ($data instanceof \Rentatool\Application\Collections\PricePlanCollection){
          $this->pricePlanCollection = $data;
-      }  else{
+      } else{
          $this->pricePlanCollection = new PricePlanCollection($data);
       }
+
+      return $this;
+   }
+
+   /**
+    * @param $data
+    * @return $this
+    */
+   public function setFileCollection($data){
+
+      if ($data instanceof \Rentatool\Application\Collections\FileCollection){
+         $this->fileCollection = $data;
+      } else{
+         $this->fileCollection = new FileCollection($data);
+      }
+
       return $this;
    }
 
@@ -77,8 +98,8 @@ class RentalObject extends GeneralModel{
 
    protected function setUpDefaultValues(){
       $defaultValues = array(
-         'id'        => null,
-         'name'      => null
+         'id'   => null,
+         'name' => null
       );
 
       $this->setDefaultValues($defaultValues);
@@ -88,10 +109,10 @@ class RentalObject extends GeneralModel{
       return $this->pricePlanCollection;
    }
 
-   /**
-    * @param User $user
-    * @return bool
-    */
+   public function getFileCollection(){
+      return $this->fileCollection;
+   }
+
    public function isOwner(User $user){
       return $user->getId() === $this->userId;
    }
