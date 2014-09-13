@@ -6,51 +6,51 @@ var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute',
    .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
       $routeProvider
          .when('/rentalobjects/new', {
-            templateUrl: 'public/Templates/rentalObject.html',
+            templateUrl: 'Public/Templates/rentalObject.html',
             controller: 'RentalObjectController'
          })
          .when('/rentalobjects', {
-            templateUrl: 'public/Templates/rentalObjectList.html',
+            templateUrl: 'Public/Templates/rentalObjectList.html',
             controller: 'RentalObjectListController'
          })
          .when('/rentalobjects/:id', {
-            templateUrl: 'public/Templates/rentalObjectUpdate.html',
+            templateUrl: 'Public/Templates/rentalObjectUpdate.html',
             controller: 'RentalObjectController'
          })
          .when('/users/new', {
-            templateUrl: 'public/Templates/userCreate.html',
+            templateUrl: 'Public/Templates/userCreate.html',
             controller: 'UserController'
          })
          .when('/users/:id', {
-            templateUrl: 'public/Templates/userUpdate.html',
+            templateUrl: 'Public/Templates/userUpdate.html',
             controller: 'UserController'
          })
          .when('/users', {
-            templateUrl: 'public/Templates/userList.html',
+            templateUrl: 'Public/Templates/userList.html',
             controller: 'UserListController'
          })
          .when('/authorization/login', {
-            templateUrl: 'public/Templates/login.html',
+            templateUrl: 'Public/Templates/login.html',
             controller: 'AuthorizationController'
          })
          .when('/databases/new', {
-            templateUrl: 'public/Templates/database.html',
+            templateUrl: 'Public/Templates/database.html',
             controller: 'DatabaseController'
          })
          .when('/usergroups', {
-            templateUrl: 'public/Templates/userGroupList.html',
+            templateUrl: 'Public/Templates/userGroupList.html',
             controller: 'UserGroupListController'
          })
          .when('/usergroups/new', {
-            templateUrl: 'public/Templates/userGroupCreate.html',
+            templateUrl: 'Public/Templates/userGroupCreate.html',
             controller: 'UserGroupController'
          })
          .when('/usergroups/:id', {
-            templateUrl: 'public/Templates/userGroupUpdate.html',
+            templateUrl: 'Public/Templates/userGroupUpdate.html',
             controller: 'UserGroupController'
          })
          .when('/rentobjects/:id', {
-            templateUrl: 'public/Templates/rentObjectCreate.html',
+            templateUrl: 'Public/Templates/rentObjectCreate.html',
             controller: 'RentObjectController'
          })
          .otherwise({
