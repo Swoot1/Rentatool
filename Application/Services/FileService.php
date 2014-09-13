@@ -6,16 +6,16 @@
  * Time: 17:13
  */
 
-namespace Rentatool\Application\Services;
+namespace Application\Services;
 
 
-use Rentatool\Application\Collections\FileCollection;
-use Rentatool\Application\Collections\RentalObjectFileDependencyCollection;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\Mappers\FileMapper;
-use Rentatool\Application\Models\File;
-use Rentatool\Application\Models\RentalObject;
-use Rentatool\Application\Models\RentalObjectFileDependency;
+use Application\Collections\FileCollection;
+use Application\Collections\RentalObjectFileDependencyCollection;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\Mappers\FileMapper;
+use Application\Models\File;
+use Application\Models\RentalObject;
+use Application\Models\RentalObjectFileDependency;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 class FileService{

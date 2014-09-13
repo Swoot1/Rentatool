@@ -7,9 +7,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\Routing;
+namespace Application\ENFramework\Helpers\Routing;
 
-use Rentatool\Application\ENFramework\Models\Request;
+use Application\ENFramework\Models\Request;
 
 class RouteCollection {
 

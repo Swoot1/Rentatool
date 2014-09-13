@@ -6,13 +6,13 @@
  * Time: 16:11
  */
 
-namespace Rentatool\Application\Models;
+namespace Application\Models;
 
 
-use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
-use Rentatool\Application\ENFramework\Helpers\Validation\FloatValidation;
-use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
-use Rentatool\Application\ENFramework\Models\GeneralModel;
+use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Helpers\Validation\FloatValidation;
+use Application\ENFramework\Helpers\Validation\IntegerValidation;
+use Application\ENFramework\Models\GeneralModel;
 
 class PricePlan extends GeneralModel{
    protected $id;

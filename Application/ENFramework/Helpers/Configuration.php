@@ -21,7 +21,7 @@ ini_set('session.save_path', 'tmp');
 
 // Set up the auto loader.
 require_once 'AutoLoader.php';
-$autoLoader = new \Rentatool\Application\ENFramework\Helpers\Autoloader();
+$autoLoader = new \Application\ENFramework\Helpers\Autoloader();
 $autoLoader->setUpAutoLoader();
 
 // Setup error handlers so that errors such as no such method exists or variable is used but never defined throws an exception.

@@ -7,10 +7,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\ENFramework\Collections;
+namespace Application\ENFramework\Collections;
 
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
 class ValueValidationCollection{
 
@@ -31,7 +31,7 @@ class ValueValidationCollection{
     * @param $name
     * @param $value
     * @return bool
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    public function validate($name, $value){
       if (array_key_exists($name, $this->data)){

@@ -6,12 +6,12 @@
  * Time: 15:57
  */
 
-namespace Rentatool\Application\Services;
+namespace Application\Services;
 
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\Mappers\UserValidationMapper;
-use Rentatool\Application\Models\User;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\Mappers\UserValidationMapper;
+use Application\Models\User;
 
 class UserValidationService{
 
@@ -35,7 +35,7 @@ class UserValidationService{
    /**
     * @param User $userModel
     * @return bool
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function checkUniqueUsername(User $userModel){
       $isUniqueUsername = $this->userValidationMapper->isUniqueUsername($userModel->getId(), $userModel->getUsername());
@@ -50,7 +50,7 @@ class UserValidationService{
    /**
     * @param User $userModel
     * @return bool
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function checkUniqueEmail(User $userModel){
       $isUniqueEmail = $this->userValidationMapper->isUniqueEmail($userModel->getId(), $userModel->getEmail());

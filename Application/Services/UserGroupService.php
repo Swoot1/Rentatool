@@ -7,16 +7,16 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\Services;
+namespace Application\Services;
 
-use Rentatool\Application\Collections\UserGroupCollection;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\Mappers\UserGroupMapper;
-use Rentatool\Application\Mappers\UserGroupConnectionMapper;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
-use Rentatool\Application\Models\UserGroup;
-use Rentatool\Application\Collections\UserCollection;
-use Rentatool\Application\Models\UserGroupConnection;
+use Application\Collections\UserGroupCollection;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\Mappers\UserGroupMapper;
+use Application\Mappers\UserGroupConnectionMapper;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
+use Application\Models\UserGroup;
+use Application\Collections\UserCollection;
+use Application\Models\UserGroupConnection;
 
 class UserGroupService{
 

@@ -5,11 +5,11 @@
  * Time: 11:21
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\HelperTests;
+namespace Tests\ENFrameworkTests\HelperTests;
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeFactory;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
+use Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeFactory;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
 
 class ErrorHeaderFactoryTest extends \PHPUnit_Framework_TestCase{
 

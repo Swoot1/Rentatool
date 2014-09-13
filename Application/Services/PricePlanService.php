@@ -6,18 +6,18 @@
  * Time: 20:54
  */
 
-namespace Rentatool\Application\Services;
+namespace Application\Services;
 
-use Rentatool\Application\Collections\PricePlanCollection;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
-use Rentatool\Application\Mappers\PricePlanMapper;
-use Rentatool\Application\Models\PricePlan;
-use Rentatool\Application\Models\RentalObject;
-use Rentatool\Application\Models\User;
+use Application\Collections\PricePlanCollection;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
+use Application\Mappers\PricePlanMapper;
+use Application\Models\PricePlan;
+use Application\Models\RentalObject;
+use Application\Models\User;
 
 class PricePlanService{
    /**
-    * @var \Rentatool\Application\Mappers\PricePlanMapper
+    * @var \Application\Mappers\PricePlanMapper
     */
    protected $pricePlanMapper;
    /**
@@ -81,7 +81,7 @@ class PricePlanService{
     * @param User $currentUser
     * @param RentalObjectService $rentalObjectService
     * @return $this
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
     */
    public function delete($id, User $currentUser, RentalObjectService $rentalObjectService){
       $pricePlanData = $this->pricePlanMapper->read($id);

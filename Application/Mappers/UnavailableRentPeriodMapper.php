@@ -6,11 +6,11 @@
  * Time: 17:22
  */
 
-namespace Rentatool\Application\Mappers;
+namespace Application\Mappers;
 
 
-use Rentatool\Application\ENFramework\Models\IDatabaseConnection;
-use Rentatool\Application\Filters\UnavailableRentPeriodFilter;
+use Application\ENFramework\Models\IDatabaseConnection;
+use Application\Filters\UnavailableRentPeriodFilter;
 
 class UnavailableRentPeriodMapper{
 

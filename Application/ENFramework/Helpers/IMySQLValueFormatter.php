@@ -6,7 +6,7 @@
  * Time: 15:24
  */
 
-namespace Rentatool\Application\ENFramework\Helpers;
+namespace Application\ENFramework\Helpers;
 
 
 interface IMySQLValueFormatter {

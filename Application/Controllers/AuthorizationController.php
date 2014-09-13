@@ -5,17 +5,17 @@
  * Time: 12:14
  */
 
-namespace Rentatool\Application\Controllers;
+namespace Application\Controllers;
 
 
-use Rentatool\Application\ENFramework\Helpers\Response;
-use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
-use Rentatool\Application\ENFramework\Models\Request;
-use Rentatool\Application\Services\AuthorizationService;
+use Application\ENFramework\Helpers\Response;
+use Application\ENFramework\Helpers\ResponseFactory;
+use Application\ENFramework\Models\Request;
+use Application\Services\AuthorizationService;
 
 class AuthorizationController{
    /**
-    * @var \Rentatool\Application\Services\AuthorizationService
+    * @var \Application\Services\AuthorizationService
     */
    private $request;
    private $authorizationService;

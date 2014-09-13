@@ -6,7 +6,7 @@
  * Time: 19:28
  */
 
-namespace Rentatool\Application\ENFramework\Factories;
+namespace Application\ENFramework\Factories;
 
 
 interface IDatabaseConnectionFactory{

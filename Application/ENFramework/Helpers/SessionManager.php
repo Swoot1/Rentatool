@@ -6,15 +6,15 @@
  * Time: 19:24
  */
 
-namespace Rentatool\Application\ENFramework\Helpers;
+namespace Application\ENFramework\Helpers;
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\Models\User;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\Models\User;
 
 /**
  * Class SessionManager
  * All cred to Treehouse http://blog.teamtreehouse.com/how-to-create-bulletproof-sessions
- * @package Rentatool\Application\ENFramework\Helpers
+ * @package Application\ENFramework\Helpers
  */
 class SessionManager {
    static function startSession($name, $limit = 0, $path = '/', $domain = null, $secure = null) {

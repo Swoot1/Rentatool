@@ -6,18 +6,18 @@
  * Time: 20:38
  */
 
-namespace Rentatool\Application\Controllers;
+namespace Application\Controllers;
 
-use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
-use Rentatool\Application\ENFramework\Helpers\SessionManager;
-use Rentatool\Application\ENFramework\Models\Request;
-use Rentatool\Application\Services\RentPeriodService;
+use Application\ENFramework\Helpers\ResponseFactory;
+use Application\ENFramework\Helpers\SessionManager;
+use Application\ENFramework\Models\Request;
+use Application\Services\RentPeriodService;
 
 class RentPeriodController{
 
    private $request;
    /**
-    * @var \Rentatool\Application\Services\RentPeriodService
+    * @var \Application\Services\RentPeriodService
     */
    private $rentPeriodService;
    private $response;

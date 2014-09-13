@@ -6,16 +6,16 @@
  * Time: 17:29
  */
 
-namespace Rentatool\Application\ENFramework\Helpers;
+namespace Application\ENFramework\Helpers;
 
-use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\ENFramework\Helpers\Interfaces\IToArray;
-use Rentatool\Application\ENFramework\Models\GeneralModel;
+use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\Interfaces\IToArray;
+use Application\ENFramework\Models\GeneralModel;
 
 class NoName extends GeneralModel{
    /**
-    * @var \Rentatool\Application\ENFramework\Helpers\Metadata
+    * @var \Application\ENFramework\Helpers\Metadata
     */
    protected $metadata;
    protected $responseData;

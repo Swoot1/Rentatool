@@ -6,10 +6,10 @@
  * Time: 20:10
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\Validation;
+namespace Application\ENFramework\Helpers\Validation;
 
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
 class FloatValidation extends ValueValidation{
 
@@ -27,7 +27,7 @@ class FloatValidation extends ValueValidation{
     * Validate that we're dealing with an actual number and not a string or the like.
     * @param $value
     * @return bool
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function validateIsNumber($value){
       $valueIsNotANumber = is_numeric($value) === false;
@@ -42,7 +42,7 @@ class FloatValidation extends ValueValidation{
     * Validate that the number is actually a float and not a number string or anything else silly.
     * @param $value
     * @return bool
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function validateIsFloat($value){
       $valueIsNotAFloat = (float)$value != $value || is_string($value);
@@ -57,7 +57,7 @@ class FloatValidation extends ValueValidation{
     * If the integer is negative validate that it's allowed to be that.
     * @param $value
     * @return bool
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function validateIsAllowedNegativeFloat($value){
       $valueIsUnAllowedNegativeNumber = $this->allowNegativeInteger === false && $value < 0;
@@ -72,7 +72,7 @@ class FloatValidation extends ValueValidation{
     * Validates that the correct number of decimals is given.
     * @param $value
     * @return bool
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function validateNumberOfDecimals($value){
       $valueAsString                 = (string)$value;

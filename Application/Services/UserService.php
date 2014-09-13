@@ -6,15 +6,15 @@
  * Time: 20:42
  */
 
-namespace Rentatool\Application\Services;
+namespace Application\Services;
 
 
-use Rentatool\Application\Collections\UserCollection;
-use Rentatool\Application\Collections\UserGroupCollection;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
-use Rentatool\Application\Mappers\UserMapper;
-use Rentatool\Application\Mappers\UserGroupConnectionMapper;
-use Rentatool\Application\Models\User;
+use Application\Collections\UserCollection;
+use Application\Collections\UserGroupCollection;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
+use Application\Mappers\UserMapper;
+use Application\Mappers\UserGroupConnectionMapper;
+use Application\Models\User;
 
 class UserService{
    private $userMapper;
@@ -64,7 +64,7 @@ class UserService{
    /**
     * @param $id
     * @return User
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
     */
    public function read($id){
       $result = $this->userMapper->read($id);
@@ -81,7 +81,7 @@ class UserService{
    /**
     * @param $email
     * @return null|User
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
     */
    public function getUserByEmail($email){
       $userData = $this->userMapper->getUserByEmail($email);
@@ -101,7 +101,7 @@ class UserService{
     * @param $id
     * @param $requestData
     * @return null|User
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
     */
    public function update($id, $requestData){
 
@@ -119,7 +119,7 @@ class UserService{
    /**
     * @param $id
     * @return bool
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
     */
    private function checkThatUserExists($id){
       $savedUser = $this->read($id);

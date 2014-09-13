@@ -6,11 +6,11 @@
  * Time: 11:36
  */
 
-namespace Rentatool\Application\Collections;
+namespace Application\Collections;
 
 
-use Rentatool\Application\ENFramework\Collections\GeneralCollection;
+use Application\ENFramework\Collections\GeneralCollection;
 
 class RentalObjectFileDependencyCollection extends GeneralCollection{
-   protected $model = 'Rentatool\Application\Models\RentalObjectFileDependency';
+   protected $model = 'Application\Models\RentalObjectFileDependency';
 } 

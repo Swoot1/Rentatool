@@ -5,7 +5,7 @@
  * Time: 08:17
  */
 
-namespace Rentatool\Application\ENFramework\Helpers;
+namespace Application\ENFramework\Helpers;
 
 
 class ContentTypeConverter{

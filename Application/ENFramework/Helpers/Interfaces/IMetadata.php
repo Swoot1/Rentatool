@@ -6,10 +6,10 @@
  * Time: 17:35
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\Interfaces;
+namespace Application\ENFramework\Helpers\Interfaces;
 
 
-use Rentatool\Application\ENFramework\Helpers\Notifier;
+use Application\ENFramework\Helpers\Notifier;
 
 interface IMetadata{
    public function addNotifier(Notifier $notifier);

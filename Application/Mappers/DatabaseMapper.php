@@ -5,11 +5,11 @@
  * Time: 18:59
  */
 
-namespace Rentatool\Application\Mappers;
+namespace Application\Mappers;
 
 
-use Rentatool\Application\ENFramework\Models\DatabaseConnection;
-use Rentatool\Application\Models\UserGroupConnection;
+use Application\ENFramework\Models\DatabaseConnection;
+use Application\Models\UserGroupConnection;
 
 class DatabaseMapper{
 

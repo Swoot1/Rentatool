@@ -6,15 +6,15 @@
  * Time: 20:16
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\HelperTests\ValidationTests;
+namespace Tests\ENFrameworkTests\HelperTests\ValidationTests;
 
 
-use Rentatool\Application\ENFramework\Helpers\Validation\DateTimeValidation;
+use Application\ENFramework\Helpers\Validation\DateTimeValidation;
 
 class DateTimeValidationTest extends \PHPUnit_Framework_TestCase{
 
    /**
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ogiltigt datum angivet för från datum.
     */
    public function testInvalidDate(){

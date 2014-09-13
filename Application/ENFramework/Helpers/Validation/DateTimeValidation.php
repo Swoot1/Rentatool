@@ -6,10 +6,10 @@
  * Time: 20:11
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\Validation;
+namespace Application\ENFramework\Helpers\Validation;
 
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
 class DateTimeValidation extends ValueValidation{
    public function objectValidation($value){

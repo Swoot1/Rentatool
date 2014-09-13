@@ -6,19 +6,19 @@
  * Time: 19:51
  */
 
-namespace Rentatool\Application\Services;
+namespace Application\Services;
 
-use Rentatool\Application\Collections\RentalObjectCollection;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
-use Rentatool\Application\Filters\RentalObjectFilter;
-use Rentatool\Application\Mappers\RentalObjectMapper;
-use Rentatool\Application\Models\RentalObject;
-use Rentatool\Application\Models\User;
+use Application\Collections\RentalObjectCollection;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
+use Application\Filters\RentalObjectFilter;
+use Application\Mappers\RentalObjectMapper;
+use Application\Models\RentalObject;
+use Application\Models\User;
 
 class RentalObjectService{
    /**
-    * @var \Rentatool\Application\Mappers\RentalObjectMapper
+    * @var \Application\Mappers\RentalObjectMapper
     */
    private $rentalObjectMapper;
    private $pricePlanService;

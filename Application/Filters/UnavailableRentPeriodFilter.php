@@ -6,12 +6,12 @@
  * Time: 17:49
  */
 
-namespace Rentatool\Application\Filters;
+namespace Application\Filters;
 
 
-use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
-use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
-use Rentatool\Application\ENFramework\Models\GeneralModel;
+use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Helpers\Validation\IntegerValidation;
+use Application\ENFramework\Models\GeneralModel;
 
 class UnavailableRentPeriodFilter extends GeneralModel{
    protected $rentalObjectId = null;

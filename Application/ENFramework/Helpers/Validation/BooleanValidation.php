@@ -5,9 +5,9 @@
  * Time: 13:32
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\Validation;
+namespace Application\ENFramework\Helpers\Validation;
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
 class BooleanValidation extends ValueValidation {
 

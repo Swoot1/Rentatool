@@ -6,15 +6,15 @@
  * Time: 16:29
  */
 
-namespace Rentatool\Application\Collections;
+namespace Application\Collections;
 
 
-use Rentatool\Application\ENFramework\Collections\GeneralCollection;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\Models\RentalObject;
+use Application\ENFramework\Collections\GeneralCollection;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\Models\RentalObject;
 
 class PricePlanCollection extends GeneralCollection{
-   protected $model = 'Rentatool\Application\Models\PricePlan';
+   protected $model = 'Application\Models\PricePlan';
 
    public function setRentalObjectId(RentalObject $rentalObject){
 

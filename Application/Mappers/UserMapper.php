@@ -6,14 +6,14 @@
  * Time: 20:42
  */
 
-namespace Rentatool\Application\Mappers;
+namespace Application\Mappers;
 
-use Rentatool\Application\ENFramework\Models\IDatabaseConnection;
+use Application\ENFramework\Models\IDatabaseConnection;
 
 class UserMapper{
 
    /**
-    * @var \Rentatool\Application\ENFramework\Models\IDatabaseConnection
+    * @var \Application\ENFramework\Models\IDatabaseConnection
     */
    private $databaseConnection;
    private $indexSQL = '

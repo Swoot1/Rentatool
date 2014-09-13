@@ -6,13 +6,13 @@
  * Time: 20:39
  */
 
-namespace Rentatool\Application\Services;
+namespace Application\Services;
 
 
-use Rentatool\Application\Mappers\RentPeriodMapper;
-use Rentatool\Application\Models\RentPeriod;
-use Rentatool\Application\Models\RentPeriodPriceCalculator;
-use Rentatool\Application\Models\User;
+use Application\Mappers\RentPeriodMapper;
+use Application\Models\RentPeriod;
+use Application\Models\RentPeriodPriceCalculator;
+use Application\Models\User;
 
 class RentPeriodService{
    private $rentPeriodMapper;

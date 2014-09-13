@@ -6,10 +6,10 @@
  * Time: 09:56
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\HelperTests\ValidationTests;
+namespace Tests\ENFrameworkTests\HelperTests\ValidationTests;
 
 
-use Rentatool\Application\ENFramework\Helpers\Validation\EmailValidation;
+use Application\ENFramework\Helpers\Validation\EmailValidation;
 
 class EmailValidationTest extends \PHPUnit_Framework_TestCase{
 
@@ -20,7 +20,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig email-adress.
     */
    public function testValidateMissingAtCharacter(){
@@ -29,7 +29,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig email-adress.
     */
    public function testValidateMissingDomain(){
@@ -38,7 +38,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig email-adress.
     */
    public function testValidateRepeatedEmail(){
@@ -53,7 +53,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig email-adress.
     */
    public function testDashIsNotAllowedAsStart(){
@@ -62,7 +62,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig email-adress.
     */
    public function testDashIsNotAllowedAsEnd(){
@@ -89,7 +89,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig email-adress.
     */
    public function testValidateMissingName(){

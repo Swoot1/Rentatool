@@ -7,14 +7,14 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\Mappers;
+namespace Application\Mappers;
 
-use Rentatool\Application\ENFramework\Models\IDatabaseConnection;
-use Rentatool\Application\Filters\RentalObjectFilter;
+use Application\ENFramework\Models\IDatabaseConnection;
+use Application\Filters\RentalObjectFilter;
 
 class RentalObjectMapper{
    /**
-    * @var \Rentatool\Application\ENFramework\Models\IDatabaseConnection
+    * @var \Application\ENFramework\Models\IDatabaseConnection
     */
    private $databaseConnection;
 

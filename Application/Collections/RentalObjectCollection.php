@@ -7,10 +7,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\Collections;
+namespace Application\Collections;
 
-use Rentatool\Application\ENFramework\Collections\GeneralCollection;
+use Application\ENFramework\Collections\GeneralCollection;
 
 class RentalObjectCollection extends GeneralCollection{
-    protected $model = 'Rentatool\Application\Models\RentalObject';
+    protected $model = 'Application\Models\RentalObject';
 }

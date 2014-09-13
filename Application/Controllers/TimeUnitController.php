@@ -6,11 +6,11 @@
  * Time: 15:04
  */
 
-namespace Rentatool\Application\Controllers;
+namespace Application\Controllers;
 
-use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
-use Rentatool\Application\ENFramework\Models\Request;
-use Rentatool\Application\Services\TimeUnitService;
+use Application\ENFramework\Helpers\ResponseFactory;
+use Application\ENFramework\Models\Request;
+use Application\Services\TimeUnitService;
 
 class TimeUnitController {
    public function __construct(Request $request, TimeUnitService $timeUnitService, ResponseFactory $responseFactory){

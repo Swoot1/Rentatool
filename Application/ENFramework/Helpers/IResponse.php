@@ -5,15 +5,15 @@
  * Date: 2014-07-08
  * Time: 20:40
  */
-namespace Rentatool\Application\ENFramework\Helpers;
+namespace Application\ENFramework\Helpers;
 
-use Rentatool\Application\ENFramework\Helpers\Interfaces\IToArray;
+use Application\ENFramework\Helpers\Interfaces\IToArray;
 
 
 /**
  * Class Header
  * Creates and can execute a header() based on its data.
- * @package Rentatool\Application\ENFramework\Helpers
+ * @package Application\ENFramework\Helpers
  */
 interface IResponse{
    public function setStatusCode($code);

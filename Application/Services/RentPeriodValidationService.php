@@ -6,12 +6,12 @@
  * Time: 22:07
  */
 
-namespace Rentatool\Application\Services;
+namespace Application\Services;
 
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\Mappers\RentPeriodValidationMapper;
-use Rentatool\Application\Models\RentPeriod;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\Mappers\RentPeriodValidationMapper;
+use Application\Models\RentPeriod;
 
 class RentPeriodValidationService{
 

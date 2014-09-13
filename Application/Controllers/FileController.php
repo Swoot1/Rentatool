@@ -6,20 +6,20 @@
  * Time: 17:13
  */
 
-namespace Rentatool\Application\Controllers;
+namespace Application\Controllers;
 
 
-use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
-use Rentatool\Application\ENFramework\Models\Request;
-use Rentatool\Application\Services\FileService;
+use Application\ENFramework\Helpers\ResponseFactory;
+use Application\ENFramework\Models\Request;
+use Application\Services\FileService;
 
 class FileController{
    /**
-    * @var \Rentatool\Application\Services\RentalObjectService
+    * @var \Application\Services\RentalObjectService
     */
    private $request;
    /**
-    * @var \Rentatool\Application\Services\FileService
+    * @var \Application\Services\FileService
     */
    private $fileService;
    private $response;

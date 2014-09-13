@@ -6,15 +6,15 @@
  * Time: 10:15
  */
 
-namespace Rentatool\Application\ENFramework\Collections;
+namespace Application\ENFramework\Collections;
 
 
-use Rentatool\Application\ENFramework\Helpers\Interfaces\INotificationCollection;
-use Rentatool\Application\ENFramework\Helpers\Notifier;
+use Application\ENFramework\Helpers\Interfaces\INotificationCollection;
+use Application\ENFramework\Helpers\Notifier;
 
 class NotificationCollection extends GeneralCollection implements INotificationCollection{
    protected $data = array();
-   protected $model = 'Rentatool\Application\ENFramework\Helpers\Models\Notification';
+   protected $model = 'Application\ENFramework\Helpers\Models\Notification';
 
    /**
     * @param Notifier $notifier

@@ -5,7 +5,7 @@
  * Time: 20:57
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions;
+namespace Application\ENFramework\Helpers\ErrorHandling\Exceptions;
 
 
 class UserIsNotAllowedException extends \Exception{

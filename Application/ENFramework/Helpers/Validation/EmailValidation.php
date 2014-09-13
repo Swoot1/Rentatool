@@ -6,10 +6,10 @@
  * Time: 20:10
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\Validation;
+namespace Application\ENFramework\Helpers\Validation;
 
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 
 class EmailValidation extends ValueValidation{
 
@@ -21,7 +21,7 @@ class EmailValidation extends ValueValidation{
     * Check the email so that it is correct.
     * @param $value
     * @return bool
-    * @throws \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function validateEmail($value){
       $result              = preg_match('/^(([a-z\d])|(?:[a-z\d](?:[a-z\-\d]+)?[a-z\d]))@(([a-z\d])|(?:[a-z\d](?:[a-z\-\d]+)?[a-z\d]))\.[a-z]+$/', $value);

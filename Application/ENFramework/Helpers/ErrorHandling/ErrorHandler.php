@@ -5,7 +5,7 @@
  * Time: 10:09
  */
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ErrorException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ErrorException;
 
 /**
  * Throws an exception when an error occurs i.e. when a variable is used but never defined.

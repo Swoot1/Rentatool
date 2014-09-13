@@ -7,11 +7,11 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\Controllers;
+namespace Application\Controllers;
 
 
-use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
-use Rentatool\Application\Services\MenuService;
+use Application\ENFramework\Helpers\ResponseFactory;
+use Application\Services\MenuService;
 
 class MenuController{
 

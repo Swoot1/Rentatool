@@ -7,11 +7,11 @@
  * To change this template use File | Settings | File Templates.
  */
 
-use Rentatool\Application\Collections\RequestMethodCollection;
-use Rentatool\Application\ENFramework\Helpers\AccessRules\AdministrativeAccessRule;
-use Rentatool\Application\ENFramework\Helpers\AccessRules\AuthorizedAccessRule;
-use Rentatool\Application\ENFramework\Helpers\Routing\RouteCollection;
-use Rentatool\Application\ENFramework\Helpers\Routing\SubRouteCollection;
+use Application\Collections\RequestMethodCollection;
+use Application\ENFramework\Helpers\AccessRules\AdministrativeAccessRule;
+use Application\ENFramework\Helpers\AccessRules\AuthorizedAccessRule;
+use Application\ENFramework\Helpers\Routing\RouteCollection;
+use Application\ENFramework\Helpers\Routing\SubRouteCollection;
 
 $routes = array();
 

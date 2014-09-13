@@ -7,16 +7,16 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\ENFramework\Helpers;
+namespace Application\ENFramework\Helpers;
 
 
-use Rentatool\Application\Collections\RequestMethodCollection;
-use Rentatool\Application\ENFramework\Models\Request;
+use Application\Collections\RequestMethodCollection;
+use Application\ENFramework\Models\Request;
 
 class RequestBuilder{
    private $buildSource;
    /**
-    * @var \Rentatool\Application\ENFramework\Models\Request
+    * @var \Application\ENFramework\Models\Request
     */
    private $requestModel;
 

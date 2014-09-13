@@ -7,19 +7,19 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\Controllers;
+namespace Application\Controllers;
 
 
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Rentatool\Application\ENFramework\Helpers\Notifier;
-use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
-use Rentatool\Application\ENFramework\Models\Request;
-use Rentatool\Application\Models\User;
-use Rentatool\Application\Models\UserGroup;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
-use Rentatool\Application\Models\UserGroupConnection;
-use Rentatool\Application\Services\UserGroupService;
-use Rentatool\Application\Services\UserService;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\Notifier;
+use Application\ENFramework\Helpers\ResponseFactory;
+use Application\ENFramework\Models\Request;
+use Application\Models\User;
+use Application\Models\UserGroup;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
+use Application\Models\UserGroupConnection;
+use Application\Services\UserGroupService;
+use Application\Services\UserService;
 
 class UserGroupController{
 

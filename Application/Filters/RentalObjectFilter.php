@@ -6,13 +6,13 @@
  * Time: 15:40
  */
 
-namespace Rentatool\Application\Filters;
+namespace Application\Filters;
 
 
-use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
-use Rentatool\Application\ENFramework\Helpers\Validation\DateTimeValidation;
-use Rentatool\Application\ENFramework\Helpers\Validation\TextValidation;
-use Rentatool\Application\ENFramework\Models\GeneralModel;
+use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Helpers\Validation\DateTimeValidation;
+use Application\ENFramework\Helpers\Validation\TextValidation;
+use Application\ENFramework\Models\GeneralModel;
 
 class RentalObjectFilter extends GeneralModel{
    protected $query = null;

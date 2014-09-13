@@ -5,27 +5,27 @@
  * Time: 10:40
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\HelperTests;
+namespace Tests\ENFrameworkTests\HelperTests;
 
 
 class ErrorHandlerTest extends \PHPUnit_Framework_TestCase{
 
 //    /**
 //     * Test that the undefined variable error throws a ErrorException.
-//     * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ErrorException
+//     * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ErrorException
 //     */
 //    public function testErrorHandler()
 //    {
-//        require_once 'Rentatool\Application\ENFramework\Helpers\ErrorHandling\ErrorHandler.php';
+//        require_once 'Application\ENFramework\Helpers\ErrorHandling\ErrorHandler.php';
 //
 //        echo $test;
 //    }
 //
 //    /**
-//     * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\FatalErrorException
+//     * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\FatalErrorException
 //     */
 //    public function testFatalErrorHandler(){
-//        require_once 'Rentatool\Application\ENFramework\Helpers\ErrorHandling\ErrorHandler.php';
+//        require_once 'Application\ENFramework\Helpers\ErrorHandling\ErrorHandler.php';
 //
 //        array_shift(array());
 //    }

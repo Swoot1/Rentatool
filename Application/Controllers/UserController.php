@@ -6,17 +6,17 @@
  * Time: 20:42
  */
 
-namespace Rentatool\Application\Controllers;
+namespace Application\Controllers;
 
-use Rentatool\Application\ENFramework\Helpers\Notifier;
-use Rentatool\Application\ENFramework\Helpers\ResponseFactory;
-use Rentatool\Application\ENFramework\Models\Request;
-use Rentatool\Application\Services\UserService;
+use Application\ENFramework\Helpers\Notifier;
+use Application\ENFramework\Helpers\ResponseFactory;
+use Application\ENFramework\Models\Request;
+use Application\Services\UserService;
 
 class UserController{
 
    /**
-    * @var \Rentatool\Application\Services\UserService
+    * @var \Application\Services\UserService
     */
    private $userService;
    private $response;

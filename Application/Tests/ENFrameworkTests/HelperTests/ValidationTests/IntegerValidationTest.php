@@ -5,9 +5,9 @@
  * Time: 09:09
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\HelperTests\ValidationTests;
+namespace Tests\ENFrameworkTests\HelperTests\ValidationTests;
 
-use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
+use Application\ENFramework\Helpers\Validation\IntegerValidation;
 
 class IntegerValidationTest extends \PHPUnit_Framework_TestCase{
    /**
@@ -30,7 +30,7 @@ class IntegerValidationTest extends \PHPUnit_Framework_TestCase{
 
    /**
     * Test that an expection is thrown when a string is inserted.
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage propertyName måste bestå av siffror.
     */
    public function testValidateWithString(){
@@ -41,7 +41,7 @@ class IntegerValidationTest extends \PHPUnit_Framework_TestCase{
    /**
     * Test that an exception is thrown when a negative number is inserted and it's
     * not allowed.
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage propertyName får inte vara negativt.
     */
    public function testUnAllowedNegativeNumber(){
@@ -51,7 +51,7 @@ class IntegerValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ange ett värde för propertyName.
     */
    public function testUnAllowedNullValue(){
@@ -60,7 +60,7 @@ class IntegerValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage propertyName måste bestå av siffror.
     */
    public function testValidateWithNumericString(){

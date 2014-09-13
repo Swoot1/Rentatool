@@ -5,19 +5,19 @@
  * Time: 18:58
  */
 
-namespace Rentatool\Application\Services;
+namespace Application\Services;
 
-use Rentatool\Application\Mappers\DatabaseMapper;
-use Rentatool\Application\Mappers\RentalObjectMapper;
-use Rentatool\Application\Mappers\TimeUnitMapper;
-use Rentatool\Application\Mappers\UserGroupConnectionMapper;
-use Rentatool\Application\Mappers\UserMapper;
-use Rentatool\Application\Mappers\UserGroupMapper;
+use Application\Mappers\DatabaseMapper;
+use Application\Mappers\RentalObjectMapper;
+use Application\Mappers\TimeUnitMapper;
+use Application\Mappers\UserGroupConnectionMapper;
+use Application\Mappers\UserMapper;
+use Application\Mappers\UserGroupMapper;
 
 class DatabaseService {
 
    /**
-    * @var \Rentatool\Application\Mappers\DatabaseMapper
+    * @var \Application\Mappers\DatabaseMapper
     */
    protected $databaseMapper;
 

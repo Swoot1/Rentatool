@@ -6,12 +6,12 @@
  * Time: 17:22
  */
 
-namespace Rentatool\Application\Services;
+namespace Application\Services;
 
 
-use Rentatool\Application\Collections\UnavailableRentPeriodCollection;
-use Rentatool\Application\Filters\UnavailableRentPeriodFilter;
-use Rentatool\Application\Mappers\UnavailableRentPeriodMapper;
+use Application\Collections\UnavailableRentPeriodCollection;
+use Application\Filters\UnavailableRentPeriodFilter;
+use Application\Mappers\UnavailableRentPeriodMapper;
 
 class UnavailableRentPeriodService {
 

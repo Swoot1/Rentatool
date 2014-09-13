@@ -5,10 +5,10 @@
  * Time: 08:42
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\HelperTests;
+namespace Tests\ENFrameworkTests\HelperTests;
 
 
-use Rentatool\Application\ENFramework\Helpers\ContentTypeConverter;
+use Application\ENFramework\Helpers\ContentTypeConverter;
 
 class ContentTypeConverterTest extends \PHPUnit_Framework_TestCase{
    public function testConvertDataToJSON(){

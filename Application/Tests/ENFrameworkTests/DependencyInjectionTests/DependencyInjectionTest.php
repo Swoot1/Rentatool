@@ -6,10 +6,10 @@
  * Time: 16:16
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\DependencyInjectionTests;
+namespace Tests\ENFrameworkTests\DependencyInjectionTests;
 
 
-use Rentatool\Application\ENFramework\Helpers\DependencyInjection\DependencyInjection;
+use Application\ENFramework\Helpers\DependencyInjection\DependencyInjection;
 
 class DependencyInjectionTest extends \PHPUnit_Framework_TestCase{
 

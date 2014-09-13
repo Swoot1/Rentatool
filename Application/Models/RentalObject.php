@@ -7,14 +7,14 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\Models;
+namespace Application\Models;
 
-use Rentatool\Application\Collections\FileCollection;
-use Rentatool\Application\Collections\PricePlanCollection;
-use Rentatool\Application\ENFramework\Collections\ValueValidationCollection;
-use Rentatool\Application\ENFramework\Helpers\Validation\IntegerValidation;
-use Rentatool\Application\ENFramework\Helpers\Validation\TextValidation;
-use Rentatool\Application\ENFramework\Models\GeneralModel;
+use Application\Collections\FileCollection;
+use Application\Collections\PricePlanCollection;
+use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Helpers\Validation\IntegerValidation;
+use Application\ENFramework\Helpers\Validation\TextValidation;
+use Application\ENFramework\Models\GeneralModel;
 
 class RentalObject extends GeneralModel{
    protected $id;
@@ -68,7 +68,7 @@ class RentalObject extends GeneralModel{
     */
    public function setPricePlanCollection($data){
 
-      if ($data instanceof \Rentatool\Application\Collections\PricePlanCollection){
+      if ($data instanceof \Application\Collections\PricePlanCollection){
          $this->pricePlanCollection = $data;
       } else{
          $this->pricePlanCollection = new PricePlanCollection($data);
@@ -83,7 +83,7 @@ class RentalObject extends GeneralModel{
     */
    public function setFileCollection($data){
 
-      if ($data instanceof \Rentatool\Application\Collections\FileCollection){
+      if ($data instanceof \Application\Collections\FileCollection){
          $this->fileCollection = $data;
       } else{
          $this->fileCollection = new FileCollection($data);
