@@ -96,6 +96,13 @@ class DatabaseMapper{
         CONSTRAINT connected_to_rental_object_fk FOREIGN KEY(rental_object_id) REFERENCES rental_objects(id) ON DELETE CASCADE,
         CONSTRAINT connected_to_file_fk FOREIGN KEY(file_id) REFERENCES files(id) ON DELETE CASCADE
       );
+
+      CREATE TABLE IF NOT EXISTS 'sessions' (
+        'id' varchar(32) NOT NULL,
+        'access' int(10) unsigned DEFAULT NULL,
+        'data' text,
+        PRIMARY KEY ('id')
+      ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
    ";
 
    public function __construct(DatabaseConnection $databaseConnection){
