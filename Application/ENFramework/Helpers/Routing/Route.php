@@ -47,14 +47,14 @@ class Route {
       return true;
    }
 
+
    public function getSubRoute(Request $request) {
       return $this->subRoutesCollection->getSubRouteFromRequest($request);
    }
 
-   public function isUserAllowed() {
-      $allowed = false;
 
-      if(SessionManager::isUserLoggedIn() && !is_null($this->accessRule)) {
+   public function isUserAllowed() {
+      if(!is_null($this->accessRule)) {
          $allowed = $this->accessRule->isAccessAllowed(SessionManager::getCurrentUser());
 
          if(!$allowed) {
@@ -62,6 +62,6 @@ class Route {
          }
       }
 
-      return is_null($this->accessRule) || $allowed;
+      return true;
    }
 }
