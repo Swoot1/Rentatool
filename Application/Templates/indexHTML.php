@@ -12,7 +12,6 @@ echo '<!DOCTYPE html>
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
     <link href="Public/test.css" type="text/css" rel="stylesheet"/>
-    <base href="/rentatool/" />
 </head>
 <body>
 <div id="content">
