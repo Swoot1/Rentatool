@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 use Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeFactory;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
 use Application\ENFramework\Helpers\RequestDispatcher;
@@ -36,7 +36,7 @@ try{
    $responseFactory            = new ResponseFactory();
    $response                   = $responseFactory->createResponse();
    $response->setStatusCode($HTTPStatusCode);
-   $response->setResponseData(new \Rentatool\Application\ENFramework\Helpers\ErrorHandling\ErrorTrace(array('message' => $exception->getMessage(), 'file' => $exception->getFile(), 'line' => $exception->getLine(), 'trace' => $exception->getTrace())));
+   $response->setResponseData(new Application\ENFramework\Helpers\ErrorHandling\ErrorTrace(array('message' => $exception->getMessage(), 'file' => $exception->getFile(), 'line' => $exception->getLine(), 'trace' => $exception->getTrace())));
    $response->sendResponse();
 }
 
