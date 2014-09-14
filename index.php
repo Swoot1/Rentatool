@@ -1,4 +1,4 @@
-<?php
+﻿﻿<?php
 use Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeFactory;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
 use Application\ENFramework\Helpers\RequestDispatcher;
@@ -11,7 +11,7 @@ require_once 'Application/ENFramework/Helpers/Configuration.php';
 
 SessionManager::startSession('User');
 
-//try{
+try{
    $requestDispatcher = new RequestDispatcher();
    $requestModel      = $requestDispatcher->getRequestModel();
 
@@ -30,15 +30,15 @@ SessionManager::startSession('User');
    } else{
       include 'Application/Templates/indexHTML.php';
    }
-//} catch (Exception $exception){
-//   $errorHTTPStatusCodeFactory = new ErrorHTTPStatusCodeFactory($exception);
-//   $HTTPStatusCode             = $errorHTTPStatusCodeFactory->getHTTPStatusCode();
-//   $responseFactory            = new ResponseFactory();
-//   $response                   = $responseFactory->createResponse();
-//   $response->setStatusCode($HTTPStatusCode);
-//   $response->setResponseData(new \Rentatool\Application\ENFramework\Helpers\ErrorHandling\ErrorTrace(array('message' => $exception->getMessage(), 'file' => $exception->getFile(), 'line' => $exception->getLine(), 'trace' => $exception->getTrace())));
-//   $response->sendResponse();
-//}
+} catch (Exception $exception){
+   $errorHTTPStatusCodeFactory = new ErrorHTTPStatusCodeFactory($exception);
+   $HTTPStatusCode             = $errorHTTPStatusCodeFactory->getHTTPStatusCode();
+   $responseFactory            = new ResponseFactory();
+   $response                   = $responseFactory->createResponse();
+   $response->setStatusCode($HTTPStatusCode);
+   $response->setResponseData(new Application\ENFramework\Helpers\ErrorHandling\ErrorTrace(array('message' => $exception->getMessage(), 'file' => $exception->getFile(), 'line' => $exception->getLine(), 'trace' => $exception->getTrace())));
+   $response->sendResponse();
+}
 
 
 
