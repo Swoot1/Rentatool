@@ -1,1 +1,40 @@
 
+[14-Sep-2014 16:49:54 Europe/Stockholm] PHP Fatal error:  Uncaught exception 'Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException' with message 'Du måste logga in för att fortsätta.' in /storage/content/37/132037/hyrdet.se/public_html/index.php:28
+Stack trace:
+#0 {main}
+  thrown in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 28
+[14-Sep-2014 17:03:55 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:03:55 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:03:56 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:03:56 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:03:58 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:03:58 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:03:59 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:03:59 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:04:00 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:04:00 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:04:03 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:04:03 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:04:04 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:04:04 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:04:05 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:04:05 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:04:36 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:04:36 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:04:36 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:04:36 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:04:37 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:04:37 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:04:39 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:04:39 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:04:39 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:04:39 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:04:42 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:04:42 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:04:44 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:04:44 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:05:00 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 14
+[14-Sep-2014 17:05:00 Europe/Stockholm] PHP Notice:  Undefined index: teststuff in /storage/content/37/132037/hyrdet.se/public_html/index.php on line 20
+[14-Sep-2014 17:07:26 Europe/Stockholm] PHP Notice:  Undefined index: user in /storage/content/37/132037/hyrdet.se/public_html/Application/ENFramework/Helpers/SessionManager.php on line 145
+[14-Sep-2014 17:07:26 Europe/Stockholm] PHP Notice:  Undefined index: user in /storage/content/37/132037/hyrdet.se/public_html/Application/ENFramework/Helpers/SessionManager.php on line 145
+[14-Sep-2014 17:07:39 Europe/Stockholm] PHP Notice:  Undefined index: user in /storage/content/37/132037/hyrdet.se/public_html/Application/ENFramework/Helpers/SessionManager.php on line 145
