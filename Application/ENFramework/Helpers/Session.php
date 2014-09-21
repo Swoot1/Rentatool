@@ -19,6 +19,8 @@ class Session{
    public function __construct(IDatabaseConnection $database){
       $this->database = $database;
 
+      session_name('User');
+
       session_set_save_handler(
          array($this, "_open"),
          array($this, "_close"),
