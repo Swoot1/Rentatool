@@ -1,22 +1,15 @@
 ﻿﻿<?php
-use Application\ENFramework\Factories\DatabaseConnectionFactory;
 use Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeFactory;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
-use Application\ENFramework\Helpers\MySQLValueFormatter;
 use Application\ENFramework\Helpers\RequestDispatcher;
 use Application\ENFramework\Helpers\ResponseFactory;
 use Application\ENFramework\Helpers\Routing\Routing;
-use Application\ENFramework\Helpers\Session;
 use Application\ENFramework\Helpers\SessionManager;
-use Application\ENFramework\Models\DatabaseConnection;
 
 require_once 'Application/ENFramework/Helpers/SessionManager.php';
 require_once 'Application/ENFramework/Helpers/Configuration.php';
 
-$databaseConnectionFactory = new DatabaseConnectionFactory();
-$mySqlValueFormatter       = new MySQLValueFormatter();
-$databaseConnection        = new DatabaseConnection($databaseConnectionFactory, $mySqlValueFormatter);
-$session                   = new Session($databaseConnection);
+SessionManager::startSession('User');
 
 try{
    $requestDispatcher = new RequestDispatcher();

@@ -5,7 +5,7 @@
 </div>
 <div class="row">
     <div class="large-12 columns">
-        <img style="width:100px; height:100px" ng-repeat="file in rentalObject.fileCollection" src="Public/RentalObjectPhotos/{{file.id}}.JPG">
+        <img style="width:100px; height:100px" ng-repeat="file in rentalObject.fileCollection" src="http://static.hyrdet.se/Public/RentalObjectPhotos/{{file.id}}.JPG">
         <form name="rental_object_form" ng-submit="updateRentalObject()">
             <div class="error" ng-show="rental_object_form.name.$dirty && rental_object_form.$invalid">
             </div>

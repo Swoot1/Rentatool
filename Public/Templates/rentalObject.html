@@ -8,7 +8,7 @@
         <form id="fileupload" action="http://jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data" data-ng-app="Rentatool" data-ng-controller="RentalObjectPhotoController" data-file-upload="file.options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}" class="ng-scope ng-pristine ng-valid">
             <input type="file" name="files[]" ng-disabled="disabled">
         </form>
-        <img style="width:100px; height:100px" ng-repeat="file in rentalObject.fileCollection" src="Public/RentalObjectPhotos/{{file.id}}.JPG">
+        <img style="width:100px; height:100px" ng-repeat="file in rentalObject.fileCollection" src="http://static.hyrdet.se/Public/RentalObjectPhotos/{{file.id}}.JPG">
         <form name="rental_object_form" ng-submit="createRentalObject()">
             <div class="error" ng-show="rental_object_form.name.$dirty && rental_object_form.$invalid">
                 <small class="error" ng-show="rental_object_form.$error.unique">
