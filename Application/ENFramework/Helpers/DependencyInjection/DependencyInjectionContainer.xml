@@ -75,6 +75,7 @@
             <dependencies>
                 <dependency namespace="Application\ENFramework\Models" class="Request"/>
                 <dependency namespace="Application\Services" class="PricePlanService"/>
+                <dependency namespace="Application\Services" class="FileService"/>
                 <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
             </dependencies>
         </dependency>
