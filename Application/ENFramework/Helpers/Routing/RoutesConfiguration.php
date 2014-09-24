@@ -26,38 +26,47 @@ $routes['authorization'] = array(
    'controllerName'          => 'AuthorizationController',
    'requestMethodCollection' => new RequestMethodCollection(array()),
    'subRoutesCollection'     => new SubRouteCollection(
-      array(
-           'login'  => array(
-              'controllerName'          => 'AuthorizationController',
-              'requestMethodCollection' => new RequestMethodCollection(array('POST')),
-              'subRoutesCollection'     => new SubRouteCollection(array())),
-           'logout' => array(
-              'controllerName'          => 'AuthorizationController',
-              'requestMethodCollection' => new RequestMethodCollection(array('GET')),
-              'subRoutesCollection'     => new SubRouteCollection())
+         array(
+            'login'  => array(
+               'controllerName'          => 'AuthorizationController',
+               'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+               'subRoutesCollection'     => new SubRouteCollection(array())),
+            'logout' => array(
+               'controllerName'          => 'AuthorizationController',
+               'requestMethodCollection' => new RequestMethodCollection(array('GET')),
+               'subRoutesCollection'     => new SubRouteCollection())
+         )
       )
-   )
 );
 
 $routes['users'] = array(
    'controllerName'          => 'UserController',
    'accessRule'              => new AdministrativeAccessRule(),
    'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
-   'subRoutesCollection'     => new SubRouteCollection()
+   'subRoutesCollection'     => new SubRouteCollection(
+         array(
+            'currentUser' => array(
+               'controllerName'          => 'UserController',
+               'accessRule'              => new AuthorizedAccessRule(),
+               'requestMethodCollection' => new RequestMethodCollection(array('GET')),
+               'subRoutesCollection'     => new SubRouteCollection(array())
+            )
+         )
+      )
 );
 
 $routes['databases'] = array(
    'controllerName'          => 'DatabaseController',
    'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
    'subRoutesCollection'     => new SubRouteCollection(
-      array(
-           'createwithseeds' => array(
-              'controllerName'          => 'DatabaseController',
-              'requiresAuthorization'   => false,
-              'requestMethodCollection' => new RequestMethodCollection(array('POST')),
-              'subRoutesCollection'     => new SubRouteCollection())
+         array(
+            'createwithseeds' => array(
+               'controllerName'          => 'DatabaseController',
+               'requiresAuthorization'   => false,
+               'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+               'subRoutesCollection'     => new SubRouteCollection())
+         )
       )
-   )
 );
 
 $routes['rentperiods'] = array(
@@ -79,20 +88,20 @@ $routes['usergroups'] = array(
    'accessRule'              => new AdministrativeAccessRule(),
    'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
    'subRoutesCollection'     => new SubRouteCollection(
-      array(
-           'addMember'    => array(
-              'controllerName'          => 'UserGroupController',
-              'accessRule'              => new AdministrativeAccessRule(),
-              'requestMethodCollection' => new RequestMethodCollection(array('POST')),
-              'subRoutesCollection'     => new SubRouteCollection(array())
-           ),
-           'removeMember' => array(
-              'controllerName'          => 'UserGroupController',
-              'accessRule'              => new AdministrativeAccessRule(),
-              'requestMethodCollection' => new RequestMethodCollection(array('POST')),
-              'subRoutesCollection'     => new SubRouteCollection(array())
-           )
-      ))
+         array(
+            'addMember'    => array(
+               'controllerName'          => 'UserGroupController',
+               'accessRule'              => new AdministrativeAccessRule(),
+               'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+               'subRoutesCollection'     => new SubRouteCollection(array())
+            ),
+            'removeMember' => array(
+               'controllerName'          => 'UserGroupController',
+               'accessRule'              => new AdministrativeAccessRule(),
+               'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+               'subRoutesCollection'     => new SubRouteCollection(array())
+            )
+         ))
 );
 
 $routes['timeunits'] = array(

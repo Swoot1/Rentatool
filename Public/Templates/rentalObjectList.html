@@ -23,10 +23,10 @@
                     <button type="button" ng-click="navigateToRentRentalObject(rentalObject)" class="success tiny">Hyr
                         uthyrningsbjekt
                     </button>
-                    <button type="button" class="tiny" ng-click="editRentalObject(rentalObject)">Redigera
+                    <button type="button" class="tiny" ng-click="editRentalObject(rentalObject)" ng-show="rentalObject.userId === currentUser.id">Redigera
                         uthyrningsobjekt
                     </button>
-                    <button type="button" ng-click="deleteRentalObject(rentalObject)" class="alert tiny">Ta bort
+                    <button type="button" ng-click="deleteRentalObject(rentalObject)" ng-show="rentalObject.userId === currentUser.id" class="alert tiny">Ta bort
                         uthyrningsobjekt
                     </button>
                 </p>

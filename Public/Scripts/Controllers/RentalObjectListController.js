@@ -1,9 +1,10 @@
 /**
  * Created by Elin on 2014-06-12.
  */
-rentaTool.controller('RentalObjectListController', ['$scope', '$location', 'RentalObject', function ($scope, $location, RentalObject) {
+rentaTool.controller('RentalObjectListController', ['$scope', '$location', 'RentalObject', 'User', function ($scope, $location, RentalObject, User) {
    $scope.rentalObjectCollection = RentalObject.query();
    $scope.rentalObjectFilter = {};
+   $scope.currentUser = User.get({'id' : 'currentUser'});
 
    $scope.searchRentalObject = function (rentalObjectFilter) {
       var GETParams = {};

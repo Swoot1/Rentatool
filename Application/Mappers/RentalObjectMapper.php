@@ -21,7 +21,7 @@ class RentalObjectMapper{
    private $indexSQL = '
               SELECT
                   rental_objects.id,
-                  user_id,
+                  user_id as "userId",
                   name
                FROM rental_objects';
 
