@@ -10,6 +10,7 @@ namespace Application\Controllers;
 
 use Application\ENFramework\Helpers\Notifier;
 use Application\ENFramework\Helpers\ResponseFactory;
+use Application\ENFramework\Helpers\SessionManager;
 use Application\ENFramework\Models\Request;
 use Application\Services\UserService;
 
@@ -67,5 +68,10 @@ class UserController{
       $this->response->setStatusCode(204);
 
       return $this->response;
+   }
+
+   public function currentUser(){
+      $currentUser = SessionManager::getCurrentUser();
+      return $this->response->setResponseData($currentUser);
    }
 } 
