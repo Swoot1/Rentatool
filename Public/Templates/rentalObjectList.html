@@ -1,7 +1,9 @@
 <div class="row">
     <div class="12-columns large">
         <h2>Uthyrningsobjekt
-            <button type="button" class="tiny" ng-click="navigateToCreateNewRentalObject()">Skapa nytt uthyrningsobjekt</button>
+            <button type="button" class="tiny" ng-click="navigateToCreateNewRentalObject()">Skapa nytt
+                uthyrningsobjekt
+            </button>
         </h2>
         <div class="row">
             <form ng-submit="searchRentalObject(rentalObjectFilter)">
@@ -9,7 +11,7 @@
                     <input type="text" ng-model="rentalObjectFilter.query" name="query"/>
                     <input type="datetime" ng-model="rentalObjectFilter.fromDate" datepicker name="fromDate"
                            placeholder="Tillgänglig från"/>
-                    <input type="datetime" ng-model="rentalObjectFilter.toDate"  datepicker name="toDate"
+                    <input type="datetime" ng-model="rentalObjectFilter.toDate" datepicker name="toDate"
                            placeholder="Till och med"/>
                 </div>
                 <div class="large-2 columns">
@@ -17,21 +19,26 @@
                 </div>
             </form>
         </div>
-        <ul ng-repeat="rentalObject in rentalObjectCollection">
-            <li>
-                <p>{{rentalObject.name}}
-                    <button type="button" ng-click="navigateToRentRentalObject(rentalObject)" class="success tiny">Hyr
-                        uthyrningsbjekt
+        <div ng-repeat="rentalObject in rentalObjectCollection">
+
+            <div class="row">
+                <div class="column large-5">
+                    {{rentalObject.name}}
+                </div>
+                <div class="column large-5 end">
+                    <button type="button" ng-click="navigateToRentRentalObject(rentalObject)"
+                            class="success tiny">Hyr
                     </button>
-                    <button type="button" class="tiny" ng-click="editRentalObject(rentalObject)" ng-show="rentalObject.userId === currentUser.id">Redigera
-                        uthyrningsobjekt
+                    <button type="button" class="tiny" ng-click="editRentalObject(rentalObject)"
+                            ng-show="rentalObject.userId === currentUser.id">Redigera
                     </button>
-                    <button type="button" ng-click="deleteRentalObject(rentalObject)" ng-show="rentalObject.userId === currentUser.id" class="alert tiny">Ta bort
-                        uthyrningsobjekt
+                    <button type="button" ng-click="deleteRentalObject(rentalObject)"
+                            ng-show="rentalObject.userId === currentUser.id" class="alert tiny">Ta bort
                     </button>
-                </p>
-            </li>
-        </ul>
-        <p ng-hide="rentalObjectCollection.length">Hittade inga träffar. Prova att söka på något annat.</p>
+                </div>
+            </div>
+        </div>
     </div>
+    <p ng-hide="rentalObjectCollection.length">Hittade inga träffar. Prova att söka på något annat.</p>
+</div>
 </div>
