@@ -10,6 +10,7 @@
 namespace Application\ENFramework\Models;
 
 use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 use Application\ENFramework\Helpers\Interfaces\IGetDBParameters;
 use Application\ENFramework\Helpers\Interfaces\IToArray;
 
@@ -47,15 +48,27 @@ abstract class GeneralModel implements IToArray, IGetDBParameters{
    protected function setData(array $data){
       foreach ($data as $propertyName => $value){
          if (array_key_exists($propertyName, $this->_setters)){
-            call_user_func(array($this, $this->_setters[$propertyName]), $value);
-            $this->_validation->validate($propertyName, $this->$propertyName);
+            $this->setPropertyValueWithSetter($propertyName, $value);
          } else{
-            $this->$propertyName = $value;
-            $this->_validation->validate($propertyName, $value);
+            $this->setPropertyValue($propertyName, $value);
          }
       }
 
       return $this;
+   }
+
+   private function setPropertyValue($propertyName, $value){
+      if(property_exists($this, $propertyName)){
+         $this->$propertyName = $value;
+         $this->_validation->validate($propertyName, $value);
+      }else{
+         throw new ApplicationException('Ogiltigt egenskapsnamn.');
+      }
+   }
+
+   private function setPropertyValueWithSetter($propertyName, $value){
+      call_user_func(array($this, $this->_setters[$propertyName]), $value);
+      $this->_validation->validate($propertyName, $this->$propertyName);
    }
 
    abstract protected function setUpValidation();
