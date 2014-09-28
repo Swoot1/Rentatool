@@ -2,7 +2,8 @@
  * Created by Elin on 2014-06-17.
  */
 rentaTool.controller("AuthorizationController", ['$scope', '$location', 'Authorization', 'AlertBoxService', '$rootScope',
-   function ($scope, $location, Authorization, alertBoxService, $rootScope) {
+   'AuthorizationService', 'NavigationService',
+   function ($scope, $location, Authorization, alertBoxService, $rootScope, authorizationService, navigationService) {
       var authorizationResource;
 
       $scope.attemptLogin = function () {
@@ -11,6 +12,7 @@ rentaTool.controller("AuthorizationController", ['$scope', '$location', 'Authori
             if (data.isLoggedIn) {
                $location.path('/rentalobjects/new');
                 $rootScope.$broadcast('loginStateChanged');
+                authorizationService.logIn();
             } else {
                alertBoxService.addAlertBox('alert', 'Misslyckad inloggning!');
             }
@@ -20,8 +22,11 @@ rentaTool.controller("AuthorizationController", ['$scope', '$location', 'Authori
       $scope.attemptLogOut = function () {
          authorizationResource = new Authorization();
          authorizationResource.$get({action: 'logout'}, function () {
-            $location.path('/authorization/login');
-             $rootScope.$broadcast('loginStateChanged');
+            authorizationService.logOut();
+            $location.path('/rentalobjects');
+            $rootScope.$broadcast('loginStateChanged');
          });
       };
+
+      $scope.navigateToLogIn = navigationService.navigateToLogIn;
    }]);

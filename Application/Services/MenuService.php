@@ -20,11 +20,10 @@ class MenuService {
 
    public function __construct(){
       $this->menuItems = [
-         ['label' => 'Inloggningssida', 'callback' => 'navigateToLogIn'],
          ['label' => 'Användare', 'callback' => 'navigateToUserList', 'accessRule' => new AdministrativeAccessRule()],
          ['label' => 'Användargrupper', 'callback' => 'navigateToUserGroupList', 'accessRule' => new AdministrativeAccessRule()],
-         ['label' => 'Uthyrningsobjekt', 'callback' => 'navigateToRentalObjectList', 'accessRule' => new AuthorizedAccessRule()],
-         ['label' => 'Databasskapning', 'callback' => 'navigateToCreateDatabase']
+         ['label' => 'Uthyrningsobjekt', 'callback' => 'navigateToRentalObjectList'],
+         ['label' => 'Databasskapning', 'callback' => 'navigateToCreateDatabase', 'accessRule' => new AuthorizedAccessRule()]
       ];
    }
 

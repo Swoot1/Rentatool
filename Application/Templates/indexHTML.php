@@ -29,6 +29,7 @@ echo '<!DOCTYPE html>
        <ul class="right">
         <div ng-controller="AuthorizationController">
         <span logoutbutton></span>
+        <span loginbutton></span>
         </div>
        </ul>
 
@@ -62,6 +63,8 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Services/UnavailableRentPeriodService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/AlertBox.js"></script>
 <script type="text/javascript" src="Public/Scripts/Services/AlertBoxService.js"></script>
+<script type="text/javascript" src="Public/Scripts/Services/AuthorizationService.js"></script>
+<script type="text/javascript" src="Public/Scripts/Services/NavigationService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/Datepicker.js"></script>
 <script type="text/javascript" src="Public/Scripts/Filters.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RentalObjectFactory.js"></script>
@@ -90,6 +93,7 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserGroupListController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserGroupController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/LogOutButton.js"></script>
+<script type="text/javascript" src="Public/Scripts/Directives/LogInButton.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/MenuItemsFactory.js"></script>
 </body>
 </html>';
