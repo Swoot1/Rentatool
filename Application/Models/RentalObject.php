@@ -10,7 +10,6 @@
 namespace Application\Models;
 
 use Application\Collections\FileCollection;
-use Application\Collections\PricePlanCollection;
 use Application\ENFramework\Collections\ValueValidationCollection;
 use Application\ENFramework\Helpers\Validation\IntegerValidation;
 use Application\ENFramework\Helpers\Validation\TextValidation;
@@ -20,16 +19,15 @@ class RentalObject extends GeneralModel{
    protected $id;
    protected $userId;
    protected $name;
-   protected $pricePlanCollection;
+   protected $pricePerDay;
    protected $fileCollection;
    protected $_setters = array(
-      'pricePlanCollection' => 'setPricePlanCollection',
       'fileCollection'      => 'setFileCollection'
    );
 
    public function __construct(array $data = array()){
       parent::__construct($data);
-      $this->_noDBProperties = array('pricePlanCollection', 'fileCollection');
+      $this->_noDBProperties = array('fileCollection');
 
       return $this;
    }
@@ -66,21 +64,6 @@ class RentalObject extends GeneralModel{
     * @param $data
     * @return $this
     */
-   public function setPricePlanCollection($data){
-
-      if ($data instanceof \Application\Collections\PricePlanCollection){
-         $this->pricePlanCollection = $data;
-      } else{
-         $this->pricePlanCollection = new PricePlanCollection($data);
-      }
-
-      return $this;
-   }
-
-   /**
-    * @param $data
-    * @return $this
-    */
    public function setFileCollection($data){
 
       if ($data instanceof \Application\Collections\FileCollection){
@@ -105,15 +88,15 @@ class RentalObject extends GeneralModel{
       $this->setDefaultValues($defaultValues);
    }
 
-   public function getPricePlanCollection(){
-      return $this->pricePlanCollection;
-   }
-
    public function getFileCollection(){
       return $this->fileCollection;
    }
 
    public function isOwner(User $user){
       return $user->getId() === $this->userId;
+   }
+
+   public function getPricePerDay(){
+      return $this->pricePerDay;
    }
 }

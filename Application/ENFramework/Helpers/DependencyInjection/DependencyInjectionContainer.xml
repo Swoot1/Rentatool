@@ -63,23 +63,6 @@
             </dependencies>
         </dependency>
 
-        <dependency namespace="Application\Controllers" class="TimeUnitController">
-            <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="Request"/>
-                <dependency namespace="Application\Services" class="TimeUnitService"/>
-                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
-            </dependencies>
-        </dependency>
-
-        <dependency namespace="Application\Controllers" class="PricePlanController">
-            <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="Request"/>
-                <dependency namespace="Application\Services" class="PricePlanService"/>
-                <dependency namespace="Application\Services" class="FileService"/>
-                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
-            </dependencies>
-        </dependency>
-
         <dependency namespace="Application\Controllers" class="MenuController">
             <dependencies>
                 <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
@@ -106,7 +89,6 @@
         <dependency namespace="Application\Services" class="RentalObjectService">
             <dependencies>
                 <dependency namespace="Application\Mappers" class="RentalObjectMapper"/>
-                <dependency namespace="Application\Services" class="PricePlanService"/>
                 <dependency namespace="Application\Services" class="FileService"/>
             </dependencies>
         </dependency>
@@ -116,13 +98,6 @@
                 <dependency namespace="Application\Mappers" class="UserMapper"/>
                 <dependency namespace="Application\Services" class="UserValidationService"/>
                 <dependency namespace="Application\Mappers" class="UserGroupConnectionMapper"/>
-            </dependencies>
-        </dependency>
-
-        <dependency namespace="Application\Services" class="PricePlanService">
-            <dependencies>
-                <dependency namespace="Application\Mappers" class="PricePlanMapper"/>
-                <dependency namespace="Application\Services" class="PricePlanValidationService"/>
             </dependencies>
         </dependency>
 
@@ -136,7 +111,7 @@
             <dependencies>
                 <dependency namespace="Application\Mappers" class="RentPeriodMapper"/>
                 <dependency namespace="Application\Services" class="RentPeriodValidationService"/>
-                <dependency namespace="Application\Services" class="PricePlanService"/>
+                <dependency namespace="Application\Services" class="RentalObjectService"/>
             </dependencies>
         </dependency>
 
@@ -162,18 +137,6 @@
             <dependencies>
                 <dependency namespace="Application\Mappers" class="UserGroupMapper"/>
                 <dependency namespace="Application\Mappers" class="UserGroupConnectionMapper"/>
-            </dependencies>
-        </dependency>
-
-        <dependency namespace="Application\Services" class="TimeUnitService">
-            <dependencies>
-                <dependency namespace="Application\Mappers" class="TimeUnitMapper"/>
-            </dependencies>
-        </dependency>
-
-        <dependency namespace="Application\Services" class="PricePlanValidationService">
-            <dependencies>
-                <dependency namespace="Application\Mappers" class="PricePlanMapper"/>
             </dependencies>
         </dependency>
 
@@ -227,18 +190,6 @@
         </dependency>
 
         <dependency namespace="Application\Mappers" class="UserGroupMapper">
-            <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
-            </dependencies>
-        </dependency>
-
-        <dependency namespace="Application\Mappers" class="PricePlanMapper">
-            <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
-            </dependencies>
-        </dependency>
-
-        <dependency namespace="Application\Mappers" class="TimeUnitMapper">
             <dependencies>
                 <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>
