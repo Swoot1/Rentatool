@@ -13,7 +13,7 @@
         </form>
         <div ng-repeat="file in rentalObject.fileCollection">
             <img style="width:100px; height:100px"
-                 src="Public/RentalObjectPhotos/{{file.id}}.JPG">
+                 ng-src="Public/RentalObjectPhotos/{{file.id}}.JPG">
         </div>
 
         <form name="rental_object_form" ng-submit="createRentalObject()">
