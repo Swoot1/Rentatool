@@ -8,5 +8,5 @@
 .idea
 tmp/
 Application/ENFramework/Helpers/PersonalConfiguration.php
-Application/ENFramework/Helpers/DatabaseConfiguration.php
+Application/ENFramework/Helpers/ProductionDatabaseConfiguration.php
 Public/RentalObjectPhotos
