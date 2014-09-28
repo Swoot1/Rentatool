@@ -18,6 +18,7 @@ class MenuItem extends GeneralModel{
 
    protected $label;
    protected $callback;
+   protected $accessRule;
 
    public function setUpValidation(){
       $this->_validation = new ValueValidationCollection(
