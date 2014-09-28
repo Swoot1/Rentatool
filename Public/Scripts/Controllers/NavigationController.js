@@ -1,7 +1,7 @@
 /**
  * Created by Elin on 2014-07-09
  */
-rentaTool.controller('NavigationController', ['$scope', '$location', 'MenuItems', function ($scope, $location, MenuItems) {
+rentaTool.controller('NavigationController', ['$scope', '$location', 'MenuItems', 'NavigationService', function ($scope, $location, MenuItems, navigationService) {
     $scope.menuItems = MenuItems.query(function() {
         $scope.menuLoaded = true;
     });
@@ -14,23 +14,10 @@ rentaTool.controller('NavigationController', ['$scope', '$location', 'MenuItems'
         $scope.menuItems = MenuItems.query();
     });
 
-   $scope.navigateToLogIn = function () {
-      $location.path('/authorization/login');
-   };
+   $scope.navigateToLogIn = navigationService.navigateToLogIn;
+   $scope.navigateToUserList = navigationService.navigateToUserList;
+   $scope.navigateToRentalObjectList = navigationService.navigateToRentalObjectList;
+   $scope.navigateToCreateDatabase = navigationService.navigateToCreateDatabase;
+   $scope.navigateToUserGroupList = navigationService.navigateToUserGroupList;
 
-   $scope.navigateToUserList = function () {
-      $location.path('/users');
-   };
-
-   $scope.navigateToRentalObjectList = function () {
-      $location.path('/rentalobjects');
-   };
-
-   $scope.navigateToCreateDatabase = function () {
-      $location.path('/databases/new');
-   };
-
-   $scope.navigateToUserGroupList = function() {
-      $location.path('/usergroups');
-   };
 }]);

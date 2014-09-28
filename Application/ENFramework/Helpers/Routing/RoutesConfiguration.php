@@ -17,7 +17,6 @@ $routes = array();
 
 $routes['rentalobjects'] = array(
    'controllerName'          => 'RentalObjectController',
-   'accessRule'              => new AuthorizedAccessRule(),
    'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
    'subRoutesCollection'     => new SubRouteCollection()
 );

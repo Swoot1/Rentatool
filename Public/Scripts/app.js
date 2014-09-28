@@ -54,7 +54,7 @@ var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute',
             controller: 'RentObjectController'
          })
          .otherwise({
-            redirectTo: '/authorization/login'
+            redirectTo: '/rentalobjects'
          });
 
       $httpProvider.interceptors.push('RequestErrorInterceptor');
