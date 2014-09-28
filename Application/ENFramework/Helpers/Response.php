@@ -47,6 +47,11 @@ class Response implements IResponse{
 
    }
 
+   public function setContentType($value){
+      $this->contentType = $value;
+      return $this;
+   }
+
    private function setProtocol(){
       $this->protocol = isset($_SERVER["SERVER_PROTOCOL"]) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0';
 

@@ -122,4 +122,10 @@ $routes['files'] = array(
    'subRoutesCollection'     => new SubRouteCollection(array())
 );
 
+$routes['index'] = array(
+   'controllerName'          => 'IndexHTMLController',
+   'requestMethodCollection' => new RequestMethodCollection(array('GET')),
+   'subRoutesCollection'     => new SubRouteCollection(array())
+);
+
 return new RouteCollection($routes);

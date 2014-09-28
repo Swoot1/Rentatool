@@ -1,8 +1,26 @@
 <?php
 
-namespace Application\Templates;
+namespace Application\Controllers;
 
-echo '<!DOCTYPE html>
+use Application\ENFramework\Helpers\ResponseFactory;
+use Application\Models\IndexHTML;
+
+class IndexHTMLController{
+   private $response;
+
+   public function __construct(ResponseFactory $responseFactory){
+      $this->response = $responseFactory->createResponse();
+   }
+
+   public function index(){
+      return $this->response
+         ->setContentType('text/html')
+         ->setResponseData($this->getData());
+
+   }
+
+   private function getData(){
+      return new IndexHTML(array('content' => '<!DOCTYPE html>
 <html ng-app="Rentatool" class="background-image">
 <head>
     <title>Hyrdet</title>
@@ -98,4 +116,7 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Directives/LogInButton.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/MenuItemsFactory.js"></script>
 </body>
-</html>';
+</html>'));
+   }
+
+}

@@ -49,7 +49,10 @@ class NoName extends GeneralModel{
 
       if ($contentType === 'application/json'){
          $formattedData = $this->_contentTypeConverter->convertDataToJSON($this->toArray());
-      } else{
+      }else if($contentType === 'text/html'){
+         $formattedData = $this->toArray()['responseData'];
+      }
+      else{
          throw new ApplicationException('Ange en giltig content-type.');
       }
 
