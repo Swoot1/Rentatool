@@ -3,25 +3,25 @@
 namespace Application\Templates;
 
 echo '<!DOCTYPE html>
-<html ng-app="Rentatool">
+<html ng-app="Rentatool" class="background-image">
 <head>
-    <title>Rentatool</title>
+    <title>Hyrdet</title>
     <meta charset="utf-8"/>
     <link href="Public/css/normalize.css" type="text/css" rel="stylesheet"/>
     <link href="Public/css/Foundation/css/foundation.css" type="text/css" rel="stylesheet"/>
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
-    <link href="Public/test.css" type="text/css" rel="stylesheet"/>
+    <link href="Public/css/custom.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 <div id="content">
    <nav class="top-bar" data-topbar ng-controller="NavigationController">
      <ul class="title-area">
        <li class="name">
-         <h1><a href="#">Rentatool</a></h1>
+         <h1><a href="#">Hyrdet</a></h1>
        </li>
         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-       <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+       <li class="toggle-topbar menu-icon"><a href="#"><span>Meny</span></a></li>
      </ul>
 
      <section class="top-bar-section">
@@ -44,7 +44,9 @@ echo '<!DOCTYPE html>
          <span alertbox></span>
        </div>
     </div>
-    <div ng-view>
+    <div ng-class="{row:\'enabled\', container : content.setContainerClass}" ng-controller="ContentController">
+        <div class="large-12 columns" ng-view>
+        </div>
     </div>
 </div>
 <script type="text/javascript" src="Public/css/Foundation/js/vendor/modernizr.js"></script>
@@ -69,7 +71,6 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Filters.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RentalObjectFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RentPeriodFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/RentPeriodFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RentPeriodCalculatorFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/UserFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/DatabaseFactory.js"></script>
@@ -92,6 +93,7 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="Public/Scripts/Controllers/AuthorizationController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserGroupListController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserGroupController.js"></script>
+<script type="text/javascript" src="Public/Scripts/Controllers/ContentController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/LogOutButton.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/LogInButton.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/MenuItemsFactory.js"></script>

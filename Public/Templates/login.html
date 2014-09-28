@@ -1,13 +1,35 @@
-<div class="row">
-    <div class="12-columns large">
-        <h2>Logga in här</h2>
-        <form ng-submit="attemptLogin()">
-            <label for="email">E-postadress</label>
-            <input name="email" type="text" ng-model="login.email"/>
+<div class="row front-background front-card">
+    <div class="large-8 columns">
+        <h1 class="front-welcome-text">Välkommen till hyrdet</h1>
 
-            <label for="password">Lösenord</label>
-            <input name="password" type="password" ng-model="login.password" />
-            <button type="submit">Logga in mig!</button>
-        </form>
+        <p class="front-welcome-text">Här kan du tjäna pengar på att hyra ut dina verktyg när du inte använder dom eller hyra något som du behöver till exempel en häcksax, betongblandare eller jordfräs.</p>
+    </div>
+    <div class="large-4 columns">
+        <div class="row front-background">
+            <div class="large-12 columns front-box">
+                <h2 class="front-box-text"><strong class="">Logga in</strong></h2>
+                <form ng-submit="attemptLogin()">
+                    <input name="email" type="text" ng-model="login.email" placeholder="E-postadress"/>
+                    <div class="row">
+                        <div class="large-7 columns">
+                            <input name="password" type="password" ng-model="login.password" placeholder="Lösenord"/>
+                        </div>
+                        <div class="large-5 columns">
+                            <button type="submit" class="tiny">Logga in</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="large-12 columns front-box" ng-controller="UserController">
+                <h2 class="front-box-text"><strong class="">Har du inget konto?</strong> Bli medlem</h2>
+
+                <form name="user_form" ng-submit="createUser()">
+                    <input ng-model="user.username" name="username" type="text" placeholder="Användarnamn"/>
+                    <input ng-model="user.email" name="email" type="email" placeholder="E-postadress"/>
+                    <input ng-model="user.password" name="password" type="password" placeholder="Lösenord"/>
+                    <button type="submit" class="tiny">Skapa konto</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

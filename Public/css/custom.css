@@ -1,0 +1,58 @@
+body {
+    background: none;
+}
+
+.container {
+    border: 1px solid #E1E8ED;
+    background: none repeat scroll 0% 0% #FFF;
+    border-radius: 4px;
+    margin-top: 22px;
+}
+
+.background-image {
+    background: url(CssImages/bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.front-welcome-text {
+    color: #fff;
+    text-shadow: 0px 1px 2px #000
+}
+
+.front-background {
+    background: none;
+}
+
+.front-box {
+    border: 1px solid #E1E8ED;
+    background: none repeat scroll 0% 0% #FFF;
+    border-radius: 4px;
+    margin-top: 22px;
+}
+
+.front-box-text {
+    font-weight: 500;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+    font-size: 17px;
+    color: #292F33;
+}
+
+.front-box-text-2 {
+    border-bottom: 1px solid #E1E8ED;
+    box-shadow: 0px 1px 0px #FFF;
+    display: block;
+    color: #292F33;
+    font-size: 10px;
+    font-weight: 300;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    position: relative;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+
+.front-card {
+    margin-top: 50px;
+}

@@ -11,15 +11,12 @@
               class="ng-scope ng-pristine ng-valid">
             <input type="file" name="files[]" ng-disabled="disabled">
         </form>
-        <img style="width:100px; height:100px" ng-repeat="file in rentalObject.fileCollection"
-             src="Public/RentalObjectPhotos/{{file.id}}.JPG">
+        <div ng-repeat="file in rentalObject.fileCollection">
+            <img style="width:100px; height:100px"
+                 src="Public/RentalObjectPhotos/{{file.id}}.JPG">
+        </div>
 
         <form name="rental_object_form" ng-submit="createRentalObject()">
-            <div class="error" ng-show="rental_object_form.name.$dirty && rental_object_form.$invalid">
-                <small class="error" ng-show="rental_object_form.$error.unique">
-                    WOoow! Det uthyrningsobjektet finns redan!
-                </small>
-            </div>
             <input id="rentalObject" ng-model="rentalObject.name" type="text" ng-placeholder="Namn" ng-focus/>
             <input type="text" ng-model="rentalObject.pricePerDay" placeholder="Ange pris per dag"/>
             <button type="button" class="tiny" ng-click="createRentalObject()"
