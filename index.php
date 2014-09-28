@@ -1,5 +1,6 @@
 <?php
 use Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeFactory;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
 use Application\ENFramework\Helpers\RequestDispatcher;
 use Application\ENFramework\Helpers\ResponseFactory;
@@ -18,18 +19,15 @@ try{
    $routeCollection = include_once 'Application/ENFramework/Helpers/Routing/RoutesConfiguration.php';
    $route           = $routeCollection->getRouteFromRequest($requestModel);
 
-   if ($route){
-      if ($route->isUserAllowed()){
-         $dependencyInjectionContainer = simplexml_load_file('Application/ENFramework/Helpers/DependencyInjection/DependencyInjectionContainer.xml');
-         $routing                      = new Routing($requestModel, $dependencyInjectionContainer);
-         $response                     = $routing->callMethod($route);
-         $response->sendResponse();
-      } else{
-         throw new UserIsNotAllowedException('Du måste logga in för att fortsätta.');
-      }
+   if ($route->isUserAllowed()){
+      $dependencyInjectionContainer = simplexml_load_file('Application/ENFramework/Helpers/DependencyInjection/DependencyInjectionContainer.xml');
+      $routing                      = new Routing($requestModel, $dependencyInjectionContainer);
+      $response                     = $routing->callMethod($route);
+      $response->sendResponse();
    } else{
-      include 'Application/Templates/indexHTML.php';
+      throw new UserIsNotAllowedException('Du måste logga in för att fortsätta.');
    }
+
 } catch (Exception $exception){
    $errorHTTPStatusCodeFactory = new ErrorHTTPStatusCodeFactory($exception);
    $HTTPStatusCode             = $errorHTTPStatusCodeFactory->getHTTPStatusCode();

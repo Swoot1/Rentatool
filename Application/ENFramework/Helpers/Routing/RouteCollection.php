@@ -9,6 +9,7 @@
 
 namespace Application\ENFramework\Helpers\Routing;
 
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
 use Application\ENFramework\Models\Request;
 
 class RouteCollection {
@@ -25,18 +26,21 @@ class RouteCollection {
    /**
     * Returns the route object that corresponds with the request options.
     * @param Request $request
-    * @return bool
+    * @return mixed
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException
     */
    public function getRouteFromRequest(Request $request) {
       $resource = $request->getResource();
-      if (!array_key_exists($resource, $this->routes)) {
-         return false;
+      $resource = $resource === null ? 'index' : $resource;
+
+      if (array_key_exists($resource, $this->routes)) {
+         $route = $this->routes[$resource];
+
+         $route = $request->getAction() ? $route->getSubRoute($request) : $route;
+         $route->validateRequestMethod($request);
+      }else{
+         throw new NoSuchRouteException('Ogiltig url.');
       }
-
-      $route = $this->routes[$resource];
-
-      $route = $request->getAction() ? $route->getSubRoute($request) : $route;
-      $route->validateRequestMethod($request);
 
       return $route;
    }

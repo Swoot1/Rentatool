@@ -227,6 +227,12 @@
             <dependencies/>
         </dependency>
 
+        <dependency namespace="Application\Controllers" class="IndexHTMLController">
+            <dependencies>
+                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
+            </dependencies>
+        </dependency>
+
         <dependency namespace="Application\ENFramework\Factories" class="DatabaseConnectionFactory">
             <dependencies/>
         </dependency>
