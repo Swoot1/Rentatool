@@ -11,7 +11,6 @@ namespace Application\Services;
 
 use Application\Mappers\RentPeriodMapper;
 use Application\Models\RentPeriod;
-use Application\Models\RentPeriodPriceCalculator;
 use Application\Models\User;
 
 class RentPeriodService{
@@ -36,7 +35,7 @@ class RentPeriodService{
    }
 
    public function getCalculatedPricePlan(array $data, User $currentUser){
-      $rentPeriod          = new RentPeriod(array_merge(array('renterId' => $currentUser->getId()), $data), new RentPeriodPriceCalculator());
+      $rentPeriod          = new RentPeriod(array_merge(array('renterId' => $currentUser->getId()), $data));
       $rentalObject = $this->rentalObjectService->read($rentPeriod->getRentalObjectId());
       $rentPeriod->setPricePerDay($rentalObject);
 

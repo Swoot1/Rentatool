@@ -22,19 +22,12 @@ class RentPeriod extends GeneralModel{
    protected $toDate;
    protected $pricePerDay;
    protected $price;
-   protected $_rentPeriodPriceCalculator;
    protected $_setters = array(
       'fromDate'    => 'setFromDate',
       'toDate'      => 'setToDate',
       'pricePerDay' => 'setPricePerDay'
    );
    protected $_noDBProperties = array('price');
-
-   public function __construct(array $data = array(), RentPeriodPriceCalculator $rentPeriodPriceCalculator){
-      $this->_rentPeriodPriceCalculator = $rentPeriodPriceCalculator;
-
-      return parent::__construct($data);
-   }
 
    protected function setFromDate($value){
       $this->fromDate = $this->formatDate($value);
