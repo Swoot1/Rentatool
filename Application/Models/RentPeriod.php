@@ -8,8 +8,6 @@
 
 namespace Application\Models;
 
-
-use Application\Collections\PricePlanCollection;
 use Application\ENFramework\Collections\ValueValidationCollection;
 use Application\ENFramework\Helpers\Validation\DateTimeValidation;
 use Application\ENFramework\Helpers\Validation\FloatValidation;
@@ -22,13 +20,43 @@ class RentPeriod extends GeneralModel{
    protected $renterId;
    protected $fromDate;
    protected $toDate;
+   protected $pricePerDay;
    protected $price;
-   protected $_pricePlanCollection;
    protected $_rentPeriodPriceCalculator;
+   protected $_setters = array(
+      'fromDate'    => 'setFromDate',
+      'toDate'      => 'setToDate',
+      'pricePerDay' => 'setPricePerDay'
+   );
+   protected $_noDBProperties = array('price');
 
    public function __construct(array $data = array(), RentPeriodPriceCalculator $rentPeriodPriceCalculator){
       $this->_rentPeriodPriceCalculator = $rentPeriodPriceCalculator;
+
       return parent::__construct($data);
+   }
+
+   protected function setFromDate($value){
+      $this->fromDate = $this->formatDate($value);
+      $this->setPrice();
+
+      return $this;
+   }
+
+   protected function setToDate($value){
+      $this->toDate = $this->formatDate($value);
+      $this->setPrice();
+
+      return $this;
+   }
+
+   private function formatDate($date){
+
+      if (is_string($date) && preg_match('/^\d\d\d\d-\d\d-\d\d$/', $date)){
+         $date .= ' 00:00:00';
+      }
+
+      return $date;
    }
 
    // TODO add validation so that the from date is not after the to date.
@@ -67,8 +95,8 @@ class RentPeriod extends GeneralModel{
             ),
             new FloatValidation(
                array(
-                  'genericName'  => 'Pris',
-                  'propertyName' => 'price',
+                  'genericName'      => 'pris',
+                  'propertyName'     => 'pricePerDay',
                   'numberOfDecimals' => 2
                )
             )
@@ -88,10 +116,26 @@ class RentPeriod extends GeneralModel{
       return $this->rentalObjectId;
    }
 
-   public function setPricePlanCollection(PricePlanCollection $pricePlanCollection){
-      $this->_pricePlanCollection = $pricePlanCollection;
-      $this->price = $this->_rentPeriodPriceCalculator->getCalculatedPrice($this, $this->_pricePlanCollection);
+   public function setPricePerDay(RentalObject $rentalObject){
+      $this->pricePerDay = $rentalObject->getPricePerDay();
+      $this->setPrice();
+   }
 
-      return $this;
+   private function setPrice(){
+      $numberOfDays = $this->getNumberOfDays();
+      $this->price  = $numberOfDays * $this->pricePerDay;
+   }
+
+   private function getNumberOfDays(){
+
+      if ($this->fromDate && $this->toDate){
+         $fromDate = new \DateTime($this->fromDate);
+         $toDate   = new \DateTime($this->toDate);
+         $result   = $fromDate->diff($toDate)->format('%a') + 1;
+      } else{
+         $result = 0;
+      }
+
+      return $result;
    }
 } 

@@ -22,7 +22,8 @@ class RentalObjectMapper{
               SELECT
                   rental_objects.id,
                   user_id as "userId",
-                  name
+                  name,
+                  price_per_day AS "pricePerDay"
                FROM rental_objects';
 
    private $createSQL = '
@@ -30,12 +31,14 @@ class RentalObjectMapper{
         rental_objects
           (
             user_id,
-            name
+            name,
+            price_per_day
           )
       VALUES
         (
           :userId,
-          :name
+          :name,
+          :pricePerDay
         )
     ';
 
@@ -43,7 +46,8 @@ class RentalObjectMapper{
     SELECT
        id,
        user_id AS "userId",
-       name
+       name,
+       price_per_day AS "pricePerDay"
     FROM
       rental_objects
     WHERE
@@ -54,7 +58,8 @@ class RentalObjectMapper{
            rental_objects
         SET
           user_id = :userId,
-          name = :name
+          name = :name,
+          price_per_day = :pricePerDay
         WHERE
           id = :id
     ';

@@ -19,7 +19,7 @@ class DateTimeValidation extends ValueValidation{
    }
 
    private function validateDate($value){
-      $formattedDate = \DateTime::createFromFormat('Y-m-d H:i:s', $value);
+      $formattedDate = new \DateTime($value);
       $isInvalidDate = $formattedDate === false || $formattedDate->format('Y-m-d H:i:s') !== $value;
 
       if ($isInvalidDate){
@@ -28,4 +28,4 @@ class DateTimeValidation extends ValueValidation{
 
       return true;
    }
-} 
+}

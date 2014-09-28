@@ -48,9 +48,10 @@ abstract class GeneralModel implements IToArray, IGetDBParameters{
       foreach ($data as $propertyName => $value){
          if (array_key_exists($propertyName, $this->_setters)){
             call_user_func(array($this, $this->_setters[$propertyName]), $value);
+            $this->_validation->validate($propertyName, $this->$propertyName);
          } else{
-            $this->_validation->validate($propertyName, $value);
             $this->$propertyName = $value;
+            $this->_validation->validate($propertyName, $value);
          }
       }
 

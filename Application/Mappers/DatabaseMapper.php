@@ -29,17 +29,12 @@ class DatabaseMapper{
          password VARCHAR(60) NOT NULL
       );
 
-      CREATE TABLE IF NOT EXISTS categories(
-         id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-         name VARCHAR(30) NOT NULL UNIQUE,
-         description VARCHAR(140) NOT NULL
-      );
-
       CREATE TABLE IF NOT EXISTS rental_objects(
          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
          user_id INTEGER NOT NULL,
          name VARCHAR(30) NOT NULL,
-         CONSTRAINT rental_object_owner_fk FOREIGN KEY (user_id) REFERENCES users(id)
+         CONSTRAINT rental_object_owner_fk FOREIGN KEY (user_id) REFERENCES users(id),
+         price_per_day FLOAT NOT NULL
       );
 
       CREATE TABLE IF NOT EXISTS user_groups (
@@ -63,24 +58,9 @@ class DatabaseMapper{
          renter_id INTEGER NOT NULL,
          from_date DATETIME NOT NULL,
          to_date DATETIME NOT NULL,
-         price FLOAT NOT NULL,
+         price_per_day FLOAT NOT NULL,
          CONSTRAINT rent_period_has_a_rental_object_fk FOREIGN KEY (rental_object_id) REFERENCES rental_objects(id),
          CONSTRAINT renter_fk FOREIGN KEY (renter_id) REFERENCES users(id)
-      );
-
-      CREATE TABLE IF NOT EXISTS time_units(
-       id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-       name varchar(30) NOT NULL
-      );
-
-      CREATE TABLE IF NOT EXISTS price_plans(
-       id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-       rental_object_id INTEGER NOT NULL,
-       time_unit_id INTEGER NOT NULL,
-       price FLOAT NOT NULL,
-       CONSTRAINT price_plan_has_a_rental_object_fk FOREIGN KEY (rental_object_id) REFERENCES rental_objects(id) ON DELETE CASCADE,
-       CONSTRAINT price_plan_has_a_time_unit_fk FOREIGN KEY (time_unit_id) REFERENCES time_units(id),
-       CONSTRAINT unique_price_plan UNIQUE (rental_object_id, time_unit_id)
       );
 
       CREATE TABLE IF NOT EXISTS files(
@@ -96,13 +76,6 @@ class DatabaseMapper{
         CONSTRAINT connected_to_rental_object_fk FOREIGN KEY(rental_object_id) REFERENCES rental_objects(id) ON DELETE CASCADE,
         CONSTRAINT connected_to_file_fk FOREIGN KEY(file_id) REFERENCES files(id) ON DELETE CASCADE
       );
-
-      CREATE TABLE IF NOT EXISTS 'sessions' (
-        'id' varchar(32) NOT NULL,
-        'access' int(10) unsigned DEFAULT NULL,
-        'data' text,
-        PRIMARY KEY ('id')
-      ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
    ";
 
    public function __construct(DatabaseConnection $databaseConnection){
@@ -130,10 +103,9 @@ class DatabaseMapper{
     * @param RentalObjectMapper $rentalObjectMapper
     * @param UserGroupMapper $userGroupMapper
     * @param UserGroupConnectionMapper $userGroupConnectionMapper
-    * @param TimeUnitMapper $timeUnitMapper
     */
    public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper, UserGroupMapper $userGroupMapper,
-                               UserGroupConnectionMapper $userGroupConnectionMapper, TimeUnitMapper $timeUnitMapper){
+                               UserGroupConnectionMapper $userGroupConnectionMapper){
       $users = array(
          array(
             'username' => 'andy',
@@ -153,28 +125,34 @@ class DatabaseMapper{
 
       $rentalObjects = array(
          array(
-            'name'   => 'Stiga gräsklippare',
-            'userId' => 1
+            'name'        => 'Stiga gräsklippare',
+            'userId'      => 1,
+            'pricePerDay' => 100
          ),
          array(
-            'name'   => 'Hästtransport',
-            'userId' => 1
+            'name'        => 'Hästtransport',
+            'userId'      => 1,
+            'pricePerDay' => 100
          ),
          array(
-            'name'   => 'Slagborr',
-            'userId' => 1
+            'name'        => 'Slagborr',
+            'userId'      => 1,
+            'pricePerDay' => 100
          ),
          array(
-            'name'   => 'Slipmaskin',
-            'userId' => 2
+            'name'        => 'Slipmaskin',
+            'userId'      => 2,
+            'pricePerDay' => 100
          ),
          array(
-            'name'   => 'Utemöbler',
-            'userId' => 2
+            'name'        => 'Utemöbler',
+            'userId'      => 2,
+            'pricePerDay' => 100
          ),
          array(
-            'name'   => 'Tvätthall',
-            'userId' => 2
+            'name'        => 'Tvätthall',
+            'userId'      => 2,
+            'pricePerDay' => 100
          )
       );
 
@@ -206,28 +184,6 @@ class DatabaseMapper{
 
       foreach ($userGroupConnections as $userGroupConnection){
          $userGroupConnectionMapper->addUserToGroup($userGroupConnection->getDBParameters());
-      }
-
-      $timeUnits = array(
-         array(
-            'name' => 'timme'
-         ),
-         array(
-            'name' => 'dag'
-         ),
-         array(
-            'name' => 'vecka'
-         ),
-         array(
-            'name' => 'kalendermånad'
-         ),
-         array(
-            'name' => 'år'
-         )
-      );
-
-      foreach ($timeUnits as $timeUnit){
-         $timeUnitMapper->create($timeUnit);
       }
    }
 } 

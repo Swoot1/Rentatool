@@ -8,10 +8,6 @@ rentaTool.controller('RentalObjectListController', ['$scope', '$location', 'Rent
 
    $scope.searchRentalObject = function (rentalObjectFilter) {
       var GETParams = {};
-      var isDateRegex = /^\d\d\d\d-\d\d-\d\d$/;
-
-      $scope.rentalObjectFilter.fromDate = isDateRegex.test($scope.rentalObjectFilter.fromDate) ? $scope.rentalObjectFilter.fromDate + ' 00:00:00' : $scope.rentalObjectFilter.fromDate; // TODO ugly
-      $scope.rentalObjectFilter.toDate = isDateRegex.test($scope.rentalObjectFilter.toDate) ? $scope.rentalObjectFilter.toDate + ' 00:00:00' : $scope.rentalObjectFilter.toDate;
 
       for (var i in rentalObjectFilter) {
          if (rentalObjectFilter.hasOwnProperty(i) && rentalObjectFilter[i]) {

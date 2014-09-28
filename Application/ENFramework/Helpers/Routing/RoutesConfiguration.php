@@ -104,19 +104,6 @@ $routes['usergroups'] = array(
          ))
 );
 
-$routes['timeunits'] = array(
-   'controllerName'          => 'TimeUnitController',
-   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
-   'subRoutesCollection'     => new SubRouteCollection()
-);
-
-$routes['priceplans'] = array(
-   'controllerName'          => 'PricePlanController',
-   'accessRule'              => new AdministrativeAccessRule(),
-   'requestMethodCollection' => new RequestMethodCollection(array('POST', 'DELETE')),
-   'subRoutesCollection'     => new SubRouteCollection()
-);
-
 $routes['unavailablerentperiods'] = array(
    'controllerName'          => 'UnavailableRentPeriodController',
    'accessRule'              => new AuthorizedAccessRule(),

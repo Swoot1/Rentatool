@@ -21,12 +21,10 @@ class RentalObjectService{
     * @var \Application\Mappers\RentalObjectMapper
     */
    private $rentalObjectMapper;
-   private $pricePlanService;
    private $fileService;
 
-   public function __construct(RentalObjectMapper $rentalObjectMapper, PricePlanService $pricePlanService, FileService $fileService){
+   public function __construct(RentalObjectMapper $rentalObjectMapper, FileService $fileService){
       $this->rentalObjectMapper = $rentalObjectMapper;
-      $this->pricePlanService   = $pricePlanService;
       $this->fileService        = $fileService;
 
       return $this;
@@ -39,23 +37,19 @@ class RentalObjectService{
    }
 
    public function create(array $data, User $currentUser){
-      $rentalObject        = new RentalObject(array_merge(array('userId' => $currentUser->getId()), $data));
-      $pricePlanCollection = $rentalObject->getPricePlanCollection();
-      $fileCollection      = $rentalObject->getFileCollection();
-      $DBParameters        = $rentalObject->getDBParameters();
-      $rentalObjectData    = $this->rentalObjectMapper->create($DBParameters);
-      $rentalObject        = new RentalObject($rentalObjectData);
-      $pricePlanCollection = $this->pricePlanService->createFromCollection($pricePlanCollection, $rentalObject, $currentUser, $this);
+      $rentalObject     = new RentalObject(array_merge(array('userId' => $currentUser->getId()), $data));
+      $fileCollection   = $rentalObject->getFileCollection();
+      $DBParameters     = $rentalObject->getDBParameters();
+      $rentalObjectData = $this->rentalObjectMapper->create($DBParameters);
+      $rentalObject     = new RentalObject($rentalObjectData);
       $this->fileService->setDependencies($rentalObject, $fileCollection);
-      $rentalObject->setPricePlanCollection($pricePlanCollection);
       $rentalObject->setFileCollection($this->fileService->getRentalObjectCollection($rentalObject->getId()));
 
       return $rentalObject;
    }
 
    public function read($id){
-      $rentalObjectData                        = $this->rentalObjectMapper->read($id);
-      $rentalObjectData['pricePlanCollection'] = $this->pricePlanService->readCollectionFromRentalObjectId($id);;
+      $rentalObjectData                   = $this->rentalObjectMapper->read($id);
       $rentalObjectData['fileCollection'] = ($this->fileService->getRentalObjectCollection($id));
 
       return $rentalObjectData ? new RentalObject($rentalObjectData) : null;
