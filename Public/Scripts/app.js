@@ -37,18 +37,6 @@ var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute',
             templateUrl: 'Public/Templates/database.html',
             controller: 'DatabaseController'
          })
-         .when('/usergroups', {
-            templateUrl: 'Public/Templates/userGroupList.html',
-            controller: 'UserGroupListController'
-         })
-         .when('/usergroups/new', {
-            templateUrl: 'Public/Templates/userGroupCreate.html',
-            controller: 'UserGroupController'
-         })
-         .when('/usergroups/:id', {
-            templateUrl: 'Public/Templates/userGroupUpdate.html',
-            controller: 'UserGroupController'
-         })
          .when('/rentobjects/:id', {
             templateUrl: 'Public/Templates/rentObjectCreate.html',
             controller: 'RentObjectController'

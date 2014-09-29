@@ -30,13 +30,15 @@ class UserMapper{
           (
           username,
           email,
-          password
+          password,
+          administrative_access
           )
       VALUES
         (
           :username,
           :email,
-          :password
+          :password,
+          :hasAdministrativeAccess
         )
     ';
 
@@ -44,7 +46,8 @@ class UserMapper{
     SELECT
        id,
        username,
-       email
+       email,
+       administrative_access AS "hasAdministrativeAccess"
     FROM
       users
     WHERE
@@ -55,7 +58,8 @@ class UserMapper{
             id,
             username,
             email,
-            password
+            password,
+            administrative_access AS "hasAdministrativeAccess"
         FROM
           users
         WHERE
@@ -68,7 +72,8 @@ class UserMapper{
         SET
           username = :username,
           email = :email,
-          password = :password
+          password = :password,
+          administrative_access = :hasAdministrativeAccess
         WHERE
           id = :id
     ';

@@ -9,8 +9,8 @@
 namespace Application\Models;
 
 use Application\ENFramework\Collections\ValueValidationCollection;
-use Application\Collections\UserGroupCollection;
 use Application\ENFramework\Helpers\Validation\AlphaNumericValidation;
+use Application\ENFramework\Helpers\Validation\BooleanValidation;
 use Application\ENFramework\Helpers\Validation\EmailValidation;
 use Application\ENFramework\Helpers\Validation\IntegerValidation;
 use Application\ENFramework\Helpers\Validation\PasswordValidation;
@@ -22,14 +22,10 @@ class User extends GeneralModel{
    protected $username;
    protected $email;
    protected $password;
-   protected $groups;
-   protected $_setters = array('groups' => 'setGroups');
+   protected $hasAdministrativeAccess = false;
 
    public function __construct(array $data){
       parent::__construct($data);
-      $this->setNoDBProperties(array(
-                                  'groups'
-                               ));
    }
 
    protected function setUpValidation(){
@@ -50,7 +46,11 @@ class User extends GeneralModel{
                                                             new PasswordValidation(array(
                                                                                       'genericName'  => 'Lösenord',
                                                                                       'propertyName' => 'password'
-                                                                                   ))
+                                                                                   )),
+                                                            new BooleanValidation(array(
+                                                                                       'genericName' => 'Administrativ åtkomst',
+                                                                                       'propertyName' => 'hasAdministrativeAccess'
+                                                                                  ))
                                                          )));
    }
 
@@ -83,28 +83,7 @@ class User extends GeneralModel{
       return $this->username;
    }
 
-   /**
-    * @return mixed
-    */
-   public function getGroups(){
-      return $this->groups;
-   }
-
-   /**
-    * @param $userGroups
-    * @return $this
-    */
-   public function setGroups($userGroups){
-      if ($userGroups instanceof UserGroupCollection){
-         $this->groups = $userGroups;
-      }else{
-         $this->groups = new UserGroupCollection($userGroups);
-      }
-
-      return $this;
-   }
-
    public function hasAdministrativeAccess(){
-      return $this->groups->hasAdministrativeAccess();
+      return $this->hasAdministrativeAccess;
    }
 }

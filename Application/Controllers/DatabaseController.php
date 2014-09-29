@@ -15,8 +15,6 @@ use Application\ENFramework\Helpers\ResponseFactory;
 use Application\ENFramework\Models\DatabaseConnection;
 use Application\ENFramework\Models\Request;
 use Application\Mappers\RentalObjectMapper;
-use Application\Mappers\UserGroupConnectionMapper;
-use Application\Mappers\UserGroupMapper;
 use Application\Mappers\UserMapper;
 use Application\Services\DatabaseService;
 
@@ -58,10 +56,7 @@ class DatabaseController{
       $databaseConnection = new DatabaseConnection($databaseConnectionFactory, new MySQLValueFormatter());
       $rentalObjectMapper = new RentalObjectMapper($databaseConnection);
       $userMapper         = new UserMapper($databaseConnection);
-      $userGroupMapper    = new UserGroupMapper($databaseConnection);
-      $userGroupConnectionMapper = new UserGroupConnectionMapper($databaseConnection);
-      $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper, $userGroupMapper, 
-                                          $userGroupConnectionMapper);
+      $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper);
       $this->response->addNotifier(['message' => 'Databas med demodata har skapats.']);
 
       return $this->response;

@@ -15,20 +15,8 @@
             <button type="button" ng-click="returnToUserList()">Avbryt</button>
         </div>
         <div class="large-6 columns">
-            <label>Grupper</label>
-            <ul ng-repeat="group in user.groups">
-                <li>
-                    <p>
-                        {{ group.name }}
-                        <button type="button" class="tiny alert" ng-click="removeUserFromGroup(group)">Ta bort</button>
-                    </p>
-                </li>
-            </ul>
-
-            <div class="large-5">
-                <select ng-model="userGroupConnection.groupId" ng-options="group.id as group.name for group in userGroupCollection"></select>
-                <button type="button" ng-click="addUserToGroup()">Lägg till</button>
-            </div>
+            <label for="hasAdministrativeAccess">Administratör</label>
+            <input type="checkbox" ng-model="user.hasAdministrativeAccess" name="hasAdministrativeAccess"/>
         </div>
     </form>
 </div>

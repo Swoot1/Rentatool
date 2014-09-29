@@ -9,7 +9,6 @@ namespace Application\Mappers;
 
 
 use Application\ENFramework\Models\DatabaseConnection;
-use Application\Models\UserGroupConnection;
 
 class DatabaseMapper{
 
@@ -26,7 +25,8 @@ class DatabaseMapper{
          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
          username VARCHAR(50) NOT NULL UNIQUE,
          email VARCHAR(64) NOT NULL UNIQUE,
-         password VARCHAR(60) NOT NULL
+         password VARCHAR(60) NOT NULL,
+         administrative_access TINYINT(1) NOT NULL
       );
 
       CREATE TABLE IF NOT EXISTS rental_objects(
@@ -35,21 +35,6 @@ class DatabaseMapper{
          name VARCHAR(30) NOT NULL,
          CONSTRAINT rental_object_owner_fk FOREIGN KEY (user_id) REFERENCES users(id),
          price_per_day FLOAT NOT NULL
-      );
-
-      CREATE TABLE IF NOT EXISTS user_groups (
-         id  INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-         name VARCHAR(30) NOT NULL UNIQUE,
-         description varchar(200) NOT NULL,
-        administrative_access tinyint(1) NOT NULL DEFAULT 0
-      );
-
-      CREATE TABLE IF NOT EXISTS users_groups_maps (
-         id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-         user_id INTEGER NOT NULL,
-         group_id INTEGER NOT NULL,
-         CONSTRAINT user_group_maps_user_fk FOREIGN KEY (user_id) REFERENCES users(id),
-         CONSTRAINT user_group_maps_group_fk FOREIGN KEY (group_id) REFERENCES user_groups(id)
       );
 
       CREATE TABLE IF NOT EXISTS rent_periods(
@@ -101,21 +86,20 @@ class DatabaseMapper{
     * Insert seed values so that you don't have to start with an empty db.
     * @param UserMapper $userMapper
     * @param RentalObjectMapper $rentalObjectMapper
-    * @param UserGroupMapper $userGroupMapper
-    * @param UserGroupConnectionMapper $userGroupConnectionMapper
     */
-   public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper, UserGroupMapper $userGroupMapper,
-                               UserGroupConnectionMapper $userGroupConnectionMapper){
+   public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper){
       $users = array(
          array(
-            'username' => 'andy',
-            'email'    => 'andy@andy.se',
-            'password' => '$2y$10$PwZXV0Rt0y013zL3oPxdUOComVYuspqPX/k2C6Da7dXFKdQc0qapS'
+            'username'                => 'andy',
+            'email'                   => 'andy@andy.se',
+            'password'                => '$2y$10$PwZXV0Rt0y013zL3oPxdUOComVYuspqPX/k2C6Da7dXFKdQc0qapS',
+            'hasAdministrativeAccess' => true
          ),
          array(
-            'username' => 'elin',
-            'email'    => 'elin@elin.se',
-            'password' => '$2y$10$e5WdvQNzLGiR4AmU1qm/BupgIKxM1OQgfCS3nm7KVyIzaqq9P0lwK'
+            'username'                => 'elin',
+            'email'                   => 'elin@elin.se',
+            'password'                => '$2y$10$e5WdvQNzLGiR4AmU1qm/BupgIKxM1OQgfCS3nm7KVyIzaqq9P0lwK',
+            'hasAdministrativeAccess' => true
          )
       );
 
@@ -158,32 +142,6 @@ class DatabaseMapper{
 
       foreach ($rentalObjects as $rentalObjectData){
          $rentalObjectMapper->create($rentalObjectData);
-      }
-
-      $userGroups = array(
-         array(
-            'name'                 => 'administrators',
-            'description'          => 'They have the power',
-            'administrativeAccess' => true
-         ),
-         array(
-            'name'                 => 'users',
-            'description'          => 'They bring the money',
-            'administrativeAccess' => false
-         )
-      );
-
-      foreach ($userGroups as $userGroup){
-         $userGroupMapper->create($userGroup);
-      }
-
-      $userGroupConnections = array(
-         new UserGroupConnection(array('userId' => 1, 'groupId' => 1)),
-         new UserGroupConnection(array('userId' => 2, 'groupId' => 1))
-      );
-
-      foreach ($userGroupConnections as $userGroupConnection){
-         $userGroupConnectionMapper->addUserToGroup($userGroupConnection->getDBParameters());
       }
    }
 } 
