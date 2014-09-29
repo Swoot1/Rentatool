@@ -10,21 +10,17 @@ namespace Application\Services;
 
 
 use Application\Collections\UserCollection;
-use Application\Collections\UserGroupCollection;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
 use Application\Mappers\UserMapper;
-use Application\Mappers\UserGroupConnectionMapper;
 use Application\Models\User;
 
 class UserService{
    private $userMapper;
    private $userValidationService;
-   private $userGroupConnectionMapper;
 
-   public function __construct(UserMapper $userMapper, UserValidationService $userValidationService, UserGroupConnectionMapper $userGroupConnectionMapper){
-      $this->userMapper                = $userMapper;
-      $this->userValidationService     = $userValidationService;
-      $this->userGroupConnectionMapper = $userGroupConnectionMapper;
+   public function __construct(UserMapper $userMapper, UserValidationService $userValidationService){
+      $this->userMapper            = $userMapper;
+      $this->userValidationService = $userValidationService;
    }
 
    /**
@@ -73,8 +69,6 @@ class UserService{
          throw new NotFoundException('Kunde inte hitta användaren.');
       }
 
-      $result['groups'] = $this->userGroupConnectionMapper->getUserGroups($id);
-
       return new User($result);
    }
 
@@ -90,9 +84,7 @@ class UserService{
          throw new NotFoundException('Kunde inte hitta användaren.');
       }
 
-      $user       = new User($userData);
-      $userGroups = $this->userGroupConnectionMapper->getUserGroups($user->getId());
-      $user->setGroups(new UserGroupCollection($userGroups));
+      $user = new User($userData);
 
       return $user;
    }

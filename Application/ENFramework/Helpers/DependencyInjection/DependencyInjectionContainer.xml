@@ -38,15 +38,6 @@
             </dependencies>
         </dependency>
 
-        <dependency namespace="Application\Controllers" class="UserGroupController">
-            <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="Request"/>
-                <dependency namespace="Application\Services" class="UserGroupService"/>
-                <dependency namespace="Application\Services" class="UserService"/>
-                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
-            </dependencies>
-        </dependency>
-
         <dependency namespace="Application\Controllers" class="RentPeriodController">
             <dependencies>
                 <dependency namespace="Application\ENFramework\Models" class="Request"/>
@@ -97,7 +88,6 @@
             <dependencies>
                 <dependency namespace="Application\Mappers" class="UserMapper"/>
                 <dependency namespace="Application\Services" class="UserValidationService"/>
-                <dependency namespace="Application\Mappers" class="UserGroupConnectionMapper"/>
             </dependencies>
         </dependency>
 
@@ -130,13 +120,6 @@
         <dependency namespace="Application\Services" class="DatabaseService">
             <dependencies>
                 <dependency namespace="Application\Mappers" class="DatabaseMapper"/>
-            </dependencies>
-        </dependency>
-
-        <dependency namespace="Application\Services" class="UserGroupService">
-            <dependencies>
-                <dependency namespace="Application\Mappers" class="UserGroupMapper"/>
-                <dependency namespace="Application\Mappers" class="UserGroupConnectionMapper"/>
             </dependencies>
         </dependency>
 
@@ -184,18 +167,6 @@
         </dependency>
 
         <dependency namespace="Application\Mappers" class="DatabaseMapper">
-            <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
-            </dependencies>
-        </dependency>
-
-        <dependency namespace="Application\Mappers" class="UserGroupMapper">
-            <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
-            </dependencies>
-        </dependency>
-
-        <dependency namespace="Application\Mappers" class="UserGroupConnectionMapper">
             <dependencies>
                 <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
             </dependencies>

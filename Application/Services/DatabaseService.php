@@ -10,9 +10,7 @@ namespace Application\Services;
 use Application\Mappers\DatabaseMapper;
 use Application\Mappers\RentalObjectMapper;
 use Application\Mappers\TimeUnitMapper;
-use Application\Mappers\UserGroupConnectionMapper;
 use Application\Mappers\UserMapper;
-use Application\Mappers\UserGroupMapper;
 
 class DatabaseService{
 
@@ -30,8 +28,7 @@ class DatabaseService{
       $this->databaseMapper->createTables();
    }
 
-   public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper, UserGroupMapper $userGroupMapper,
-                               UserGroupConnectionMapper $userGroupConnectionMapper){
-      $this->databaseMapper->insertSeeds($userMapper, $rentalObjectMapper, $userGroupMapper, $userGroupConnectionMapper);
+   public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper){
+      $this->databaseMapper->insertSeeds($userMapper, $rentalObjectMapper);
    }
 }

@@ -21,7 +21,6 @@ class MenuService {
    public function __construct(){
       $this->menuItems = [
          ['label' => 'Användare', 'callback' => 'navigateToUserList', 'accessRule' => new AdministrativeAccessRule()],
-         ['label' => 'Användargrupper', 'callback' => 'navigateToUserGroupList', 'accessRule' => new AdministrativeAccessRule()],
          ['label' => 'Uthyrningsobjekt', 'callback' => 'navigateToRentalObjectList'],
          ['label' => 'Databasskapning', 'callback' => 'navigateToCreateDatabase', 'accessRule' => new AuthorizedAccessRule()]
       ];

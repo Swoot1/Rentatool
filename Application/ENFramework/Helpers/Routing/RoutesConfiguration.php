@@ -82,27 +82,6 @@ $routes['rentperiodcalculators'] = array(
    'subRoutesCollection'     => new SubRouteCollection()
 );
 
-$routes['usergroups'] = array(
-   'controllerName'          => 'UserGroupController',
-   'accessRule'              => new AdministrativeAccessRule(),
-   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
-   'subRoutesCollection'     => new SubRouteCollection(
-         array(
-            'addMember'    => array(
-               'controllerName'          => 'UserGroupController',
-               'accessRule'              => new AdministrativeAccessRule(),
-               'requestMethodCollection' => new RequestMethodCollection(array('POST')),
-               'subRoutesCollection'     => new SubRouteCollection(array())
-            ),
-            'removeMember' => array(
-               'controllerName'          => 'UserGroupController',
-               'accessRule'              => new AdministrativeAccessRule(),
-               'requestMethodCollection' => new RequestMethodCollection(array('POST')),
-               'subRoutesCollection'     => new SubRouteCollection(array())
-            )
-         ))
-);
-
 $routes['unavailablerentperiods'] = array(
    'controllerName'          => 'UnavailableRentPeriodController',
    'accessRule'              => new AuthorizedAccessRule(),

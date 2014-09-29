@@ -18,6 +18,4 @@ rentaTool.controller('NavigationController', ['$scope', '$location', 'MenuItems'
    $scope.navigateToUserList = navigationService.navigateToUserList;
    $scope.navigateToRentalObjectList = navigationService.navigateToRentalObjectList;
    $scope.navigateToCreateDatabase = navigationService.navigateToCreateDatabase;
-   $scope.navigateToUserGroupList = navigationService.navigateToUserGroupList;
-
 }]);

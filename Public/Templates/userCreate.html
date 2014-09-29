@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="large-12 columns">
-        <h2>Skapa ny användare</h2>
+    <h2>Skapa ny användare</h2>
 
-        <form name="user_form" ng-submit="createUser()">
+    <form name="user_form" ng-submit="createUser()">
+        <div class="large-6 columns">
             <label for="username">Namn</label>
             <input ng-model="user.username" name="username" type="text"/>
 
@@ -13,6 +13,10 @@
             <input ng-model="user.password" name="password" type="password"/>
             <button type="submit">Spara användare</button>
             <button type="button" ng-click="returnToUserList()">Avbryt</button>
-        </form>
-    </div>
+        </div>
+        <div class="large-6 columns">
+            <label for="hasAdministrativeAccess">Administratör</label>
+            <input type="checkbox" ng-model="user.hasAdministrativeAccess" name="hasAdministrativeAccess"/>
+        </div>
+    </form>
 </div>

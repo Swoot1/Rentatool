@@ -22,9 +22,5 @@ angular.module('Rentatool')
          $location.path('/databases/new');
       };
 
-      navigationService.navigateToUserGroupList = function() {
-         $location.path('/usergroups');
-      };
-
       return navigationService;
    }]);
