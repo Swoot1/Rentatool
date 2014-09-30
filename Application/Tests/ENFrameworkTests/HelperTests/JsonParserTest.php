@@ -42,6 +42,18 @@ class JsonParserTest extends \PHPUnit_Framework_TestCase{
       }
    }
 
+   public function testEmptyValue(){
+      $invalidJson = '';
+      $parsedData = $this->jsonParser->parse($invalidJson);
+      $this->assertEquals([], $parsedData);
+   }
+
+   public function testNullValue(){
+      $invalidJson = null;
+      $parsedData = $this->jsonParser->parse($invalidJson);
+      $this->assertEquals([], $parsedData);
+   }
+
    /**
     * @expectedException        \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\BadJsonException
     * @expectedExceptionMessage Ogiltig JSON: Ogiltigt format
@@ -57,24 +69,6 @@ class JsonParserTest extends \PHPUnit_Framework_TestCase{
     */
    public function testInvalidSyntax(){
       $invalidJson = '{"json": }';
-      $this->jsonParser->parse($invalidJson);
-   }
-
-   /**
-    * @expectedException        \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\BadJsonException
-    * @expectedExceptionMessage Ogiltig JSON: Ogiltigt format
-    */
-   public function testEmptyValue(){
-      $invalidJson = '';
-      $this->jsonParser->parse($invalidJson);
-   }
-
-   /**
-    * @expectedException        \Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\BadJsonException
-    * @expectedExceptionMessage Ogiltig JSON: Ogiltigt format
-    */
-   public function testNullValue(){
-      $invalidJson = null;
       $this->jsonParser->parse($invalidJson);
    }
 
