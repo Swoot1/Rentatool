@@ -12,6 +12,7 @@ namespace Application\ENFramework\Models;
 
 use Application\Collections\RequestMethodCollection;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\MethodNotAllowedException;
+use Rentatool\Application\ENFramework\Helpers\JsonParser;
 
 class Request extends GeneralModel{
    /**
@@ -129,7 +130,8 @@ class Request extends GeneralModel{
          $filesCopy = $_FILES;
          $result = array_shift($filesCopy);
       } else{
-         $result = json_decode(file_get_contents("php://input"), true);
+         $jsonParser = new JsonParser();
+         $result = $jsonParser->parse(file_get_contents('php://input'));
       }
 
       return $result;
