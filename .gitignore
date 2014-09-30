@@ -9,4 +9,5 @@
 tmp/
 Application/ENFramework/Helpers/PersonalConfiguration.php
 Application/ENFramework/Helpers/ProductionDatabaseConfiguration.php
+Application/ENFramework/Helpers/LocalDatabaseConfiguration.php
 Public/RentalObjectPhotos
