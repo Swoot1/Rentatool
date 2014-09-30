@@ -18,7 +18,7 @@ class JsonParser{
       $parsedData = json_decode($json, true);
       $jsonError  = json_last_error();
 
-      if (!$json || $jsonError !== JSON_ERROR_NONE){
+      if ($jsonError !== JSON_ERROR_NONE){
          switch ($jsonError){
             case JSON_ERROR_CTRL_CHAR:
             case JSON_ERROR_UTF8:
@@ -31,7 +31,7 @@ class JsonParser{
          throw new BadJsonException(sprintf('Ogiltig JSON: %s', $errorText));
       }
 
-      return $parsedData;
+      return $parsedData ? $parsedData : [];
    }
 
 }
