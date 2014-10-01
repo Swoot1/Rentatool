@@ -54,6 +54,7 @@ class FileService{
    public function setDependencies(RentalObject $rentalObject, FileCollection $fileCollection){
       $dependencyCollection = $fileCollection->getDependencyCollection($rentalObject);
       $dependencyCollectionData = $dependencyCollection->getDBParameters();
+      $result = [];
 
       foreach($dependencyCollectionData as $data){
          $result[] = $this->createDependency($data);
