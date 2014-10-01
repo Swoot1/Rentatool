@@ -10,6 +10,7 @@ namespace Application\ENFramework\Factories;
 
 use Application\ENFramework\Helpers\LocalDatabaseConfiguration;
 use Application\ENFramework\Helpers\ProductionDatabaseConfiguration;
+use Application\ENFramework\Models\PDOContainer;
 
 class DatabaseConnectionFactory implements IDatabaseConnectionFactory{
 
@@ -24,22 +25,21 @@ class DatabaseConnectionFactory implements IDatabaseConnectionFactory{
    }
 
    private function getLocalDatabaseConnection(){
-      return new \PDO(sprintf('mysql:host=%s;dbname=%s;charset=utf8',
-                              LocalDatabaseConfiguration::$host,
-                              LocalDatabaseConfiguration::$databaseName),
-                      LocalDatabaseConfiguration::$username,
-                      LocalDatabaseConfiguration::$password,
-                      LocalDatabaseConfiguration::getPDOOptions());
+      return PDOContainer::getInstance(sprintf('mysql:host=%s;dbname=%s;charset=utf8',
+                                               LocalDatabaseConfiguration::$host,
+                                               LocalDatabaseConfiguration::$databaseName),
+                                       LocalDatabaseConfiguration::$username,
+                                       LocalDatabaseConfiguration::$password,
+                                       LocalDatabaseConfiguration::getPDOOptions());
    }
 
    private function getProductionDatabaseConnection(){
-      return new \PDO(sprintf('mysql:host=%s;dbname=%s;charset=utf8',
-                              ProductionDatabaseConfiguration::$host,
-                              ProductionDatabaseConfiguration::$databaseName),
-                      ProductionDatabaseConfiguration::$username,
-                      ProductionDatabaseConfiguration::$password,
-                      ProductionDatabaseConfiguration::getPDOOptions());
-
+      return PDOContainer::getInstance(printf('mysql:host=%s;dbname=%s;charset=utf8',
+                                              ProductionDatabaseConfiguration::$host,
+                                              ProductionDatabaseConfiguration::$databaseName),
+                                       ProductionDatabaseConfiguration::$username,
+                                       ProductionDatabaseConfiguration::$password,
+                                       ProductionDatabaseConfiguration::getPDOOptions());
    }
 
    private function isLocalHost(){
