@@ -95,7 +95,6 @@ class IndexHTMLController{
 <script type="text/javascript" src="Public/Scripts/Factories/UnavailableRentPeriodFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RequestErrorInterceptorFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RequestSuccessInterceptorFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/UserGroupConnectionFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/ResetPasswordFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/PasswordFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Services/UnavailableRentPeriodService.js"></script>
