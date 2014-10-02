@@ -12,7 +12,7 @@ class LocalDatabaseConfiguration implements IDatabaseConfiguration{
 
    static $host = 'localhost';
    static $username = 'root';
-   static $password = '';
+   static $password = 'root';
    static $databaseName = 'rentatool';
 
    public static function getPDOOptions(){
