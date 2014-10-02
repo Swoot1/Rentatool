@@ -28,7 +28,7 @@ class EmailValidation extends ValueValidation{
       $valueIsInvalidEmail = $result < 1 || $result === false;
 
       if ($valueIsInvalidEmail){
-         throw new ApplicationException(sprintf('Värdet angivet för %s är en ogiltig email-adress.', $this->genericName));
+         throw new ApplicationException(sprintf('Värdet angivet för %s är en ogiltig e-postadress.', $this->genericName));
       }
 
       return true;

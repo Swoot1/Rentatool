@@ -80,7 +80,6 @@ class IndexHTMLController{
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-route.js"></script>
 <script type="text/javascript" src="Public/Scripts/jquery.fileupload-angular.js"></script>
 <script type="text/javascript" src="Public/Scripts/app.js"></script>
-<script type="text/javascript" src="Public/Scripts/Services/UnavailableRentPeriodService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/AlertBox.js"></script>
 <script type="text/javascript" src="Public/Scripts/Services/AlertBoxService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Services/AuthorizationService.js"></script>
@@ -96,6 +95,9 @@ class IndexHTMLController{
 <script type="text/javascript" src="Public/Scripts/Factories/UnavailableRentPeriodFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RequestErrorInterceptorFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RequestSuccessInterceptorFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/UserGroupConnectionFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/ResetPasswordFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/PasswordFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Services/UnavailableRentPeriodService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Services/RentalObjectService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectController.js"></script>
@@ -108,11 +110,12 @@ class IndexHTMLController{
 <script type="text/javascript" src="Public/Scripts/Controllers/UserListController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/AuthorizationController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/ContentController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Directives/LogOutButton.js"></script>
-<script type="text/javascript" src="Public/Scripts/Directives/LogInButton.js"></script>
+<script type="text/javascript" src="Public/Scripts/Controllers/ResetPasswordController.js"></script>
+<script type="text/javascript" src="Public/Scripts/Controllers/PasswordController.js"></script>
+<script type="text/javascript" src="Public/Scripts/Directives/LogoutButton.js"></script>
+<script type="text/javascript" src="Public/Scripts/Directives/LoginButton.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/MenuItemsFactory.js"></script>
 </body>
 </html>'));
    }
-
 }

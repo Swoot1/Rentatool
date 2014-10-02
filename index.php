@@ -9,6 +9,7 @@ use Application\ENFramework\Helpers\SessionManager;
 
 require_once 'Application/ENFramework/Helpers/SessionManager.php';
 require_once 'Application/ENFramework/Helpers/Configuration.php';
+require_once 'vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
 
 SessionManager::startSession('User');
 

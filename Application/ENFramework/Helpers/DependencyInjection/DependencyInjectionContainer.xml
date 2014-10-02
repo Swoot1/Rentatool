@@ -76,6 +76,22 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Application\Controllers" class="ResetPasswordController">
+            <dependencies>
+                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\Services" class="ResetPasswordService"/>
+                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
+            </dependencies>
+        </dependency>
+
+        <dependency namespace="Application\Controllers" class="PasswordController">
+            <dependencies>
+                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\Services" class="PasswordService"/>
+                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
+            </dependencies>
+        </dependency>
+
         <!-- Services -->
         <dependency namespace="Application\Services" class="RentalObjectService">
             <dependencies>
@@ -135,6 +151,21 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Application\Services" class="ResetPasswordService">
+            <dependencies>
+                <dependency namespace="Application\Mappers" class="ResetPasswordMapper"/>
+                <dependency namespace="Application\Factories" class="ResetPasswordFactory"/>
+                <dependency namespace="Application\Services" class="UserService"/>
+            </dependencies>
+        </dependency>
+
+        <dependency namespace="Application\Services" class="PasswordService">
+            <dependencies>
+                <dependency namespace="Application\Mappers" class="PasswordMapper"/>
+                <dependency namespace="Application\Services" class="ResetPasswordService"/>
+            </dependencies>
+        </dependency>
+
         <!-- Mappers -->
         <dependency namespace="Application\Mappers" class="RentalObjectMapper">
             <dependencies>
@@ -184,6 +215,18 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Application\Mappers" class="ResetPasswordMapper">
+            <dependencies>
+                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
+            </dependencies>
+        </dependency>
+
+        <dependency namespace="Application\Mappers" class="PasswordMapper">
+            <dependencies>
+                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
+            </dependencies>
+        </dependency>
+
         <!-- Others -->
         <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection">
             <dependencies>
@@ -209,6 +252,10 @@
         </dependency>
 
         <dependency namespace="Application\ENFramework\Helpers" class="MySQLValueFormatter">
+            <dependencies/>
+        </dependency>
+
+        <dependency namespace="Application\Factories" class="ResetPasswordFactory">
             <dependencies/>
         </dependency>
     </dependencies>

@@ -37,9 +37,9 @@ class UserService{
     * @return User
     */
    public function create(array $data){
-      $data         = $this->hashPassword($data);
       $userModel    = new User($data);
       $DBParameters = $userModel->getDBParameters();
+      $DBParameters = $this->hashPassword($DBParameters);
       $this->userValidationService->validateUser($userModel);
       $userData = $this->userMapper->create($DBParameters);
 
