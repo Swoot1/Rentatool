@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 use Application\ENFramework\Factories\DatabaseConnectionFactory;
 use Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeFactory;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
