@@ -22,5 +22,9 @@ angular.module('Rentatool')
          $location.path('/databases/new');
       };
 
+      navigationService.navigateToResetPassword = function () {
+         $location.path('/resetpasswords/new');
+      };
+
       return navigationService;
    }]);
