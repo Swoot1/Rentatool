@@ -29,11 +29,11 @@ class DatabaseMapper{
          password VARCHAR(60) NOT NULL
       );
 
-      CREATE TABLE IF NOT EXISTS reset_password(
+      CREATE TABLE IF NOT EXISTS reset_passwords(
         id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
         user_id INTEGER NOT NULL,
-        created_timestamp TIMESTAMP NOT NULL,
-        reset_code INTEGER NOT NULL
+        expiration_timestamp TIMESTAMP NOT NULL,
+        reset_code VARCHAR(13) NOT NULL
       );
 
       CREATE TABLE IF NOT EXISTS rental_objects(

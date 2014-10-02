@@ -10,7 +10,9 @@ namespace Application\Controllers;
 
 
 use Application\ENFramework\Helpers\ResponseFactory;
+use Application\ENFramework\Helpers\SessionManager;
 use Application\ENFramework\Models\Request;
+use Application\Factories\MailFactory;
 use Application\Services\ResetPasswordService;
 
 class ResetPasswordController{
@@ -27,7 +29,8 @@ class ResetPasswordController{
    }
 
    public function create(array $data){
-      $result = $this->resetPasswordService->create($data);
-      return $this->response->setResponseData($result);
+      $mailFactory = new MailFactory();
+      $this->resetPasswordService->create($data, $mailFactory);
+      return $this->response->addNotifier(array('message' => 'Ett återställningsmail har skickats till din e-postadress.'));
    }
 }

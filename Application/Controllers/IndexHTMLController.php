@@ -99,6 +99,7 @@ class IndexHTMLController{
 <script type="text/javascript" src="Public/Scripts/Factories/RequestSuccessInterceptorFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/UserGroupConnectionFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/ResetPasswordFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/PasswordFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Services/UnavailableRentPeriodService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Services/RentalObjectService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectController.js"></script>
@@ -114,6 +115,7 @@ class IndexHTMLController{
 <script type="text/javascript" src="Public/Scripts/Controllers/UserGroupController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/ContentController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/ResetPasswordController.js"></script>
+<script type="text/javascript" src="Public/Scripts/Controllers/PasswordController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/LogoutButton.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/LoginButton.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/MenuItemsFactory.js"></script>

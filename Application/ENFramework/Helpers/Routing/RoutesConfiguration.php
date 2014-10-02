@@ -128,8 +128,14 @@ $routes['index'] = array(
    'subRoutesCollection'     => new SubRouteCollection(array())
 );
 
-$routes['passwords'] = array(
+$routes['resetpasswords'] = array(
    'controllerName'          => 'ResetPasswordController',
+   'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+   'subRoutesCollection'     => new SubRouteCollection(array())
+);
+
+$routes['passwords'] = array(
+   'controllerName'          => 'PasswordController',
    'requestMethodCollection' => new RequestMethodCollection(array('POST')),
    'subRoutesCollection'     => new SubRouteCollection(array())
 );

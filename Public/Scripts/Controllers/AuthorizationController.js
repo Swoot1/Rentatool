@@ -29,4 +29,5 @@ rentaTool.controller("AuthorizationController", ['$scope', '$location', 'Authori
       };
 
       $scope.navigateToLogIn = navigationService.navigateToLogIn;
+      $scope.navigateToResetPassword = navigationService.navigateToResetPassword;
    }]);

@@ -4,6 +4,6 @@
 (function () {
    angular.module('Rentatool')
       .factory('ResetPassword', ['$resource', function ($resource) {
-         return $resource('passwords');
+         return $resource('resetpasswords');
       }]);
 })();

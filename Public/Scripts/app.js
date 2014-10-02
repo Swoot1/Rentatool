@@ -53,9 +53,13 @@ var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute',
             templateUrl: 'Public/Templates/rentObjectCreate.html',
             controller: 'RentObjectController'
          })
-         .when('/passwords/new', {
+         .when('/resetpasswords/new', {
             templateUrl: 'Public/Templates/resetPassword.html',
             controller: 'ResetPasswordController'
+         })
+         .when('/passwords/new', {
+            templateUrl: 'Public/Templates/passwordCreate.html',
+            controller: 'PasswordController'
          })
          .otherwise({
             redirectTo: '/rentalobjects'

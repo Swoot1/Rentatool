@@ -10,8 +10,8 @@ namespace Application\Models;
 
 
 use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Helpers\Validation\AlphaNumericValidation;
 use Application\ENFramework\Helpers\Validation\DateTimeValidation;
-use Application\ENFramework\Helpers\Validation\EmailValidation;
 use Application\ENFramework\Helpers\Validation\IntegerValidation;
 use Application\ENFramework\Models\GeneralModel;
 
@@ -20,7 +20,7 @@ class ResetPassword extends GeneralModel{
    protected $id;
    protected $userId;
    protected $resetCode;
-   protected $createdTimestamp;
+   protected $expirationTimestamp;
 
    protected function setUpValidation(){
       $this->setValidation(new ValueValidationCollection(array(
@@ -32,15 +32,27 @@ class ResetPassword extends GeneralModel{
                                                                                      'genericName'  => 'användarid',
                                                                                      'propertyName' => 'userId'
                                                                                   )),
-                                                            new IntegerValidation(array(
-                                                                                     'genericName'  => 'återställningskod',
-                                                                                     'propertyName' => 'resetCode'
-                                                                                  )),
+                                                            new AlphaNumericValidation(array(
+                                                                                          'genericName'  => 'återställningskod',
+                                                                                          'propertyName' => 'resetCode'
+                                                                                       )),
                                                             new DateTimeValidation(array(
                                                                                       'genericName'  => 'tidsstämpel',
-                                                                                      'propertyName' => 'createTimestamp'
+                                                                                      'propertyName' => 'expirationTimestamp'
                                                                                    )),
 
                                                          )));
+   }
+
+   public function getResetCode(){
+      return $this->resetCode;
+   }
+
+   public function getId(){
+      return $this->id;
+   }
+
+   public function getUserId(){
+      return $this->userId;
    }
 }
