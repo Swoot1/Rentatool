@@ -24,7 +24,7 @@ class DatabaseConnection implements IDatabaseConnection{
    private $mySQLValueFormatter;
 
    public function __construct(IDatabaseConnectionFactory $databaseConnectionFactory, IMySQLValueFormatter $mySQLValueFormatter){
-      $this->databaseConnection = $databaseConnectionFactory->getDatabaseConnection();
+      $this->databaseConnection = $databaseConnectionFactory->build();
       $this->mySQLValueFormatter = $mySQLValueFormatter;
    }
 

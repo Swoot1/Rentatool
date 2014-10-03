@@ -14,7 +14,7 @@ use Application\ENFramework\Models\PDOContainer;
 
 class DatabaseConnectionFactory implements IDatabaseConnectionFactory{
 
-   public function getDatabaseConnection(){
+   public function build(){
       if ($this->isLocalHost()){
          $connection = $this->getLocalDatabaseConnection();
       } else{
@@ -43,6 +43,6 @@ class DatabaseConnectionFactory implements IDatabaseConnectionFactory{
    }
 
    private function isLocalHost(){
-      return $_SERVER["REMOTE_ADDR"] === '::1' || $_SERVER["REMOTE_ADDR"] === '127.0.0.1';
+      return array_key_exists("REMOTE_ADDR", $_SERVER) === false || $_SERVER["REMOTE_ADDR"] === '::1' || $_SERVER["REMOTE_ADDR"] === '127.0.0.1';
    }
 } 

@@ -2,13 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: elinnilsson
- * Date: 15/08/14
- * Time: 19:28
+ * Date: 03/10/14
+ * Time: 11:42
  */
 
 namespace Application\ENFramework\Factories;
 
 
-interface IDatabaseConnectionFactory{
-   public function build();
+class DependencyInjectionFactory {
+
 } 

@@ -1,5 +1,6 @@
 <?php
 use Application\ENFramework\Factories\DatabaseConnectionFactory;
+use Application\ENFramework\Helpers\DependencyInjection\DependencyInjection;
 use Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeFactory;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
 use Application\ENFramework\Helpers\RequestDispatcher;
@@ -14,7 +15,7 @@ require_once 'vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
 SessionManager::startSession('User');
 
 $databaseConnectionFactory = new DatabaseConnectionFactory();
-$databaseConnection        = $databaseConnectionFactory->getDatabaseConnection();
+$databaseConnection        = $databaseConnectionFactory->build();
 
 try{
    $requestDispatcher = new RequestDispatcher();
@@ -27,8 +28,10 @@ try{
       $databaseConnection->beginTransaction();
 
       $dependencyInjectionContainer = simplexml_load_file('Application/ENFramework/Helpers/DependencyInjection/DependencyInjectionContainer.xml');
-      $routing                      = new Routing($requestModel, $dependencyInjectionContainer);
-      $response                     = $routing->callMethod($route);
+      $dependencyInjection          = new DependencyInjection($dependencyInjectionContainer);
+      $controller                   = $dependencyInjection->getInstantiatedClass($route->getController(), $requestModel);
+      $routing                      = new Routing($requestModel);
+      $response                     = $routing->callMethod($controller);
       $response->sendResponse();
 
       $databaseConnection->commit();

@@ -7,8 +7,6 @@
 
 namespace Application\ENFramework\Helpers\Routing;
 
-
-use Application\ENFramework\Helpers\DependencyInjection\DependencyInjection;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
 use Application\ENFramework\Models\Request;
@@ -16,20 +14,17 @@ use Application\ENFramework\Models\Request;
 class Routing{
 
    private $request;
-   private $dependencyInjector;
 
-   public function __construct(Request $request, \SimpleXMLElement $dependencyInjector){
-      $this->request            = $request;
-      $this->dependencyInjector = $dependencyInjector;
+   public function __construct(Request $request){
+      $this->request = $request;
    }
 
    /**
-    * @param Route $route
+    * @param $controller
     * @return mixed
     * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException
     */
-   public function callMethod(Route $route){
-      $controller    = $this->getController($route);
+   public function callMethod($controller){
       $requestMethod = $this->request->getRequestMethod();
 
       switch ($requestMethod){
@@ -51,16 +46,6 @@ class Routing{
 
       return $result;
 
-   }
-
-   /**
-    * @param Route $route
-    * @return null|object
-    */
-   private function getController(Route $route){
-      $dependencyInjectionContainer = new DependencyInjection($this->dependencyInjector, $this->request);
-
-      return $dependencyInjectionContainer->getInstantiatedClass($route->getController());
    }
 
    /**
