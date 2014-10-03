@@ -595,7 +595,7 @@ class PHPUnit_TextUI_Command
 
             catch (Exception $e) {
                 print $e->getMessage() . "\n";
-                exit(PHPUnit_TextUI_TestRunner::FAILURE_EXIT);
+                   exit(PHPUnit_TextUI_TestRunner::FAILURE_EXIT);
             }
 
             $phpunit = $configuration->getPHPUnitConfiguration();

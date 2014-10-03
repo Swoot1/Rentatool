@@ -3,5 +3,10 @@
       "phpunit/phpunit": "3.7.*",
       "phpmd/phpmd": "2.0.*",
       "phpmailer/phpmailer": "5.2.*"
+   },
+
+   "autoload": {
+      "psr-4": {"Application\\": "Application/"}
    }
+
 }

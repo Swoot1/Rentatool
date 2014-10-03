@@ -25,4 +25,4 @@ $autoLoader = new \Application\ENFramework\Helpers\Autoloader();
 $autoLoader->setUpAutoLoader();
 
 // Setup error handlers so that errors such as no such method exists or variable is used but never defined throws an exception.
-require_once 'Application/ENFramework/Helpers/ErrorHandling/ErrorHandler.php';
+require_once 'Rentatool/Application/ENFramework/Helpers/ErrorHandling/ErrorHandler.php';
