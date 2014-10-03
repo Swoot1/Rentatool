@@ -19,7 +19,8 @@ class DateTimeValidation extends ValueValidation{
    }
 
    private function validateDate($value){
-      $formattedDate = new \DateTime($value);
+      $isDate = preg_match('/^\d{4,4}-\d\d-\d\d \d\d:\d\d:\d\d$/', $value);
+      $formattedDate = $isDate ? new \DateTime($value) : false;
       $isInvalidDate = $formattedDate === false || $formattedDate->format('Y-m-d H:i:s') !== $value;
 
       if ($isInvalidDate){

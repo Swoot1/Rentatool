@@ -26,21 +26,6 @@ class ValueValidationCollectionTest extends \PHPUnit_Framework_TestCase {
    }
 
    /**
-    * Try to validate a propertyName that doesn't have a validation. An exception should be thrown.
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
-    * @expectedExceptionMessage Det finns ingen validering för angivet propertynamn flagg.
-    */
-   public function testWrongPropertyName() {
-      $validation = array(
-         new BooleanValidation(array('genericName' => 'flagga', 'propertyName' => 'flag')),
-      );
-
-      $valueValidationCollection = new ValueValidationCollection($validation);
-
-      $valueValidationCollection->validate('flagg', true);
-   }
-
-   /**
     * An Exception should be thrown when the value is invalid.
     * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Antal måste bestå av siffror.
