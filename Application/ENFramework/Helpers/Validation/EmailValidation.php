@@ -24,8 +24,7 @@ class EmailValidation extends ValueValidation{
     * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function validateEmail($value){
-      $result              = preg_match('/^(([a-z\d])|(?:[a-z\d](?:[a-z\-\d]+)?[a-z\d]))@(([a-z\d])|(?:[a-z\d](?:[a-z\-\d]+)?[a-z\d]))\.[a-z]+$/', $value);
-      $valueIsInvalidEmail = $result < 1 || $result === false;
+      $valueIsInvalidEmail = filter_var($value, FILTER_VALIDATE_EMAIL) === false;
 
       if ($valueIsInvalidEmail){
          throw new ApplicationException(sprintf('Värdet angivet för %s är en ogiltig e-postadress.', $this->genericName));
