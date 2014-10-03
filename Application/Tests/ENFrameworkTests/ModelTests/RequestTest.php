@@ -15,7 +15,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase{
 
    /**
     * Test case that makes sure that ids with more than one number works.
-    * Earlier only the first number in the id was used.x
+    * Earlier only the first number in the id was used.
     */
    public function testMultiNumberId(){
       $request = new Request(array(), new RequestMethodCollection(array()));

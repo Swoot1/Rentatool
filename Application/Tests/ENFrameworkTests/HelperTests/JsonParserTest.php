@@ -11,7 +11,6 @@ namespace Rentatool\Tests\ENFrameworkTests\HelperTests;
 
 
 use Rentatool\Application\ENFramework\Helpers\JsonParser;
-use Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions\BadJsonException;
 
 class JsonParserTest extends \PHPUnit_Framework_TestCase{
 
