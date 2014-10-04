@@ -9,6 +9,7 @@
 
 namespace Application\PHPFramework\Routing;
 
+use Application\Models\User;
 use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\PHPFramework\ErrorHandling\Exceptions\UserIsNotAllowedException;
 use Application\PHPFramework\SessionManager;
@@ -53,9 +54,9 @@ class Route{
    }
 
 
-   public function isUserAllowed(){
+   public function isUserAllowed(User $currentUser){
       if (!is_null($this->accessRule)){
-         $allowed = $this->accessRule->isAccessAllowed(SessionManager::getCurrentUser());
+         $allowed = $this->accessRule->isAccessAllowed($currentUser);
 
          if (!$allowed){
             throw new UserIsNotAllowedException('Du saknar behörighet för denna resurs.');
