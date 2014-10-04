@@ -8,7 +8,6 @@
 
 namespace Application\Controllers;
 
-use Application\PHPFramework\Request\Request;
 use Application\PHPFramework\Response\Factories\ResponseFactory;
 use Application\Factories\MailFactory;
 use Application\Services\ResetPasswordService;
@@ -20,8 +19,7 @@ class ResetPasswordController{
    private $resetPasswordService;
    private $response;
 
-   public function __construct(Request $request, ResetPasswordService $resetPasswordService, ResponseFactory $responseFactory){
-      $this->request              = $request;
+   public function __construct(ResetPasswordService $resetPasswordService, ResponseFactory $responseFactory){
       $this->resetPasswordService = $resetPasswordService;
       $this->response             = $responseFactory->createResponse();
    }

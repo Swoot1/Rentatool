@@ -8,24 +8,17 @@
 
 namespace Application\Controllers;
 
-use Application\PHPFramework\Request\Request;
 use Application\PHPFramework\Response\Factories\ResponseFactory;
 use Application\Services\PasswordService;
 
 class PasswordController {
-   /**
-    * @var \Application\Services\RentalObjectService
-    */
-   private $request;
    /**
     * @var \Application\Services\FileService
     */
    private $passwordService;
    private $response;
 
-   public function __construct(Request $request, PasswordService $passwordService,
-                               ResponseFactory $responseFactory){
-      $this->request     = $request;
+   public function __construct(PasswordService $passwordService, ResponseFactory $responseFactory){
       $this->passwordService = $passwordService;
       $this->response    = $responseFactory->createResponse();
    }

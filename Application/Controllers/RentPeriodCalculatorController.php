@@ -9,21 +9,18 @@
 namespace Application\Controllers;
 
 use Application\PHPFramework\SessionManager;
-use Application\PHPFramework\Request\Request;
 use Application\PHPFramework\Response\Factories\ResponseFactory;
 use Application\Services\RentPeriodService;
 
 class RentPeriodCalculatorController{
 
-   private $request;
    /**
     * @var \Application\Services\RentPeriodService
     */
    private $rentPeriodService;
    private $response;
 
-   public function __construct(Request $request, RentPeriodService $rentPeriodService, ResponseFactory $responseFactory){
-      $this->request           = $request;
+   public function __construct(RentPeriodService $rentPeriodService, ResponseFactory $responseFactory){
       $this->rentPeriodService = $rentPeriodService;
       $this->response          = $responseFactory->createResponse();
    }

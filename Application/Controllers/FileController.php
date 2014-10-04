@@ -8,24 +8,17 @@
 
 namespace Application\Controllers;
 
-use Application\PHPFramework\Request\Request;
 use Application\PHPFramework\Response\Factories\ResponseFactory;
 use Application\Services\FileService;
 
 class FileController{
-   /**
-    * @var \Application\Services\RentalObjectService
-    */
-   private $request;
    /**
     * @var \Application\Services\FileService
     */
    private $fileService;
    private $response;
 
-   public function __construct(Request $request, FileService $fileService,
-                               ResponseFactory $responseFactory){
-      $this->request     = $request;
+   public function __construct(FileService $fileService, ResponseFactory $responseFactory){
       $this->fileService = $fileService;
       $this->response    = $responseFactory->createResponse();
    }

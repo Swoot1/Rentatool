@@ -15,15 +15,13 @@ use Application\Services\RentPeriodService;
 
 class RentPeriodController{
 
-   private $request;
    /**
     * @var \Application\Services\RentPeriodService
     */
    private $rentPeriodService;
    private $response;
 
-   public function __construct(Request $request, RentPeriodService $rentPeriodService, ResponseFactory $responseFactory){
-      $this->request           = $request;
+   public function __construct(RentPeriodService $rentPeriodService, ResponseFactory $responseFactory){
       $this->rentPeriodService = $rentPeriodService;
       $this->response          = $responseFactory->createResponse();
    }
