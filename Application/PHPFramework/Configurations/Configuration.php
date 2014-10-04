@@ -9,7 +9,7 @@
 
 use Application\PHPFramework\AutoLoader;
 
-require_once 'Application/PHPFramework/Database/Configuration/PersonalConfiguration.php';
+require_once 'Application/PHPFramework/Configurations/PersonalConfiguration.php';
 
 
 // Set default character encoding.
