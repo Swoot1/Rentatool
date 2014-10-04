@@ -34,7 +34,7 @@ class DatabaseConnectionFactory implements IDatabaseConnectionFactory{
    }
 
    private function getProductionDatabaseConnection(){
-      return PDOContainer::getInstance(printf('mysql:host=%s;dbname=%s;charset=utf8',
+      return PDOContainer::getInstance(sprintf('mysql:host=%s;dbname=%s;charset=utf8',
                                               ProductionDatabaseConfiguration::$host,
                                               ProductionDatabaseConfiguration::$databaseName),
                                        ProductionDatabaseConfiguration::$username,
