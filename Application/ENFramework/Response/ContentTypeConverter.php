@@ -5,7 +5,7 @@
  * Time: 08:17
  */
 
-namespace Application\ENFramework\Helpers;
+namespace Application\ENFramework\Response;
 
 
 class ContentTypeConverter{
@@ -15,6 +15,6 @@ class ContentTypeConverter{
     * @return string
     */
    public function convertDataToJSON($data){
-      return json_encode($data, JSON_UNESCAPED_UNICODE);
+      return json_encode($data, JSON_UNESCAPED_UNICODE); // TODO remove
    }
 } 

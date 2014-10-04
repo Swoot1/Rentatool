@@ -5,7 +5,7 @@
  * Time: 11:29
  */
 
-namespace Application\ENFramework\Helpers;
+namespace Application\ENFramework\Response;
 
 use Application\ENFramework\Helpers\Interfaces\IToArray;
 
@@ -21,9 +21,6 @@ class Response implements IResponse{
    private $statusCode = 200;
    private $contentType = 'application/json';
    private $charset = 'utf-8';
-   /**
-    * @var \Application\ENFramework\Helpers\MetaData
-    */
    private $noName;
    private $statusCodeToTextMapper;
 

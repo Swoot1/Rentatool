@@ -6,7 +6,7 @@
  * Time: 17:29
  */
 
-namespace Application\ENFramework\Helpers;
+namespace Application\ENFramework\Response;
 
 use Application\ENFramework\Collections\ValueValidationCollection;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
@@ -14,9 +14,6 @@ use Application\ENFramework\Helpers\Interfaces\IToArray;
 use Application\ENFramework\Models\GeneralModel;
 
 class NoName extends GeneralModel{
-   /**
-    * @var \Application\ENFramework\Helpers\Metadata
-    */
    protected $metadata;
    protected $responseData;
    /**
@@ -43,7 +40,7 @@ class NoName extends GeneralModel{
     * Returns the data as a string formatted in the correct contentType.
     * @param $contentType
     * @return string
-    * @throws ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    public function getFormattedData($contentType){
 

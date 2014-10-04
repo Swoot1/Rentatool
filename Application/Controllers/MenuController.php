@@ -9,8 +9,7 @@
 
 namespace Application\Controllers;
 
-
-use Application\ENFramework\Helpers\ResponseFactory;
+use Application\ENFramework\Response\Factories\ResponseFactory;
 use Application\Services\MenuService;
 
 class MenuController{

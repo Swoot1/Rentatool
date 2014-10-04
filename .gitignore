@@ -8,8 +8,8 @@
 .idea
 tmp/
 Application/ENFramework/Helpers/PersonalConfiguration.php
-Application/ENFramework/Helpers/ProductionDatabaseConfiguration.php
-Application/ENFramework/Helpers/LocalDatabaseConfiguration.php
+Application/ENFramework/Helpers/Database/Configuration/LocalDatabaseConfiguration.php
+Application/ENFramework/Helpers/Database/Configuration/ProductionDatabaseConfiguration.php
 Public/RentalObjectPhotos
 Application/.DS_Store
 Application/Factories/MailFactory.php

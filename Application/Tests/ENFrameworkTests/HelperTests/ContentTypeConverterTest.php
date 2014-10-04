@@ -8,7 +8,7 @@
 namespace Tests\ENFrameworkTests\HelperTests;
 
 
-use Application\ENFramework\Helpers\ContentTypeConverter;
+use Application\ENFramework\Response\ContentTypeConverter;
 
 class ContentTypeConverterTest extends \PHPUnit_Framework_TestCase{
    public function testConvertDataToJSON(){

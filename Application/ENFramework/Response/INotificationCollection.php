@@ -6,10 +6,7 @@
  * Time: 12:52
  */
 
-namespace Application\ENFramework\Helpers\Interfaces;
-
-
-use Application\ENFramework\Helpers\Notifier;
+namespace Application\ENFramework\Response;
 
 interface INotificationCollection{
 

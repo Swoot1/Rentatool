@@ -6,10 +6,7 @@
  * Time: 17:35
  */
 
-namespace Application\ENFramework\Helpers\Interfaces;
-
-
-use Application\ENFramework\Helpers\Notifier;
+namespace Application\ENFramework\Response;
 
 interface IMetadata{
    public function addNotifier(Notifier $notifier);

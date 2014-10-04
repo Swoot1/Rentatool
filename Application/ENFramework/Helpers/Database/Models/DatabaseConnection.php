@@ -7,10 +7,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\ENFramework\Models;
+namespace Application\ENFramework\Helpers\Database\Models;
 
-use Application\ENFramework\Factories\IDatabaseConnectionFactory;
-use Application\ENFramework\Helpers\IMySQLValueFormatter;
+use Application\ENFramework\Helpers\Database\Factories\IDatabaseConnectionFactory;
+use Application\ENFramework\Helpers\Database\IMySQLValueFormatter;
 
 /**
  * Class DatabaseConnection

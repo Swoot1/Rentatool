@@ -9,13 +9,10 @@
 
 namespace Application\Mappers;
 
-use Application\ENFramework\Models\IDatabaseConnection;
+use Application\ENFramework\Helpers\Database\Models\IDatabaseConnection;
 use Application\Filters\RentalObjectFilter;
 
 class RentalObjectMapper{
-   /**
-    * @var \Application\ENFramework\Models\IDatabaseConnection
-    */
    private $databaseConnection;
 
    private $indexSQL = '

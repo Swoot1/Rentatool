@@ -8,9 +8,8 @@
 
 namespace Application\Controllers;
 
-
-use Application\ENFramework\Helpers\ResponseFactory;
 use Application\ENFramework\Models\Request;
+use Application\ENFramework\Response\Factories\ResponseFactory;
 use Application\Filters\UnavailableRentPeriodFilter;
 use Application\Services\UnavailableRentPeriodService;
 

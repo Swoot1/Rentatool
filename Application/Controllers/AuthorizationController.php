@@ -7,10 +7,8 @@
 
 namespace Application\Controllers;
 
-
-use Application\ENFramework\Helpers\Response;
-use Application\ENFramework\Helpers\ResponseFactory;
 use Application\ENFramework\Models\Request;
+use Application\ENFramework\Response\Factories\ResponseFactory;
 use Application\Services\AuthorizationService;
 
 class AuthorizationController{
@@ -21,6 +19,7 @@ class AuthorizationController{
    private $authorizationService;
    private $response;
 
+   // TODO remove $request from controllers that don't use it
    public function __construct(Request $request, AuthorizationService $authorizationService, ResponseFactory $responseFactory){
       $this->request              = $request;
       $this->authorizationService = $authorizationService;

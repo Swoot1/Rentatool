@@ -10,7 +10,7 @@
             <dependencies>
                 <dependency namespace="Application\ENFramework\Models" class="Request"/>
                 <dependency namespace="Application\Services" class="RentalObjectService"/>
-                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
@@ -18,7 +18,7 @@
             <dependencies>
                 <dependency namespace="Application\ENFramework\Models" class="Request"/>
                 <dependency namespace="Application\Services" class="AuthorizationService"/>
-                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
@@ -26,7 +26,7 @@
             <dependencies>
                 <dependency namespace="Application\ENFramework\Models" class="Request"/>
                 <dependency namespace="Application\Services" class="UserService"/>
-                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
@@ -34,7 +34,7 @@
             <dependencies>
                 <dependency namespace="Application\ENFramework\Models" class="Request"/>
                 <dependency namespace="Application\Services" class="DatabaseService"/>
-                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
@@ -42,7 +42,7 @@
             <dependencies>
                 <dependency namespace="Application\ENFramework\Models" class="Request"/>
                 <dependency namespace="Application\Services" class="RentPeriodService"/>
-                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
@@ -50,13 +50,13 @@
             <dependencies>
                 <dependency namespace="Application\ENFramework\Models" class="Request"/>
                 <dependency namespace="Application\Services" class="RentPeriodService"/>
-                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Controllers" class="MenuController">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
@@ -64,7 +64,7 @@
             <dependencies>
                 <dependency namespace="Application\ENFramework\Models" class="Request"/>
                 <dependency namespace="Application\Services" class="UnavailableRentPeriodService"/>
-                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
@@ -72,7 +72,7 @@
             <dependencies>
                 <dependency namespace="Application\ENFramework\Models" class="Request"/>
                 <dependency namespace="Application\Services" class="FileService"/>
-                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
@@ -80,7 +80,7 @@
             <dependencies>
                 <dependency namespace="Application\ENFramework\Models" class="Request"/>
                 <dependency namespace="Application\Services" class="ResetPasswordService"/>
-                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
@@ -88,7 +88,7 @@
             <dependencies>
                 <dependency namespace="Application\ENFramework\Models" class="Request"/>
                 <dependency namespace="Application\Services" class="PasswordService"/>
-                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
@@ -169,89 +169,89 @@
         <!-- Mappers -->
         <dependency namespace="Application\Mappers" class="RentalObjectMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="UserMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="UserValidationMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="RentPeriodMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="RentPeriodValidationMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="DatabaseMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="UnavailableRentPeriodMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="FileMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="ResetPasswordMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="PasswordMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <!-- Others -->
-        <dependency namespace="Application\ENFramework\Models" class="DatabaseConnection">
+        <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Factories"
+                <dependency namespace="Application\ENFramework\Helpers\Database\Factories"
                             class="DatabaseConnectionFactory"/>
-                <dependency namespace="Application\ENFramework\Helpers"
+                <dependency namespace="Application\ENFramework\Helpers\Database"
                             class="MySQLValueFormatter"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory">
+        <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory">
             <dependencies/>
         </dependency>
 
         <dependency namespace="Application\Controllers" class="IndexHTMLController">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Helpers" class="ResponseFactory"/>
+                <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
         </dependency>
 
-        <dependency namespace="Application\ENFramework\Factories" class="DatabaseConnectionFactory">
+        <dependency namespace="Application\ENFramework\Helpers\Database\Factories" class="DatabaseConnectionFactory">
             <dependencies/>
         </dependency>
 
-        <dependency namespace="Application\ENFramework\Helpers" class="MySQLValueFormatter">
+        <dependency namespace="Application\ENFramework\Helpers\Database" class="MySQLValueFormatter">
             <dependencies/>
         </dependency>
 

@@ -9,7 +9,7 @@
 namespace Tests\ENFrameworkTests\FactoryTest;
 
 
-use Application\ENFramework\Factories\DatabaseConnectionFactory;
+use Application\ENFramework\Helpers\Database\Factories\DatabaseConnectionFactory;
 
 class DatabaseConnectionFactoryTest extends \PHPUnit_Framework_TestCase{
 

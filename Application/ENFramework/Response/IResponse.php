@@ -5,7 +5,7 @@
  * Date: 2014-07-08
  * Time: 20:40
  */
-namespace Application\ENFramework\Helpers;
+namespace Application\ENFramework\Response;
 
 use Application\ENFramework\Helpers\Interfaces\IToArray;
 

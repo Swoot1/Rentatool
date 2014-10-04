@@ -6,7 +6,7 @@
  * Time: 15:24
  */
 
-namespace Application\ENFramework\Helpers;
+namespace Application\ENFramework\Helpers\Database;
 
 
 interface IMySQLValueFormatter {
