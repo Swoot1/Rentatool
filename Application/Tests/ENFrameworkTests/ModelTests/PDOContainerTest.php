@@ -7,8 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-use Application\ENFramework\Database\Factories\DatabaseConnectionFactory;
-use Application\ENFramework\Database\Models\PDOContainer;
+use Application\PHPFramework\Database\Factories\DatabaseConnectionFactory;
 
 class PDOContainerTest extends PHPUnit_Framework_TestCase{
 
