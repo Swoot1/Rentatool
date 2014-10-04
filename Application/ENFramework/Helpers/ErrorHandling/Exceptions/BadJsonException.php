@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Application\ENFramework\Helpers\ErrorHandling\Exceptions;
+namespace Application\ENFramework\Helpers\ErrorHandling\Exceptions;
 
 
 class BadJsonException extends \Exception{
