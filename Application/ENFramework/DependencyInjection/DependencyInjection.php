@@ -5,7 +5,7 @@
  * Time: 12:49
  */
 
-namespace Application\ENFramework\Helpers\DependencyInjection;
+namespace Application\ENFramework\DependencyInjection;
 
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 use Application\ENFramework\Models\Request;

@@ -7,14 +7,14 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\ENFramework\Helpers\AccessRules;
+namespace Application\ENFramework\AccessRules;
 
 
 use Application\Models\User;
 
-class AuthorizedAccessRule implements IAccessRule {
+class AuthorizedAccessRule implements IAccessRule{
 
-   public function isAccessAllowed(User $user) {
+   public function isAccessAllowed(User $user){
       return true;
    }
 

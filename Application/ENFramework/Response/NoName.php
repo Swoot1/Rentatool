@@ -12,6 +12,7 @@ use Application\ENFramework\Collections\ValueValidationCollection;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 use Application\ENFramework\Helpers\Interfaces\IToArray;
 use Application\ENFramework\Models\GeneralModel;
+use Application\ENFramework\Response\Models\Notifier;
 
 class NoName extends GeneralModel{
    protected $metadata;
@@ -46,10 +47,9 @@ class NoName extends GeneralModel{
 
       if ($contentType === 'application/json'){
          $formattedData = $this->_contentTypeConverter->convertDataToJSON($this->toArray());
-      }else if($contentType === 'text/html'){
+      } else if ($contentType === 'text/html'){
          $formattedData = $this->toArray()['responseData'];
-      }
-      else{
+      } else{
          throw new ApplicationException('Ange en giltig content-type.');
       }
 

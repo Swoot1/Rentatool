@@ -11,11 +11,11 @@ namespace Application\Services;
 
 
 use Application\Collections\MenuItemCollection;
-use Application\ENFramework\Helpers\AccessRules\AdministrativeAccessRule;
-use Application\ENFramework\Helpers\AccessRules\AuthorizedAccessRule;
+use Application\ENFramework\AccessRules\AdministrativeAccessRule;
+use Application\ENFramework\AccessRules\AuthorizedAccessRule;
 use Application\ENFramework\Helpers\SessionManager;
 
-class MenuService {
+class MenuService{
    private $menuItems;
 
    public function __construct(){
@@ -27,7 +27,7 @@ class MenuService {
    }
 
    public function getMenuItems(){
-      $menuItems = [];
+      $menuItems      = [];
       $isUserLoggedIn = SessionManager::isUserLoggedIn();
 
       foreach ($this->menuItems as $menuItem){

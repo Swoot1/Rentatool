@@ -7,18 +7,18 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\ENFramework\Helpers\AccessRules;
+namespace Application\ENFramework\AccessRules;
 
 
 use Application\Models\User;
 
-class AdministrativeAccessRule implements IAccessRule {
+class AdministrativeAccessRule implements IAccessRule{
 
    /**
     * @param User $user
     * @return bool
     */
-   public function isAccessAllowed(User $user) {
+   public function isAccessAllowed(User $user){
       return $user->hasAdministrativeAccess();
    }
 }

@@ -8,6 +8,7 @@
 namespace Application\ENFramework\Response;
 
 use Application\ENFramework\Helpers\Interfaces\IToArray;
+use Application\ENFramework\Response\Models\Notifier;
 
 
 /**

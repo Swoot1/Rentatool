@@ -9,6 +9,7 @@
 namespace Application\ENFramework\Response;
 
 use Application\ENFramework\Collections\GeneralCollection;
+use Application\ENFramework\Response\Models\Notifier;
 
 class NotificationCollection extends GeneralCollection implements INotificationCollection{
    protected $data = array();

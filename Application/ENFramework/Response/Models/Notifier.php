@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\ENFramework\Response;
+namespace Application\ENFramework\Response\Models;
 
 use Application\ENFramework\Collections\ValueValidationCollection;
 use Application\ENFramework\Helpers\Validation\TextValidation;
@@ -26,9 +26,9 @@ class Notifier extends GeneralModel{
 
    protected function setUpValidation(){
       $this->setValidation(
-         new ValueValidationCollection(array(
+           new ValueValidationCollection(array(
                                             new TextValidation(array('genericName' => 'Meddelande', 'propertyName' => 'message')),
                                             new TextValidation(array('genericName' => 'Typ', 'propertyName' => 'type'))
-                                       )));
+                                         )));
    }
 }

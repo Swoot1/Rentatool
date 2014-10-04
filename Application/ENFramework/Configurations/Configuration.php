@@ -20,7 +20,7 @@ set_include_path(PROJECT_ROOT);
 ini_set('session.save_path', 'tmp');
 
 // Set up the auto loader.
-require_once 'AutoLoader.php';
+require_once 'Application/ENFramework/Helpers/AutoLoader.php';
 $autoLoader = new \Application\ENFramework\Helpers\Autoloader();
 $autoLoader->setUpAutoLoader();
 

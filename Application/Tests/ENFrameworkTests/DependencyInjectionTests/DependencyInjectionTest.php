@@ -9,7 +9,7 @@
 namespace Tests\ENFrameworkTests\DependencyInjectionTests;
 
 
-use Application\ENFramework\Helpers\DependencyInjection\DependencyInjection;
+use Application\ENFramework\DependencyInjection\DependencyInjection;
 
 class DependencyInjectionTest extends \PHPUnit_Framework_TestCase{
 

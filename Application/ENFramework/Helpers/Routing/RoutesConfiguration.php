@@ -11,8 +11,8 @@
 namespace Application\ENFramework\Helpers\Routing;
 
 use Application\Collections\RequestMethodCollection;
-use Application\ENFramework\Helpers\AccessRules\AdministrativeAccessRule;
-use Application\ENFramework\Helpers\AccessRules\AuthorizedAccessRule;
+use Application\ENFramework\AccessRules\AdministrativeAccessRule;
+use Application\ENFramework\AccessRules\AuthorizedAccessRule;
 
 $routes = array();
 
