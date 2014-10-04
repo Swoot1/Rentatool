@@ -9,8 +9,8 @@
 namespace Application\Services;
 
 use Application\Collections\RentalObjectCollection;
-use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
+use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
+use Application\PHPFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
 use Application\Filters\RentalObjectFilter;
 use Application\Mappers\RentalObjectMapper;
 use Application\Models\RentalObject;

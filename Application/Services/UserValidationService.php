@@ -9,7 +9,7 @@
 namespace Application\Services;
 
 
-use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
+use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\Mappers\UserValidationMapper;
 use Application\Models\User;
 
@@ -35,7 +35,7 @@ class UserValidationService{
    /**
     * @param User $userModel
     * @return bool
-    * @throws \Application\ENFramework\Helpersndling\Exceptions\ApplicationException
+    * @throws \Application\PHPFramework\Helpersndling\Exceptions\ApplicationException
     */
    private function checkUniqueUsername(User $userModel){
       $isUniqueUsername = $this->userValidationMapper->isUniqueUsername($userModel->getId(), $userModel->getUsername());
@@ -50,7 +50,7 @@ class UserValidationService{
    /**
     * @param User $userModel
     * @return bool
-    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    private function checkUniqueEmail(User $userModel){
       $isUniqueEmail = $this->userValidationMapper->isUniqueEmail($userModel->getId(), $userModel->getEmail());

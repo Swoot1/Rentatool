@@ -1,14 +1,14 @@
 <?php
-use Application\ENFramework\DependencyInjection\DependencyInjection;
-use Application\ENFramework\Database\Factories\DatabaseConnectionFactory;
-use Application\ENFramework\ErrorHandling\ErrorHTTPStatusCodeFactory;
-use Application\ENFramework\ErrorHandling\Exceptions\UserIsNotAllowedException;
-use Application\ENFramework\Request\RequestDispatcher;
-use Application\ENFramework\SessionManager;
-use Application\ENFramework\Response\Factories\ResponseFactory;
+use Application\PHPFramework\DependencyInjection\DependencyInjection;
+use Application\PHPFramework\Database\Factories\DatabaseConnectionFactory;
+use Application\PHPFramework\ErrorHandling\ErrorHTTPStatusCodeFactory;
+use Application\PHPFramework\ErrorHandling\Exceptions\UserIsNotAllowedException;
+use Application\PHPFramework\Request\RequestDispatcher;
+use Application\PHPFramework\SessionManager;
+use Application\PHPFramework\Response\Factories\ResponseFactory;
 
-require_once 'Application/ENFramework/SessionManager.php';
-require_once 'Application/ENFramework/Configurations/Configuration.php';
+require_once 'Application/PHPFramework/SessionManager.php';
+require_once 'Application/PHPFramework/Configurations/Configuration.php';
 require_once 'vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
 
 SessionManager::startSession('User');
@@ -20,13 +20,13 @@ try{
    $requestDispatcher = new RequestDispatcher();
    $requestModel      = $requestDispatcher->getRequestModel();
 
-   $routeCollection = include_once 'Application/ENFramework/Routing/RoutesConfiguration.php';
+   $routeCollection = include_once 'Application/PHPFramework/Routing/RoutesConfiguration.php';
    $route           = $routeCollection->getRouteFromRequest($requestModel);
 
    if ($route->isUserAllowed()){
       $databaseConnection->beginTransaction();
 
-      $dependencyInjectionContainer = simplexml_load_file('Application/ENFramework/DependencyInjection/DependencyInjectionContainer.xml');
+      $dependencyInjectionContainer = simplexml_load_file('Application/PHPFramework/DependencyInjection/DependencyInjectionContainer.xml');
       $dependencyInjection          = new DependencyInjection($dependencyInjectionContainer);
       $controller                   = $dependencyInjection->getInstantiatedClass($route->getController(), $requestModel);
       $response                     = $requestModel->callControllerMethod($controller);
@@ -43,7 +43,7 @@ try{
    $responseFactory            = new ResponseFactory();
    $response                   = $responseFactory->createResponse();
    $response->setStatusCode($HTTPStatusCode);
-   $response->setResponseData(new Application\ENFramework\ErrorHandling\ErrorTrace(array('message' => $exception->getMessage(), 'file' => $exception->getFile(), 'line' => $exception->getLine(), 'trace' => $exception->getTrace())));
+   $response->setResponseData(new Application\PHPFramework\ErrorHandling\ErrorTrace(array('message' => $exception->getMessage(), 'file' => $exception->getFile(), 'line' => $exception->getLine(), 'trace' => $exception->getTrace())));
    $response->sendResponse();
 
    $databaseConnection->rollBack();

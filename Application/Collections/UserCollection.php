@@ -9,7 +9,7 @@
 namespace Application\Collections;
 
 
-use Application\ENFramework\Collections\GeneralCollection;
+use Application\PHPFramework\Collections\GeneralCollection;
 
 class UserCollection extends GeneralCollection{
     protected $model = 'Application\Models\User';

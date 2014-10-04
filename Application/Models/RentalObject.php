@@ -10,10 +10,10 @@
 namespace Application\Models;
 
 use Application\Collections\FileCollection;
-use Application\ENFramework\Validation\Collections\ValueValidationCollection;
-use Application\ENFramework\Validation\IntegerValidation;
-use Application\ENFramework\Validation\TextValidation;
-use Application\ENFramework\Models\GeneralModel;
+use Application\PHPFramework\Validation\Collections\ValueValidationCollection;
+use Application\PHPFramework\Validation\IntegerValidation;
+use Application\PHPFramework\Validation\TextValidation;
+use Application\PHPFramework\Models\GeneralModel;
 
 class RentalObject extends GeneralModel{
    protected $id;

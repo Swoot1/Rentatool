@@ -5,10 +5,10 @@
  * Time: 17:44
  */
 
-namespace Tests\ENFrameworkTests\HelperTests\ValidationTests;
+namespace Tests\PHPFrameworkTests\HelperTests\ValidationTests;
 
 
-use Application\ENFramework\Validation\TextValidation;
+use Application\PHPFramework\Validation\TextValidation;
 
 class TextValidationTest extends \PHPUnit_Framework_TestCase{
    public function testObjectValidation() {
@@ -26,7 +26,7 @@ class TextValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ogiltigt värde för beskrivning.
     */
    public function testUnAllowedTextCharacters() {

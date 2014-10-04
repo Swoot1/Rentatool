@@ -8,13 +8,13 @@
 
 namespace Application\Models;
 
-use Application\ENFramework\Validation\Collections\ValueValidationCollection;
-use Application\ENFramework\Validation\AlphaNumericValidation;
-use Application\ENFramework\Validation\BooleanValidation;
-use Application\ENFramework\Validation\EmailValidation;
-use Application\ENFramework\Validation\IntegerValidation;
-use Application\ENFramework\Validation\PasswordValidation;
-use Application\ENFramework\Models\GeneralModel;
+use Application\PHPFramework\Validation\Collections\ValueValidationCollection;
+use Application\PHPFramework\Validation\AlphaNumericValidation;
+use Application\PHPFramework\Validation\BooleanValidation;
+use Application\PHPFramework\Validation\EmailValidation;
+use Application\PHPFramework\Validation\IntegerValidation;
+use Application\PHPFramework\Validation\PasswordValidation;
+use Application\PHPFramework\Models\GeneralModel;
 
 class User extends GeneralModel{
 

@@ -9,9 +9,9 @@
 
 namespace Application\Controllers;
 
-use Application\ENFramework\SessionManager;
-use Application\ENFramework\Request\Request;
-use Application\ENFramework\Response\Factories\ResponseFactory;
+use Application\PHPFramework\SessionManager;
+use Application\PHPFramework\Request\Request;
+use Application\PHPFramework\Response\Factories\ResponseFactory;
 use Application\Filters\RentalObjectFilter;
 use Application\Services\rentalObjectService;
 
@@ -30,7 +30,7 @@ class RentalObjectController{
    }
 
    /**
-    * @return \Application\ENFramework\Response\Response
+    * @return \Application\PHPFramework\Response\Response
     */
    public function index(){
       $GETParameters          = $this->request->getGETParameters();

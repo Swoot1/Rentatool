@@ -6,9 +6,9 @@
  * Time: 09:37
  */
 
-namespace Tests\ENFrameworkTests\HelperTests;
+namespace Tests\PHPFrameworkTests\HelperTests;
 
-use Application\ENFramework\RequestFactory;
+use Application\PHPFramework\RequestFactory;
 
 class RequestFactoryTest extends \PHPUnit_Framework_TestCase{
    public function testBuild(){

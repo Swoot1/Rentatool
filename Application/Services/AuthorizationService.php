@@ -8,8 +8,8 @@
 namespace Application\Services;
 
 
-use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
-use Application\ENFramework\SessionManager;
+use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
+use Application\PHPFramework\SessionManager;
 use Application\Models\Authorization;
 
 class AuthorizationService{

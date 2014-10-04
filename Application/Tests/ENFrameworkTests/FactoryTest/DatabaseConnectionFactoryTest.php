@@ -6,10 +6,10 @@
  * Time: 10:21
  */
 
-namespace Tests\ENFrameworkTests\FactoryTest;
+namespace Tests\PHPFrameworkTests\FactoryTest;
 
 
-use Application\ENFramework\Database\Factories\DatabaseConnectionFactory;
+use Application\PHPFramework\Database\Factories\DatabaseConnectionFactory;
 
 class DatabaseConnectionFactoryTest extends \PHPUnit_Framework_TestCase{
 

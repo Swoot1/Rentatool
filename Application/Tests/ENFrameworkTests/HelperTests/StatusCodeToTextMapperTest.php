@@ -5,10 +5,10 @@
  * Time: 09:07
  */
 
-namespace Tests\ENFrameworkTests\HelperTests;
+namespace Tests\PHPFrameworkTests\HelperTests;
 
 
-use Application\ENFramework\StatusCodeToTextMapper;
+use Application\PHPFramework\StatusCodeToTextMapper;
 
 class StatusCodeToTextMapperTest extends \PHPUnit_Framework_TestCase{
 
@@ -20,7 +20,7 @@ class StatusCodeToTextMapperTest extends \PHPUnit_Framework_TestCase{
 
    /**
     *
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Okänd http status code "600".
     */
    public function testGetNoneExistingResponseCodeText(){

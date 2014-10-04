@@ -9,9 +9,9 @@
 namespace Application\Filters;
 
 
-use Application\ENFramework\Validation\Collections\ValueValidationCollection;
-use Application\ENFramework\Validation\IntegerValidation;
-use Application\ENFramework\Models\GeneralModel;
+use Application\PHPFramework\Validation\Collections\ValueValidationCollection;
+use Application\PHPFramework\Validation\IntegerValidation;
+use Application\PHPFramework\Models\GeneralModel;
 
 class UnavailableRentPeriodFilter extends GeneralModel{
    protected $rentalObjectId = null;

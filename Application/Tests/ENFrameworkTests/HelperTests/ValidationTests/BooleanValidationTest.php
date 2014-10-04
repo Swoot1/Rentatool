@@ -5,10 +5,10 @@
  * Time: 13:33
  */
 
-namespace Tests\ENFrameworkTests\HelperTests\ValidationTests;
+namespace Tests\PHPFrameworkTests\HelperTests\ValidationTests;
 
 
-use Application\ENFramework\Validation\BooleanValidation;
+use Application\PHPFramework\Validation\BooleanValidation;
 
 class BooleanValidationTest extends \PHPUnit_Framework_TestCase{
 
@@ -19,7 +19,7 @@ class BooleanValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Flagga måste vara en boolean.
     */
    public function testValidateIntegerBoolean(){
@@ -28,7 +28,7 @@ class BooleanValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Flagga måste vara en boolean.
     */
    public function testValidateBooleanAsString(){

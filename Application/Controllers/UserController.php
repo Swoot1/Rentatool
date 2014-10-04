@@ -8,9 +8,9 @@
 
 namespace Application\Controllers;
 
-use Application\ENFramework\SessionManager;
-use Application\ENFramework\Request\Request;
-use Application\ENFramework\Response\Factories\ResponseFactory;
+use Application\PHPFramework\SessionManager;
+use Application\PHPFramework\Request\Request;
+use Application\PHPFramework\Response\Factories\ResponseFactory;
 use Application\Services\UserService;
 
 class UserController{

@@ -10,7 +10,7 @@ namespace Application\Services;
 
 
 use Application\Collections\UserCollection;
-use Application\ENFramework\ErrorHandling\Exceptions\NotFoundException;
+use Application\PHPFramework\ErrorHandling\Exceptions\NotFoundException;
 use Application\Mappers\UserMapper;
 use Application\Models\User;
 
@@ -60,7 +60,7 @@ class UserService{
    /**
     * @param $id
     * @return User
-    * @throws \Application\ENFramework\Helpersndling\Exceptions\NotFoundException
+    * @throws \Application\PHPFramework\Helpersndling\Exceptions\NotFoundException
     */
    public function read($id){
       $result = $this->userMapper->read($id);
@@ -75,7 +75,7 @@ class UserService{
    /**
     * @param $email
     * @return null|User
-    * @throws \Application\ENFramework\Helpers\ErrorHaxceptions\NotFoundException
+    * @throws \Application\PHPFramework\Helpers\ErrorHaxceptions\NotFoundException
     */
    public function getUserByEmail($email){
       $userData = $this->userMapper->getUserByEmail($email);
@@ -93,7 +93,7 @@ class UserService{
     * @param $id
     * @param $requestData
     * @return null|User
-    * @throws \Application\ENFramework\Helpers\ErrorHandling\Es\NotFoundException
+    * @throws \Application\PHPFramework\Helpers\ErrorHandling\Es\NotFoundException
     */
    public function update($id, $requestData){
 
@@ -111,7 +111,7 @@ class UserService{
    /**
     * @param $id
     * @return bool
-    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
+    * @throws \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
     */
    private function checkThatUserExists($id){
       $savedUser = $this->read($id);

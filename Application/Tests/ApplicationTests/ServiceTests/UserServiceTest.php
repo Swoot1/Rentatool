@@ -14,7 +14,7 @@ use Application\Services\UserValidationService;
 
 class UserServiceTest extends \PHPUnit_Framework_TestCase{
    /**
-    * @expectedException \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Användarnamnet är redan upptaget.
     */
    public function testUniqueUsername(){
@@ -38,7 +38,7 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage E-mailadressen används redan.
     */
    public function testUniqueEmail(){

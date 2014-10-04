@@ -5,11 +5,11 @@
  * Time: 11:21
  */
 
-namespace Tests\ENFrameworkTests\HelperTests;
+namespace Tests\PHPFrameworkTests\HelperTests;
 
-use Application\ENFramework\ErrorHandling\ErrorHTTPStatusCodeFactory;
-use Application\ENFramework\Helpersndling\Exceptions\ApplicationException;
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
+use Application\PHPFramework\ErrorHandling\ErrorHTTPStatusCodeFactory;
+use Application\PHPFramework\Helpersndling\Exceptions\ApplicationException;
+use Application\PHPFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
 
 class ErrorHeaderFactoryTest extends \PHPUnit_Framework_TestCase{
 

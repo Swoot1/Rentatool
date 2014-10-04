@@ -5,9 +5,9 @@
  * Time: 09:09
  */
 
-namespace Tests\ENFrameworkTests\HelperTests;
+namespace Tests\PHPFrameworkTests\HelperTests;
 
-use Application\ENFramework\Routing\Route;
+use Application\PHPFramework\Routing\Route;
 
 class RouteTest extends \PHPUnit_Framework_TestCase{
 

@@ -9,9 +9,9 @@
 namespace Application\Models;
 
 
-use Application\ENFramework\Validation\Collections\ValueValidationCollection;
-use Application\ENFramework\Validation\IntegerValidation;
-use Application\ENFramework\Models\GeneralModel;
+use Application\PHPFramework\Validation\Collections\ValueValidationCollection;
+use Application\PHPFramework\Validation\IntegerValidation;
+use Application\PHPFramework\Models\GeneralModel;
 
 class RentalObjectFileDependency extends GeneralModel{
    protected $id;

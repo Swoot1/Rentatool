@@ -7,9 +7,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Tests\ENFrameworkTests\HelperTests;
+namespace Rentatool\Tests\PHPFrameworkTests\HelperTests;
 
-use Application\ENFramework\JsonParser;
+use Application\PHPFramework\JsonParser;
 
 class JsonParserTest extends \PHPUnit_Framework_TestCase{
 
@@ -53,7 +53,7 @@ class JsonParserTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException        \Application\ENFramework\ErrorHandling\Exceptions\BadJsonException
+    * @expectedException        \Application\PHPFramework\ErrorHandling\Exceptions\BadJsonException
     * @expectedExceptionMessage Ogiltig JSON: Ogiltigt format
     */
    public function testSingleQuotes(){
@@ -62,7 +62,7 @@ class JsonParserTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException        \Application\ENFramework\ErrorHandling\Exceptions\BadJsonException
+    * @expectedException        \Application\PHPFramework\ErrorHandling\Exceptions\BadJsonException
     * @expectedExceptionMessage Ogiltig JSON: Ogiltigt format
     */
    public function testInvalidSyntax(){
@@ -71,7 +71,7 @@ class JsonParserTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException        \Application\ENFramework\ErrorHandling\Exceptions\BadJsonException
+    * @expectedException        \Application\PHPFramework\ErrorHandling\Exceptions\BadJsonException
     * @expectedExceptionMessage Ogiltig JSON: Ogiltig encoding
     */
    public function testInvalidUTF8Encoding(){

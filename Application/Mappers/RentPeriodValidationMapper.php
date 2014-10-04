@@ -9,7 +9,7 @@
 namespace Application\Mappers;
 
 
-use Application\ENFramework\Database\Models\IDatabaseConnection;
+use Application\PHPFramework\Database\Models\IDatabaseConnection;
 
 class RentPeriodValidationMapper{
    private $databaseConnection;

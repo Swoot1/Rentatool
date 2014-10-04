@@ -5,9 +5,9 @@
  * Time: 10:03
  */
 
-namespace Tests\ENFrameworkTests\HelperTests\ValidationTests;
+namespace Tests\PHPFrameworkTests\HelperTests\ValidationTests;
 
-use Application\ENFramework\Validation\AlphaNumericValidation;
+use Application\PHPFramework\Validation\AlphaNumericValidation;
 
 class AlphaNumericValidationTest extends \PHPUnit_Framework_TestCase{
 
@@ -27,7 +27,7 @@ class AlphaNumericValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Användarnamn måste vara alfanumeriskt.
     */
    public function testUnAllowedAlphaNumeric(){

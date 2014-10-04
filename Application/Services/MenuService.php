@@ -11,9 +11,9 @@ namespace Application\Services;
 
 
 use Application\Collections\MenuItemCollection;
-use Application\ENFramework\AccessRules\AdministrativeAccessRule;
-use Application\ENFramework\AccessRules\AuthorizedAccessRule;
-use Application\ENFramework\SessionManager;
+use Application\PHPFramework\AccessRules\AdministrativeAccessRule;
+use Application\PHPFramework\AccessRules\AuthorizedAccessRule;
+use Application\PHPFramework\SessionManager;
 
 class MenuService{
    private $menuItems;

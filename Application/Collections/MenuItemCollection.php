@@ -10,7 +10,7 @@
 namespace Application\Collections;
 
 
-use Application\ENFramework\Collections\GeneralCollection;
+use Application\PHPFramework\Collections\GeneralCollection;
 
 class MenuItemCollection extends GeneralCollection{
    protected $model = 'Application\Models\MenuItem';

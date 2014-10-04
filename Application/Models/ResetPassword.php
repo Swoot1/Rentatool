@@ -9,11 +9,11 @@
 namespace Application\Models;
 
 
-use Application\ENFramework\Validation\Collections\ValueValidationCollection;
-use Application\ENFramework\Validation\AlphaNumericValidation;
-use Application\ENFramework\Validation\DateTimeValidation;
-use Application\ENFramework\Validation\IntegerValidation;
-use Application\ENFramework\Models\GeneralModel;
+use Application\PHPFramework\Validation\Collections\ValueValidationCollection;
+use Application\PHPFramework\Validation\AlphaNumericValidation;
+use Application\PHPFramework\Validation\DateTimeValidation;
+use Application\PHPFramework\Validation\IntegerValidation;
+use Application\PHPFramework\Models\GeneralModel;
 
 class ResetPassword extends GeneralModel{
 

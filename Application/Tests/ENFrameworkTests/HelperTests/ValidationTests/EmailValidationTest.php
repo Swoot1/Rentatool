@@ -6,10 +6,10 @@
  * Time: 09:56
  */
 
-namespace Tests\ENFrameworkTests\HelperTests\ValidationTests;
+namespace Tests\PHPFrameworkTests\HelperTests\ValidationTests;
 
 
-use Application\ENFramework\Validation\EmailValidation;
+use Application\PHPFramework\Validation\EmailValidation;
 
 class EmailValidationTest extends \PHPUnit_Framework_TestCase{
 
@@ -20,7 +20,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig e-postadress.
     */
    public function testValidateMissingAtCharacter(){
@@ -29,7 +29,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\ENFramework\Helpersndling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\Helpersndling\Exceptions\ApplicationException
     * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig e-postadress.
     */
    public function testValidateMissingDomain(){
@@ -38,7 +38,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\ENFramework\Helpers\ErrorHaxceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\Helpers\ErrorHaxceptions\ApplicationException
     * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig e-postadress.
     */
    public function testValidateRepeatedEmail(){
@@ -53,7 +53,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Es\ApplicationException
+    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\Es\ApplicationException
     * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig e-postadress.
     */
    public function testDashIsNotAllowedAsStart(){
@@ -62,7 +62,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\ExceptionationException
+    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\ExceptionationException
     * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig e-postadress.
     */
    public function testDashIsNotAllowedAsEnd(){
@@ -89,7 +89,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig e-postadress.
     */
    public function testValidateMissingName(){

@@ -11,7 +11,7 @@ namespace Application\Services;
 
 use Application\Collections\FileCollection;
 use Application\Collections\RentalObjectFileDependencyCollection;
-use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
+use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\Mappers\FileMapper;
 use Application\Models\File;
 use Application\Models\RentalObject;

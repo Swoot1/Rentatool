@@ -5,12 +5,12 @@
  * Time: 16:38
  */
 
-namespace Tests\ENFrameworkTests\HelperTests\Routing;
+namespace Tests\PHPFrameworkTests\HelperTests\Routing;
 
 
 use Application\Collections\RequestMethodCollection;
-use Application\ENFramework\Routing\RouteCollection;
-use Application\ENFramework\Routing\SubRouteCollection;
+use Application\PHPFramework\Routing\RouteCollection;
+use Application\PHPFramework\Routing\SubRouteCollection;
 
 class RouteCollectionTest extends \PHPUnit_Framework_TestCase{
 
@@ -41,7 +41,7 @@ class RouteCollectionTest extends \PHPUnit_Framework_TestCase{
     */
    private function getUserRequestMock($resource, $requestMethod, $action = false){
       $requestMock = $this
-         ->getMockBuilder('Application\ENFramework\Models\Request')
+         ->getMockBuilder('Application\PHPFramework\Models\Request')
          ->disableOriginalConstructor()
          ->getMock();
 
@@ -64,7 +64,7 @@ class RouteCollectionTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ogiltig request method.
     */
    public function testGetRouteFromRequestWithWrongRequestMethod(){
@@ -112,7 +112,7 @@ class RouteCollectionTest extends \PHPUnit_Framework_TestCase{
 
    /**
     * Test that a request with wrong request method for the url raises an error.
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ogiltig request method.
     */
    public function testGetSubRouteWithWrongRequestMethod(){

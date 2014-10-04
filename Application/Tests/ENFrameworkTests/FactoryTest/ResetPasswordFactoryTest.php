@@ -6,7 +6,7 @@
  * Time: 10:35
  */
 
-namespace Tests\ENFrameworkTests\FactoryTest;
+namespace Tests\PHPFrameworkTests\FactoryTest;
 
 
 use Application\Factories\ResetPasswordFactory;

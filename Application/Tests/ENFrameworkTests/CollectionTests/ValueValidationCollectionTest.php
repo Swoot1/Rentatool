@@ -5,12 +5,12 @@
  * Time: 13:45
  */
 
-namespace Tests\ENFrameworkTests\CollectionTests;
+namespace Tests\PHPFrameworkTests\CollectionTests;
 
 
-use Application\ENFramework\Validation\Collections\ValueValidationCollection;
-use Application\ENFramework\Validation\BooleanValidation;
-use Application\ENFramework\Validation\IntegerValidation;
+use Application\PHPFramework\Validation\Collections\ValueValidationCollection;
+use Application\PHPFramework\Validation\BooleanValidation;
+use Application\PHPFramework\Validation\IntegerValidation;
 
 class ValueValidationCollectionTest extends \PHPUnit_Framework_TestCase{
 
@@ -27,7 +27,7 @@ class ValueValidationCollectionTest extends \PHPUnit_Framework_TestCase{
 
    /**
     * An Exception should be thrown when the value is invalid.
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Antal måste bestå av siffror.
     */
    public function testInvalidValue(){

@@ -5,10 +5,10 @@
  * Time: 08:42
  */
 
-namespace Tests\ENFrameworkTests\HelperTests;
+namespace Tests\PHPFrameworkTests\HelperTests;
 
 
-use Application\ENFramework\Response\ContentTypeConverter;
+use Application\PHPFramework\Response\ContentTypeConverter;
 
 class ContentTypeConverterTest extends \PHPUnit_Framework_TestCase{
    public function testConvertDataToJSON(){

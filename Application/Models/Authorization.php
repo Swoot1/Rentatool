@@ -9,9 +9,9 @@
 namespace Application\Models;
 
 
-use Application\ENFramework\Validation\Collections\ValueValidationCollection;
-use Application\ENFramework\Validation\BooleanValidation;
-use Application\ENFramework\Models\GeneralModel;
+use Application\PHPFramework\Validation\Collections\ValueValidationCollection;
+use Application\PHPFramework\Validation\BooleanValidation;
+use Application\PHPFramework\Models\GeneralModel;
 
 class Authorization extends GeneralModel{
    protected $isLoggedIn = false;

@@ -7,7 +7,7 @@
 
 namespace Application\Mappers;
 
-use Application\ENFramework\Database\Models\DatabaseConnection;
+use Application\PHPFramework\Database\Models\DatabaseConnection;
 
 class DatabaseMapper{
 
