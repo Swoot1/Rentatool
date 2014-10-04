@@ -35,7 +35,7 @@ class UserValidationService{
    /**
     * @param User $userModel
     * @return bool
-    * @throws \Application\PHPFramework\Helpersndling\Exceptions\ApplicationException
+    * @throws \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     */
    private function checkUniqueUsername(User $userModel){
       $isUniqueUsername = $this->userValidationMapper->isUniqueUsername($userModel->getId(), $userModel->getUsername());

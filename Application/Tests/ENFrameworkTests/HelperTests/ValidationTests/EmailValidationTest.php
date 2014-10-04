@@ -29,7 +29,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\PHPFramework\Helpersndling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig e-postadress.
     */
    public function testValidateMissingDomain(){
@@ -38,7 +38,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\PHPFramework\Helpers\ErrorHaxceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig e-postadress.
     */
    public function testValidateRepeatedEmail(){
@@ -50,24 +50,6 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
       $emailValidation = new EmailValidation(array('genericName' => 'propertyName'));
       $result          = $emailValidation->validate('some-email@cool-domain.sexy');
       $this->assertTrue($result);
-   }
-
-   /**
-    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\Es\ApplicationException
-    * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig e-postadress.
-    */
-   public function testDashIsNotAllowedAsStart(){
-      $emailValidation = new EmailValidation(array('genericName' => 'propertyName'));
-      $emailValidation->validate('-someemail@cooldomain.sexy');
-   }
-
-   /**
-    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\ExceptionationException
-    * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig e-postadress.
-    */
-   public function testDashIsNotAllowedAsEnd(){
-      $emailValidation = new EmailValidation(array('genericName' => 'propertyName'));
-      $emailValidation->validate('someemail-@cooldomain.sexy');
    }
 
    public function testValidateShortEmail(){
@@ -89,7 +71,7 @@ class EmailValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Värdet angivet för propertyName är en ogiltig e-postadress.
     */
    public function testValidateMissingName(){

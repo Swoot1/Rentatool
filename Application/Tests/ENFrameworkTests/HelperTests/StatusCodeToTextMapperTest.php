@@ -8,7 +8,7 @@
 namespace Tests\PHPFrameworkTests\HelperTests;
 
 
-use Application\PHPFramework\StatusCodeToTextMapper;
+use Application\PHPFramework\Response\StatusCodeToTextMapper;
 
 class StatusCodeToTextMapperTest extends \PHPUnit_Framework_TestCase{
 
@@ -20,7 +20,7 @@ class StatusCodeToTextMapperTest extends \PHPUnit_Framework_TestCase{
 
    /**
     *
-    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Okänd http status code "600".
     */
    public function testGetNoneExistingResponseCodeText(){
