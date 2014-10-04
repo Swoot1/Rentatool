@@ -9,8 +9,8 @@
 namespace Application\Services;
 
 
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
-use Application\ENFramework\Helpers\Validation\EmailValidation;
+use Application\ENFramework\ErrorHandling\Exceptions\NotFoundException;
+use Application\ENFramework\Validation\EmailValidation;
 use Application\Factories\MailFactory;
 use Application\Factories\ResetPasswordFactory;
 use Application\Mappers\ResetPasswordMapper;

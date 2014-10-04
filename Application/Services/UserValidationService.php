@@ -9,7 +9,7 @@
 namespace Application\Services;
 
 
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\Mappers\UserValidationMapper;
 use Application\Models\User;
 
@@ -35,7 +35,7 @@ class UserValidationService{
    /**
     * @param User $userModel
     * @return bool
-    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpersndling\Exceptions\ApplicationException
     */
    private function checkUniqueUsername(User $userModel){
       $isUniqueUsername = $this->userValidationMapper->isUniqueUsername($userModel->getId(), $userModel->getUsername());

@@ -10,8 +10,8 @@ namespace Application\Filters;
 
 
 use Application\ENFramework\Collections\ValueValidationCollection;
-use Application\ENFramework\Helpers\Validation\DateTimeValidation;
-use Application\ENFramework\Helpers\Validation\TextValidation;
+use Application\ENFramework\Validation\DateTimeValidation;
+use Application\ENFramework\Validation\TextValidation;
 use Application\ENFramework\Models\GeneralModel;
 
 class RentalObjectFilter extends GeneralModel{
@@ -42,7 +42,7 @@ class RentalObjectFilter extends GeneralModel{
 
       $filters = array_merge($this->getDateStringFilters(), $this->getQueryFilters());
 
-      if(count($filters) > 0){
+      if (count($filters) > 0){
          $filterString = implode(' AND ', $filters);
          $query .= sprintf('%s%s', ' WHERE ', $filterString);
       }
@@ -99,9 +99,9 @@ class RentalObjectFilter extends GeneralModel{
       $filters = $this->getFromDateFilters();
       $filters = array_merge($filters, $this->getToDateFilters());
       $filters = array_merge($filters, $this->getFromAndToDateFilters());
-      $result = array();
+      $result  = array();
 
-      if(count($filters) > 0){
+      if (count($filters) > 0){
          $result[] = sprintf('NOT EXISTS(
                   SELECT id
                    FROM
@@ -144,7 +144,7 @@ class RentalObjectFilter extends GeneralModel{
    private function getToDateFilters(){
       $result = array();
 
-      if($this->toDate){
+      if ($this->toDate){
          $result[] = '(
                            :toDate <= rent_periods.to_date
                         AND
@@ -161,7 +161,7 @@ class RentalObjectFilter extends GeneralModel{
    private function getFromAndToDateFilters(){
       $result = array();
 
-      if($this->fromDate && $this->toDate){
+      if ($this->fromDate && $this->toDate){
          $result[] = '(
                            :fromDate <= rent_periods.to_date
                         AND
@@ -178,7 +178,8 @@ class RentalObjectFilter extends GeneralModel{
     */
    public function getFilterParams(){
       $DBParams = $this->getDBParameters();
-      return array_filter($DBParams, function($value){
+
+      return array_filter($DBParams, function ($value){
          return $value != null;
       });
    }

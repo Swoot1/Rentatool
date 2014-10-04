@@ -9,5 +9,5 @@
  *
  */
 
-require_once '../ENFramework/Helpers/Configuration.php';
+require_once '../ENFramework/Configuration.php';
 

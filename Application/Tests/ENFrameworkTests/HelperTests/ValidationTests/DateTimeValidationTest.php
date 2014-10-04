@@ -9,12 +9,12 @@
 namespace Tests\ENFrameworkTests\HelperTests\ValidationTests;
 
 
-use Application\ENFramework\Helpers\Validation\DateTimeValidation;
+use Application\ENFramework\Validation\DateTimeValidation;
 
 class DateTimeValidationTest extends \PHPUnit_Framework_TestCase{
 
    /**
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ogiltigt datum angivet för från datum.
     */
    public function testInvalidDate(){

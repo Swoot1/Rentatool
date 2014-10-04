@@ -28,12 +28,13 @@ class ValueValidationCollection{
     * @param $name
     * @param $value
     * @return bool
-    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
     */
    public function validate($name, $value){
       if (array_key_exists($name, $this->data)){
          $this->data[$name]->validate($value);
       }
+
       return true;
    }
 }

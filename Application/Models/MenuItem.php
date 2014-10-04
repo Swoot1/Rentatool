@@ -11,7 +11,7 @@ namespace Application\Models;
 
 
 use Application\ENFramework\Collections\ValueValidationCollection;
-use Application\ENFramework\Helpers\Validation\TextValidation;
+use Application\ENFramework\Validation\TextValidation;
 use Application\ENFramework\Models\GeneralModel;
 
 class MenuItem extends GeneralModel{
@@ -23,14 +23,14 @@ class MenuItem extends GeneralModel{
    public function setUpValidation(){
       $this->_validation = new ValueValidationCollection(
          array(
-              new TextValidation(array(
-                                      'propertyName' => 'label',
-                                      'genericName'  => 'Menytext'
-                                 )),
-              new TextValidation(array(
-                                      'propertyName' => 'callback',
-                                      'genericName'  => 'Callback'
-                                 ))
+            new TextValidation(array(
+                                  'propertyName' => 'label',
+                                  'genericName'  => 'Menytext'
+                               )),
+            new TextValidation(array(
+                                  'propertyName' => 'callback',
+                                  'genericName'  => 'Callback'
+                               ))
          )
       );
    }

@@ -10,7 +10,7 @@
 namespace Application\ENFramework\Models;
 
 use Application\ENFramework\Collections\ValueValidationCollection;
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\ENFramework\Interfaces\IGetDBParameters;
 use Application\ENFramework\Interfaces\IToArray;
 
@@ -26,6 +26,7 @@ abstract class GeneralModel implements IToArray, IGetDBParameters{
    public function __construct(array $data = array()){
       $this->setUpValidation();
       $this->setData($data);
+
       return $this;
    }
 
@@ -58,10 +59,10 @@ abstract class GeneralModel implements IToArray, IGetDBParameters{
    }
 
    private function setPropertyValue($propertyName, $value){
-      if(property_exists($this, $propertyName)){
+      if (property_exists($this, $propertyName)){
          $this->$propertyName = $value;
          $this->_validation->validate($propertyName, $value);
-      }else{
+      } else{
          throw new ApplicationException('Ogiltigt egenskapsnamn.');
       }
    }

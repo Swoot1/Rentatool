@@ -13,7 +13,7 @@ use Application\ENFramework\Interfaces\IToArray;
 /**
  * Class Header
  * Creates and can execute a header() based on its data.
- * @package Application\ENFramework\Helpers
+ * @package Application\ENFramework
  */
 interface IResponse{
    public function setStatusCode($code);

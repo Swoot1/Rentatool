@@ -9,15 +9,15 @@ namespace Tests\ENFrameworkTests\HelperTests\Routing;
 
 
 use Application\Collections\RequestMethodCollection;
-use Application\ENFramework\Helpers\Routing\RouteCollection;
-use Application\ENFramework\Helpers\Routing\SubRouteCollection;
+use Application\ENFramework\Routing\RouteCollection;
+use Application\ENFramework\Routing\SubRouteCollection;
 
-class RouteCollectionTest extends \PHPUnit_Framework_TestCase {
+class RouteCollectionTest extends \PHPUnit_Framework_TestCase{
 
    /**
     * This should work well and return the matching route.
     */
-   public function testGetRouteFromRequestNormalUseCase() {
+   public function testGetRouteFromRequestNormalUseCase(){
       $routes          = array();
       $routes['users'] = array(
          'controllerName'          => 'UserController',
@@ -39,7 +39,7 @@ class RouteCollectionTest extends \PHPUnit_Framework_TestCase {
     * @param $action
     * @return \PHPUnit_Framework_MockObject_MockObject
     */
-   private function getUserRequestMock($resource, $requestMethod, $action = false) {
+   private function getUserRequestMock($resource, $requestMethod, $action = false){
       $requestMock = $this
          ->getMockBuilder('Application\ENFramework\Models\Request')
          ->disableOriginalConstructor()
@@ -64,10 +64,10 @@ class RouteCollectionTest extends \PHPUnit_Framework_TestCase {
    }
 
    /**
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ogiltig request method.
     */
-   public function testGetRouteFromRequestWithWrongRequestMethod() {
+   public function testGetRouteFromRequestWithWrongRequestMethod(){
       $routes          = array();
       $routes['users'] = array(
          'controllerName'          => 'UserController',
@@ -81,7 +81,7 @@ class RouteCollectionTest extends \PHPUnit_Framework_TestCase {
       $routeCollection->getRouteFromRequest($requestMock);
    }
 
-   public function testGetSubRoute() {
+   public function testGetSubRoute(){
       $routes                  = array();
       $routes['authorization'] = array(
          'controllerName'          => 'AuthorizationController',
@@ -115,7 +115,7 @@ class RouteCollectionTest extends \PHPUnit_Framework_TestCase {
     * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ogiltig request method.
     */
-   public function testGetSubRouteWithWrongRequestMethod() {
+   public function testGetSubRouteWithWrongRequestMethod(){
       $routes                  = array();
       $routes['authorization'] = array(
          'controllerName'          => 'AuthorizationController',

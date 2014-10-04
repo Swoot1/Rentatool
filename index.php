@@ -1,8 +1,8 @@
 <?php
 use Application\ENFramework\DependencyInjection\DependencyInjection;
-use Application\ENFramework\Helpers\Database\Factories\DatabaseConnectionFactory;
-use Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeFactory;
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
+use Application\ENFramework\Database\Factories\DatabaseConnectionFactory;
+use Application\ENFramework\ErrorHandling\ErrorHTTPStatusCodeFactory;
+use Application\ENFramework\ErrorHandling\Exceptions\UserIsNotAllowedException;
 use Application\ENFramework\RequestDispatcher;
 use Application\ENFramework\SessionManager;
 use Application\ENFramework\Response\Factories\ResponseFactory;
@@ -20,7 +20,7 @@ try{
    $requestDispatcher = new RequestDispatcher();
    $requestModel      = $requestDispatcher->getRequestModel();
 
-   $routeCollection = include_once 'Application/ENFramework/Helpers/Routing/RoutesConfiguration.php';
+   $routeCollection = include_once 'Application/ENFramework/Routing/RoutesConfiguration.php';
    $route           = $routeCollection->getRouteFromRequest($requestModel);
 
    if ($route->isUserAllowed()){
@@ -43,7 +43,7 @@ try{
    $responseFactory            = new ResponseFactory();
    $response                   = $responseFactory->createResponse();
    $response->setStatusCode($HTTPStatusCode);
-   $response->setResponseData(new Application\ENFramework\Helpers\ErrorHandling\ErrorTrace(array('message' => $exception->getMessage(), 'file' => $exception->getFile(), 'line' => $exception->getLine(), 'trace' => $exception->getTrace())));
+   $response->setResponseData(new Application\ENFramework\ErrorHandling\ErrorTrace(array('message' => $exception->getMessage(), 'file' => $exception->getFile(), 'line' => $exception->getLine(), 'trace' => $exception->getTrace())));
    $response->sendResponse();
 
    $databaseConnection->rollBack();

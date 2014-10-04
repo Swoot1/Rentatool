@@ -7,7 +7,7 @@
 
 namespace Application\ENFramework\DependencyInjection;
 
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\ENFramework\Models\Request;
 
 class DependencyInjection{
@@ -95,7 +95,7 @@ class DependencyInjection{
     * from matchingResource.
     * @param \SimpleXMLElement $matchingXMLElement
     * @return array
-    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
     */
    private function getClassDependencies(\SimpleXMLElement $matchingXMLElement){
       $dependencies = array();

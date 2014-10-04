@@ -8,35 +8,31 @@
 namespace Application\Services;
 
 
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\ENFramework\SessionManager;
 use Application\Models\Authorization;
 
-class AuthorizationService
-{
-    private $userService;
+class AuthorizationService{
+   private $userService;
 
-    public function __construct(UserService $userService)
-    {
-        $this->userService = $userService;
-    }
+   public function __construct(UserService $userService){
+      $this->userService = $userService;
+   }
 
-    public function login($data)
-    {
-        $user = $this->userService->getUserByEmail($data['email']);
-        $invalidLogin = $user === null || $user->isValidPassword($data['password']) == false;
+   public function login($data){
+      $user         = $this->userService->getUserByEmail($data['email']);
+      $invalidLogin = $user === null || $user->isValidPassword($data['password']) == false;
 
-        if ($invalidLogin) {
-            throw new ApplicationException('Fel e-postadress eller användarnamn.');
-        } else {
-            SessionManager::setUserData($user->toArray());
-        }
+      if ($invalidLogin){
+         throw new ApplicationException('Fel e-postadress eller användarnamn.');
+      } else{
+         SessionManager::setUserData($user->toArray());
+      }
 
-        return new Authorization(array('isLoggedIn' => true));
-    }
+      return new Authorization(array('isLoggedIn' => true));
+   }
 
-    public function logout()
-    {
-        SessionManager::endSession();
-    }
+   public function logout(){
+      SessionManager::endSession();
+   }
 } 

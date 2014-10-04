@@ -10,8 +10,8 @@
 namespace Application\ENFramework\Models;
 
 use Application\ENFramework\Collections\ValueValidationCollection;
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
+use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\ErrorHandling\Exceptions\NoSuchRouteException;
 
 class Request extends GeneralModel{
    protected $requestMethod;
@@ -92,7 +92,7 @@ class Request extends GeneralModel{
    /**
     * @param $controller
     * @return mixed
-    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
     */
    private function callDeleteMethod($controller){
 
@@ -123,7 +123,7 @@ class Request extends GeneralModel{
    /**
     * @param $controller
     * @return mixed
-    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
     */
    private function callPutMethod($controller){
 

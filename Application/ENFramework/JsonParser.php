@@ -10,7 +10,7 @@
 namespace Application\ENFramework;
 
 
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\BadJsonException;
+use Application\ENFramework\ErrorHandling\Exceptions\BadJsonException;
 
 class JsonParser{
 

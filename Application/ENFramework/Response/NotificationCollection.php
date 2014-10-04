@@ -13,7 +13,7 @@ use Application\ENFramework\Response\Models\Notifier;
 
 class NotificationCollection extends GeneralCollection implements INotificationCollection{
    protected $data = array();
-   protected $model = 'Application\ENFramework\Helpers\Models\Notification';
+   protected $model = 'Application\ENFramework\Models\Notification';
 
    /**
     * @param Notifier $notifier

@@ -10,7 +10,7 @@
 namespace Application\ENFramework\Response\Models;
 
 use Application\ENFramework\Collections\ValueValidationCollection;
-use Application\ENFramework\Helpers\Validation\TextValidation;
+use Application\ENFramework\Validation\TextValidation;
 use Application\ENFramework\Models\GeneralModel;
 
 class Notifier extends GeneralModel{

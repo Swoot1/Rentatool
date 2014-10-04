@@ -10,8 +10,8 @@ namespace Application\Models;
 
 
 use Application\ENFramework\Collections\ValueValidationCollection;
-use Application\ENFramework\Helpers\Validation\DateTimeValidation;
-use Application\ENFramework\Helpers\Validation\IntegerValidation;
+use Application\ENFramework\Validation\DateTimeValidation;
+use Application\ENFramework\Validation\IntegerValidation;
 use Application\ENFramework\Models\GeneralModel;
 
 class UnavailableRentPeriod extends GeneralModel{

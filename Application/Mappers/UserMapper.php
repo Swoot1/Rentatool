@@ -8,7 +8,7 @@
 
 namespace Application\Mappers;
 
-use Application\ENFramework\Helpers\Database\Models\IDatabaseConnection;
+use Application\ENFramework\Database\Models\IDatabaseConnection;
 
 class UserMapper{
 

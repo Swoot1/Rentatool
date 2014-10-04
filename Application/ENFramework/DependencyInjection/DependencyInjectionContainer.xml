@@ -169,70 +169,70 @@
         <!-- Mappers -->
         <dependency namespace="Application\Mappers" class="RentalObjectMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="UserMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="UserValidationMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="RentPeriodMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="RentPeriodValidationMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="DatabaseMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="UnavailableRentPeriodMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="FileMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="ResetPasswordMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Mappers" class="PasswordMapper">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection"/>
+                <dependency namespace="Application\ENFramework\Database\Models" class="DatabaseConnection"/>
             </dependencies>
         </dependency>
 
         <!-- Others -->
-        <dependency namespace="Application\ENFramework\Helpers\Database\Models" class="DatabaseConnection">
+        <dependency namespace="Application\ENFramework\Database\Models" class="DatabaseConnection">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Helpers\Database\Factories"
+                <dependency namespace="Application\ENFramework\Database\Factories"
                             class="DatabaseConnectionFactory"/>
-                <dependency namespace="Application\ENFramework\Helpers\Database"
+                <dependency namespace="Application\ENFramework\Database"
                             class="MySQLValueFormatter"/>
             </dependencies>
         </dependency>
@@ -247,11 +247,11 @@
             </dependencies>
         </dependency>
 
-        <dependency namespace="Application\ENFramework\Helpers\Database\Factories" class="DatabaseConnectionFactory">
+        <dependency namespace="Application\ENFramework\Database\Factories" class="DatabaseConnectionFactory">
             <dependencies/>
         </dependency>
 
-        <dependency namespace="Application\ENFramework\Helpers\Database" class="MySQLValueFormatter">
+        <dependency namespace="Application\ENFramework\Database" class="MySQLValueFormatter">
             <dependencies/>
         </dependency>
 

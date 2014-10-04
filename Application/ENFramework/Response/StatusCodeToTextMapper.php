@@ -8,17 +8,17 @@
 namespace Application\ENFramework\Response;
 
 
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
 
-class StatusCodeToTextMapper {
+class StatusCodeToTextMapper{
    /**
     * Returns the text that should go with the response code.
     * @param $statusCode
     * @return string
-    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
     */
-   public function getResponseCodeText($statusCode) {
-      switch ($statusCode) {
+   public function getResponseCodeText($statusCode){
+      switch ($statusCode){
          case 100:
             $text = 'Continue';
             break;

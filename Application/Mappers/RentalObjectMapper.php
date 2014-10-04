@@ -9,7 +9,7 @@
 
 namespace Application\Mappers;
 
-use Application\ENFramework\Helpers\Database\Models\IDatabaseConnection;
+use Application\ENFramework\Database\Models\IDatabaseConnection;
 use Application\Filters\RentalObjectFilter;
 
 class RentalObjectMapper{
@@ -84,16 +84,19 @@ class RentalObjectMapper{
    public function create(array $DBParameters){
       unset($DBParameters['id']);
       $result = $this->databaseConnection->runQuery($this->createSQL, $DBParameters);
+
       return $this->read($result['lastInsertId']);
    }
 
    public function update(array $DBParameters){
       $this->databaseConnection->runQuery($this->updateSQL, $DBParameters);
+
       return $this;
    }
 
    public function read($id){
       $result = $this->databaseConnection->runQuery($this->readSQL, array('id' => $id));
+
       return array_shift($result);
    }
 

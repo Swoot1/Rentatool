@@ -8,29 +8,29 @@
 
 namespace Application\ENFramework;
 
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\Models\User;
 
 /**
  * Class SessionManager
  * All cred to Treehouse http://blog.teamtreehouse.com/how-to-create-bulletproof-sessions
- * @package Application\ENFramework\Helpers
+ * @package Application\ENFramework
  */
-class SessionManager {
-   static function startSession($name, $limit = 0, $path = '/', $domain = null, $secure = null) {
+class SessionManager{
+   static function startSession($name, $limit = 0, $path = '/', $domain = null, $secure = null){
 
       session_start();
 
       self::setInitialValues($name, $limit, $path, $domain, $secure);
 
-      if (self::hasSessionExpired()) {
+      if (self::hasSessionExpired()){
          self::endSession();
-      } else {
+      } else{
          self::restoreSession();
       }
    }
 
-   static function setInitialValues($name, $limit, $path, $domain, $secure) {
+   static function setInitialValues($name, $limit, $path, $domain, $secure){
       // Set the cookie name.
       session_name($name . "_Session");
 
@@ -44,18 +44,18 @@ class SessionManager {
       session_set_cookie_params($limit, $path, $domain, $https, true);
    }
 
-   static protected function restoreSession() {
+   static protected function restoreSession(){
       $resetSessionVariable = self::hasTheSessionBeenSetBefore() === false || self::hasTheSessionVariablesChanged();
 
-      if ($resetSessionVariable) {
+      if ($resetSessionVariable){
          self::resetSessionVariables();
          // Give a 5% chance of the session id changing on any request.
-      } elseif (rand(1, 100) < 5) {
+      } elseif (rand(1, 100) < 5){
          self::regenerateSession();
       }
    }
 
-   static protected function resetSessionVariables() {
+   static protected function resetSessionVariables(){
       $_SESSION['IPAddress'] = $_SERVER['REMOTE_ADDR'];
       $_SESSION['userAgent'] = $_SERVER['HTTP_USER_AGENT'];
    }
@@ -66,14 +66,14 @@ class SessionManager {
     * malicious attempts.
     * @return bool
     */
-   static protected function hasTheSessionVariablesChanged() {
+   static protected function hasTheSessionVariablesChanged(){
       $hasTheSessionVariablesChanged = false;
 
-      if (isset($_SESSION['IPAddress']) && $_SESSION['IPAddress'] != $_SERVER['REMOTE_ADDR']) {
+      if (isset($_SESSION['IPAddress']) && $_SESSION['IPAddress'] != $_SERVER['REMOTE_ADDR']){
          $hasTheSessionVariablesChanged = true;
       }
 
-      if (isset($_SESSION['userAgent']) && $_SESSION['userAgent'] != $_SERVER['HTTP_USER_AGENT']) {
+      if (isset($_SESSION['userAgent']) && $_SESSION['userAgent'] != $_SERVER['HTTP_USER_AGENT']){
          $hasTheSessionVariablesChanged = true;
       }
 
@@ -84,13 +84,13 @@ class SessionManager {
     * Checks if the session is completely new.
     * @return bool
     */
-   static protected function hasTheSessionBeenSetBefore() {
+   static protected function hasTheSessionBeenSetBefore(){
       return isset($_SESSION['IPaddress']) && isset($_SESSION['userAgent']);
    }
 
-   static protected function regenerateSession() {
+   static protected function regenerateSession(){
       // If this session is obsolete it means there already is a new id
-      if (isset($_SESSION['OBSOLETE']) && $_SESSION['OBSOLETE'] == true) {
+      if (isset($_SESSION['OBSOLETE']) && $_SESSION['OBSOLETE'] == true){
          return;
       }
 
@@ -118,21 +118,21 @@ class SessionManager {
     * Check if the session has expired.
     * @return bool
     */
-   static protected function hasSessionExpired() {
+   static protected function hasSessionExpired(){
       return isset($_SESSION['OBSOLETE']) && isset($_SESSION['EXPIRES']) && $_SESSION['EXPIRES'] < time();
    }
 
    /**
     * @param array $userData
     */
-   static public function setUserData(array $userData) {
+   static public function setUserData(array $userData){
       $_SESSION['user'] = $userData;
    }
 
    /**
     * Ends the current session.
     */
-   static function endSession() {
+   static function endSession(){
       $_SESSION = array();
       session_destroy();
       session_start();
@@ -141,7 +141,7 @@ class SessionManager {
    /**
     * @return bool
     */
-   static function isUserLoggedIn() {
+   static function isUserLoggedIn(){
       return isset($_SESSION['user']);
    }
 
@@ -149,8 +149,8 @@ class SessionManager {
     * @return User
     * @throws ErrorHandling\Exceptions\ApplicationException
     */
-   static function getCurrentUser() {
-      if (!isset($_SESSION['user'])) {
+   static function getCurrentUser(){
+      if (!isset($_SESSION['user'])){
          throw new ApplicationException('Ingen användare är inloggad.');
       }
 

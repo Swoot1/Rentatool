@@ -9,11 +9,11 @@
 namespace Application\Models;
 
 use Application\ENFramework\Collections\ValueValidationCollection;
-use Application\ENFramework\Helpers\Validation\AlphaNumericValidation;
-use Application\ENFramework\Helpers\Validation\BooleanValidation;
-use Application\ENFramework\Helpers\Validation\EmailValidation;
-use Application\ENFramework\Helpers\Validation\IntegerValidation;
-use Application\ENFramework\Helpers\Validation\PasswordValidation;
+use Application\ENFramework\Validation\AlphaNumericValidation;
+use Application\ENFramework\Validation\BooleanValidation;
+use Application\ENFramework\Validation\EmailValidation;
+use Application\ENFramework\Validation\IntegerValidation;
+use Application\ENFramework\Validation\PasswordValidation;
 use Application\ENFramework\Models\GeneralModel;
 
 class User extends GeneralModel{
@@ -48,8 +48,8 @@ class User extends GeneralModel{
                                                                                       'propertyName' => 'password'
                                                                                    )),
                                                             new BooleanValidation(array(
-                                                                                       'genericName' => 'Administrativ åtkomst',
-                                                                                       'propertyName' => 'hasAdministrativeAccess'
+                                                                                     'genericName'  => 'Administrativ åtkomst',
+                                                                                     'propertyName' => 'hasAdministrativeAccess'
                                                                                   ))
                                                          )));
    }

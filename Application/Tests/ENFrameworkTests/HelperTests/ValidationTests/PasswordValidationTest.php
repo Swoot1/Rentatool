@@ -7,7 +7,7 @@
 
 namespace Tests\ENFrameworkTests\HelperTests\ValidationTests;
 
-use Application\ENFramework\Helpers\Validation\PasswordValidation;
+use Application\ENFramework\Validation\PasswordValidation;
 
 class PasswordValidationTest extends \PHPUnit_Framework_TestCase {
 
@@ -25,7 +25,7 @@ class PasswordValidationTest extends \PHPUnit_Framework_TestCase {
    }
 
    /**
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ogiltigt lösenord.
     */
    public function testUnAllowedPasswordCharacters() {

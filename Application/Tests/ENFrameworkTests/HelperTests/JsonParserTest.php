@@ -53,7 +53,7 @@ class JsonParserTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException        \Application\ENFramework\Helpers\ErrorHandling\Exceptions\BadJsonException
+    * @expectedException        \Application\ENFramework\ErrorHandling\Exceptions\BadJsonException
     * @expectedExceptionMessage Ogiltig JSON: Ogiltigt format
     */
    public function testSingleQuotes(){
@@ -62,7 +62,7 @@ class JsonParserTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException        \Application\ENFramework\Helpers\ErrorHandling\Exceptions\BadJsonException
+    * @expectedException        \Application\ENFramework\ErrorHandling\Exceptions\BadJsonException
     * @expectedExceptionMessage Ogiltig JSON: Ogiltigt format
     */
    public function testInvalidSyntax(){
@@ -71,7 +71,7 @@ class JsonParserTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException        \Application\ENFramework\Helpers\ErrorHandling\Exceptions\BadJsonException
+    * @expectedException        \Application\ENFramework\ErrorHandling\Exceptions\BadJsonException
     * @expectedExceptionMessage Ogiltig JSON: Ogiltig encoding
     */
    public function testInvalidUTF8Encoding(){

@@ -7,7 +7,7 @@
 
 namespace Tests\ENFrameworkTests\HelperTests\ValidationTests;
 
-use Application\ENFramework\Helpers\Validation\IntegerValidation;
+use Application\ENFramework\Validation\IntegerValidation;
 
 class IntegerValidationTest extends \PHPUnit_Framework_TestCase{
    /**
@@ -30,7 +30,7 @@ class IntegerValidationTest extends \PHPUnit_Framework_TestCase{
 
    /**
     * Test that an expection is thrown when a string is inserted.
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage propertyName måste bestå av siffror.
     */
    public function testValidateWithString(){
@@ -41,7 +41,7 @@ class IntegerValidationTest extends \PHPUnit_Framework_TestCase{
    /**
     * Test that an exception is thrown when a negative number is inserted and it's
     * not allowed.
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpersndling\Exceptions\ApplicationException
     * @expectedExceptionMessage propertyName får inte vara negativt.
     */
    public function testUnAllowedNegativeNumber(){
@@ -51,7 +51,7 @@ class IntegerValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\Helpers\ErrorHaxceptions\ApplicationException
     * @expectedExceptionMessage Ange ett värde för propertyName.
     */
    public function testUnAllowedNullValue(){
