@@ -27,7 +27,7 @@ class ValueValidationCollectionTest extends \PHPUnit_Framework_TestCase{
 
    /**
     * An Exception should be thrown when the value is invalid.
-    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Antal måste bestå av siffror.
     */
    public function testInvalidValue(){

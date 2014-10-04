@@ -8,8 +8,8 @@
 namespace Tests\PHPFrameworkTests\HelperTests;
 
 use Application\PHPFramework\ErrorHandling\ErrorHTTPStatusCodeFactory;
-use Application\PHPFramework\Helpersndling\Exceptions\ApplicationException;
-use Application\PHPFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
+use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
+use Application\PHPFramework\ErrorHandling\Exceptions\NoSuchRouteException;
 
 class ErrorHeaderFactoryTest extends \PHPUnit_Framework_TestCase{
 

@@ -18,8 +18,8 @@ class DependencyInjectionTest extends \PHPUnit_Framework_TestCase{
       $requestMock                  = $this->getMockBuilder('/Application/Request')
                                            ->disableOriginalConstructor()
                                            ->getMock();
-      $dependencyInjection          = new DependencyInjection($dependencyInjectionContainer, $requestMock);
-      $userController               = $dependencyInjection->getInstantiatedClass('UserController');
+      $dependencyInjection = new DependencyInjection($dependencyInjectionContainer);
+      $userController = $dependencyInjection->getInstantiatedClass('UserController', $requestMock);
       $expectedUserControllerMock   = $this->getMockBuilder('/Application/Controllers/UserController')
                                            ->disableOriginalConstructor()
                                            ->getMock();

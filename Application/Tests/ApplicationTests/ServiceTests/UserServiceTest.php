@@ -38,7 +38,7 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage E-mailadressen används redan.
     */
    public function testUniqueEmail(){
