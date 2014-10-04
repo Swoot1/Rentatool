@@ -23,7 +23,7 @@ try{
    $routeCollection = include_once 'Application/PHPFramework/Routing/RoutesConfiguration.php';
    $route           = $routeCollection->getRouteFromRequest($requestModel);
 
-   if ($route->isUserAllowed()){
+   if ($route->isUserAllowed(SessionManager::getCurrentUser())){
       $databaseConnection->beginTransaction();
 
       $dependencyInjectionContainer = simplexml_load_file('Application/PHPFramework/DependencyInjection/DependencyInjectionContainer.xml');

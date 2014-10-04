@@ -31,7 +31,7 @@ class SubRouteCollection{
    public function getSubRouteFromRequest(Request $request){
       $resource = $request->getAction();
       if (!array_key_exists($resource, $this->routes)){
-         throw new NoSuchRouteException('Ogiltig url');
+         throw new NoSuchRouteException('Ogiltig url.');
       }
 
       $route = $this->routes[$resource];
