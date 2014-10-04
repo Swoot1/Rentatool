@@ -30,7 +30,7 @@ class MenuServiceTest extends \PHPUnit_Framework_TestCase{
 
    public function testReturnsCollection(){
       $menuItems = $this->menuService->getMenuItems();
-      $this->assertInstanceOf('Application\ENFramework\Collections\GeneralCollection', $menuItems);
+      $this->assertInstanceOf('Application\PHPFramework\Collections\GeneralCollection', $menuItems);
    }
 
    public function testGetPublicMenu(){
