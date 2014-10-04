@@ -11,8 +11,8 @@ namespace Application\ENFramework\Models;
 
 use Application\ENFramework\Collections\ValueValidationCollection;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Application\ENFramework\Helpers\Interfaces\IGetDBParameters;
-use Application\ENFramework\Helpers\Interfaces\IToArray;
+use Application\ENFramework\Interfaces\IGetDBParameters;
+use Application\ENFramework\Interfaces\IToArray;
 
 abstract class GeneralModel implements IToArray, IGetDBParameters{
    /**

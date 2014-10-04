@@ -11,7 +11,7 @@ namespace Application\ENFramework\Helpers\Routing;
 
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
-use Application\ENFramework\Helpers\SessionManager;
+use Application\ENFramework\SessionManager;
 use Application\ENFramework\Models\Request;
 
 class Route {

@@ -20,8 +20,8 @@ set_include_path(PROJECT_ROOT);
 ini_set('session.save_path', 'tmp');
 
 // Set up the auto loader.
-require_once 'Application/ENFramework/Helpers/AutoLoader.php';
-$autoLoader = new \Application\ENFramework\Helpers\Autoloader();
+require_once 'Application/ENFramework/AutoLoader.php';
+$autoLoader = new \Application\ENFramework\Autoloader();
 $autoLoader->setUpAutoLoader();
 
 // Setup error handlers so that errors such as no such method exists or variable is used but never defined throws an exception.

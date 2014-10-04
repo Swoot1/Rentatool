@@ -9,7 +9,7 @@ namespace Application\Services;
 
 
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Application\ENFramework\Helpers\SessionManager;
+use Application\ENFramework\SessionManager;
 use Application\Models\Authorization;
 
 class AuthorizationService

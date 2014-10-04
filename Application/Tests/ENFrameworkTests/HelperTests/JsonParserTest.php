@@ -9,7 +9,7 @@
 
 namespace Rentatool\Tests\ENFrameworkTests\HelperTests;
 
-use Application\ENFramework\Helpers\JsonParser;
+use Application\ENFramework\JsonParser;
 
 class JsonParserTest extends \PHPUnit_Framework_TestCase{
 
@@ -42,13 +42,13 @@ class JsonParserTest extends \PHPUnit_Framework_TestCase{
 
    public function testEmptyValue(){
       $invalidJson = '';
-      $parsedData = $this->jsonParser->parse($invalidJson);
+      $parsedData  = $this->jsonParser->parse($invalidJson);
       $this->assertEquals([], $parsedData);
    }
 
    public function testNullValue(){
       $invalidJson = null;
-      $parsedData = $this->jsonParser->parse($invalidJson);
+      $parsedData  = $this->jsonParser->parse($invalidJson);
       $this->assertEquals([], $parsedData);
    }
 

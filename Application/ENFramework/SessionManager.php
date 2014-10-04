@@ -6,7 +6,7 @@
  * Time: 19:24
  */
 
-namespace Application\ENFramework\Helpers;
+namespace Application\ENFramework;
 
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
 use Application\Models\User;

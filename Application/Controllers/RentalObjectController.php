@@ -9,8 +9,7 @@
 
 namespace Application\Controllers;
 
-use Application\ENFramework\Helpers\Response;
-use Application\ENFramework\Helpers\SessionManager;
+use Application\ENFramework\SessionManager;
 use Application\ENFramework\Models\Request;
 use Application\ENFramework\Response\Factories\ResponseFactory;
 use Application\Filters\RentalObjectFilter;
@@ -31,11 +30,11 @@ class RentalObjectController{
    }
 
    /**
-    * @return Response
+    * @return \Application\ENFramework\Response\Response
     */
    public function index(){
-      $GETParameters = $this->request->getGETParameters();
-      $rentalObjectFilter = new RentalObjectFilter($GETParameters);
+      $GETParameters          = $this->request->getGETParameters();
+      $rentalObjectFilter     = new RentalObjectFilter($GETParameters);
       $rentalObjectCollection = $this->rentalObjectService->index($rentalObjectFilter);
       $this->response->setResponseData($rentalObjectCollection);
 
@@ -59,9 +58,9 @@ class RentalObjectController{
    }
 
    public function update($id, $requestData){
-      $currentUser = SessionManager::getCurrentUser();
+      $currentUser       = SessionManager::getCurrentUser();
       $requestData['id'] = $id;
-      $rentalObject = $this->rentalObjectService->update($requestData, $currentUser);
+      $rentalObject      = $this->rentalObjectService->update($requestData, $currentUser);
 
       $this->response->setResponseData($rentalObject);
       $this->response->addNotifier(['message' => 'Uthyrningsobjektet har uppdaterats.']);

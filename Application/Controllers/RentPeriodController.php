@@ -8,7 +8,7 @@
 
 namespace Application\Controllers;
 
-use Application\ENFramework\Helpers\SessionManager;
+use Application\ENFramework\SessionManager;
 use Application\ENFramework\Models\Request;
 use Application\ENFramework\Response\Factories\ResponseFactory;
 use Application\Services\RentPeriodService;
@@ -39,7 +39,8 @@ class RentPeriodController{
 
    public function getCalculatedRentPeriod(array $data){
       $currentUser = SessionManager::getCurrentUser();
-      $rentPeriod = $this->rentPeriodService->getCalculatedPricePlan($data, $currentUser);
+      $rentPeriod  = $this->rentPeriodService->getCalculatedPricePlan($data, $currentUser);
+
       return $this->response
          ->setStatusCode(201)
          ->setResponseData($rentPeriod);

@@ -1,13 +1,13 @@
 <?php
-use Application\ENFramework\Helpers\Database\Factories\DatabaseConnectionFactory;
 use Application\ENFramework\DependencyInjection\DependencyInjection;
+use Application\ENFramework\Helpers\Database\Factories\DatabaseConnectionFactory;
 use Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeFactory;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
-use Application\ENFramework\Helpers\RequestDispatcher;
-use Application\ENFramework\Helpers\SessionManager;
+use Application\ENFramework\RequestDispatcher;
+use Application\ENFramework\SessionManager;
 use Application\ENFramework\Response\Factories\ResponseFactory;
 
-require_once 'Application/ENFramework/Helpers/SessionManager.php';
+require_once 'Application/ENFramework/SessionManager.php';
 require_once 'Application/ENFramework/Configurations/Configuration.php';
 require_once 'vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
 

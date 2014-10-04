@@ -13,7 +13,7 @@ namespace Application\Services;
 use Application\Collections\MenuItemCollection;
 use Application\ENFramework\AccessRules\AdministrativeAccessRule;
 use Application\ENFramework\AccessRules\AuthorizedAccessRule;
-use Application\ENFramework\Helpers\SessionManager;
+use Application\ENFramework\SessionManager;
 
 class MenuService{
    private $menuItems;

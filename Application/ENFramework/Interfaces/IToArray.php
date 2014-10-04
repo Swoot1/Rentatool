@@ -6,7 +6,7 @@
  * Time: 11:57
  */
 
-namespace Application\ENFramework\Helpers\Interfaces;
+namespace Application\ENFramework\Interfaces;
 
 
 interface IToArray{

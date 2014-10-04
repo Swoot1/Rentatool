@@ -6,7 +6,7 @@
  * Time: 12:03
  */
 
-namespace Application\ENFramework\Helpers\Interfaces;
+namespace Application\ENFramework\Interfaces;
 
 
 interface IGetDBParameters{

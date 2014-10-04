@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\ENFramework\Helpers;
+namespace Application\ENFramework;
 
 use Application\ENFramework\Models\Request;
 
@@ -19,7 +19,7 @@ class RequestFactory{
     * @internal param $_SERVER |array $buildSource
     */
    public function __construct(array $buildSource){
-      $this->buildSource             = $buildSource;
+      $this->buildSource = $buildSource;
    }
 
 
@@ -32,7 +32,7 @@ class RequestFactory{
       $data['requestMethod'] = $this->getRequestMethod();
       $data['contentType']   = $this->getContentType();
       $data['requestData']   = $this->getRequestData($data['contentType']);
-      $data = array_merge($this->getURLSubParts($data['requestURI']), $data);
+      $data                  = array_merge($this->getURLSubParts($data['requestURI']), $data);
 
       return new Request($data);
    }

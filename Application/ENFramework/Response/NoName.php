@@ -10,7 +10,7 @@ namespace Application\ENFramework\Response;
 
 use Application\ENFramework\Collections\ValueValidationCollection;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-use Application\ENFramework\Helpers\Interfaces\IToArray;
+use Application\ENFramework\Interfaces\IToArray;
 use Application\ENFramework\Models\GeneralModel;
 use Application\ENFramework\Response\Models\Notifier;
 

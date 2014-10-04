@@ -8,7 +8,7 @@
 
 namespace Application\Controllers;
 
-use Application\ENFramework\Helpers\SessionManager;
+use Application\ENFramework\SessionManager;
 use Application\ENFramework\Models\Request;
 use Application\ENFramework\Response\Factories\ResponseFactory;
 use Application\Services\UserService;
@@ -71,6 +71,7 @@ class UserController{
 
    public function currentUser(){
       $currentUser = SessionManager::getCurrentUser();
+
       return $this->response->setResponseData($currentUser);
    }
 } 

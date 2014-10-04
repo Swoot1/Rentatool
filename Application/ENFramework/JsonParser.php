@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\ENFramework\Helpers;
+namespace Application\ENFramework;
 
 
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\BadJsonException;
