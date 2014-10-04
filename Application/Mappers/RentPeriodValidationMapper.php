@@ -9,7 +9,7 @@
 namespace Application\Mappers;
 
 
-use Application\ENFramework\Models\IDatabaseConnection;
+use Application\ENFramework\Helpers\Database\Models\IDatabaseConnection;
 
 class RentPeriodValidationMapper{
    private $databaseConnection;

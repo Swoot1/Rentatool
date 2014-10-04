@@ -6,11 +6,9 @@
  * Time: 10:15
  */
 
-namespace Application\ENFramework\Collections;
+namespace Application\ENFramework\Response;
 
-
-use Application\ENFramework\Helpers\Interfaces\INotificationCollection;
-use Application\ENFramework\Helpers\Notifier;
+use Application\ENFramework\Collections\GeneralCollection;
 
 class NotificationCollection extends GeneralCollection implements INotificationCollection{
    protected $data = array();

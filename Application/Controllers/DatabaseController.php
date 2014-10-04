@@ -7,13 +7,11 @@
 
 namespace Application\Controllers;
 
-
-use Application\ENFramework\Factories\DatabaseConnectionFactory;
-use Application\ENFramework\Helpers\MySQLValueFormatter;
-use Application\ENFramework\Helpers\Response;
-use Application\ENFramework\Helpers\ResponseFactory;
-use Application\ENFramework\Models\DatabaseConnection;
+use Application\ENFramework\Helpers\Database\Factories\DatabaseConnectionFactory;
+use Application\ENFramework\Helpers\Database\Models\DatabaseConnection;
+use Application\ENFramework\Helpers\Database\MySQLValueFormatter;
 use Application\ENFramework\Models\Request;
+use Application\ENFramework\Response\Factories\ResponseFactory;
 use Application\Mappers\RentalObjectMapper;
 use Application\Mappers\UserMapper;
 use Application\Services\DatabaseService;

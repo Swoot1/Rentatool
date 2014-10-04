@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\ENFramework\Models;
+namespace Application\ENFramework\Helpers\Database\Models;
 
 
 class PDOContainer {

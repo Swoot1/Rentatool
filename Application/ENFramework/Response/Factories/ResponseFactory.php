@@ -5,10 +5,14 @@
  * Time: 08:21
  */
 
-namespace Application\ENFramework\Helpers;
+namespace Application\ENFramework\Response\Factories;
 
-
-use Application\ENFramework\Collections\NotificationCollection;
+use Application\ENFramework\Response\ContentTypeConverter;
+use Application\ENFramework\Response\Metadata;
+use Application\ENFramework\Response\NoName;
+use Application\ENFramework\Response\NotificationCollection;
+use Application\ENFramework\Response\Response;
+use Application\ENFramework\Response\StatusCodeToTextMapper;
 
 class ResponseFactory{
 

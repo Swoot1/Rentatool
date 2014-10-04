@@ -6,7 +6,7 @@
  * Time: 19:28
  */
 
-namespace Application\ENFramework\Factories;
+namespace Application\ENFramework\Helpers\Database\Factories;
 
 
 interface IDatabaseConnectionFactory{

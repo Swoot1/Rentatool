@@ -6,11 +6,11 @@
  * Time: 19:26
  */
 
-namespace Application\ENFramework\Factories;
+namespace Application\ENFramework\Helpers\Database\Factories;
 
-use Application\ENFramework\Helpers\LocalDatabaseConfiguration;
-use Application\ENFramework\Helpers\ProductionDatabaseConfiguration;
-use Application\ENFramework\Models\PDOContainer;
+use Application\ENFramework\Helpers\Database\Configuration\LocalDatabaseConfiguration;
+use Application\ENFramework\Helpers\Database\Configuration\ProductionDatabaseConfiguration;
+use Application\ENFramework\Helpers\Database\Models\PDOContainer;
 
 class DatabaseConnectionFactory implements IDatabaseConnectionFactory{
 

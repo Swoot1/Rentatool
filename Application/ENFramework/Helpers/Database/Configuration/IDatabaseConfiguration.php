@@ -6,7 +6,7 @@
  * Time: 21:41
  */
 
-namespace Application\ENFramework\Helpers;
+namespace Application\ENFramework\Helpers\Database\Configuration;
 
 
 interface IDatabaseConfiguration {

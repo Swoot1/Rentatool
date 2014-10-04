@@ -5,7 +5,7 @@
  * Time: 08:35
  */
 
-namespace Application\ENFramework\Helpers;
+namespace Application\ENFramework\Response;
 
 
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
@@ -15,7 +15,7 @@ class StatusCodeToTextMapper {
     * Returns the text that should go with the response code.
     * @param $statusCode
     * @return string
-    * @throws ErrorHandling\Exceptions\ApplicationException
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     */
    public function getResponseCodeText($statusCode) {
       switch ($statusCode) {

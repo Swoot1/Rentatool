@@ -6,8 +6,7 @@
  * Time: 15:23
  */
 
-namespace Application\ENFramework\Helpers;
-
+namespace Application\ENFramework\Helpers\Database;
 
 class MySQLValueFormatter implements IMySQLValueFormatter{
 

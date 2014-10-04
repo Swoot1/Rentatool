@@ -5,7 +5,7 @@
  * Date: 2014-04-18
  * Time: 08:28
  */
-namespace Application\ENFramework\Models;
+namespace Application\ENFramework\Helpers\Database\Models;
 
 interface IDatabaseConnection
 {

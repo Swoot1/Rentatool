@@ -8,13 +8,10 @@
 
 namespace Application\Mappers;
 
-use Application\ENFramework\Models\IDatabaseConnection;
+use Application\ENFramework\Helpers\Database\Models\IDatabaseConnection;
 
 class UserMapper{
 
-   /**
-    * @var \Application\ENFramework\Models\IDatabaseConnection
-    */
    private $databaseConnection;
    private $indexSQL = '
     SELECT

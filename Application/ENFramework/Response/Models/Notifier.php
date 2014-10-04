@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\ENFramework\Helpers;
+namespace Application\ENFramework\Response;
 
 use Application\ENFramework\Collections\ValueValidationCollection;
 use Application\ENFramework\Helpers\Validation\TextValidation;

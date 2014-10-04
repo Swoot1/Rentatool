@@ -10,9 +10,9 @@
 namespace Application\Controllers;
 
 use Application\ENFramework\Helpers\Response;
-use Application\ENFramework\Helpers\ResponseFactory;
 use Application\ENFramework\Helpers\SessionManager;
 use Application\ENFramework\Models\Request;
+use Application\ENFramework\Response\Factories\ResponseFactory;
 use Application\Filters\RentalObjectFilter;
 use Application\Services\rentalObjectService;
 
