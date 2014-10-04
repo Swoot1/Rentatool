@@ -9,19 +9,13 @@
 
 namespace Application\ENFramework\Helpers;
 
-use Application\Collections\RequestMethodCollection;
-
 class RequestDispatcher
 {
-
-    private $_serverArray;
     private $requestModel;
 
     public function __construct()
     {
-        $this->_serverArray = $_SERVER;
-        $requestMethodCollection = new RequestMethodCollection(array('PUT', 'POST', 'GET', 'DELETE'));
-        $requestBuilder = new RequestBuilder($_SERVER, $requestMethodCollection);
+        $requestBuilder = new RequestBuilder($_SERVER);
         $this->requestModel = $requestBuilder->build();
     }
 

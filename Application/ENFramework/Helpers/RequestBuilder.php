@@ -9,63 +9,87 @@
 
 namespace Application\ENFramework\Helpers;
 
-
-use Application\Collections\RequestMethodCollection;
 use Application\ENFramework\Models\Request;
+use Rentatool\Application\ENFramework\Helpers\JsonParser;
 
 class RequestBuilder{
    private $buildSource;
-   /**
-    * @var \Application\ENFramework\Models\Request
-    */
-   private $requestModel;
-
 
    /**
     * @param array $buildSource
-    * @param RequestMethodCollection $requestMethodCollection
     * @internal param $_SERVER |array $buildSource
     */
-   public function __construct(array $buildSource, RequestMethodCollection $requestMethodCollection){
-      $this->requestModel = new Request(array(), $requestMethodCollection);
-      $this->buildSource  = $buildSource;
+   public function __construct(array $buildSource){
+      $this->buildSource             = $buildSource;
    }
 
 
    /**
-    * @return mixed
+    * @return Request
     */
    public function build(){
-      $this->setURI();
-      $this->setRequestMethod();
-      $this->setContentType();
+      $data                  = array();
+      $data['requestURI']    = $this->getURI();
+      $data['requestMethod'] = $this->getRequestMethod();
+      $data['contentType']   = $this->getContentType();
+      $data['requestData']   = $this->getRequestData($data['contentType']);
+      $data = array_merge($this->getURLSubParts($data['requestURI']), $data);
 
-      return $this->requestModel;
+      return new Request($data);
+   }
+
+   private function getRequestMethod(){
+      return $this->buildSource['REQUEST_METHOD'];
+   }
+
+
+   private function getContentType(){
+      return isset($this->buildSource['CONTENT_TYPE']) ? $this->buildSource['CONTENT_TYPE'] : null;
+   }
+
+
+   private function getURI(){
+      return ltrim($this->buildSource['REQUEST_URI'], '/');
    }
 
 
    /**
-    * Sets if the request method is PUT/POST/etc.
-    * @return $this
+    * Extracts resource and id/action from the URI.
+    * @param $requestURI
+    * @return array
     */
-   private function setRequestMethod(){
-      $requestMethod = $this->buildSource['REQUEST_METHOD'];
-      $this->requestModel->setRequestMethod($requestMethod);
+   private function getURLSubParts($requestURI){
+      preg_match('/(\w+)(?:\/(\d+|\w+))?/', $requestURI, $matches);
+      $data = array();
 
-      return $this;
+      if (count($matches) > 0){
+         $data['resource'] = array_key_exists(1, $matches) ? $matches[1] : false;
+
+         if (array_key_exists(2, $matches)){
+
+            if (is_numeric($matches[2])){
+               $data['id'] = (int)$matches[2];
+            } else{
+               $data['action'] = $matches[2];
+            }
+         }
+      }
+
+      return $data;
    }
 
-   private function setContentType(){
-      $contentType = isset($this->buildSource['CONTENT_TYPE']) ? $this->buildSource['CONTENT_TYPE'] : null;
-      $this->requestModel->setContentType($contentType);
+   public function getRequestData($contentType){
 
-      return $this;
-   }
+      $files = preg_match('/multipart\/form-data;/', $contentType);
 
+      if ($files){
+         $filesCopy = $_FILES;
+         $result    = array_shift($filesCopy);
+      } else{
+         $jsonParser = new JsonParser();
+         $result     = $jsonParser->parse(file_get_contents('php://input'));
+      }
 
-   private function setURI(){
-      $this->requestModel->setRequestURI(ltrim($this->buildSource['REQUEST_URI'], '/'));
-
-      return $this;
+      return $result;
    }
 }

@@ -5,7 +5,6 @@ use Application\ENFramework\Helpers\ErrorHandling\ErrorHTTPStatusCodeFactory;
 use Application\ENFramework\Helpers\ErrorHandling\Exceptions\UserIsNotAllowedException;
 use Application\ENFramework\Helpers\RequestDispatcher;
 use Application\ENFramework\Helpers\ResponseFactory;
-use Application\ENFramework\Helpers\Routing\Routing;
 use Application\ENFramework\Helpers\SessionManager;
 
 require_once 'Application/ENFramework/Helpers/SessionManager.php';
@@ -30,8 +29,7 @@ try{
       $dependencyInjectionContainer = simplexml_load_file('Application/ENFramework/Helpers/DependencyInjection/DependencyInjectionContainer.xml');
       $dependencyInjection          = new DependencyInjection($dependencyInjectionContainer);
       $controller                   = $dependencyInjection->getInstantiatedClass($route->getController(), $requestModel);
-      $routing                      = new Routing($requestModel);
-      $response                     = $routing->callMethod($controller);
+      $response                     = $requestModel->callControllerMethod($controller);
       $response->sendResponse();
 
       $databaseConnection->commit();

@@ -9,70 +9,29 @@
 
 namespace Application\ENFramework\Models;
 
-
-use Application\Collections\RequestMethodCollection;
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\MethodNotAllowedException;
-use Rentatool\Application\ENFramework\Helpers\JsonParser;
+use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\Helpers\ErrorHandling\Exceptions\NoSuchRouteException;
 
 class Request extends GeneralModel{
-   /**
-    * @var \Application\Collections\RequestMethodCollection
-    */
-   private $requestMethodCollection;
-   private $requestMethod;
-   private $requestURI;
-   private $resource;
-   private $contentType;
-   private $id = false;
-   private $action = false;
+   protected $requestMethod;
+   protected $requestURI;
+   protected $requestData;
+   protected $resource;
+   protected $contentType;
+   protected $id = false;
+   protected $action = false;
 
-
-   public function __construct(array $data, RequestMethodCollection $requestMethodCollection){
-      $this->setRequestMethodCollection($requestMethodCollection);
-      parent::__construct($data);
+   public function setUpValidation(){
+      $this->_validation = new ValueValidationCollection(array()); // TODO
    }
 
-
-   private function setRequestMethodCollection(RequestMethodCollection $requestMethodCollection){
-      $this->requestMethodCollection = $requestMethodCollection;
+   public function getRequestMethod(){
+      return $this->requestMethod;
    }
-
-
-   public function setRequestURI($value){
-      $this->requestURI = $value;
-      $this->setURLSubParts();
-   }
-
-   /**
-    * Extracts resource and id/action from the URI.
-    * @return $this
-    */
-   private function setURLSubParts(){
-      preg_match('/(\w+)(?:\/(\d+|\w+))?/', $this->requestURI, $matches);
-
-      if (count($matches) > 0){
-         $this->resource = array_key_exists(1, $matches) ? $matches[1] : false;
-
-         if (array_key_exists(2, $matches)){
-
-            if (is_numeric($matches[2])){
-               $this->id = (int)$matches[2];
-            } else{
-               $this->action = $matches[2];
-            }
-         }
-      }
-
-      return $this;
-   }
-
 
    public function getResource(){
       return $this->resource;
-   }
-
-   public function setResource($resource){
-      $this->resource = $resource;
    }
 
    public function getId(){
@@ -83,61 +42,99 @@ class Request extends GeneralModel{
       return $this->action;
    }
 
-   /**
-    * @param $requestMethod
-    * @internal param array $serverArray
-    */
-   public function setRequestMethod($requestMethod){
-      $this->validateRequestMethod($requestMethod);
-      $this->requestMethod = $requestMethod;
+   public function getGETParameters(){
+      return $_GET;
    }
 
-   public function setContentType($contentType){
-      $this->contentType = $contentType;
-   }
+   public function callControllerMethod($controller){
 
-
-   public function getRequestMethod(){
-      return $this->requestMethod;
-   }
-
-   /**
-    * @param $methodName
-    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\MethodNotAllowedException
-    * @return bool
-    */
-   private function validateRequestMethod($methodName){
-      $isValidRequestMethod = $this->requestMethodCollection->isValidRequestMethod($methodName);
-
-      if (!$isValidRequestMethod){
-         throw new MethodNotAllowedException('Ange en vettig request-typ för bövelen.');
-      }
-
-      return true;
-   }
-
-
-   public function setUpValidation(){
-      // TODO
-   }
-
-
-   public function getRequestData(){
-
-      $files = preg_match('/multipart\/form-data;/', $this->contentType);
-
-      if ($files){
-         $filesCopy = $_FILES;
-         $result = array_shift($filesCopy);
-      } else{
-         $jsonParser = new JsonParser();
-         $result = $jsonParser->parse(file_get_contents('php://input'));
+      switch ($this->requestMethod){
+         case 'GET':
+            $result = $this->callGetMethod($controller);
+            break;
+         case 'DELETE':
+            $result = $this->callDeleteMethod($controller);
+            break;
+         case 'POST':
+            $result = $this->callPostMethod($controller);
+            break;
+         case 'PUT':
+            $result = $this->callPutMethod($controller);
+            break;
+         default:
+            throw new NoSuchRouteException('Ogiltigt request.');
       }
 
       return $result;
    }
 
-   public function getGETParameters(){
-      return $_GET;
+   /**
+    * @param $controller
+    * @return mixed
+    */
+   private function callGetMethod($controller){
+
+      if ($this->id || $this->action){
+
+         if ($this->id){
+            $result = $controller->read($this->id);
+         } else{
+            $result = call_user_func(array($controller, $this->action), $this->requestData());
+         }
+
+      } else{
+         $result = $controller->index();
+      }
+
+      return $result;
+   }
+
+   /**
+    * @param $controller
+    * @return mixed
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    */
+   private function callDeleteMethod($controller){
+
+      if ($this->id){
+         $result = $controller->delete($this->id);
+      } else{
+         throw new ApplicationException('Ange ett id för borttagning.');
+      }
+
+      return $result;
+   }
+
+   /**
+    * @param $controller
+    * @return mixed
+    */
+   private function callPostMethod($controller){
+
+      if ($this->action){
+         $result = call_user_func(array($controller, $this->action), $this->requestData);
+      } else{
+         $result = $controller->create($this->requestData);
+      }
+
+      return $result;
+   }
+
+   /**
+    * @param $controller
+    * @return mixed
+    * @throws \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    */
+   private function callPutMethod($controller){
+
+      if ($this->id){
+         $requestData       = $this->requestData;
+         $requestData['id'] = $this->id;
+         $result            = $controller->update($this->id, $requestData);
+      } else{
+         throw new ApplicationException('Ange ett id för uppdatering.');
+      }
+
+      return $result;
    }
 }
