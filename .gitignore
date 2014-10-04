@@ -12,4 +12,5 @@ Application/ENFramework/Database/Configuration/LocalDatabaseConfiguration.php
 Application/ENFramework/Database/Configuration/ProductionDatabaseConfiguration.php
 Public/RentalObjectPhotos
 Application/.DS_Store
+Application/ENFramework/.DS_Store
 Application/Factories/MailFactory.php
