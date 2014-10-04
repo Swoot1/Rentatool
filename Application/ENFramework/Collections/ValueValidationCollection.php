@@ -9,9 +9,6 @@
 
 namespace Application\ENFramework\Collections;
 
-
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
-
 class ValueValidationCollection{
 
    protected $data;
@@ -37,10 +34,6 @@ class ValueValidationCollection{
       if (array_key_exists($name, $this->data)){
          $this->data[$name]->validate($value);
       }
-//      else{
-//         throw new ApplicationException(sprintf('Det finns ingen validering för angivet propertynamn %s.', $name));
-//      }
-
       return true;
    }
 }

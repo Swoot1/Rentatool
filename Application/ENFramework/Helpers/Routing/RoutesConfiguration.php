@@ -7,11 +7,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
+namespace Application\ENFramework\Helpers\Routing;
+
 use Application\Collections\RequestMethodCollection;
 use Application\ENFramework\Helpers\AccessRules\AdministrativeAccessRule;
 use Application\ENFramework\Helpers\AccessRules\AuthorizedAccessRule;
-use Application\ENFramework\Helpers\Routing\RouteCollection;
-use Application\ENFramework\Helpers\Routing\SubRouteCollection;
 
 $routes = array();
 

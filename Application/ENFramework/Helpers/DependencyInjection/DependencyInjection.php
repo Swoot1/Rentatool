@@ -12,15 +12,15 @@ use Application\ENFramework\Models\Request;
 
 class DependencyInjection{
    private $dependencyInjectionXML;
-
    private $request;
 
-   public function __construct(\SimpleXMLElement $dependencyInjectionXML, Request $request){
+   public function __construct(\SimpleXMLElement $dependencyInjectionXML){
       $this->dependencyInjectionXML = $dependencyInjectionXML;
-      $this->request = $request;
    }
 
-   public function getInstantiatedClass($className){
+   public function getInstantiatedClass($className, Request $request){
+      $this->request = $request;
+
       return $this->getClassFromXML(array('class' => $className));
    }
 
@@ -31,9 +31,9 @@ class DependencyInjection{
     */
    private function getClassFromXML(array $attributes){
 
-      if(array_key_exists('class', $attributes) && $attributes['class'] === 'Request'){
+      if (array_key_exists('class', $attributes) && $attributes['class'] === 'Request'){
          $result = $this->request;
-      }else{
+      } else{
          $matchingXMLElement = $this->getMatchingXMLElement($attributes);
 
          if ($matchingXMLElement){
