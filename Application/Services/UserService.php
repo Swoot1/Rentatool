@@ -60,7 +60,7 @@ class UserService{
    /**
     * @param $id
     * @return User
-    * @throws \Application\PHPFramework\Helpersndling\Exceptions\NotFoundException
+    * @throws \Application\PHPFramework\ErrorHandling\Exceptions\NotFoundException
     */
    public function read($id){
       $result = $this->userMapper->read($id);

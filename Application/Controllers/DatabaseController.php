@@ -10,7 +10,6 @@ namespace Application\Controllers;
 use Application\PHPFramework\Database\Factories\DatabaseConnectionFactory;
 use Application\PHPFramework\Database\Models\DatabaseConnection;
 use Application\PHPFramework\Database\Formatters\MySQLValueFormatter;
-use Application\PHPFramework\Request\Request;
 use Application\PHPFramework\Response\Factories\ResponseFactory;
 use Application\Mappers\RentalObjectMapper;
 use Application\Mappers\UserMapper;
@@ -21,17 +20,14 @@ class DatabaseController{
    /**
     * @var \Application\Services\DatabaseService
     */
-   private $request;
    private $databaseService;
    private $response;
 
    /**
-    * @param Request $request
     * @param DatabaseService $databaseService
     * @param ResponseFactory $responseFactory
     */
-   public function __construct(Request $request, DatabaseService $databaseService, ResponseFactory $responseFactory){
-      $this->request         = $request;
+   public function __construct(DatabaseService $databaseService, ResponseFactory $responseFactory){
       $this->databaseService = $databaseService;
       $this->response        = $responseFactory->createResponse();
    }

@@ -32,7 +32,7 @@ class FloatValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\PHPFramework\Helpersndling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage propertyName måste vara ett decimaltal.
     */
    public function testValidateWithNumericString(){
@@ -41,7 +41,7 @@ class FloatValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\PHPFramework\Helpers\ErrorHaxceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ange 3 eller färre decimaler för propertyName.
     */
    public function testWrongNumberOfDecimals(){
@@ -52,7 +52,7 @@ class FloatValidationTest extends \PHPUnit_Framework_TestCase{
    /**
     * Test that an exception is thrown when a negative number is inserted and it's
     * not allowed.
-    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage propertyName får inte vara negativt.
     */
    public function testUnAllowedNegativeNumber(){

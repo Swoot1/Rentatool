@@ -17,17 +17,11 @@ use Application\PHPFramework\Response\Models\Notifier;
 class NoName extends GeneralModel{
    protected $metadata;
    protected $responseData;
-   /**
-    * @var ContentTypeConverter
-    */
-   private $_contentTypeConverter;
 
    /**
-    * @param ContentTypeConverter $contentTypeConverter
     * @param Metadata $metadata
     */
-   public function __construct(ContentTypeConverter $contentTypeConverter, Metadata $metadata){
-      $this->_contentTypeConverter = $contentTypeConverter;
+   public function __construct(Metadata $metadata){
       $this->metadata              = $metadata;
 
       return $this;
@@ -46,7 +40,7 @@ class NoName extends GeneralModel{
    public function getFormattedData($contentType){
 
       if ($contentType === 'application/json'){
-         $formattedData = $this->_contentTypeConverter->convertDataToJSON($this->toArray());
+         $formattedData = json_encode($this->toArray(), JSON_UNESCAPED_UNICODE);;
       } else if ($contentType === 'text/html'){
          $formattedData = $this->toArray()['responseData'];
       } else{

@@ -9,7 +9,6 @@
 namespace Application\Controllers;
 
 use Application\PHPFramework\SessionManager;
-use Application\PHPFramework\Request\Request;
 use Application\PHPFramework\Response\Factories\ResponseFactory;
 use Application\Services\UserService;
 
@@ -22,12 +21,10 @@ class UserController{
    private $response;
 
    /**
-    * @param Request $request
     * @param UserService $userService
     * @param ResponseFactory $responseFactory
     */
-   public function __construct(Request $request, UserService $userService, ResponseFactory $responseFactory){
-      $this->request     = $request;
+   public function __construct(UserService $userService, ResponseFactory $responseFactory){
       $this->userService = $userService;
       $this->response    = $responseFactory->createResponse();
    }
