@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\ENFramework\Collections;
+namespace Application\ENFramework\Validation\Collections;
 
 class ValueValidationCollection{
 

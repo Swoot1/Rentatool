@@ -10,7 +10,7 @@
 namespace Application\Models;
 
 use Application\Collections\FileCollection;
-use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Validation\Collections\ValueValidationCollection;
 use Application\ENFramework\Validation\IntegerValidation;
 use Application\ENFramework\Validation\TextValidation;
 use Application\ENFramework\Models\GeneralModel;

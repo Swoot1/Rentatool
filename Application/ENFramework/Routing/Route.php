@@ -12,7 +12,7 @@ namespace Application\ENFramework\Routing;
 use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\ENFramework\ErrorHandling\Exceptions\UserIsNotAllowedException;
 use Application\ENFramework\SessionManager;
-use Application\ENFramework\Models\Request;
+use Application\ENFramework\Request\Request;
 
 class Route{
    private $controllerName;

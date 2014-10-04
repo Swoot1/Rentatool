@@ -8,7 +8,7 @@
 
 namespace Application\Models;
 
-use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Validation\Collections\ValueValidationCollection;
 use Application\ENFramework\Validation\AlphaNumericValidation;
 use Application\ENFramework\Validation\BooleanValidation;
 use Application\ENFramework\Validation\EmailValidation;

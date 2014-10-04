@@ -9,7 +9,7 @@ namespace Application\ENFramework\Routing;
 
 
 use Application\ENFramework\ErrorHandling\Exceptions\NoSuchRouteException;
-use Application\ENFramework\Models\Request;
+use Application\ENFramework\Request\Request;
 
 class SubRouteCollection{
 

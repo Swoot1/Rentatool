@@ -9,7 +9,7 @@
 namespace Application\Filters;
 
 
-use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Validation\Collections\ValueValidationCollection;
 use Application\ENFramework\Validation\IntegerValidation;
 use Application\ENFramework\Models\GeneralModel;
 

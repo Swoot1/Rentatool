@@ -8,7 +8,7 @@
 namespace Application\ENFramework\DependencyInjection;
 
 use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
-use Application\ENFramework\Models\Request;
+use Application\ENFramework\Request\Request;
 
 class DependencyInjection{
    private $dependencyInjectionXML;

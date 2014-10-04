@@ -7,9 +7,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\ENFramework;
+namespace Application\ENFramework\Request;
 
-use Application\ENFramework\Models\Request;
+use Application\ENFramework\JsonParser;
 
 class RequestFactory{
    private $buildSource;

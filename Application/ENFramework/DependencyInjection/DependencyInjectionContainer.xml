@@ -8,7 +8,7 @@
         <!-- Controllers -->
         <dependency namespace="Application\Controllers" class="RentalObjectController">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\ENFramework\Request" class="Request"/>
                 <dependency namespace="Application\Services" class="RentalObjectService"/>
                 <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
@@ -16,7 +16,7 @@
 
         <dependency namespace="Application\Controllers" class="AuthorizationController">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\ENFramework\Request" class="Request"/>
                 <dependency namespace="Application\Services" class="AuthorizationService"/>
                 <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
@@ -24,7 +24,7 @@
 
         <dependency namespace="Application\Controllers" class="UserController">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\ENFramework\Request" class="Request"/>
                 <dependency namespace="Application\Services" class="UserService"/>
                 <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
@@ -32,7 +32,7 @@
 
         <dependency namespace="Application\Controllers" class="DatabaseController">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\ENFramework\Request" class="Request"/>
                 <dependency namespace="Application\Services" class="DatabaseService"/>
                 <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
@@ -40,7 +40,7 @@
 
         <dependency namespace="Application\Controllers" class="RentPeriodController">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\ENFramework\Request" class="Request"/>
                 <dependency namespace="Application\Services" class="RentPeriodService"/>
                 <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
@@ -48,7 +48,7 @@
 
         <dependency namespace="Application\Controllers" class="RentPeriodCalculatorController">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\ENFramework\Request" class="Request"/>
                 <dependency namespace="Application\Services" class="RentPeriodService"/>
                 <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
@@ -62,7 +62,7 @@
 
         <dependency namespace="Application\Controllers" class="UnavailableRentPeriodController">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\ENFramework\Request" class="Request"/>
                 <dependency namespace="Application\Services" class="UnavailableRentPeriodService"/>
                 <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
@@ -70,7 +70,7 @@
 
         <dependency namespace="Application\Controllers" class="FileController">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\ENFramework\Request" class="Request"/>
                 <dependency namespace="Application\Services" class="FileService"/>
                 <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
@@ -78,7 +78,7 @@
 
         <dependency namespace="Application\Controllers" class="ResetPasswordController">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\ENFramework\Request" class="Request"/>
                 <dependency namespace="Application\Services" class="ResetPasswordService"/>
                 <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
@@ -86,7 +86,7 @@
 
         <dependency namespace="Application\Controllers" class="PasswordController">
             <dependencies>
-                <dependency namespace="Application\ENFramework\Models" class="Request"/>
+                <dependency namespace="Application\ENFramework\Request" class="Request"/>
                 <dependency namespace="Application\Services" class="PasswordService"/>
                 <dependency namespace="Application\ENFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
@@ -232,7 +232,7 @@
             <dependencies>
                 <dependency namespace="Application\ENFramework\Database\Factories"
                             class="DatabaseConnectionFactory"/>
-                <dependency namespace="Application\ENFramework\Database"
+                <dependency namespace="Application\ENFramework\Database\Formatters"
                             class="MySQLValueFormatter"/>
             </dependencies>
         </dependency>
@@ -251,7 +251,7 @@
             <dependencies/>
         </dependency>
 
-        <dependency namespace="Application\ENFramework\Database" class="MySQLValueFormatter">
+        <dependency namespace="Application\ENFramework\Database\Formatters" class="MySQLValueFormatter">
             <dependencies/>
         </dependency>
 

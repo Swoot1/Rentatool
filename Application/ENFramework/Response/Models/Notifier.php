@@ -9,7 +9,7 @@
 
 namespace Application\ENFramework\Response\Models;
 
-use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Validation\Collections\ValueValidationCollection;
 use Application\ENFramework\Validation\TextValidation;
 use Application\ENFramework\Models\GeneralModel;
 

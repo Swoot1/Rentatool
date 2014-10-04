@@ -7,11 +7,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Application\ENFramework\Models;
+namespace Application\ENFramework\Request;
 
-use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Validation\Collections\ValueValidationCollection;
 use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\ENFramework\ErrorHandling\Exceptions\NoSuchRouteException;
+use Application\ENFramework\Models\GeneralModel;
 
 class Request extends GeneralModel{
    protected $requestMethod;

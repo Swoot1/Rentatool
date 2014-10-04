@@ -9,7 +9,7 @@
 
 namespace Application\ENFramework\Models;
 
-use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Validation\Collections\ValueValidationCollection;
 use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\ENFramework\Interfaces\IGetDBParameters;
 use Application\ENFramework\Interfaces\IToArray;

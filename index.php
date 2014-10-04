@@ -3,7 +3,7 @@ use Application\ENFramework\DependencyInjection\DependencyInjection;
 use Application\ENFramework\Database\Factories\DatabaseConnectionFactory;
 use Application\ENFramework\ErrorHandling\ErrorHTTPStatusCodeFactory;
 use Application\ENFramework\ErrorHandling\Exceptions\UserIsNotAllowedException;
-use Application\ENFramework\RequestDispatcher;
+use Application\ENFramework\Request\RequestDispatcher;
 use Application\ENFramework\SessionManager;
 use Application\ENFramework\Response\Factories\ResponseFactory;
 

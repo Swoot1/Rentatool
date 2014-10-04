@@ -8,7 +8,7 @@
 namespace Tests\ENFrameworkTests\CollectionTests;
 
 
-use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Validation\Collections\ValueValidationCollection;
 use Application\ENFramework\Validation\BooleanValidation;
 use Application\ENFramework\Validation\IntegerValidation;
 

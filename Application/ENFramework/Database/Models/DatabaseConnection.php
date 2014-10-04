@@ -10,7 +10,7 @@
 namespace Application\ENFramework\Database\Models;
 
 use Application\ENFramework\Database\Factories\IDatabaseConnectionFactory;
-use Application\ENFramework\Database\IMySQLValueFormatter;
+use Application\ENFramework\Database\Formatters\IMySQLValueFormatter;
 
 /**
  * Class DatabaseConnection
