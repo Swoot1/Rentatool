@@ -36,12 +36,12 @@ class RouteCollectionTest extends \PHPUnit_Framework_TestCase{
    /**
     * @param $resource
     * @param $requestMethod
-    * @param $action
+    * @param bool $action
     * @return \PHPUnit_Framework_MockObject_MockObject
     */
    private function getUserRequestMock($resource, $requestMethod, $action = false){
       $requestMock = $this
-         ->getMockBuilder('Application\PHPFramework\Models\Request')
+         ->getMockBuilder('Application\PHPFramework\Request\Request')
          ->disableOriginalConstructor()
          ->getMock();
 
@@ -112,7 +112,7 @@ class RouteCollectionTest extends \PHPUnit_Framework_TestCase{
 
    /**
     * Test that a request with wrong request method for the url raises an error.
-    * @expectedException \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ogiltig request method.
     */
    public function testGetSubRouteWithWrongRequestMethod(){
