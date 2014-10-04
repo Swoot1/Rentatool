@@ -9,15 +9,15 @@
 namespace Application\Models;
 
 
-use Application\ENFramework\Collections\ValueValidationCollection;
-use Application\ENFramework\Helpers\Validation\BooleanValidation;
+use Application\ENFramework\Validation\Collections\ValueValidationCollection;
+use Application\ENFramework\Validation\BooleanValidation;
 use Application\ENFramework\Models\GeneralModel;
 
-class Authorization extends GeneralModel {
+class Authorization extends GeneralModel{
    protected $isLoggedIn = false;
 
 
-   protected function setUpValidation() {
+   protected function setUpValidation(){
       $this->setValidation(new ValueValidationCollection(array(
                                                             new BooleanValidation(array(
                                                                                      'genericName'  => 'Inloggad-flagga',

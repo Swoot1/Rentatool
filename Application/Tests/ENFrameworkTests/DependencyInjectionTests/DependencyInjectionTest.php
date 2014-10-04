@@ -9,13 +9,13 @@
 namespace Tests\ENFrameworkTests\DependencyInjectionTests;
 
 
-use Application\ENFramework\Helpers\DependencyInjection\DependencyInjection;
+use Application\ENFramework\DependencyInjection\DependencyInjection;
 
 class DependencyInjectionTest extends \PHPUnit_Framework_TestCase{
 
    public function testGetController(){
-      $dependencyInjectionContainer = simplexml_load_file('/Application/ENFramework/Helpers/DependencyInjection/DependencyInjectionContainer.xml');
-      $requestMock   = $this->getMockBuilder('/Application/Helpers/Request')
+      $dependencyInjectionContainer = simplexml_load_file('/Application/ENFramework/DependencyInjection/DependencyInjectionContainer.xml');
+      $requestMock                  = $this->getMockBuilder('/Application/Request')
                                            ->disableOriginalConstructor()
                                            ->getMock();
       $dependencyInjection          = new DependencyInjection($dependencyInjectionContainer, $requestMock);

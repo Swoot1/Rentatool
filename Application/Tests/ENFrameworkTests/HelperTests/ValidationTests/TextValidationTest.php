@@ -8,7 +8,7 @@
 namespace Tests\ENFrameworkTests\HelperTests\ValidationTests;
 
 
-use Application\ENFramework\Helpers\Validation\TextValidation;
+use Application\ENFramework\Validation\TextValidation;
 
 class TextValidationTest extends \PHPUnit_Framework_TestCase{
    public function testObjectValidation() {
@@ -26,7 +26,7 @@ class TextValidationTest extends \PHPUnit_Framework_TestCase{
    }
 
    /**
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Ogiltigt värde för beskrivning.
     */
    public function testUnAllowedTextCharacters() {

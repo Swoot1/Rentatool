@@ -9,7 +9,7 @@
 namespace Application\Services;
 
 
-use Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException;
+use Application\ENFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\Mappers\RentPeriodValidationMapper;
 use Application\Models\RentPeriod;
 

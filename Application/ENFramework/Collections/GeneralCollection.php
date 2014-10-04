@@ -9,8 +9,8 @@
 
 namespace Application\ENFramework\Collections;
 
-use Application\ENFramework\Helpers\Interfaces\IGetDBParameters;
-use Application\ENFramework\Helpers\Interfaces\IToArray;
+use Application\ENFramework\Interfaces\IGetDBParameters;
+use Application\ENFramework\Interfaces\IToArray;
 
 abstract class GeneralCollection implements IToArray, IGetDBParameters{
 

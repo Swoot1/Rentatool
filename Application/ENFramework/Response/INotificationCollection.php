@@ -8,6 +8,8 @@
 
 namespace Application\ENFramework\Response;
 
+use Application\ENFramework\Response\Models\Notifier;
+
 interface INotificationCollection{
 
    public function addNotifier(Notifier $notifier);

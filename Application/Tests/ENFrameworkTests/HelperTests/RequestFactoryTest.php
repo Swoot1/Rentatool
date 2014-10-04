@@ -8,7 +8,7 @@
 
 namespace Tests\ENFrameworkTests\HelperTests;
 
-use Application\ENFramework\Helpers\RequestFactory;
+use Application\ENFramework\RequestFactory;
 
 class RequestFactoryTest extends \PHPUnit_Framework_TestCase{
    public function testBuild(){

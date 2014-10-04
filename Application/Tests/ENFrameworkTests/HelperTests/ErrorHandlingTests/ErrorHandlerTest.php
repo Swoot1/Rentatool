@@ -12,17 +12,17 @@ class ErrorHandlerTest extends \PHPUnit_Framework_TestCase{
 
 //    /**
 //     * Test that the undefined variable error throws a ErrorException.
-//     * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ErrorException
+//     * @expectedException \Application\ENFramework\ErrorHandling\Exceptions\ErrorException
 //     */
 //    public function testErrorHandler()
 //    {
-//        require_once 'Application\ENFramework\Helpers\ErrorHandling\ErrorHandler.php';
+//        require_once 'Application\ENFramework\Helpersndling\ErrorHandler.php';
 //
 //        echo $test;
 //    }
 //
 //    /**
-//     * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\FatalErrorException
+//     * @expectedException \Application\ENFramework\Helpers\ErrorHaxceptions\FatalErrorException
 //     */
 //    public function testFatalErrorHandler(){
 //        require_once 'Application\ENFramework\Helpers\ErrorHandling\ErrorHandler.php';

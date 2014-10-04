@@ -8,13 +8,13 @@
 namespace Tests\ENFrameworkTests\CollectionTests;
 
 
-use Application\ENFramework\Collections\ValueValidationCollection;
-use Application\ENFramework\Helpers\Validation\BooleanValidation;
-use Application\ENFramework\Helpers\Validation\IntegerValidation;
+use Application\ENFramework\Validation\Collections\ValueValidationCollection;
+use Application\ENFramework\Validation\BooleanValidation;
+use Application\ENFramework\Validation\IntegerValidation;
 
-class ValueValidationCollectionTest extends \PHPUnit_Framework_TestCase {
+class ValueValidationCollectionTest extends \PHPUnit_Framework_TestCase{
 
-   public function testNormalCase() {
+   public function testNormalCase(){
       $validation = array(
          new BooleanValidation(array('genericName' => 'flagga', 'propertyName' => 'flag')),
       );
@@ -30,7 +30,7 @@ class ValueValidationCollectionTest extends \PHPUnit_Framework_TestCase {
     * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Antal måste bestå av siffror.
     */
-   public function testInvalidValue() {
+   public function testInvalidValue(){
       $validation = array(
          new IntegerValidation(array('genericName' => 'Antal', 'propertyName' => 'numberOf')),
       );

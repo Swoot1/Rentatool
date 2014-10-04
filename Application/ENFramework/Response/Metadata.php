@@ -8,8 +8,9 @@
 
 namespace Application\ENFramework\Response;
 
-use Application\ENFramework\Collections\ValueValidationCollection;
+use Application\ENFramework\Validation\Collections\ValueValidationCollection;
 use Application\ENFramework\Models\GeneralModel;
+use Application\ENFramework\Response\Models\Notifier;
 
 class Metadata extends GeneralModel implements IMetadata{
    protected $notificationCollection;

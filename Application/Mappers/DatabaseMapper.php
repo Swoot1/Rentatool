@@ -7,7 +7,7 @@
 
 namespace Application\Mappers;
 
-use Application\ENFramework\Helpers\Database\Models\DatabaseConnection;
+use Application\ENFramework\Database\Models\DatabaseConnection;
 
 class DatabaseMapper{
 

@@ -8,7 +8,7 @@
 
 namespace Application\Controllers;
 
-use Application\ENFramework\Models\Request;
+use Application\ENFramework\Request\Request;
 use Application\ENFramework\Response\Factories\ResponseFactory;
 use Application\Factories\MailFactory;
 use Application\Services\ResetPasswordService;

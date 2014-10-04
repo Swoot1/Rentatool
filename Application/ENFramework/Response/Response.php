@@ -7,13 +7,12 @@
 
 namespace Application\ENFramework\Response;
 
-use Application\ENFramework\Helpers\Interfaces\IToArray;
-
+use Application\ENFramework\Interfaces\IToArray;
+use Application\ENFramework\Response\Models\Notifier;
 
 /**
- * Class Header
- * Creates and can execute a header() based on its data.
- * @package Application\ENFramework\Helpers
+ * Class Response
+ * @package Application\ENFramework\Response
  */
 class Response implements IResponse{
 

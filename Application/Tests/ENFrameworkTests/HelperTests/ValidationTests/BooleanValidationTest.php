@@ -8,21 +8,21 @@
 namespace Tests\ENFrameworkTests\HelperTests\ValidationTests;
 
 
-use Application\ENFramework\Helpers\Validation\BooleanValidation;
+use Application\ENFramework\Validation\BooleanValidation;
 
-class BooleanValidationTest extends \PHPUnit_Framework_TestCase {
+class BooleanValidationTest extends \PHPUnit_Framework_TestCase{
 
-   public function testValidateNormalCase() {
+   public function testValidateNormalCase(){
       $booleanValidation = new BooleanValidation(array('genericName' => 'Flagga', 'propertyName' => 'flag'));
       $result            = $booleanValidation->validate(true);
       $this->assertTrue($result);
    }
 
    /**
-    * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
+    * @expectedException \Application\ENFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Flagga måste vara en boolean.
     */
-   public function testValidateIntegerBoolean() {
+   public function testValidateIntegerBoolean(){
       $booleanValidation = new BooleanValidation(array('genericName' => 'Flagga', 'propertyName' => 'flag'));
       $booleanValidation->validate(1);
    }
@@ -31,14 +31,14 @@ class BooleanValidationTest extends \PHPUnit_Framework_TestCase {
     * @expectedException \Application\ENFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Flagga måste vara en boolean.
     */
-   public function testValidateBooleanAsString() {
+   public function testValidateBooleanAsString(){
       $booleanValidation = new BooleanValidation(array('genericName' => 'Flagga', 'propertyName' => 'flag'));
       $booleanValidation->validate('false');
    }
 
-   public function testGetPropertyName() {
+   public function testGetPropertyName(){
       $booleanValidation = new BooleanValidation(array('genericName' => 'Flagga', 'propertyName' => 'flag'));
-      $propertyName = $booleanValidation->getPropertyName();
+      $propertyName      = $booleanValidation->getPropertyName();
       $this->assertEquals('flag', $propertyName);
    }
 } 

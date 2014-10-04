@@ -9,9 +9,9 @@
 namespace Application\Models;
 
 
-use Application\ENFramework\Collections\ValueValidationCollection;
-use Application\ENFramework\Helpers\Validation\EmailValidation;
-use Application\ENFramework\Helpers\Validation\TextValidation;
+use Application\ENFramework\Validation\Collections\ValueValidationCollection;
+use Application\ENFramework\Validation\EmailValidation;
+use Application\ENFramework\Validation\TextValidation;
 use Application\ENFramework\Models\GeneralModel;
 
 class MailContent extends GeneralModel{

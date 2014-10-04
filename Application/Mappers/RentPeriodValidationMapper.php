@@ -9,7 +9,7 @@
 namespace Application\Mappers;
 
 
-use Application\ENFramework\Helpers\Database\Models\IDatabaseConnection;
+use Application\ENFramework\Database\Models\IDatabaseConnection;
 
 class RentPeriodValidationMapper{
    private $databaseConnection;
@@ -36,8 +36,9 @@ class RentPeriodValidationMapper{
    }
 
    public function isAvailableRentPeriod(array $data){
-      $result = $this->databaseConnection->runQuery($this->isAvailableRentPeriodSQL, $data);
+      $result                = $this->databaseConnection->runQuery($this->isAvailableRentPeriodSQL, $data);
       $isAvailableRentPeriod = (int)array_pop($result)['numberOfExistingRentPeriods'] === 0;
+
       return $isAvailableRentPeriod;
    }
 } 

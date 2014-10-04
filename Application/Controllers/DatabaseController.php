@@ -7,10 +7,10 @@
 
 namespace Application\Controllers;
 
-use Application\ENFramework\Helpers\Database\Factories\DatabaseConnectionFactory;
-use Application\ENFramework\Helpers\Database\Models\DatabaseConnection;
-use Application\ENFramework\Helpers\Database\MySQLValueFormatter;
-use Application\ENFramework\Models\Request;
+use Application\ENFramework\Database\Factories\DatabaseConnectionFactory;
+use Application\ENFramework\Database\Models\DatabaseConnection;
+use Application\ENFramework\Database\Formatters\MySQLValueFormatter;
+use Application\ENFramework\Request\Request;
 use Application\ENFramework\Response\Factories\ResponseFactory;
 use Application\Mappers\RentalObjectMapper;
 use Application\Mappers\UserMapper;
@@ -51,9 +51,9 @@ class DatabaseController{
       $this->databaseService->create();
 
       $databaseConnectionFactory = new DatabaseConnectionFactory();
-      $databaseConnection = new DatabaseConnection($databaseConnectionFactory, new MySQLValueFormatter());
-      $rentalObjectMapper = new RentalObjectMapper($databaseConnection);
-      $userMapper         = new UserMapper($databaseConnection);
+      $databaseConnection        = new DatabaseConnection($databaseConnectionFactory, new MySQLValueFormatter());
+      $rentalObjectMapper        = new RentalObjectMapper($databaseConnection);
+      $userMapper                = new UserMapper($databaseConnection);
       $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper);
       $this->response->addNotifier(['message' => 'Databas med demodata har skapats.']);
 

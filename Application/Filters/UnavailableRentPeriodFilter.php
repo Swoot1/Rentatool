@@ -9,8 +9,8 @@
 namespace Application\Filters;
 
 
-use Application\ENFramework\Collections\ValueValidationCollection;
-use Application\ENFramework\Helpers\Validation\IntegerValidation;
+use Application\ENFramework\Validation\Collections\ValueValidationCollection;
+use Application\ENFramework\Validation\IntegerValidation;
 use Application\ENFramework\Models\GeneralModel;
 
 class UnavailableRentPeriodFilter extends GeneralModel{
@@ -50,7 +50,7 @@ class UnavailableRentPeriodFilter extends GeneralModel{
     */
    public function getFilterQuery($query){
 
-      if($this->rentalObjectId != null){
+      if ($this->rentalObjectId != null){
          $query .= ' WHERE rental_object_id = :rentalObjectId';
       }
 
@@ -63,7 +63,8 @@ class UnavailableRentPeriodFilter extends GeneralModel{
     */
    public function getFilterParams(){
       $DBParams = $this->getDBParameters();
-      return array_filter($DBParams, function($value){
+
+      return array_filter($DBParams, function ($value){
          return $value != null;
       });
    }

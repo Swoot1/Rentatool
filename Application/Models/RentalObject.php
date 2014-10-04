@@ -10,9 +10,9 @@
 namespace Application\Models;
 
 use Application\Collections\FileCollection;
-use Application\ENFramework\Collections\ValueValidationCollection;
-use Application\ENFramework\Helpers\Validation\IntegerValidation;
-use Application\ENFramework\Helpers\Validation\TextValidation;
+use Application\ENFramework\Validation\Collections\ValueValidationCollection;
+use Application\ENFramework\Validation\IntegerValidation;
+use Application\ENFramework\Validation\TextValidation;
 use Application\ENFramework\Models\GeneralModel;
 
 class RentalObject extends GeneralModel{
@@ -22,7 +22,7 @@ class RentalObject extends GeneralModel{
    protected $pricePerDay;
    protected $fileCollection;
    protected $_setters = array(
-      'fileCollection'      => 'setFileCollection'
+      'fileCollection' => 'setFileCollection'
    );
 
    public function __construct(array $data = array()){
