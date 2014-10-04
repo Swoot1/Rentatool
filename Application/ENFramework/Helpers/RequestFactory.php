@@ -10,9 +10,8 @@
 namespace Application\ENFramework\Helpers;
 
 use Application\ENFramework\Models\Request;
-use Rentatool\Application\ENFramework\Helpers\JsonParser;
 
-class RequestBuilder{
+class RequestFactory{
    private $buildSource;
 
    /**

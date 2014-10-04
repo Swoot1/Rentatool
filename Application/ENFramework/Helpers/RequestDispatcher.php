@@ -9,18 +9,15 @@
 
 namespace Application\ENFramework\Helpers;
 
-class RequestDispatcher
-{
-    private $requestModel;
+class RequestDispatcher{
+   private $requestModel;
 
-    public function __construct()
-    {
-        $requestBuilder = new RequestBuilder($_SERVER);
-        $this->requestModel = $requestBuilder->build();
-    }
+   public function __construct(){
+      $requestFactory     = new RequestFactory($_SERVER);
+      $this->requestModel = $requestFactory->build();
+   }
 
-    public function getRequestModel()
-    {
-        return $this->requestModel;
-    }
+   public function getRequestModel(){
+      return $this->requestModel;
+   }
 }
