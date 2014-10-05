@@ -103,10 +103,6 @@ class GeneralModelTest extends PHPUnit_Framework_TestCase{
       $this->assertInstanceOf('stdClass', $modelArray['childModel']);
    }
 
-   public function testSetDefaultValues() {
-      $this->markTestIncomplete('Not sure if _defaultValues are used anywhere');
-   }
-
    /**
     * @expectedException        \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Property måste vara alfanumeriskt.
