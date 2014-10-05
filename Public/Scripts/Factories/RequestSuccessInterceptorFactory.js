@@ -12,7 +12,7 @@ angular.module('Rentatool').factory('RequestSuccessInterceptor', ['$q', 'AlertBo
          var notifiers = response.data.metadata ? response.data.metadata.notificationCollection : [];
 
          requestSuccessInterceptor.addNotifiers(notifiers);
-         response.data = response.data.responseData || response.data;
+         response.data = response.data.data || response.data;
 
          return response;
       },
