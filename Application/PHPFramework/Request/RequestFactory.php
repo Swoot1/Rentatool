@@ -28,11 +28,10 @@ class RequestFactory{
     */
    public function build(){
       $data                  = array();
-      $data['requestURI']    = $this->getURI();
       $data['requestMethod'] = $this->getRequestMethod();
       $data['contentType']   = $this->getContentType();
       $data['requestData']   = $this->getRequestData($data['contentType']);
-      $data                  = array_merge($this->getURLSubParts($data['requestURI']), $data);
+      $data = array_merge($this->getURLSubParts($this->getURI()), $data);
 
       return new Request($data);
    }
