@@ -145,4 +145,20 @@ class RequestTest extends \PHPUnit_Framework_TestCase{
 
       $request->callControllerMethod($rentalObjectControllerMock);
    }
+
+   public function testValidateGetters(){
+      $request = new Request(array(
+                                'requestMethod' => 'DELETE',
+                                'requestData'   => array(),
+                                'resource'      => 'rentalobjects',
+                                'contentType'   => 'application/json',
+                                'id'            => 1,
+                                'action'        => 'login'
+                             ));
+
+      $this->assertEquals('DELETE', $request->getRequestMethod());
+      $this->assertEquals('login', $request->getAction());
+      $this->assertEquals(1, $request->getId());
+      $this->assertEquals('rentalobjects', $request->getResource());
+   }
 } 
