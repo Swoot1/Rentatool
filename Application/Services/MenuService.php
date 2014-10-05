@@ -26,7 +26,7 @@ class MenuService{
       ];
    }
 
-   public function getMenuItems(){
+   public function index(){
       $menuItems      = [];
       $isUserLoggedIn = SessionManager::isUserLoggedIn();
 
