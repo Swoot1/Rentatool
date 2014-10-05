@@ -53,7 +53,7 @@ class RentPeriod extends GeneralModel{
    }
 
    // TODO add validation so that the from date is not after the to date.
-   public function setUpValidation(){
+   protected function setUpValidation(){
       $this->_validation = new ValueValidationCollection(
          array(
             new IntegerValidation(

@@ -48,8 +48,4 @@ class Password extends GeneralModel{
    public function getResetCode(){
       return $this->resetCode;
    }
-
-   public function getUserId(){
-      return $this->userId;
-   }
 } 
