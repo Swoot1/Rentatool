@@ -66,7 +66,7 @@ class RentalObjectFilter extends GeneralModel{
    /**
     * @return $this
     */
-   public function setupValidation(){
+   protected function setupValidation(){
       $this->_validation = new ValueValidationCollection(
          array(
             new TextValidation(
