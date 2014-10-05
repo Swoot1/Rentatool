@@ -29,7 +29,7 @@ class DatabaseController{
     */
    public function __construct(DatabaseService $databaseService, ResponseFactory $responseFactory){
       $this->databaseService = $databaseService;
-      $this->response        = $responseFactory->createResponse();
+      $this->response = $responseFactory->build();
    }
 
    public function create(){
@@ -50,7 +50,7 @@ class DatabaseController{
       $databaseConnection        = new DatabaseConnection($databaseConnectionFactory, new MySQLValueFormatter());
       $rentalObjectMapper        = new RentalObjectMapper($databaseConnection);
       $userMapper                = new UserMapper($databaseConnection);
-      $this->databaseService->insertSeeds($userMapper, $rentalObjectMapper);
+      $this->databaseService->createWithSeeds($userMapper, $rentalObjectMapper);
       $this->response->addNotifier(['message' => 'Databas med demodata har skapats.']);
 
       return $this->response;

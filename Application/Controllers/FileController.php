@@ -20,7 +20,7 @@ class FileController{
 
    public function __construct(FileService $fileService, ResponseFactory $responseFactory){
       $this->fileService = $fileService;
-      $this->response    = $responseFactory->createResponse();
+      $this->response = $responseFactory->build();
    }
 
    public function create(array $data){

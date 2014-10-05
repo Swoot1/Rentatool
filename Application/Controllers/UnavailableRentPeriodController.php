@@ -21,7 +21,7 @@ class UnavailableRentPeriodController{
    public function __construct(Request $request, UnavailableRentPeriodService $unavailableRentPeriodsService, ResponseFactory $responseFactory){
       $this->request                      = $request;
       $this->unavailableRentPeriodService = $unavailableRentPeriodsService;
-      $this->response                     = $responseFactory->createResponse();
+      $this->response                     = $responseFactory->build();
    }
 
    public function index(){

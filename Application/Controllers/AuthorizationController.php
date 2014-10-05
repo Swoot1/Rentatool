@@ -19,7 +19,7 @@ class AuthorizationController{
 
    public function __construct(AuthorizationService $authorizationService, ResponseFactory $responseFactory){
       $this->authorizationService = $authorizationService;
-      $this->response             = $responseFactory->createResponse();
+      $this->response = $responseFactory->build();
    }
 
    public function login(array $data){

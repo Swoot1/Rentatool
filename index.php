@@ -41,7 +41,7 @@ try{
    $errorHTTPStatusCodeFactory = new ErrorHTTPStatusCodeFactory($exception);
    $HTTPStatusCode             = $errorHTTPStatusCodeFactory->getHTTPStatusCode();
    $responseFactory            = new ResponseFactory();
-   $response                   = $responseFactory->createResponse();
+   $response                   = $responseFactory->build();
    $response->setStatusCode($HTTPStatusCode);
    $response->setResponseData(new Application\PHPFramework\ErrorHandling\ErrorTrace(array('message' => $exception->getMessage(), 'file' => $exception->getFile(), 'line' => $exception->getLine(), 'trace' => $exception->getTrace())));
    $response->sendResponse();

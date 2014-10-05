@@ -26,7 +26,7 @@ class UserController{
     */
    public function __construct(UserService $userService, ResponseFactory $responseFactory){
       $this->userService = $userService;
-      $this->response    = $responseFactory->createResponse();
+      $this->response    = $responseFactory->build();
    }
 
    public function index(){
