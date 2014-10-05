@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Rentatool\Tests\PHPFrameworkTests\HelperTests;
+namespace Rentatool\Tests\PHPFrameworkTests\ResponseTests;
 
 
 use Application\Models\MenuItem;
