@@ -16,7 +16,6 @@ class IndexHTMLController{
       return $this->response
          ->setContentType('text/html')
          ->setResponseData($this->getData());
-
    }
 
    private function getData(){

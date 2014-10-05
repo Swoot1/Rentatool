@@ -52,6 +52,7 @@
         <dependency namespace="Application\Controllers" class="MenuController">
             <dependencies>
                 <dependency namespace="Application\PHPFramework\Response\Factories" class="ResponseFactory"/>
+                <dependency namespace="Application\Services" class="MenuService"/>
             </dependencies>
         </dependency>
 

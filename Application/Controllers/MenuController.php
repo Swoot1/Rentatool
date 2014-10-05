@@ -16,13 +16,13 @@ class MenuController{
 
    private $response;
 
-   public function __construct(ResponseFactory $responseFactory){
+   public function __construct(ResponseFactory $responseFactory, MenuService $menuService){
       $this->response = $responseFactory->build();
+      $this->menuService = $menuService;
    }
 
    public function index(){
-      $menuService = new MenuService();
-      $menuItems   = $menuService->getMenuItems();
+      $menuItems = $this->menuService->index();
 
       $this->response->setResponseData($menuItems);
 
