@@ -25,7 +25,7 @@ class ResetPasswordController{
    }
 
    public function create(array $data){
-      $mailFactory = new MailFactory();
+      $mailFactory = new MailFactory(new \PHPMailer());
       $this->resetPasswordService->create($data, $mailFactory);
       return $this->response->addNotifier(array('message' => 'Ett återställningsmail har skickats till din e-postadress.'));
    }

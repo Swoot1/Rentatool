@@ -9,6 +9,7 @@
 namespace Application\Services;
 
 
+use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\PHPFramework\ErrorHandling\Exceptions\NotFoundException;
 use Application\PHPFramework\Validation\EmailValidation;
 use Application\Factories\MailFactory;
@@ -48,8 +49,12 @@ class ResetPasswordService{
                                         'bodyHTML'       => sprintf('Följ den här länken för att återställa ditt lösenord: <a href="%s">Klicka här!</a>', $linkAddress),
                                         'bodyPlainText'  => sprintf('Öppna den här adressen i din webbläsare för att återställa ditt lösenord %s', $linkAddress)
                                      ));
+
       $mail        = $mailFactory->build($mailContent);
-      $mail->send();
+
+      if (!$mail->send()){
+         throw new ApplicationException(sprintf('Mailer Error: %s', $mail->ErrorInfo));
+      }
    }
 
    public function readActiveResetPassword($resetCode){
