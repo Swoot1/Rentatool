@@ -20,7 +20,6 @@ abstract class GeneralModel implements IToArray, IGetDBParameters{
     */
    protected $_validation;
    protected $_noDBProperties = array();
-   protected $_defaultValues = array();
    protected $_setters = array();
 
    public function __construct(array $data = array()){
@@ -40,10 +39,6 @@ abstract class GeneralModel implements IToArray, IGetDBParameters{
 
    protected function getNoDBProperties(){
       return $this->_noDBProperties;
-   }
-
-   protected function setDefaultValues(array $defaultValues){
-      $this->_defaultValues = $defaultValues;
    }
 
    protected function setData(array $data){

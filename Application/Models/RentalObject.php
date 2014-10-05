@@ -79,15 +79,6 @@ class RentalObject extends GeneralModel{
       return $this->id;
    }
 
-   protected function setUpDefaultValues(){
-      $defaultValues = array(
-         'id'   => null,
-         'name' => null
-      );
-
-      $this->setDefaultValues($defaultValues);
-   }
-
    public function getFileCollection(){
       return $this->fileCollection;
    }
