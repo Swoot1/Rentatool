@@ -31,39 +31,36 @@ class UserController{
 
    public function index(){
       $userCollection = $this->userService->index();
-      $this->response->setResponseData($userCollection);
 
-      return $this->response;
+      return $this->response->setResponseData($userCollection);
 
    }
 
    public function create(array $data){
       $user = $this->userService->create($data);
-      $this->response->addNotifier(['message' => 'Användaren har skapats.']);
-      $this->response->setResponseData($user)->setStatusCode(201);
 
-      return $this->response;
+      return $this->response->addNotifier(['message' => 'Användaren har skapats.'])
+                            ->setResponseData($user)
+                            ->setStatusCode(201);
    }
 
    public function read($id){
       $user = $this->userService->read($id);
-      $this->response->setResponseData($user);
 
-      return $this->response;
+      return $this->response->setResponseData($user);
    }
 
    public function update($id, $requestData){
       $user = $this->userService->update($id, $requestData);
-      $this->response->setResponseData($user)->addNotifier(['message' => 'Användaren har uppdaterats.']);
 
-      return $this->response;
+      return $this->response->setResponseData($user)
+                            ->addNotifier(['message' => 'Användaren har uppdaterats.']);
    }
 
    public function delete($id){
       $this->userService->delete($id);
-      $this->response->setStatusCode(204);
 
-      return $this->response;
+      return $this->response->setStatusCode(204);
    }
 
    public function currentUser(){

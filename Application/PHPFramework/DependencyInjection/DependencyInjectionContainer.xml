@@ -159,6 +159,10 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Application\Services" class="MenuService">
+            <dependencies/>
+        </dependency>
+
         <!-- Mappers -->
         <dependency namespace="Application\Mappers" class="RentalObjectMapper">
             <dependencies>
