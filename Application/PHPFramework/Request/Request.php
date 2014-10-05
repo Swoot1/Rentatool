@@ -16,14 +16,13 @@ use Application\PHPFramework\Models\GeneralModel;
 
 class Request extends GeneralModel{
    protected $requestMethod;
-   protected $requestURI;
    protected $requestData;
    protected $resource;
    protected $contentType;
    protected $id = false;
    protected $action = false;
 
-   public function setUpValidation(){
+   protected function setUpValidation(){
       $this->_validation = new ValueValidationCollection(array()); // TODO
    }
 
@@ -80,7 +79,7 @@ class Request extends GeneralModel{
          if ($this->id){
             $result = $controller->read($this->id);
          } else{
-            $result = call_user_func(array($controller, $this->action), $this->requestData());
+            $result = call_user_func(array($controller, $this->action), $this->requestData);
          }
 
       } else{
