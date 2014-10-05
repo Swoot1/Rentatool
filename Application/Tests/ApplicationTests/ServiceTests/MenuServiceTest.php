@@ -29,13 +29,13 @@ class MenuServiceTest extends \PHPUnit_Framework_TestCase{
    }
 
    public function testReturnsCollection(){
-      $menuItems = $this->menuService->getMenuItems();
+      $menuItems = $this->menuService->index();
       $this->assertInstanceOf('Application\PHPFramework\Collections\GeneralCollection', $menuItems);
    }
 
    public function testGetPublicMenu(){
       $expectedMenuItems = ['Uthyrningsobjekt'];
-      $menuItems         = $this->menuService->getMenuItems()->toArray();
+      $menuItems         = $this->menuService->index()->toArray();
 
       $this->assertMenuIsSame($expectedMenuItems, $menuItems);
    }
@@ -44,7 +44,7 @@ class MenuServiceTest extends \PHPUnit_Framework_TestCase{
       $_SESSION['user']  = ['id' => 1, 'username' => 'test'];
 
       $expectedMenuItems = ['Uthyrningsobjekt', 'Databasskapning'];
-      $menuItems         = $this->menuService->getMenuItems()->toArray();
+      $menuItems         = $this->menuService->index()->toArray();
 
       $this->assertMenuIsSame($expectedMenuItems, $menuItems);
    }
@@ -53,7 +53,7 @@ class MenuServiceTest extends \PHPUnit_Framework_TestCase{
       $_SESSION['user']  = ['id' => 1, 'username' => 'testadministrator', 'hasAdministrativeAccess' => true];
 
       $expectedMenuItems = ['Uthyrningsobjekt', 'Databasskapning', 'Användare'];
-      $menuItems         = $this->menuService->getMenuItems()->toArray();
+      $menuItems         = $this->menuService->index()->toArray();
 
       $this->assertMenuIsSame($expectedMenuItems, $menuItems);
    }
