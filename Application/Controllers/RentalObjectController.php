@@ -44,8 +44,9 @@ class RentalObjectController{
    public function create(array $data){
       $currentUser  = SessionManager::getCurrentUser();
       $rentalObject = $this->rentalObjectService->create($data, $currentUser);
-      $this->response->setResponseData($rentalObject)->setStatusCode(201);
-      $this->response->addNotifier(['message' => 'Uthyrningsobjektet har skapats.']);
+      $this->response->setResponseData($rentalObject)
+                     ->setStatusCode(201)
+                     ->addNotifier(['message' => 'Uthyrningsobjektet har skapats.']);
 
       return $this->response;
    }
