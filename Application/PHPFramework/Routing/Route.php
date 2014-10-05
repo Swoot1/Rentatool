@@ -55,7 +55,7 @@ class Route{
 
 
    public function isUserAllowed(User $currentUser){
-      if (!is_null($this->accessRule)){
+      if ($this->hasAccessRule()){
          $allowed = $this->accessRule->isAccessAllowed($currentUser);
 
          if (!$allowed){
@@ -64,5 +64,9 @@ class Route{
       }
 
       return true;
+   }
+
+   public function hasAccessRule(){
+      return $this->accessRule !== null;
    }
 }
