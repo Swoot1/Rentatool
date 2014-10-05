@@ -23,7 +23,7 @@ class RentPeriodController{
 
    public function __construct(RentPeriodService $rentPeriodService, ResponseFactory $responseFactory){
       $this->rentPeriodService = $rentPeriodService;
-      $this->response          = $responseFactory->createResponse();
+      $this->response          = $responseFactory->build();
    }
 
    public function create(array $data){

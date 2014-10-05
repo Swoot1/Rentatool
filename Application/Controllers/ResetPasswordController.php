@@ -21,12 +21,13 @@ class ResetPasswordController{
 
    public function __construct(ResetPasswordService $resetPasswordService, ResponseFactory $responseFactory){
       $this->resetPasswordService = $resetPasswordService;
-      $this->response             = $responseFactory->createResponse();
+      $this->response             = $responseFactory->build();
    }
 
    public function create(array $data){
       $mailFactory = new MailFactory(new \PHPMailer());
       $this->resetPasswordService->create($data, $mailFactory);
+
       return $this->response->addNotifier(array('message' => 'Ett återställningsmail har skickats till din e-postadress.'));
    }
 }

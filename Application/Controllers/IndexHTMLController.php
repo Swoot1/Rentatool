@@ -9,7 +9,7 @@ class IndexHTMLController{
    private $response;
 
    public function __construct(ResponseFactory $responseFactory){
-      $this->response = $responseFactory->createResponse();
+      $this->response = $responseFactory->build();
    }
 
    public function index(){

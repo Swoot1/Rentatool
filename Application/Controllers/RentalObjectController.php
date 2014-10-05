@@ -26,7 +26,7 @@ class RentalObjectController{
    public function __construct(Request $request, RentalObjectService $rentalObjectService, ResponseFactory $responseFactory){
       $this->request             = $request;
       $this->rentalObjectService = $rentalObjectService;
-      $this->response            = $responseFactory->createResponse();
+      $this->response            = $responseFactory->build();
    }
 
    /**

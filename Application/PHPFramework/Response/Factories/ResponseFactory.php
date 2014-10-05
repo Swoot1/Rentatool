@@ -15,10 +15,10 @@ use Application\PHPFramework\Response\StatusCodeToTextMapper;
 
 class ResponseFactory{
 
-   public function createResponse(){
+   public function build(){
       $notificationCollection = new NotificationCollection();
-      $metadata = new Metadata($notificationCollection);
-      $noName = new NoName($metadata);
+      $metadata               = new Metadata($notificationCollection);
+      $noName                 = new NoName($metadata);
       $statusCodeToTextMapper = new StatusCodeToTextMapper();
 
       return new Response($statusCodeToTextMapper, $noName);

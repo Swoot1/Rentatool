@@ -28,7 +28,7 @@ class DatabaseService{
       $this->databaseMapper->createTables();
    }
 
-   public function insertSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper){
+   public function createWithSeeds(UserMapper $userMapper, RentalObjectMapper $rentalObjectMapper){
       $this->databaseMapper->insertSeeds($userMapper, $rentalObjectMapper);
    }
 }
