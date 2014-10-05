@@ -31,10 +31,6 @@ class MockModel extends GeneralModel{
       $this->setNoDBProperties($noDBProperties);
    }
 
-   public function resetModel() {
-
-   }
-
    public function getProperty(){
       return $this->property;
    }
