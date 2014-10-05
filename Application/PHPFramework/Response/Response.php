@@ -20,24 +20,24 @@ class Response implements IResponse{
    private $statusCode = 200;
    private $contentType = 'application/json';
    private $charset = 'utf-8';
-   private $noName;
+   private $responseData;
    private $statusCodeToTextMapper;
 
-   public function __construct(StatusCodeToTextMapper $statusCodeToTextMapper, NoName $noName){
-      $this->noName                 = $noName;
+   public function __construct(StatusCodeToTextMapper $statusCodeToTextMapper, ResponseData $responseData){
+      $this->responseData           = $responseData;
       $this->statusCodeToTextMapper = $statusCodeToTextMapper;
       $this->setProtocol();
    }
 
    public function setResponseData(IToArray $data){
-      $this->noName->setResponseData($data);
+      $this->responseData->setResponseData($data);
 
       return $this;
    }
 
    public function addNotifier(array $notifierData){
       $notifier = new Notifier($notifierData);
-      $this->noName->addNotifier($notifier);
+      $this->responseData->addNotifier($notifier);
 
       return $this;
 
@@ -45,6 +45,7 @@ class Response implements IResponse{
 
    public function setContentType($value){
       $this->contentType = $value;
+
       return $this;
    }
 
@@ -91,7 +92,7 @@ class Response implements IResponse{
     * @return $this
     */
    private function sendData(){
-      echo $this->noName->getFormattedData($this->contentType);
+      echo $this->responseData->getFormattedData($this->contentType);
 
       return $this;
    }

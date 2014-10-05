@@ -5,12 +5,12 @@ rentaTool.factory('RequestErrorInterceptor', ['$q', 'AlertBoxService', function 
    var deferred = $q.defer();
    var requestErrorInterceptor = {
       requestError: function (response) {
-         requestErrorInterceptor.writeErrorToConsole(response.data.responseData);
+         requestErrorInterceptor.writeErrorToConsole(response.data.data);
          requestErrorInterceptor.displayAlertBox(response);
          return deferred.promise;
       },
       responseError: function (response) {
-         requestErrorInterceptor.writeErrorToConsole(response.data.responseData);
+         requestErrorInterceptor.writeErrorToConsole(response.data.data);
          requestErrorInterceptor.displayAlertBox(response);
          return deferred.promise;
       },
@@ -33,7 +33,7 @@ rentaTool.factory('RequestErrorInterceptor', ['$q', 'AlertBoxService', function 
       },
 
       displayAlertBox: function (response) {
-         var message = response.data && response.data.responseData.message ? response.data.responseData.message : 'Okänt fel.';
+         var message = response.data && response.data.data.message ? response.data.data.message : 'Okänt fel.';
          alertBoxService.addAlertBox('alert', message);
       }
    };

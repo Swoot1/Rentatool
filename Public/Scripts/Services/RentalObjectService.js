@@ -6,7 +6,7 @@ angular.module('Rentatool')
 
       var rentalObjectPhoto = {};
       var setPhoto = function(e, data){
-         rentalObjectPhoto = data.result.responseData;
+         rentalObjectPhoto = data.result.data;
       };
 
       var getPhoto = function(){
