@@ -22,10 +22,12 @@ class Response implements IResponse{
    private $charset = 'utf-8';
    private $responseData;
    private $statusCodeToTextMapper;
+   private $headerDispatcher;
 
-   public function __construct(StatusCodeToTextMapper $statusCodeToTextMapper, ResponseData $responseData){
+   public function __construct(StatusCodeToTextMapper $statusCodeToTextMapper, ResponseData $responseData, IHeaderDispatcher $headerDispatcher){
       $this->responseData           = $responseData;
       $this->statusCodeToTextMapper = $statusCodeToTextMapper;
+      $this->headerDispatcher       = $headerDispatcher;
       $this->setProtocol();
    }
 
@@ -81,9 +83,9 @@ class Response implements IResponse{
       $charset        = $this->getCharsetString();
       $contentType    = $this->getContentTypeString();
 
-      header(sprintf("%s %s", $this->protocol, $statusCodeText), true, $this->statusCode);
-      header($charset);
-      header($contentType);
+      $this->headerDispatcher->setHeader(sprintf("%s %s", $this->protocol, $statusCodeText), true, $this->statusCode);
+      $this->headerDispatcher->setHeader($charset);
+      $this->headerDispatcher->setHeader($contentType);
 
       return $this;
    }
