@@ -14,3 +14,8 @@ Public/RentalObjectPhotos
 Application/.DS_Store
 Application/PHPFramework/.DS_Store
 Application/Factories/MailFactory.php
+vendor/autoload.php
+vendor/composer/autoload_namespaces.php
+vendor/composer/autoload_real.php
+composer.lock
+vendor/composer/installed.json
