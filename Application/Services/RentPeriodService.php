@@ -37,7 +37,7 @@ class RentPeriodService{
    public function getCalculatedPricePlan(array $data, User $currentUser){
       $rentPeriod   = new RentPeriod(array_merge(array('renterId' => $currentUser->getId()), $data));
       $rentalObject = $this->rentalObjectService->read($rentPeriod->getRentalObjectId());
-      $rentPeriod->setPricePerDay($rentalObject);
+      $rentPeriod->setPricePerDayFromRentalObject($rentalObject);
 
       return $rentPeriod;
    }
