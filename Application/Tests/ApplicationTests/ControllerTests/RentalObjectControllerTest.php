@@ -17,6 +17,7 @@ class RentalObjectControllerTest extends \PHPUnit_Framework_TestCase{
    private $responseFactoryMock;
    private $responseMock;
    private $requestMock;
+   private $sessionManagerMock;
 
    public function setUp(){
       $this->rentalObjectServiceMock = $this->getMockBuilder('Application\Services\RentalObjectService')
@@ -34,6 +35,17 @@ class RentalObjectControllerTest extends \PHPUnit_Framework_TestCase{
       $this->requestMock = $this->getMockBuilder('Application\PHPFramework\Request\Request')
                                 ->disableOriginalConstructor()
                                 ->getMock();
+
+      $this->sessionManagerMock = $this->getMockBuilder('Application\PHPFramework\SessionManager')
+                                       ->disableOriginalConstructor()
+                                       ->getMock();
+
+      $userMock = $this->getMockBuilder('Application\Models\User')
+                       ->disableOriginalConstructor()
+                       ->getMock();
+
+      $this->sessionManagerMock->expects($this->any())->method('getCurrentUser')
+                               ->will($this->returnValue($userMock));
    }
 
    public function testIndex(){
@@ -58,7 +70,7 @@ class RentalObjectControllerTest extends \PHPUnit_Framework_TestCase{
                         ->method('getGETParameters')
                         ->will($this->returnValue(array()));
 
-      $rentalObjectServiceController = new RentalObjectController($this->requestMock, $this->rentalObjectServiceMock, $this->responseFactoryMock);
+      $rentalObjectServiceController = new RentalObjectController($this->requestMock, $this->rentalObjectServiceMock, $this->responseFactoryMock, $this->sessionManagerMock);
       $response                      = $rentalObjectServiceController->index(array());
       $this->assertInstanceOf('Application\PHPFramework\Response\Response', $response);
    }
@@ -81,8 +93,78 @@ class RentalObjectControllerTest extends \PHPUnit_Framework_TestCase{
                                 ->method('build')
                                 ->will($this->returnValue($this->responseMock));
 
-      $rentalObjectServiceController = new RentalObjectController($this->requestMock, $this->rentalObjectServiceMock, $this->responseFactoryMock);
+      $rentalObjectServiceController = new RentalObjectController($this->requestMock, $this->rentalObjectServiceMock, $this->responseFactoryMock, $this->sessionManagerMock);
       $response                      = $rentalObjectServiceController->read(12);
+      $this->assertInstanceOf('Application\PHPFramework\Response\Response', $response);
+   }
+
+   public function testCreate(){
+      $rentalObjectMock = $this->getMockBuilder('Application\Models\RentalObject')
+                               ->disableOriginalConstructor()
+                               ->getMock();
+
+      $this->rentalObjectServiceMock->expects($this->once())
+                                    ->method('create')
+                                    ->will($this->returnValue($rentalObjectMock));
+
+      $this->responseMock->expects($this->once())
+                         ->method('setResponseData')
+                         ->will($this->returnValue($this->responseMock));
+
+      $this->responseMock->expects($this->once())
+                         ->method('setStatusCode')
+                         ->will($this->returnValue($this->responseMock));
+
+      $this->responseFactoryMock->expects($this->once())
+                                ->method('build')
+                                ->will($this->returnValue($this->responseMock));
+
+      $rentalObjectServiceController = new RentalObjectController($this->requestMock, $this->rentalObjectServiceMock, $this->responseFactoryMock, $this->sessionManagerMock);
+      $response                      = $rentalObjectServiceController->create(array());
+      $this->assertInstanceOf('Application\PHPFramework\Response\Response', $response);
+   }
+
+   public function testUpdate(){
+      $rentalObjectMock = $this->getMockBuilder('Application\Models\RentalObject')
+                               ->disableOriginalConstructor()
+                               ->getMock();
+
+      $this->rentalObjectServiceMock->expects($this->once())
+                                    ->method('update')
+                                    ->will($this->returnValue($rentalObjectMock));
+
+      $this->responseMock->expects($this->once())
+                         ->method('setResponseData')
+                         ->will($this->returnValue($this->responseMock));
+
+      $this->responseFactoryMock->expects($this->once())
+                                ->method('build')
+                                ->will($this->returnValue($this->responseMock));
+
+      $rentalObjectServiceController = new RentalObjectController($this->requestMock, $this->rentalObjectServiceMock, $this->responseFactoryMock, $this->sessionManagerMock);
+      $response                      = $rentalObjectServiceController->update(1, array());
+      $this->assertInstanceOf('Application\PHPFramework\Response\Response', $response);
+   }
+
+   public function testDelete(){
+      $rentalObjectMock = $this->getMockBuilder('Application\Models\RentalObject')
+                               ->disableOriginalConstructor()
+                               ->getMock();
+
+      $this->rentalObjectServiceMock->expects($this->once())
+                                    ->method('delete')
+                                    ->will($this->returnValue($rentalObjectMock));
+
+      $this->responseMock->expects($this->once())
+                         ->method('setStatusCode')
+                         ->will($this->returnValue($this->responseMock));
+
+      $this->responseFactoryMock->expects($this->once())
+                                ->method('build')
+                                ->will($this->returnValue($this->responseMock));
+
+      $rentalObjectServiceController = new RentalObjectController($this->requestMock, $this->rentalObjectServiceMock, $this->responseFactoryMock, $this->sessionManagerMock);
+      $response                      = $rentalObjectServiceController->delete(1);
       $this->assertInstanceOf('Application\PHPFramework\Response\Response', $response);
    }
 } 

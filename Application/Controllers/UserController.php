@@ -19,14 +19,17 @@ class UserController{
     */
    private $userService;
    private $response;
+   private $sessionManager;
 
    /**
     * @param UserService $userService
     * @param ResponseFactory $responseFactory
+    * @param SessionManager $sessionManager
     */
-   public function __construct(UserService $userService, ResponseFactory $responseFactory){
-      $this->userService = $userService;
-      $this->response    = $responseFactory->build();
+   public function __construct(UserService $userService, ResponseFactory $responseFactory, SessionManager $sessionManager){
+      $this->userService    = $userService;
+      $this->response       = $responseFactory->build();
+      $this->sessionManager = $sessionManager;
    }
 
    public function index(){
@@ -64,7 +67,7 @@ class UserController{
    }
 
    public function currentUser(){
-      $currentUser = SessionManager::getCurrentUser();
+      $currentUser = $this->sessionManager->getCurrentUser();
 
       return $this->response->setResponseData($currentUser);
    }

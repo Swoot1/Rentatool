@@ -17,6 +17,7 @@ class UserControllerTest extends \PHPUnit_Framework_TestCase{
    private $userServiceMock;
    private $responseFactoryMock;
    private $responseMock;
+   private $sessionManager;
 
    public function setUp(){
       $this->userServiceMock = $this->getMockBuilder('Application\Services\Userservice')
@@ -28,6 +29,10 @@ class UserControllerTest extends \PHPUnit_Framework_TestCase{
                                         ->getMock();
 
       $this->responseMock = $this->getMockBuilder('Application\PHPFramework\Response\Response')
+                                 ->disableOriginalConstructor()
+                                 ->getMock();
+
+      $this->sessionManager = $this->getMockBuilder('Application\PHPFramework\SessionManager')
                                  ->disableOriginalConstructor()
                                  ->getMock();
    }
@@ -60,7 +65,7 @@ class UserControllerTest extends \PHPUnit_Framework_TestCase{
                                 ->will($this->returnValue($this->responseMock));
 
 
-      $userController = new UserController($this->userServiceMock, $this->responseFactoryMock);
+      $userController = new UserController($this->userServiceMock, $this->responseFactoryMock, $this->sessionManager);
       $response       = $userController->create(array());
       $this->assertInstanceOf('Application\PHPFramework\Response\Response', $response);
    }
@@ -80,7 +85,7 @@ class UserControllerTest extends \PHPUnit_Framework_TestCase{
                                 ->will($this->returnValue($this->responseMock));
 
 
-      $userController = new UserController($this->userServiceMock, $this->responseFactoryMock);
+      $userController = new UserController($this->userServiceMock, $this->responseFactoryMock, $this->sessionManager);
       $response       = $userController->index(array());
       $this->assertInstanceOf('Application\PHPFramework\Response\Response', $response);
    }
@@ -99,7 +104,7 @@ class UserControllerTest extends \PHPUnit_Framework_TestCase{
                                 ->will($this->returnValue($this->responseMock));
 
 
-      $userController = new UserController($this->userServiceMock, $this->responseFactoryMock);
+      $userController = new UserController($this->userServiceMock, $this->responseFactoryMock, $this->sessionManager);
       $response       = $userController->read(1);
       $this->assertInstanceOf('Application\PHPFramework\Response\Response', $response);
    }
@@ -121,7 +126,7 @@ class UserControllerTest extends \PHPUnit_Framework_TestCase{
                          ->method('addNotifier')
                          ->will($this->returnValue($this->responseMock));
 
-      $userController = new UserController($this->userServiceMock, $this->responseFactoryMock);
+      $userController = new UserController($this->userServiceMock, $this->responseFactoryMock, $this->sessionManager);
       $response       = $userController->update(1, array());
       $this->assertInstanceOf('Application\PHPFramework\Response\Response', $response);
    }
@@ -139,7 +144,7 @@ class UserControllerTest extends \PHPUnit_Framework_TestCase{
                                 ->method('build')
                                 ->will($this->returnValue($this->responseMock));
 
-      $userController = new UserController($this->userServiceMock, $this->responseFactoryMock);
+      $userController = new UserController($this->userServiceMock, $this->responseFactoryMock, $this->sessionManager);
       $response       = $userController->delete(1);
       $this->assertInstanceOf('Application\PHPFramework\Response\Response', $response);
    }

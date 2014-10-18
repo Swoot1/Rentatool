@@ -17,9 +17,11 @@ use Application\PHPFramework\SessionManager;
 
 class MenuService{
    private $menuItems;
+   private $sessionManager;
 
-   public function __construct(){
-      $this->menuItems = [
+   public function __construct(SessionManager $sessionManager){
+      $this->sessionManager = $sessionManager;
+      $this->menuItems      = [
          ['label' => 'Användare', 'callback' => 'navigateToUserList', 'accessRule' => new AdministrativeAccessRule()],
          ['label' => 'Uthyrningsobjekt', 'callback' => 'navigateToRentalObjectList'],
          ['label' => 'Databasskapning', 'callback' => 'navigateToCreateDatabase', 'accessRule' => new AuthorizedAccessRule()]
@@ -28,7 +30,7 @@ class MenuService{
 
    public function index(){
       $menuItems      = [];
-      $isUserLoggedIn = SessionManager::isUserLoggedIn();
+      $isUserLoggedIn = $this->sessionManager->isUserLoggedIn();
 
       foreach ($this->menuItems as $menuItem){
          if (array_key_exists('accessRule', $menuItem)){
@@ -36,7 +38,7 @@ class MenuService{
                continue;
             }
 
-            if (!$menuItem['accessRule']->isAccessAllowed(SessionManager::getCurrentUser())){
+            if (!$menuItem['accessRule']->isAccessAllowed($this->sessionManager->getCurrentUser())){
                continue;
             }
          }

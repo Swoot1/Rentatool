@@ -6,24 +6,58 @@
  * Time: 16:16
  */
 
-namespace Tests\PHPFrameworkTests\DependencyInjectionTests;
-
+namespace Tests\ENFrameworkTests\DependencyInjectionTests;
 
 use Application\PHPFramework\DependencyInjection\DependencyInjection;
+use Application\PHPFramework\SessionManager;
 
 class DependencyInjectionTest extends \PHPUnit_Framework_TestCase{
 
    public function testGetController(){
-      $dependencyInjectionContainer = simplexml_load_file('/Application/PHPFramework/DependencyInjection/DependencyInjectionContainer.xml');
-      $requestMock                  = $this->getMockBuilder('/Application/Request')
+      // TODO for a person with patience why is get_include_path() necessary?
+      $dependencyInjectionContainer = simplexml_load_file(get_include_path() . 'Application/PHPFramework/DependencyInjection/DependencyInjectionContainer.xml');
+      $requestMock                  = $this->getMockBuilder('Application\PHPFramework\Request\Request')
                                            ->disableOriginalConstructor()
                                            ->getMock();
+
       $dependencyInjection = new DependencyInjection($dependencyInjectionContainer);
-      $userController = $dependencyInjection->getInstantiatedClass('UserController', $requestMock);
-      $expectedUserControllerMock   = $this->getMockBuilder('/Application/Controllers/UserController')
-                                           ->disableOriginalConstructor()
-                                           ->getMock();
-      $this->assertTrue($userController instanceof $expectedUserControllerMock);
+      $sessionManager      = new SessionManager();
+      $dependencyInjection->setInstantiatedClasses(array('Request'        => $requestMock,
+                                                         'SessionManager' => $sessionManager));
+      $userController = $dependencyInjection->getInstantiatedClass('UserController');
+
+      $this->assertTrue(get_class($userController) === 'Application\Controllers\UserController');
    }
 
+   public function testControllerWithRequest(){
+      // TODO for a person with patience why is get_include_path() necessary?
+      $dependencyInjectionContainer = simplexml_load_file(get_include_path() . 'Application/PHPFramework/DependencyInjection/DependencyInjectionContainer.xml');
+      $requestMock                  = $this->getMockBuilder('Application\PHPFramework\Request\Request')
+                                           ->disableOriginalConstructor()
+                                           ->getMock();
+
+      $dependencyInjection = new DependencyInjection($dependencyInjectionContainer);
+      $sessionManager      = new SessionManager();
+      $dependencyInjection->setInstantiatedClasses(array('Request'        => $requestMock,
+                                                         'SessionManager' => $sessionManager));
+      $rentalObjectController = $dependencyInjection->getInstantiatedClass('RentalObjectController');
+
+      $this->assertTrue(get_class($rentalObjectController) === 'Application\Controllers\RentalObjectController');
+   }
+
+   public function testControllerWithSessionManager(){
+      // TODO for a person with patience why is get_include_path() necessary?
+      $dependencyInjectionContainer = simplexml_load_file(get_include_path() . 'Application/PHPFramework/DependencyInjection/DependencyInjectionContainer.xml');
+      $requestMock                  = $this->getMockBuilder('Application\PHPFramework\Request\Request')
+                                           ->disableOriginalConstructor()
+                                           ->getMock();
+
+      $dependencyInjection = new DependencyInjection($dependencyInjectionContainer);
+      $sessionManager      = new SessionManager();
+      $dependencyInjection->setInstantiatedClasses(array('Request'        => $requestMock,
+                                                         'SessionManager' => $sessionManager));
+      $rentPeriodController = $dependencyInjection->getInstantiatedClass('RentPeriodController');
+
+      $this->assertTrue(get_class($rentPeriodController) === 'Application\Controllers\RentPeriodController');
+   }
 } 

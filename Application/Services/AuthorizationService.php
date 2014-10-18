@@ -14,9 +14,11 @@ use Application\Models\Authorization;
 
 class AuthorizationService{
    private $userService;
+   private $sessionManager;
 
-   public function __construct(UserService $userService){
-      $this->userService = $userService;
+   public function __construct(UserService $userService, SessionManager $sessionManager){
+      $this->userService    = $userService;
+      $this->sessionManager = $sessionManager;
    }
 
    public function login($data){
@@ -26,13 +28,13 @@ class AuthorizationService{
       if ($invalidLogin){
          throw new ApplicationException('Fel e-postadress eller användarnamn.');
       } else{
-         SessionManager::setUserData($user->toArray());
+         $this->sessionManager->setUserData($user->toArray());
       }
 
       return new Authorization(array('isLoggedIn' => true));
    }
 
    public function logout(){
-      SessionManager::endSession();
+      $this->sessionManager->endSession();
    }
 } 

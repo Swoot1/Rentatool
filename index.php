@@ -11,7 +11,8 @@ require_once 'Application/PHPFramework/SessionManager.php';
 require_once 'Application/PHPFramework/Configurations/Configuration.php';
 require_once 'vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
 
-SessionManager::startSession('User');
+$sessionManager = new SessionManager();
+$sessionManager->startSession('User');
 
 $databaseConnectionFactory = new DatabaseConnectionFactory();
 $databaseConnection        = $databaseConnectionFactory->build();
@@ -23,15 +24,14 @@ try{
    $routeCollection = include_once 'Application/PHPFramework/Routing/RoutesConfiguration.php';
    $route           = $routeCollection->getRouteFromRequest($requestModel);
 
-   $userHasAccess = $route->hasAccessRule() === false || $route->isUserAllowed(SessionManager::getCurrentUser());
-
-   if ($userHasAccess){
+   if ($route->isUserAllowed($sessionManager)){
       $databaseConnection->beginTransaction();
 
       $dependencyInjectionContainer = simplexml_load_file('Application/PHPFramework/DependencyInjection/DependencyInjectionContainer.xml');
       $dependencyInjection          = new DependencyInjection($dependencyInjectionContainer);
-      $controller                   = $dependencyInjection->getInstantiatedClass($route->getController(), $requestModel);
-      $response                     = $requestModel->callControllerMethod($controller);
+      $dependencyInjection->setInstantiatedClasses(array('Request' => $requestModel, 'SessionManager' => $sessionManager));
+      $controller = $dependencyInjection->getInstantiatedClass($route->getController());
+      $response   = $requestModel->callControllerMethod($controller);
       $response->sendResponse();
 
       $databaseConnection->commit();
@@ -45,7 +45,16 @@ try{
    $responseFactory            = new ResponseFactory();
    $response                   = $responseFactory->build();
    $response->setStatusCode($HTTPStatusCode);
-   $response->setResponseData(new Application\PHPFramework\ErrorHandling\ErrorTrace(array('message' => $exception->getMessage(), 'file' => $exception->getFile(), 'line' => $exception->getLine(), 'trace' => $exception->getTrace())));
+   $response->setResponseData(
+            new Application\PHPFramework\ErrorHandling\ErrorTrace(
+               array(
+                  'message' => $exception->getMessage(),
+                  'file'    => $exception->getFile(),
+                  'line'    => $exception->getLine(),
+                  'trace'   => $exception->getTrace()
+               )
+            )
+   );
    $response->sendResponse();
 
    $databaseConnection->rollBack();

@@ -10,6 +10,7 @@
 namespace Tests\ServiceTests;
 
 
+use Application\PHPFramework\SessionManager;
 use Application\Services\MenuService;
 
 class MenuServiceTest extends \PHPUnit_Framework_TestCase{
@@ -21,10 +22,11 @@ class MenuServiceTest extends \PHPUnit_Framework_TestCase{
 
 
    public function setUp(){
-      $this->menuService = new MenuService();
+      $sessionManager    = new SessionManager();
+      $this->menuService = new MenuService($sessionManager);
    }
 
-   public function tearDown() {
+   public function tearDown(){
       unset($_SESSION);
    }
 
@@ -41,7 +43,7 @@ class MenuServiceTest extends \PHPUnit_Framework_TestCase{
    }
 
    public function testGetAuthorizedMenu(){
-      $_SESSION['user']  = ['id' => 1, 'username' => 'test'];
+      $_SESSION['user'] = ['id' => 1, 'username' => 'test'];
 
       $expectedMenuItems = ['Uthyrningsobjekt', 'Databasskapning'];
       $menuItems         = $this->menuService->index()->toArray();
@@ -50,7 +52,7 @@ class MenuServiceTest extends \PHPUnit_Framework_TestCase{
    }
 
    public function testGetAdministratorMenu(){
-      $_SESSION['user']  = ['id' => 1, 'username' => 'testadministrator', 'hasAdministrativeAccess' => true];
+      $_SESSION['user'] = ['id' => 1, 'username' => 'testadministrator', 'hasAdministrativeAccess' => true];
 
       $expectedMenuItems = ['Uthyrningsobjekt', 'Databasskapning', 'Användare'];
       $menuItems         = $this->menuService->index()->toArray();
@@ -71,5 +73,4 @@ class MenuServiceTest extends \PHPUnit_Framework_TestCase{
          $this->assertContains($actualItem['label'], $expectedItems);
       }
    }
-
 }

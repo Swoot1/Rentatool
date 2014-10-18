@@ -11,6 +11,7 @@
                 <dependency namespace="Application\PHPFramework\Request" class="Request"/>
                 <dependency namespace="Application\Services" class="RentalObjectService"/>
                 <dependency namespace="Application\PHPFramework\Response\Factories" class="ResponseFactory"/>
+                <dependency namespace="Application\PHPFramework" class="SessionManager"/>
             </dependencies>
         </dependency>
 
@@ -25,6 +26,7 @@
             <dependencies>
                 <dependency namespace="Application\Services" class="UserService"/>
                 <dependency namespace="Application\PHPFramework\Response\Factories" class="ResponseFactory"/>
+                <dependency namespace="Application\PHPFramework" class="SessionManager"/>
             </dependencies>
         </dependency>
 
@@ -39,6 +41,7 @@
             <dependencies>
                 <dependency namespace="Application\Services" class="RentPeriodService"/>
                 <dependency namespace="Application\PHPFramework\Response\Factories" class="ResponseFactory"/>
+                <dependency namespace="Application\PHPFramework" class="SessionManager"/>
             </dependencies>
         </dependency>
 
@@ -123,6 +126,7 @@
         <dependency namespace="Application\Services" class="AuthorizationService">
             <dependencies>
                 <dependency namespace="Application\Services" class="UserService"/>
+                <dependency namespace="Application\PHPFramework" class="SessionManager"/>
             </dependencies>
         </dependency>
 
@@ -160,7 +164,9 @@
         </dependency>
 
         <dependency namespace="Application\Services" class="MenuService">
-            <dependencies/>
+            <dependencies>
+                <dependency namespace="Application\PHPFramework" class="SessionManager"/>
+            </dependencies>
         </dependency>
 
         <!-- Mappers -->

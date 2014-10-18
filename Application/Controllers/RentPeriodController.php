@@ -9,7 +9,6 @@
 namespace Application\Controllers;
 
 use Application\PHPFramework\SessionManager;
-use Application\PHPFramework\Request\Request;
 use Application\PHPFramework\Response\Factories\ResponseFactory;
 use Application\Services\RentPeriodService;
 
@@ -20,14 +19,16 @@ class RentPeriodController{
     */
    private $rentPeriodService;
    private $response;
+   private $sessionManager;
 
-   public function __construct(RentPeriodService $rentPeriodService, ResponseFactory $responseFactory){
+   public function __construct(RentPeriodService $rentPeriodService, ResponseFactory $responseFactory, SessionManager $sessionManager){
       $this->rentPeriodService = $rentPeriodService;
       $this->response          = $responseFactory->build();
+      $this->sessionManager    = $sessionManager;
    }
 
    public function create(array $data){
-      $currentUser = SessionManager::getCurrentUser();
+      $currentUser = $this->sessionManager->getCurrentUser();
       $this->rentPeriodService->create($data, $currentUser);
 
       return $this->response
@@ -36,7 +37,7 @@ class RentPeriodController{
    }
 
    public function getCalculatedRentPeriod(array $data){
-      $currentUser = SessionManager::getCurrentUser();
+      $currentUser = $this->sessionManager->getCurrentUser();
       $rentPeriod  = $this->rentPeriodService->getCalculatedPricePlan($data, $currentUser);
 
       return $this->response
