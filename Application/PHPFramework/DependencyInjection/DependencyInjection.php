@@ -8,18 +8,20 @@
 namespace Application\PHPFramework\DependencyInjection;
 
 use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
-use Application\PHPFramework\Request\Request;
 
 class DependencyInjection{
    private $dependencyInjectionXML;
-   private $request;
+   private $instantiatedClasses;
 
    public function __construct(\SimpleXMLElement $dependencyInjectionXML){
       $this->dependencyInjectionXML = $dependencyInjectionXML;
    }
 
-   public function getInstantiatedClass($className, Request $request){
-      $this->request = $request;
+   public function setInstantiatedClasses(array $instantiatedClasses){
+      $this->instantiatedClasses = $instantiatedClasses;
+   }
+
+   public function getInstantiatedClass($className){
 
       return $this->getClassFromXML(array('class' => $className));
    }
@@ -31,8 +33,8 @@ class DependencyInjection{
     */
    private function getClassFromXML(array $attributes){
 
-      if (array_key_exists('class', $attributes) && $attributes['class'] === 'Request'){
-         $result = $this->request;
+      if (array_key_exists('class', $attributes) && array_key_exists($attributes['class'], $this->instantiatedClasses)){
+         $result = $this->instantiatedClasses[$attributes['class']];
       } else{
          $matchingXMLElement = $this->getMatchingXMLElement($attributes);
 

@@ -19,18 +19,23 @@ class RentPeriodCalculatorController{
     */
    private $rentPeriodService;
    private $response;
+   private $sessionManager;
 
-   public function __construct(RentPeriodService $rentPeriodService, ResponseFactory $responseFactory){
+   public function __construct(RentPeriodService $rentPeriodService, ResponseFactory $responseFactory, SessionManager $sessionManager){
       $this->rentPeriodService = $rentPeriodService;
       $this->response          = $responseFactory->build();
+      $this->sessionManager    = $sessionManager;
    }
 
    public function create(array $data){
-      $currentUser = SessionManager::getCurrentUser();
+
+      $currentUser = $this->sessionManager->getCurrentUser();
       $rentPeriod  = $this->rentPeriodService->getCalculatedPricePlan($data, $currentUser);
 
-      return $this->response
+      $this->response
          ->setStatusCode(201)
          ->setResponseData($rentPeriod);
+
+      return $this->response;
    }
 } 

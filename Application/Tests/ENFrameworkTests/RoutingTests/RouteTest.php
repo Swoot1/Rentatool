@@ -97,11 +97,18 @@ class RouteTest extends \PHPUnit_Framework_TestCase{
                        ->disableOriginalConstructor()
                        ->getMock();
 
+      $sessionManagerMock = $this->getMockBuilder('Application\PHPFramework\SessionManager')
+                                 ->disableOriginalConstructor()
+                                 ->getMock();
+
+      $sessionManagerMock->expects($this->once())->method('getCurrentUser')
+                         ->will($this->returnValue($userMock));
+
       $userMock->expects($this->once())
                ->method('hasAdministrativeAccess')
                ->will($this->returnValue(false));
 
-      $route->isUserAllowed($userMock);
+      $route->isUserAllowed($sessionManagerMock);
    }
 
    public function testIsUserAllowed(){
@@ -114,10 +121,17 @@ class RouteTest extends \PHPUnit_Framework_TestCase{
                        ->disableOriginalConstructor()
                        ->getMock();
 
+      $sessionManagerMock = $this->getMockBuilder('Application\PHPFramework\SessionManager')
+                                 ->disableOriginalConstructor()
+                                 ->getMock();
+
+      $sessionManagerMock->expects($this->once())->method('getCurrentUser')
+                         ->will($this->returnValue($userMock));
+
       $userMock->expects($this->once())
                ->method('hasAdministrativeAccess')
                ->will($this->returnValue(true));
 
-      $this->assertTrue($route->isUserAllowed($userMock));
+      $this->assertTrue($route->isUserAllowed($sessionManagerMock));
    }
 } 

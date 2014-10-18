@@ -22,11 +22,14 @@ class RentalObjectController{
    private $request;
    private $rentalObjectService;
    private $response;
+   private $sessionManager;
 
-   public function __construct(Request $request, RentalObjectService $rentalObjectService, ResponseFactory $responseFactory){
+   public function __construct(Request $request, RentalObjectService $rentalObjectService, ResponseFactory $responseFactory,
+                               SessionManager $sessionManager){
       $this->request             = $request;
       $this->rentalObjectService = $rentalObjectService;
       $this->response            = $responseFactory->build();
+      $this->sessionManager      = $sessionManager;
    }
 
    /**
@@ -42,7 +45,7 @@ class RentalObjectController{
    }
 
    public function create(array $data){
-      $currentUser  = SessionManager::getCurrentUser();
+      $currentUser  = $this->sessionManager->getCurrentUser();
       $rentalObject = $this->rentalObjectService->create($data, $currentUser);
       $this->response->setResponseData($rentalObject)
                      ->setStatusCode(201)
@@ -59,18 +62,18 @@ class RentalObjectController{
    }
 
    public function update($id, $requestData){
-      $currentUser       = SessionManager::getCurrentUser();
+      $currentUser       = $this->sessionManager->getCurrentUser();
       $requestData['id'] = $id;
       $rentalObject      = $this->rentalObjectService->update($requestData, $currentUser);
 
-      $this->response->setResponseData($rentalObject);
-      $this->response->addNotifier(['message' => 'Uthyrningsobjektet har uppdaterats.']);
+      $this->response->setResponseData($rentalObject)
+                     ->addNotifier(['message' => 'Uthyrningsobjektet har uppdaterats.']);
 
       return $this->response;
    }
 
    public function delete($id){
-      $currentUser = SessionManager::getCurrentUser();
+      $currentUser = $this->sessionManager->getCurrentUser();
       $this->rentalObjectService->delete($id, $currentUser);
       $this->response->setStatusCode(204);
 
