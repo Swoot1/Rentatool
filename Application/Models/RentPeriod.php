@@ -24,8 +24,7 @@ class RentPeriod extends GeneralModel{
    protected $price;
    protected $_setters = array(
       'fromDate'    => 'setFromDate',
-      'toDate'      => 'setToDate',
-      'pricePerDay' => 'setPricePerDay'
+      'toDate'      => 'setToDate'
    );
    protected $_noDBProperties = array('price');
 

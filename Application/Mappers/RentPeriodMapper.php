@@ -14,6 +14,20 @@ class RentPeriodMapper{
 
    private $databaseConnection;
 
+
+   private $readSQL = '
+      SELECT
+         renter_id AS renterId,
+         rental_object_id AS rentalObjectId,
+         from_date AS fromDate,
+         to_date AS toDate,
+         price_per_day AS pricePerDay
+      FROM
+        rent_periods
+      WHERE
+         id = :id
+   ';
+
    private $createSQL = '
       INSERT INTO
         rent_periods
@@ -38,8 +52,16 @@ class RentPeriodMapper{
       $this->databaseConnection = $databaseConnection;
    }
 
+   public function read($id){
+      $result = $this->databaseConnection->runQuery($this->readSQL, array('id' => $id));
+
+      return array_shift($result);
+   }
+
    public function create(array $data){
       unset($data['id']);
-      $this->databaseConnection->runQuery($this->createSQL, $data);
+      $result = $this->databaseConnection->runQuery($this->createSQL, $data);
+
+      return $this->read($result['lastInsertId']);
    }
 } 

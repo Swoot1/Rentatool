@@ -8,7 +8,6 @@
 
 namespace Application\Collections;
 
-
 use Application\PHPFramework\Collections\GeneralCollection;
 
 class RentalObjectFileDependencyCollection extends GeneralCollection{

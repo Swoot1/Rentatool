@@ -10,11 +10,11 @@ namespace Application\Services;
 
 use Application\Collections\RentalObjectCollection;
 use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
-use Application\PHPFramework\Helpers\ErrorHandling\Exceptions\NotFoundException;
 use Application\Filters\RentalObjectFilter;
 use Application\Mappers\RentalObjectMapper;
 use Application\Models\RentalObject;
 use Application\Models\User;
+use Application\PHPFramework\ErrorHandling\Exceptions\NotFoundException;
 
 class RentalObjectService{
    /**

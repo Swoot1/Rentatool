@@ -29,13 +29,13 @@ class RentPeriodService{
    public function create(array $data, User $currentUser){
       $rentPeriod = $this->getCalculatedPricePlan($data, $currentUser);
       $this->rentPeriodValidationService->checkIsValidRentPeriod($rentPeriod);
-      $this->rentPeriodMapper->create($rentPeriod->getDBParameters());
+      $rentPeriodData = $this->rentPeriodMapper->create($rentPeriod->getDBParameters());
 
-      return $rentPeriod;
+      return new RentPeriod($rentPeriodData);
    }
 
    public function getCalculatedPricePlan(array $data, User $currentUser){
-      $rentPeriod          = new RentPeriod(array_merge(array('renterId' => $currentUser->getId()), $data));
+      $rentPeriod   = new RentPeriod(array_merge(array('renterId' => $currentUser->getId()), $data));
       $rentalObject = $this->rentalObjectService->read($rentPeriod->getRentalObjectId());
       $rentPeriod->setPricePerDay($rentalObject);
 

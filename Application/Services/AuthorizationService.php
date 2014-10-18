@@ -22,14 +22,15 @@ class AuthorizationService{
    }
 
    public function login($data){
+      // TODO validation
       $user         = $this->userService->getUserByEmail($data['email']);
       $invalidLogin = $user === null || $user->isValidPassword($data['password']) == false;
 
       if ($invalidLogin){
          throw new ApplicationException('Fel e-postadress eller användarnamn.');
-      } else{
-         $this->sessionManager->setUserData($user->toArray());
       }
+
+      $this->sessionManager->setUserData($user->toArray());
 
       return new Authorization(array('isLoggedIn' => true));
    }

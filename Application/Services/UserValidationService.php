@@ -47,11 +47,6 @@ class UserValidationService{
       return true;
    }
 
-   /**
-    * @param User $userModel
-    * @return bool
-    * @throws \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\ApplicationException
-    */
    private function checkUniqueEmail(User $userModel){
       $isUniqueEmail = $this->userValidationMapper->isUniqueEmail($userModel->getId(), $userModel->getEmail());
 

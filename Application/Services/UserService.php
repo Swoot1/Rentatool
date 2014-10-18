@@ -72,11 +72,6 @@ class UserService{
       return new User($result);
    }
 
-   /**
-    * @param $email
-    * @return null|User
-    * @throws \Application\PHPFramework\Helpers\ErrorHaxceptions\NotFoundException
-    */
    public function getUserByEmail($email){
       $userData = $this->userMapper->getUserByEmail($email);
 
@@ -84,17 +79,9 @@ class UserService{
          throw new NotFoundException('Kunde inte hitta användaren.');
       }
 
-      $user = new User($userData);
-
-      return $user;
+      return new User($userData);
    }
 
-   /**
-    * @param $id
-    * @param $requestData
-    * @return null|User
-    * @throws \Application\PHPFramework\Helpers\ErrorHandling\Es\NotFoundException
-    */
    public function update($id, $requestData){
 
       $this->checkThatUserExists($id);
@@ -108,11 +95,6 @@ class UserService{
       return $requestData ? new User($requestData) : null;
    }
 
-   /**
-    * @param $id
-    * @return bool
-    * @throws \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
-    */
    private function checkThatUserExists($id){
       $savedUser = $this->read($id);
 
@@ -123,9 +105,6 @@ class UserService{
       return true;
    }
 
-   /**
-    * @param $id
-    */
    public function delete($id){
       $this->userMapper->delete($id);
    }

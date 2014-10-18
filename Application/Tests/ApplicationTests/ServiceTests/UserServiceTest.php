@@ -13,25 +13,33 @@ use Application\Services\UserService;
 use Application\Services\UserValidationService;
 
 class UserServiceTest extends \PHPUnit_Framework_TestCase{
+
+   private $userValidationMapperMock;
+   private $userMapperMock;
+
+   public function setUp(){
+      $this->userValidationMapperMock = $this->getMockBuilder('\Application\Mappers\UserValidationMapper')->
+         disableOriginalConstructor()->
+         getMock();
+
+      $this->userMapperMock = $this->getMockBuilder('\Application\Mappers\UserMapper')->
+         disableOriginalConstructor()->
+         getMock();
+   }
+
    /**
     * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     * @expectedExceptionMessage Användarnamnet är redan upptaget.
     */
    public function testUniqueUsername(){
 
-      $userValidationMapperMock = $this->getMockBuilder('\Application\Mappers\UserValidationMapper')->
-         disableOriginalConstructor()->
-         getMock();
+      $this->userValidationMapperMock->expects($this->any())
+                                     ->method('isUniqueUsername')
+                                     ->will($this->returnValue(false));
 
-      $userMapperMock = $this->getMockBuilder('\Application\Mappers\UserMapper')->
-         disableOriginalConstructor()->
-         getMock();
+      $userValidationService = new UserValidationService($this->userValidationMapperMock);
 
-      $userValidationMapperMock->expects($this->any())->method('isUniqueUsername')->will($this->returnValue(false));
-
-      $userValidationService = new UserValidationService($userValidationMapperMock);
-
-      $userService = new UserService($userMapperMock, $userValidationService);
+      $userService = new UserService($this->userMapperMock, $userValidationService);
       $userService->create(array('username' => 'Elin',
                                  'email'    => 'elin@elin.se',
                                  'password' => 'elin1234'));
@@ -42,22 +50,39 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase{
     * @expectedExceptionMessage E-mailadressen används redan.
     */
    public function testUniqueEmail(){
-      $userValidationMapperMock = $this->getMockBuilder('\Application\Mappers\UserValidationMapper')->
-         disableOriginalConstructor()->
-         getMock();
 
-      $userMapperMock = $this->getMockBuilder('\Application\Mappers\UserMapper')->
-         disableOriginalConstructor()->
-         getMock();
 
-      $userValidationMapperMock->expects($this->any())->method('isUniqueUsername')->will($this->returnValue(true));
-      $userValidationMapperMock->expects($this->any())->method('isUniqueEmail')->will($this->returnValue(false));
+      $this->userValidationMapperMock->expects($this->any())
+                                     ->method('isUniqueUsername')
+                                     ->will($this->returnValue(true));
+      $this->userValidationMapperMock->expects($this->any())
+                                     ->method('isUniqueEmail')
+                                     ->will($this->returnValue(false));
 
-      $userValidationService = new UserValidationService($userValidationMapperMock);
+      $userValidationService = new UserValidationService($this->userValidationMapperMock);
 
-      $userService = new UserService($userMapperMock, $userValidationService);
+      $userService = new UserService($this->userMapperMock, $userValidationService);
       $userService->create(array('username' => 'Elin',
                                  'email'    => 'elin@elin.se',
                                  'password' => 'elin1234'));
+   }
+
+   public function testPerfectCase(){
+
+      $this->userMapperMock->expects($this->once())
+                     ->method('create')
+                     ->will($this->returnValue(array()));
+
+      $this->userValidationMapperMock->expects($this->any())->method('isUniqueUsername')->will($this->returnValue(true));
+      $this->userValidationMapperMock->expects($this->any())->method('isUniqueEmail')->will($this->returnValue(true));
+
+      $userValidationService = new UserValidationService($this->userValidationMapperMock);
+
+      $userService = new UserService($this->userMapperMock, $userValidationService);
+      $user        = $userService->create(array('username' => 'Elin',
+                                                'email'    => 'elin@elin.se',
+                                                'password' => 'elin1234'));
+
+      $this->assertInstanceOf('Application\Models\User', $user);
    }
 } 
