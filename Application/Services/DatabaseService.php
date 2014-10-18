@@ -9,7 +9,6 @@ namespace Application\Services;
 
 use Application\Mappers\DatabaseMapper;
 use Application\Mappers\RentalObjectMapper;
-use Application\Mappers\TimeUnitMapper;
 use Application\Mappers\UserMapper;
 
 class DatabaseService{
