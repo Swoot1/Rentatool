@@ -16,3 +16,4 @@ Application/PHPFramework/.DS_Store
 Application/Factories/MailFactory.php
 vendor/
 composer.lock
+Application/Tests/GuzzleTests/guzzleCookies
