@@ -1,4 +1,5 @@
 <?php
+use Application\Factories\MailFactory;
 use Application\PHPFramework\DependencyInjection\DependencyInjection;
 use Application\PHPFramework\Database\Factories\DatabaseConnectionFactory;
 use Application\PHPFramework\ErrorHandling\ErrorHTTPStatusCodeFactory;
@@ -29,7 +30,8 @@ try{
 
       $dependencyInjectionContainer = simplexml_load_file('Application/PHPFramework/DependencyInjection/DependencyInjectionContainer.xml');
       $dependencyInjection          = new DependencyInjection($dependencyInjectionContainer);
-      $dependencyInjection->setInstantiatedClasses(array('Request' => $requestModel, 'SessionManager' => $sessionManager));
+      $mailFactory                  = new MailFactory(new \PHPMailer());
+      $dependencyInjection->setInstantiatedClasses(array('Request' => $requestModel, 'SessionManager' => $sessionManager, 'MailFactory' => $mailFactory));
       $controller = $dependencyInjection->getInstantiatedClass($route->getController());
       $response   = $requestModel->callControllerMethod($controller);
       $response->sendResponse();
