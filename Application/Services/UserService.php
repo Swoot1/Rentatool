@@ -13,6 +13,7 @@ use Application\Collections\UserCollection;
 use Application\PHPFramework\ErrorHandling\Exceptions\NotFoundException;
 use Application\Mappers\UserMapper;
 use Application\Models\User;
+use Application\PHPFramework\Validation\EmailValidation;
 
 class UserService{
    private $userMapper;
@@ -51,6 +52,8 @@ class UserService{
     * @return array
     */
    private function hashPassword(array $data){
+
+      // TODO exception om password inte är satt.
       $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
 
       return $data;
@@ -73,6 +76,7 @@ class UserService{
    }
 
    public function getUserByEmail($email){
+      $this->validateEmail($email);
       $userData = $this->userMapper->getUserByEmail($email);
 
       if ($userData === null){
@@ -82,17 +86,23 @@ class UserService{
       return new User($userData);
    }
 
+   private function validateEmail($email){
+      $emailValidation = new EmailValidation(array('genericName' => 'e-postadress'));
+      $emailValidation->validate($email);
+
+      return true;
+   }
+
    public function update($id, $requestData){
 
       $this->checkThatUserExists($id);
-
       $requestData = $this->hashPassword($requestData);
       $userModel   = new User($requestData);
       $this->userValidationService->validateUser($userModel);
 
       $this->userMapper->update($userModel->getDBParameters());
 
-      return $requestData ? new User($requestData) : null;
+      return new User($requestData);
    }
 
    private function checkThatUserExists($id){

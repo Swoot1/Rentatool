@@ -99,9 +99,6 @@ class ResetPasswordService{
 
       $email = array_key_exists('email', $data) ? $data['email'] : false;
 
-      $emailValidation = new EmailValidation(array('genericName' => 'e-postadress'));
-      $emailValidation->validate($email);
-
       return $email;
    }
 
