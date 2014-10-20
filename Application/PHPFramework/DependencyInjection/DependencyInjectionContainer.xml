@@ -96,7 +96,12 @@
             <dependencies>
                 <dependency namespace="Application\Mappers" class="RentalObjectMapper"/>
                 <dependency namespace="Application\Services" class="FileService"/>
+                <dependency namespace="Application\Services" class="RentalObjectValidationService"/>
             </dependencies>
+        </dependency>
+
+        <dependency namespace="Application\Services" class="RentalObjectValidationService">
+            <dependencies/>
         </dependency>
 
         <dependency namespace="Application\Services" class="UserService">

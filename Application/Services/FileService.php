@@ -26,8 +26,8 @@ class FileService{
       $this->fileMapper = $fileMapper;
    }
 
-   public function getRentalObjectCollection($id){
-      $result = $this->fileMapper->getRentalObjectCollection($id);
+   public function getRentalObjectFileCollection($id){
+      $result = $this->fileMapper->getRentalObjectFileCollection($id);
 
       return new FileCollection($result);
    }
@@ -54,7 +54,7 @@ class FileService{
       return new File($fileData);
    }
 
-   public function setDependencies(RentalObject $rentalObject, FileCollection $fileCollection){
+   public function setDependencies(FileCollection $fileCollection, RentalObject $rentalObject){
       $dependencyCollection     = $fileCollection->getDependencyCollection($rentalObject);
       $dependencyCollectionData = $dependencyCollection->getDBParameters();
       $result                   = [];
