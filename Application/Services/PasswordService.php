@@ -22,11 +22,11 @@ class PasswordService{
    }
 
    public function create($resetCode, array $data){
-      $password     = new Password($data);
-      $activeReset  = $this->resetPasswordService->readActiveResetPassword($resetCode);
+      $password    = new Password($data);
+      $activeReset = $this->resetPasswordService->readActiveResetPassword($resetCode);
+      $this->resetPasswordService->delete($activeReset->getId());
       $DBParameters = $this->hashPassword($password->getDBParameters());
       $this->passwordMapper->create(array_merge($DBParameters, array('userId' => $activeReset->getUserId())));
-      $this->resetPasswordService->delete($activeReset->getId());
    }
 
    /**

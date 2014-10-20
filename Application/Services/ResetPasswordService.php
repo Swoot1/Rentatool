@@ -12,7 +12,6 @@ namespace Application\Services;
 use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\PHPFramework\ErrorHandling\Exceptions\NotFoundException;
 use Application\PHPFramework\Validation\AlphaNumericValidation;
-use Application\PHPFramework\Validation\EmailValidation;
 use Application\Factories\MailFactory;
 use Application\Factories\ResetPasswordFactory;
 use Application\Mappers\ResetPasswordMapper;

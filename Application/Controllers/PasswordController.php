@@ -19,7 +19,7 @@ class PasswordController{
    private $response;
 
    public function __construct(Request $request, PasswordService $passwordService, ResponseFactory $responseFactory){
-      $this->request;
+      $this->request = $request;
       $this->passwordService = $passwordService;
       $this->response        = $responseFactory->build();
    }

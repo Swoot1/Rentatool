@@ -66,7 +66,7 @@ class RentalObject extends GeneralModel{
     */
    public function setFileCollection($data){
 
-      if ($data instanceof \Application\Collections\FileCollection){
+      if ($data instanceof FileCollection){
          $this->fileCollection = $data;
       } else{
          $this->fileCollection = new FileCollection($data);
