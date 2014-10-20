@@ -13,6 +13,7 @@ use Application\Collections\UserCollection;
 use Application\PHPFramework\ErrorHandling\Exceptions\NotFoundException;
 use Application\Mappers\UserMapper;
 use Application\Models\User;
+use Application\PHPFramework\Validation\EmailValidation;
 
 class UserService{
    private $userMapper;
@@ -51,6 +52,8 @@ class UserService{
     * @return array
     */
    private function hashPassword(array $data){
+
+      // TODO exception om password inte är satt.
       $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
 
       return $data;
@@ -72,47 +75,36 @@ class UserService{
       return new User($result);
    }
 
-   /**
-    * @param $email
-    * @return null|User
-    * @throws \Application\PHPFramework\Helpers\ErrorHaxceptions\NotFoundException
-    */
    public function getUserByEmail($email){
+      $this->validateEmail($email);
       $userData = $this->userMapper->getUserByEmail($email);
 
       if ($userData === null){
          throw new NotFoundException('Kunde inte hitta användaren.');
       }
 
-      $user = new User($userData);
-
-      return $user;
+      return new User($userData);
    }
 
-   /**
-    * @param $id
-    * @param $requestData
-    * @return null|User
-    * @throws \Application\PHPFramework\Helpers\ErrorHandling\Es\NotFoundException
-    */
+   private function validateEmail($email){
+      $emailValidation = new EmailValidation(array('genericName' => 'e-postadress'));
+      $emailValidation->validate($email);
+
+      return true;
+   }
+
    public function update($id, $requestData){
 
       $this->checkThatUserExists($id);
-
       $requestData = $this->hashPassword($requestData);
       $userModel   = new User($requestData);
       $this->userValidationService->validateUser($userModel);
 
       $this->userMapper->update($userModel->getDBParameters());
 
-      return $requestData ? new User($requestData) : null;
+      return new User($requestData);
    }
 
-   /**
-    * @param $id
-    * @return bool
-    * @throws \Application\PHPFramework\Helpers\ErrorHandling\Exceptions\NotFoundException
-    */
    private function checkThatUserExists($id){
       $savedUser = $this->read($id);
 
@@ -123,9 +115,6 @@ class UserService{
       return true;
    }
 
-   /**
-    * @param $id
-    */
    public function delete($id){
       $this->userMapper->delete($id);
    }

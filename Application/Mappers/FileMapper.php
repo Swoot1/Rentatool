@@ -14,7 +14,7 @@ class FileMapper{
 
    private $databaseConnection;
 
-   private $getRentalObjectCollectionSQL = '
+   private $getRentalObjectFileCollectionSQL = '
       SELECT
          files.id,
          file_type AS "fileType",
@@ -83,9 +83,9 @@ class FileMapper{
       $this->databaseConnection = $databaseConnection;
    }
 
-   public function getRentalObjectCollection($rentalObjectId){
+   public function getRentalObjectFileCollection($rentalObjectId){
       return $this->databaseConnection->runQuery(
-                                      $this->getRentalObjectCollectionSQL,
+                                      $this->getRentalObjectFileCollectionSQL,
                                       array('rentalObjectId' => $rentalObjectId)
       );
    }

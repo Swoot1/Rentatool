@@ -23,9 +23,9 @@ class RentPeriod extends GeneralModel{
    protected $pricePerDay;
    protected $price;
    protected $_setters = array(
+      'pricePerDay' => 'setPricePerDay',
       'fromDate'    => 'setFromDate',
-      'toDate'      => 'setToDate',
-      'pricePerDay' => 'setPricePerDay'
+      'toDate'      => 'setToDate'
    );
    protected $_noDBProperties = array('price');
 
@@ -109,7 +109,13 @@ class RentPeriod extends GeneralModel{
       return $this->rentalObjectId;
    }
 
-   public function setPricePerDay(RentalObject $rentalObject){
+   protected function setPricePerDay($price){
+      $this->_validation->validate('pricePerDay', $price);
+      $this->pricePerDay = $price;
+      $this->setPrice();
+   }
+
+   public function setPricePerDayFromRentalObject(RentalObject $rentalObject){
       $this->pricePerDay = $rentalObject->getPricePerDay();
       $this->setPrice();
    }

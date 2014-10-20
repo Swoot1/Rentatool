@@ -11,7 +11,7 @@ namespace Application\Services;
 
 use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\PHPFramework\ErrorHandling\Exceptions\NotFoundException;
-use Application\PHPFramework\Validation\EmailValidation;
+use Application\PHPFramework\Validation\AlphaNumericValidation;
 use Application\Factories\MailFactory;
 use Application\Factories\ResetPasswordFactory;
 use Application\Mappers\ResetPasswordMapper;
@@ -42,7 +42,8 @@ class ResetPasswordService{
 
    private function sendResetPasswordEmail(ResetPassword $resetPassword, MailFactory $mailFactory, User $user){
 
-      $linkAddress = sprintf('http://127.0.0.1:8888/rentatool/#/passwords/new?resetCode=%s', $resetPassword->getResetCode());
+      // TODO change adress for production
+      $linkAddress = sprintf('http://localhost/rentatool/#/passwords/new?resetCode=%s', $resetPassword->getResetCode());
       $mailContent = new MailContent(array(
                                         'subject'        => 'Återställning av lösenord.',
                                         'recipientEmail' => $user->getEmail(),
@@ -50,7 +51,7 @@ class ResetPasswordService{
                                         'bodyPlainText'  => sprintf('Öppna den här adressen i din webbläsare för att återställa ditt lösenord %s', $linkAddress)
                                      ));
 
-      $mail        = $mailFactory->build($mailContent);
+      $mail = $mailFactory->build($mailContent);
 
       if (!$mail->send()){
          throw new ApplicationException(sprintf('Mailer Error: %s', $mail->ErrorInfo));
@@ -58,6 +59,7 @@ class ResetPasswordService{
    }
 
    public function readActiveResetPassword($resetCode){
+      $this->validateResetCode($resetCode);
       $result = $this->resetPasswordMapper->readActiveResetPassword($resetCode);
 
       if ($result === null){
@@ -68,12 +70,33 @@ class ResetPasswordService{
 
    }
 
+   /**
+    * Instead of making a model with only the reset code I put the validation here.
+    * @param $resetCode
+    * @return bool
+    */
+   private function validateResetCode($resetCode){
+      $resetCodeValidation = new AlphaNumericValidation(
+         array(
+            'propertyName' => 'resetCode',
+            'genericName'  => 'återställningskod',
+            'maxLength'    => 13
+         )
+      );
+
+      $resetCodeValidation->validate($resetCode);
+
+      return true;
+   }
+
+   /**
+    * Validate the email here instead of making a model just for validating an email adress.
+    * @param array $data
+    * @return bool
+    */
    private function getEmailFromArray(array $data){
 
       $email = array_key_exists('email', $data) ? $data['email'] : false;
-
-      $emailValidation = new EmailValidation(array('genericName' => 'e-postadress'));
-      $emailValidation->validate($email);
 
       return $email;
    }

@@ -34,7 +34,16 @@ class PasswordControllerTest extends \PHPUnit_Framework_TestCase{
                           ->method('build')
                           ->will($this->returnValue($responseMock));
 
-      $passwordController = new PasswordController($passwordServiceMock, $responseFactoryMock);
+
+      $requestMock = $this->getMockBuilder('Application\PHPFramework\Request\Request')
+                           ->disableOriginalConstructor()
+                           ->getMock();
+
+      $requestMock->expects($this->once())
+                             ->method('getGETParameters')
+                             ->will($this->returnValue(['resetCode' => '5442ad085370f']));
+
+      $passwordController = new PasswordController($requestMock, $passwordServiceMock, $responseFactoryMock);
       $response           = $passwordController->create(array());
       $this->assertInstanceOf('Application\PHPFramework\Response\Response', $response);
    }

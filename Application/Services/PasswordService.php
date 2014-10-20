@@ -11,23 +11,22 @@ namespace Application\Services;
 use Application\Mappers\PasswordMapper;
 use Application\Models\Password;
 
-class PasswordService {
+class PasswordService{
 
    private $passwordMapper;
    private $resetPasswordService;
 
    public function __construct(PasswordMapper $passwordMapper, ResetPasswordService $resetPasswordService){
-      $this->passwordMapper = $passwordMapper;
+      $this->passwordMapper       = $passwordMapper;
       $this->resetPasswordService = $resetPasswordService;
    }
 
-   public function create(array $data){
-      $password = new Password($data);
-      $activeReset = $this->resetPasswordService->readActiveResetPassword($password->getResetCode());
-      $DBParameters = $this->hashPassword($password->getDBParameters());
-      unset($DBParameters['resetCode']);
-      $this->passwordMapper->create(array_merge($DBParameters, array('userId' => $activeReset->getUserId())));
+   public function create($resetCode, array $data){
+      $password    = new Password($data);
+      $activeReset = $this->resetPasswordService->readActiveResetPassword($resetCode);
       $this->resetPasswordService->delete($activeReset->getId());
+      $DBParameters = $this->hashPassword($password->getDBParameters());
+      $this->passwordMapper->create(array_merge($DBParameters, array('userId' => $activeReset->getUserId())));
    }
 
    /**

@@ -49,6 +49,7 @@
             <dependencies>
                 <dependency namespace="Application\Services" class="RentPeriodService"/>
                 <dependency namespace="Application\PHPFramework\Response\Factories" class="ResponseFactory"/>
+                <dependency namespace="Application\PHPFramework" class="SessionManager"/>
             </dependencies>
         </dependency>
 
@@ -78,11 +79,13 @@
             <dependencies>
                 <dependency namespace="Application\Services" class="ResetPasswordService"/>
                 <dependency namespace="Application\PHPFramework\Response\Factories" class="ResponseFactory"/>
+                <dependency namespace="Application\Factories" class="MailFactory"/>
             </dependencies>
         </dependency>
 
         <dependency namespace="Application\Controllers" class="PasswordController">
             <dependencies>
+                <dependency namespace="Application\PHPFramework\Request" class="Request"/>
                 <dependency namespace="Application\Services" class="PasswordService"/>
                 <dependency namespace="Application\PHPFramework\Response\Factories" class="ResponseFactory"/>
             </dependencies>
@@ -93,7 +96,12 @@
             <dependencies>
                 <dependency namespace="Application\Mappers" class="RentalObjectMapper"/>
                 <dependency namespace="Application\Services" class="FileService"/>
+                <dependency namespace="Application\Services" class="RentalObjectValidationService"/>
             </dependencies>
+        </dependency>
+
+        <dependency namespace="Application\Services" class="RentalObjectValidationService">
+            <dependencies/>
         </dependency>
 
         <dependency namespace="Application\Services" class="UserService">

@@ -29,19 +29,24 @@ class RentPeriodController{
 
    public function create(array $data){
       $currentUser = $this->sessionManager->getCurrentUser();
-      $this->rentPeriodService->create($data, $currentUser);
+      $rentPeriod  = $this->rentPeriodService->create($data, $currentUser);
 
-      return $this->response
+      $this->response
          ->setStatusCode(201)
+         ->setResponseData($rentPeriod)
          ->addNotifier(array('message' => 'Objektet har hyrts wohoo!'));
+
+      return $this->response;
    }
 
    public function getCalculatedRentPeriod(array $data){
       $currentUser = $this->sessionManager->getCurrentUser();
       $rentPeriod  = $this->rentPeriodService->getCalculatedPricePlan($data, $currentUser);
 
-      return $this->response
+      $this->response
          ->setStatusCode(201)
          ->setResponseData($rentPeriod);
+
+      return $this->response;
    }
 } 
