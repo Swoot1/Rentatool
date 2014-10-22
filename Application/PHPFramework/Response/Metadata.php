@@ -17,6 +17,7 @@ class Metadata extends GeneralModel implements IMetadata{
 
    public function __construct(INotificationCollection $notificationCollection){
       $this->notificationCollection = $notificationCollection;
+      parent::__construct();
    }
 
    protected function setUpValidation(){
