@@ -16,6 +16,7 @@ use Application\Mappers\FileMapper;
 use Application\Models\File;
 use Application\Models\RentalObject;
 use Application\Models\RentalObjectFileDependency;
+use Application\PHPFramework\ErrorHandling\Exceptions\NotFoundException;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 class FileService{
@@ -33,13 +34,33 @@ class FileService{
    }
 
    public function create(array $data){
-      $file      = $this->buildFile($data);
-      $fileData  = $this->fileMapper->create($file->getDBParameters());
-      $file      = new File($fileData);
-      $photoPath = sprintf('%s/Rentatool/Public/RentalObjectPhotos/%s.%s', PROJECT_ROOT, $file->getId(), pathinfo(array_shift($data['name']), PATHINFO_EXTENSION));
-      rename(array_shift($data['tmp_name']), $photoPath);
+      $file     = $this->buildFile($data);
+      $fileData = $this->fileMapper->create($file->getDBParameters());
+      $file     = new File($fileData);
+      $this->moveFile($data, $file);
 
       return $file;
+   }
+
+   private function moveFile(array $data, File $file){
+      try{
+         $photoPath = sprintf('%sPublic/RentalObjectPhotos/%s.%s', PROJECT_ROOT, $file->getId(), pathinfo(array_shift($data['name']), PATHINFO_EXTENSION));
+         $tmpName = array_shift($data['tmp_name']);
+         $this->checkFileExists($tmpName);
+         rename($tmpName, $photoPath);
+      } catch (Exception $e){
+         throw new ApplicationException('Fel vid uppladdning av bild.');
+      }
+   }
+
+   private function checkFileExists($fileName){
+      $fileExists = file_exists($fileName);
+
+      if($fileExists === false){
+         throw new NotFoundException('Kunde inte koppa bilden till uthyrningsobjektet.');
+      }
+
+      return true;
    }
 
    private function buildFile(array $data){
