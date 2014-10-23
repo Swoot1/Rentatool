@@ -24,6 +24,8 @@ class ResponseData extends GeneralModel{
    public function __construct(Metadata $metadata){
       $this->metadata = $metadata;
 
+      parent::__construct();
+
       return $this;
    }
 
