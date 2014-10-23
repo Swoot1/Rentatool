@@ -14,11 +14,15 @@ use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 class IntegerValidation extends ValueValidation{
 
    protected $allowNegativeInteger = false;
+   protected $lowerLimit = null;
+   protected $upperLimit = null;
 
    public function objectValidation($value){
       $this->validateIsNumber($value);
       $this->validateIsInteger($value);
       $this->validateIsAllowedNegativeInteger($value);
+      $this->validateUpperLimit($value);
+      $this->validateLowerLimit($value);
 
       return true;
    }
@@ -63,6 +67,24 @@ class IntegerValidation extends ValueValidation{
       $valueIsUnAllowedNegativeNumber = $this->allowNegativeInteger == false && $value < 0;
       if ($valueIsUnAllowedNegativeNumber){
          throw new ApplicationException(sprintf('%s får inte vara negativt.', $this->genericName));
+      }
+
+      return true;
+   }
+
+   private function validateUpperLimit($value){
+
+      if($this->upperLimit && $value > $this->upperLimit){
+         throw new ApplicationException(sprintf('%s måste vara mindre än %s.', $this->genericName, $this->upperLimit));
+      }
+
+      return true;
+   }
+
+   private function validateLowerLimit($value){
+
+      if($this->lowerLimit && $value < $this->lowerLimit){
+         throw new ApplicationException(sprintf('%s måste vara större än %s.', $this->genericName, $this->lowerLimit));
       }
 
       return true;

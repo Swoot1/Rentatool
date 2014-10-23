@@ -64,7 +64,27 @@ class IntegerValidationTest extends \PHPUnit_Framework_TestCase{
     * @expectedExceptionMessage propertyName måste bestå av siffror.
     */
    public function testValidateWithNumericString(){
-      $floatValidation = new IntegerValidation(array('genericName' => 'propertyName'));
-      $floatValidation->validate('577443');
+      $integerValidation = new IntegerValidation(array('genericName' => 'propertyName'));
+      $integerValidation->validate('577443');
+   }
+
+   /**
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
+    * @expectedExceptionMessage propertyName måste vara mindre än 1000.
+    */
+   public function testValidateUpperLimit(){
+      $integerValidation = new IntegerValidation(array('genericName' => 'propertyName',
+                                                       'upperLimit'  => 1000));
+      $integerValidation->validate(1234);
+   }
+
+   /**
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
+    * @expectedExceptionMessage propertyName måste vara större än 50.
+    */
+   public function testValidateLowerLimit(){
+      $integerValidation = new IntegerValidation(array('genericName' => 'propertyName',
+                                                       'lowerLimit'  => 50));
+      $integerValidation->validate(49);
    }
 } 

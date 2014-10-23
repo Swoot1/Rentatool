@@ -52,20 +52,43 @@ class FileServiceTest extends \PHPUnit_Framework_TestCase{
                                                ->will($this->returnValue(array(array('rentalObjectId' => 2, 'userId' => 1, 'fileId' => 3))));
 
       $fileCollectionMock->expects($this->any())
-                     ->method('getDependencyCollection')
-                     ->will($this->returnValue($rentalObjectFileDependencyCollectionMock));
+                         ->method('getDependencyCollection')
+                         ->will($this->returnValue($rentalObjectFileDependencyCollectionMock));
 
       $rentalObjectMock = $this->getMockBuilder('Application\Models\RentalObject')
                                ->disableOriginalConstructor()
                                ->getMock();
 
-      $fileService = new FileService($fileMapperMock);
+      $fileService    = new FileService($fileMapperMock);
       $fileCollection = $fileService->setDependencies($fileCollectionMock, $rentalObjectMock);
 
       $this->assertInstanceOf('Application\Collections\RentalObjectFileDependencyCollection', $fileCollection);
    }
 
-   public function testCreate(){
-      // TODO HERE
+
+   /**
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\NotFoundException
+    * @expectedExceptionMessage Kunde inte koppa bilden till uthyrningsobjektet.
+    */
+   public function testCreateNonExistingFile(){
+      $fileMapperMock = $this->getMockBuilder('Application\Mappers\FileMapper')
+                             ->disableOriginalConstructor()
+                             ->getMock();
+
+      $fileMapperMock->expects($this->any())
+                     ->method('create')
+                     ->will($this->returnValue(array('id' => 1)));
+
+
+      $fileService = new FileService($fileMapperMock);
+      $file        = $fileService->create(
+                                 array(
+                                    'type' => array('image/jpeg'),
+                                    'size' => array(1773455),
+                                    'name' => array('1234.jpg'),
+                                    'tmp_name' => array('/Applications/MAMP/tmp/php/phpTGo4F0')
+                                 )
+      );
+      $this->assertInstanceOf('Application\Models\File', $file);
    }
 }
