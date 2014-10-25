@@ -8,6 +8,7 @@
 
 namespace Application\Models;
 
+use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\PHPFramework\Validation\Collections\ValueValidationCollection;
 use Application\PHPFramework\Validation\DateTimeValidation;
 use Application\PHPFramework\Validation\FloatValidation;
@@ -31,6 +32,7 @@ class RentPeriod extends GeneralModel{
 
    protected function setFromDate($value){
       $this->fromDate = $this->formatDate($value);
+      $this->validateFromDateIsBeforeToDate();
       $this->setPrice();
 
       return $this;
@@ -38,9 +40,18 @@ class RentPeriod extends GeneralModel{
 
    protected function setToDate($value){
       $this->toDate = $this->formatDate($value);
+      $this->validateFromDateIsBeforeToDate();
       $this->setPrice();
 
       return $this;
+   }
+
+   protected function validateFromDateIsBeforeToDate(){
+      if ($this->fromDate && $this->toDate && $this->fromDate >= $this->toDate){
+         throw new ApplicationException('Från-och-med-datum måste komma före till-och-med-datum.');
+      }
+
+      return true;
    }
 
    private function formatDate($date){
@@ -52,7 +63,6 @@ class RentPeriod extends GeneralModel{
       return $date;
    }
 
-   // TODO add validation so that the from date is not after the to date.
    protected function setUpValidation(){
       $this->_validation = new ValueValidationCollection(
          array(

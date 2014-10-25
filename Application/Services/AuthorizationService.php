@@ -8,6 +8,7 @@
 namespace Application\Services;
 
 
+use Application\Models\Login;
 use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\PHPFramework\SessionManager;
 use Application\Models\Authorization;
@@ -22,17 +23,22 @@ class AuthorizationService{
    }
 
    public function login($data){
-      // TODO validation
-      $user         = $this->userService->getUserByEmail($data['email']);
-      $invalidLogin = $user === null || $user->isValidPassword($data['password']) == false;
+      $login = new Login($data);
+      $user  = $this->getLoginUser($login);
+      $this->sessionManager->setUserData($user->toArray());
+
+      return new Authorization(array('isLoggedIn' => true));
+   }
+
+   private function getLoginUser(Login $login){
+      $user         = $this->userService->getUserByEmail($login->getEmail());
+      $invalidLogin = $user === null || $user->isValidPassword($login->getPassword()) == false;
 
       if ($invalidLogin){
          throw new ApplicationException('Fel e-postadress eller användarnamn.');
       }
 
-      $this->sessionManager->setUserData($user->toArray());
-
-      return new Authorization(array('isLoggedIn' => true));
+      return $user;
    }
 
    public function logout(){

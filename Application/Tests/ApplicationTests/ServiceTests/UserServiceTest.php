@@ -19,12 +19,12 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase{
 
    public function setUp(){
       $this->userValidationMapperMock = $this->getMockBuilder('\Application\Mappers\UserValidationMapper')
-         ->disableOriginalConstructor()
-         ->getMock();
+                                             ->disableOriginalConstructor()
+                                             ->getMock();
 
       $this->userMapperMock = $this->getMockBuilder('\Application\Mappers\UserMapper')
-         ->disableOriginalConstructor()
-         ->getMock();
+                                   ->disableOriginalConstructor()
+                                   ->getMock();
    }
 
    /**
@@ -149,8 +149,8 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase{
                                         ->getMock();
 
       $userValidationServiceMock->expects($this->once())
-                           ->method('validateUser')
-                           ->will($this->returnValue(true));
+                                ->method('validateUser')
+                                ->will($this->returnValue(true));
 
       $this->userMapperMock->expects($this->once())
                            ->method('update')
@@ -194,5 +194,22 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase{
 
       $userService = new UserService($this->userMapperMock, $userValidationServiceMock);
       $userService->getUserByEmail('knugen@hovet.se');
+   }
+
+   /**
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
+    * @expectedExceptionMessage Ogiltigt lösenord.
+    */
+   public function testCreateUserWithoutPassword(){
+      $this->userValidationMapperMock->expects($this->any())->method('isUniqueUsername')->will($this->returnValue(true));
+      $this->userValidationMapperMock->expects($this->any())->method('isUniqueEmail')->will($this->returnValue(true));
+
+      $userValidationService = new UserValidationService($this->userValidationMapperMock);
+
+      $userService = new UserService($this->userMapperMock, $userValidationService);
+      $userService->create(array('username' => 'Elin',
+                                                'email'    => 'elin@elin.se'
+                                                // Password is missing
+                                          ));
    }
 } 

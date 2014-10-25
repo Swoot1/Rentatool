@@ -8,6 +8,7 @@
 .idea
 tmp/
 Application/PHPFramework/Configurations/PersonalConfiguration.php
+Application/PHPFramework/Configurations/MailConfiguration.php
 Application/PHPFramework/Database/Configuration/LocalDatabaseConfiguration.php
 Application/PHPFramework/Database/Configuration/ProductionDatabaseConfiguration.php
 Public/RentalObjectPhotos

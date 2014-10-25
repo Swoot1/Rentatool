@@ -10,6 +10,7 @@ namespace Application\Services;
 
 
 use Application\Collections\UserCollection;
+use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\PHPFramework\ErrorHandling\Exceptions\NotFoundException;
 use Application\Mappers\UserMapper;
 use Application\Models\User;
@@ -38,25 +39,24 @@ class UserService{
     * @return User
     */
    public function create(array $data){
-      $userModel    = new User($data);
-      $DBParameters = $userModel->getDBParameters();
-      $DBParameters = $this->hashPassword($DBParameters);
+      $userModel = new User($data);
       $this->userValidationService->validateUser($userModel);
-      $userData = $this->userMapper->create($DBParameters);
+      $DBParameters             = $userModel->getDBParameters();
+      $DBParameters['password'] = $this->hashPassword($userModel->getPassword());
+      $userData                 = $this->userMapper->create($DBParameters);
 
       return new User($userData);
    }
 
-   /**
-    * @param array $data
-    * @return array
-    */
-   private function hashPassword(array $data){
+   private function hashPassword($password){
 
-      // TODO exception om password inte är satt.
-      $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
+      if (is_string($password)){
+         $password = password_hash($password, PASSWORD_BCRYPT);
+      } else{
+         throw new ApplicationException('Ogiltigt lösenord.');
+      }
 
-      return $data;
+      return $password;
    }
 
 
@@ -96,11 +96,11 @@ class UserService{
    public function update($id, $requestData){
 
       $this->checkThatUserExists($id);
-      $requestData = $this->hashPassword($requestData);
-      $userModel   = new User($requestData);
+      $userModel = new User($requestData);
       $this->userValidationService->validateUser($userModel);
-
-      $this->userMapper->update($userModel->getDBParameters());
+      $DBParameters             = $userModel->getDBParameters();
+      $DBParameters['password'] = $this->hashPassword($userModel->getPassword());
+      $this->userMapper->update($DBParameters);
 
       return new User($requestData);
    }
