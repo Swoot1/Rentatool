@@ -35,7 +35,6 @@ class RouteCollection{
 
       if (array_key_exists($resource, $this->routes)){
          $route = $this->routes[$resource];
-
          $route = $request->getAction() ? $route->getSubRoute($request) : $route;
          $route->validateRequestMethod($request);
       } else{

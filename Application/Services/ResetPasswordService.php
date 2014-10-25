@@ -42,8 +42,7 @@ class ResetPasswordService{
 
    private function sendResetPasswordEmail(ResetPassword $resetPassword, MailFactory $mailFactory, User $user){
 
-      // TODO change adress for production
-      $linkAddress = sprintf('http://localhost/rentatool/#/passwords/new?resetCode=%s', $resetPassword->getResetCode());
+      $linkAddress = sprintf('%s/rentatool/#/passwords/new?resetCode=%s', $_SERVER['SERVER_NAME'], $resetPassword->getResetCode());
       $mailContent = new MailContent(array(
                                         'subject'        => 'Återställning av lösenord.',
                                         'recipientEmail' => $user->getEmail(),

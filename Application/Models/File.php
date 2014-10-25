@@ -34,11 +34,11 @@ class File extends GeneralModel{
                                                                                      'genericName'  => 'filstorlek',
                                                                                      'propertyName' => 'fileSize',
                                                                                      'lowerLimit'   => 1000,
-                                                                                     'upperLimit'   => 10000000 // TODO might be a bit to small
+                                                                                     'upperLimit'   => 100000000
                                                                                   )),
 
                                                             new MapValidation(array(
-                                                                                 'map'          => array('image/jpeg'), // TODO add more file types that we want to support.
+                                                                                 'map'          => array('image/jpeg'),
                                                                                  'genericName'  => 'filtyp',
                                                                                  'propertyName' => 'fileType'
                                                                               ))

@@ -31,24 +31,24 @@ class User extends GeneralModel{
    protected function setUpValidation(){
       $this->setValidation(new ValueValidationCollection(array(
                                                             new IntegerValidation(array(
-                                                                                     'genericName'  => 'Användarid',
+                                                                                     'genericName'  => 'användarid',
                                                                                      'propertyName' => 'id'
                                                                                   )),
                                                             new AlphaNumericValidation(array(
-                                                                                          'genericName'  => 'Användarnamn',
+                                                                                          'genericName'  => 'användarnamn',
                                                                                           'propertyName' => 'username',
                                                                                           'maxLength'    => 50
                                                                                        )),
                                                             new EmailValidation(array(
-                                                                                   'genericName'  => 'Epost-adress',
+                                                                                   'genericName'  => 'epost-adress',
                                                                                    'propertyName' => 'email'
                                                                                 )),
                                                             new PasswordValidation(array(
-                                                                                      'genericName'  => 'Lösenord',
+                                                                                      'genericName'  => 'lösenord',
                                                                                       'propertyName' => 'password'
                                                                                    )),
                                                             new BooleanValidation(array(
-                                                                                     'genericName'  => 'Administrativ åtkomst',
+                                                                                     'genericName'  => 'administrativ åtkomst',
                                                                                      'propertyName' => 'hasAdministrativeAccess'
                                                                                   ))
                                                          )));
@@ -81,6 +81,10 @@ class User extends GeneralModel{
     */
    public function getUsername(){
       return $this->username;
+   }
+
+   public function getPassword(){
+      return $this->password;
    }
 
    public function hasAdministrativeAccess(){
