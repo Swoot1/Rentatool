@@ -62,7 +62,7 @@ abstract class GeneralModel implements IToArray, IGetDBParameters{
       }
    }
 
-   private function setPropertyValueWithSetter($propertyName, $value){
+   protected function setPropertyValueWithSetter($propertyName, $value){
       call_user_func(array($this, $this->_setters[$propertyName]), $value);
       $this->_validation->validate($propertyName, $this->$propertyName);
    }

@@ -25,13 +25,41 @@ class RentalObjectFilter extends GeneralModel{
     */
    protected function setData(array $data){
       foreach ($data as $propertyName => $value){
-         if (property_exists($this, $propertyName)){
+         if (array_key_exists($propertyName, $this->_setters)){
+            $this->setPropertyValueWithSetter($propertyName, $value);
+         } else if (property_exists($this, $propertyName)){
             $this->_validation->validate($propertyName, $value);
             $this->$propertyName = $value;
          }
       }
 
       return $this;
+   }
+
+   protected $_setters = array(
+      'fromDate' => 'setFromDate',
+      'toDate'   => 'setToDate'
+   );
+
+   protected function setFromDate($value){
+      $this->fromDate = $this->formatDate($value);
+
+      return $this;
+   }
+
+   protected function setToDate($value){
+      $this->toDate = $this->formatDate($value);
+
+      return $this;
+   }
+
+   private function formatDate($date){
+
+      if (is_string($date) && preg_match('/^\d\d\d\d-\d\d-\d\d$/', $date)){
+         $date .= ' 00:00:00';
+      }
+
+      return $date;
    }
 
    /**
