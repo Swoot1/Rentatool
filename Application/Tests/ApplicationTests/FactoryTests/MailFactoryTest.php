@@ -11,6 +11,7 @@ namespace Tests\FactoryTests;
 
 use Application\Factories\MailFactory;
 use Application\Models\MailContent;
+use Application\PHPFramework\Configurations\MailConfiguration;
 
 class MailFactoryTest extends \PHPUnit_Framework_TestCase{
 
@@ -22,7 +23,9 @@ class MailFactoryTest extends \PHPUnit_Framework_TestCase{
                'bodyPlainText'  => 'Rubrik och massa härlig text.')
       );
 
-      $mailFactory = new MailFactory(new \PHPMailer());
+      $mailConfiguration = new MailConfiguration();
+
+      $mailFactory = new MailFactory(new \PHPMailer(), $mailConfiguration);
       $mail        = $mailFactory->build($mailContent);
 
       $this->assertInstanceOf('\PHPMailer', $mail);

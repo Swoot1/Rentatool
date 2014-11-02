@@ -89,7 +89,6 @@ class ResetPasswordService{
    }
 
    /**
-    * Validate the email here instead of making a model just for validating an email adress.
     * @param array $data
     * @return bool
     */
