@@ -84,6 +84,7 @@ class IndexHTMLController{
 <script type="text/javascript" src="Public/Scripts/Services/AuthorizationService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Services/NavigationService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/Datepicker.js"></script>
+<script type="text/javascript" src="Public/Scripts/Directives/RentPeriodDatePicker.js"></script>
 <script type="text/javascript" src="Public/Scripts/Filters.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RentalObjectFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RentPeriodFactory.js"></script>
