@@ -71,6 +71,8 @@ class ResetPasswordServiceTest extends \PHPUnit_Framework_TestCase{
 
    public function testCreate(){
 
+      $_SERVER['SERVER_NAME'] = '';
+
       $userMock = $this->getMockBuilder('Application\Models\User')
                        ->disableOriginalConstructor()
                        ->getMock();
@@ -123,5 +125,7 @@ class ResetPasswordServiceTest extends \PHPUnit_Framework_TestCase{
       $resetPasswordService = new ResetPasswordService($resetPasswordMapperMock, $this->resetPasswordFactoryMock, $this->userServiceMock);
 
       $resetPasswordService->create(array('email' => 'nilsson@1337.se'), $mailFactoryMock);
+
+      unset($_SERVER['SERVER_NAME']);
    }
 } 
