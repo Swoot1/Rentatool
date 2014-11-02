@@ -76,4 +76,10 @@ class RentalObjectFilterTest extends \PHPUnit_Framework_TestCase{
 
       $this->assertEquals($actualResult, $query);
    }
+
+   public function testSetter(){
+      $rentalObjectFilter = new RentalObjectFilter(array('fromDate' => '2014-02-01'));
+      $dbParameters       = $rentalObjectFilter->getDBParameters();
+      $this->assertEquals('2014-02-01 00:00:00', $dbParameters['fromDate']);
+   }
 } 
