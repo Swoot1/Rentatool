@@ -8,6 +8,8 @@
 
 namespace Application\Controllers;
 
+use Application\Models\User;
+use Application\PHPFramework\Request\Request;
 use Application\PHPFramework\SessionManager;
 use Application\PHPFramework\Response\Factories\ResponseFactory;
 use Application\Services\UserService;
@@ -18,16 +20,19 @@ class UserController{
     * @var \Application\Services\UserService
     */
    private $userService;
+   private $request;
    private $response;
    private $sessionManager;
 
    /**
     * @param UserService $userService
+    * @param Request $request
     * @param ResponseFactory $responseFactory
     * @param SessionManager $sessionManager
     */
-   public function __construct(UserService $userService, ResponseFactory $responseFactory, SessionManager $sessionManager){
+   public function __construct(UserService $userService, Request $request, ResponseFactory $responseFactory, SessionManager $sessionManager){
       $this->userService    = $userService;
+      $this->request        = $request;
       $this->response       = $responseFactory->build();
       $this->sessionManager = $sessionManager;
    }
@@ -70,5 +75,13 @@ class UserController{
       $currentUser = $this->sessionManager->getCurrentUser();
 
       return $this->response->setResponseData($currentUser);
+   }
+
+   public function confirmemail(){
+      $GETParameters = $this->request->getGETParameters();
+      $email         = array_key_exists('email', $GETParameters) ? $GETParameters['email'] : false;
+      $confirmEmail  = $this->userService->confirmEmail($email);
+
+      return $this->response->setResponseData($confirmEmail);
    }
 } 

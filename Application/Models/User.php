@@ -23,6 +23,7 @@ class User extends GeneralModel{
    protected $email;
    protected $password;
    protected $hasAdministrativeAccess = false;
+   protected $hasConfirmedEmail = false;
 
    public function __construct(array $data){
       parent::__construct($data);

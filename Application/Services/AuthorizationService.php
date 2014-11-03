@@ -44,4 +44,8 @@ class AuthorizationService{
    public function logout(){
       $this->sessionManager->endSession();
    }
+
+   public function confirmEmail($email){
+      $this->userService->confirmEmail($email);
+   }
 } 

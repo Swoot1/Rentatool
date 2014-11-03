@@ -27,11 +27,11 @@ $routes['authorization'] = array(
    'requestMethodCollection' => new RequestMethodCollection(array()),
    'subRoutesCollection'     => new SubRouteCollection(
          array(
-            'login'  => array(
+            'login'        => array(
                'controllerName'          => 'AuthorizationController',
                'requestMethodCollection' => new RequestMethodCollection(array('POST')),
                'subRoutesCollection'     => new SubRouteCollection(array())),
-            'logout' => array(
+            'logout'       => array(
                'controllerName'          => 'AuthorizationController',
                'requestMethodCollection' => new RequestMethodCollection(array('GET')),
                'subRoutesCollection'     => new SubRouteCollection())
@@ -50,9 +50,20 @@ $routes['users'] = array(
                'accessRule'              => new AuthorizedAccessRule(),
                'requestMethodCollection' => new RequestMethodCollection(array('GET')),
                'subRoutesCollection'     => new SubRouteCollection(array())
+            ),
+            'confirmemail' => array(
+               'controllerName'          => 'UserController',
+               'requestMethodCollection' => new RequestMethodCollection(array('GET')),
+               'subRoutesCollection'     => new SubRouteCollection(array())
             )
          )
       )
+);
+
+$routes['signups'] = array(
+   'controllerName'          => 'SignUpController',
+   'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+   'subRoutesCollection'     => new SubRouteCollection()
 );
 
 $routes['databases'] = array(

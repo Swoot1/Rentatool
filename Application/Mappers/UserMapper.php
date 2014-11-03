@@ -17,7 +17,8 @@ class UserMapper{
     SELECT
        id,
        username,
-       email
+       email,
+       has_confirmed_email AS hasConfirmedEmail
     FROM
       users';
 
@@ -28,14 +29,16 @@ class UserMapper{
           username,
           email,
           password,
-          administrative_access
+          administrative_access,
+          has_confirmed_email
           )
       VALUES
         (
           :username,
           :email,
           :password,
-          :hasAdministrativeAccess
+          :hasAdministrativeAccess,
+          :hasConfirmedEmail
         )
     ';
 
@@ -44,7 +47,8 @@ class UserMapper{
        id,
        username,
        email,
-       administrative_access AS "hasAdministrativeAccess"
+       administrative_access AS "hasAdministrativeAccess",
+       has_confirmed_email AS "hasConfirmedEmail"
     FROM
       users
     WHERE
@@ -56,7 +60,8 @@ class UserMapper{
             username,
             email,
             password,
-            administrative_access AS "hasAdministrativeAccess"
+            administrative_access AS "hasAdministrativeAccess",
+            has_confirmed_email AS "hasConfirmedEmail"
         FROM
           users
         WHERE
@@ -70,7 +75,8 @@ class UserMapper{
           username = :username,
           email = :email,
           password = :password,
-          administrative_access = :hasAdministrativeAccess
+          administrative_access = :hasAdministrativeAccess,
+          has_confirmed_email = :hasConfirmedEmail
         WHERE
           id = :id
     ';
@@ -83,6 +89,15 @@ class UserMapper{
           id = :id
 
     ';
+
+   private $confirmEmailSQL = '
+      UPDATE
+           users
+      SET
+        has_confirmed_email = true
+      WHERE
+        email = :email
+   ';
 
    public function __construct(IDatabaseConnection $databaseConnection){
       $this->databaseConnection = $databaseConnection;
@@ -122,5 +137,9 @@ class UserMapper{
 
    public function delete($id){
       return $this->databaseConnection->runQuery($this->deleteSQL, array('id' => $id));
+   }
+
+   public function confirmEmail($email){
+      $this->databaseConnection->runQuery($this->confirmEmailSQL, array('email' => $email));
    }
 } 

@@ -90,6 +90,7 @@ class IndexHTMLController{
 <script type="text/javascript" src="Public/Scripts/Factories/RentPeriodFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/RentPeriodCalculatorFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/UserFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/SignUpFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/DatabaseFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/AuthorizationFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/UnavailableRentPeriodFactory.js"></script>
@@ -104,6 +105,7 @@ class IndexHTMLController{
 <script type="text/javascript" src="Public/Scripts/Controllers/DatabaseController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectListController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserController.js"></script>
+<script type="text/javascript" src="Public/Scripts/Controllers/SignUpController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentObjectController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/NavigationController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/UserListController.js"></script>
@@ -111,6 +113,7 @@ class IndexHTMLController{
 <script type="text/javascript" src="Public/Scripts/Controllers/ContentController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/ResetPasswordController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/PasswordController.js"></script>
+<script type="text/javascript" src="Public/Scripts/Controllers/ConfirmEmailController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/LogoutButton.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/LoginButton.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/MenuItemsFactory.js"></script>
