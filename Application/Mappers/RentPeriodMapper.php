@@ -17,6 +17,7 @@ class RentPeriodMapper{
 
    private $readSQL = '
       SELECT
+         id,
          renter_id AS renterId,
          rental_object_id AS rentalObjectId,
          from_date AS fromDate,
