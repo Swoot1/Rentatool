@@ -10,6 +10,9 @@ namespace Application\Services;
 
 
 use Application\Collections\UserCollection;
+use Application\Factories\MailFactory;
+use Application\Models\ConfirmEmail;
+use Application\Models\MailContent;
 use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\PHPFramework\ErrorHandling\Exceptions\NotFoundException;
 use Application\Mappers\UserMapper;
@@ -46,6 +49,38 @@ class UserService{
       $userData                 = $this->userMapper->create($DBParameters);
 
       return new User($userData);
+   }
+
+   public function signUp(array $data, MailFactory $mailFactory){
+      $data['hasAdministrativeAccess'] = false;
+      $data['hasConfirmedEmail']       = false;
+      $user                            = $this->create($data);
+      $this->sendWelcomeMessage($mailFactory, $user);
+
+      return $user;
+   }
+
+   private function sendWelcomeMessage(MailFactory $mailFactory, User $user){
+
+      $linkAddress = sprintf('%s/rentatool/#/authorization/confirmemail?email=%s', $_SERVER['SERVER_NAME'], $user->getEmail());
+      $mailContent = new MailContent(array(
+                                        'subject'        => 'Återställning av lösenord.',
+                                        'recipientEmail' => $user->getEmail(),
+                                        'bodyHTML'       => sprintf('Välkommen! Bekräfta din email: <a href="%s">Klicka här!</a>', $linkAddress),
+                                        'bodyPlainText'  => sprintf('Öppna den här adressen i din webbläsare för att återställa ditt lösenord %s', $linkAddress)
+                                     ));
+
+      $mail = $mailFactory->build($mailContent);
+
+      if (!$mail->send()){
+         throw new ApplicationException(sprintf('Mailer Error: %s', $mail->ErrorInfo));
+      }
+   }
+
+   public function confirmEmail($email){
+      $this->validateEmail($email);
+      $this->userMapper->confirmEmail($email);
+      return new ConfirmEmail();
    }
 
    private function hashPassword($password){

@@ -25,7 +25,8 @@ class DatabaseMapper{
          username VARCHAR(50) NOT NULL UNIQUE,
          email VARCHAR(64) NOT NULL UNIQUE,
          password VARCHAR(60) NOT NULL,
-         administrative_access TINYINT(1) NOT NULL
+         administrative_access TINYINT(1) NOT NULL,
+         has_confirmed_email TINYINT(1) DEFAULT 0 NOT NULL
       );
 
       CREATE TABLE IF NOT EXISTS reset_passwords(

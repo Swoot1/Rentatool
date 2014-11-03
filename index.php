@@ -31,9 +31,12 @@ try{
 
       $dependencyInjectionContainer = simplexml_load_file('Application/PHPFramework/DependencyInjection/DependencyInjectionContainer.xml');
       $dependencyInjection          = new DependencyInjection($dependencyInjectionContainer);
+
       $mailFactory                  = new MailFactory(new \PHPMailer(), new MailConfiguration());
       $dependencyInjection->setInstantiatedClasses(array('Request' => $requestModel, 'SessionManager' => $sessionManager, 'MailFactory' => $mailFactory));
+
       $controller = $dependencyInjection->getInstantiatedClass($route->getController());
+
       $response   = $requestModel->callControllerMethod($controller);
       $response->sendResponse();
 

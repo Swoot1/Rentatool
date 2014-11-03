@@ -21,6 +21,10 @@ var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute',
             templateUrl: 'Public/Templates/userCreate.html',
             controller: 'UserController'
          })
+         .when('/users/confirmemail', {
+            templateUrl: 'Public/Templates/confirmEmail.html',
+            controller: 'AuthorizationController'
+         })
          .when('/users/:id', {
             templateUrl: 'Public/Templates/userUpdate.html',
             controller: 'UserController'
