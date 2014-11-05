@@ -9,9 +9,12 @@
 namespace Application\Services;
 
 
+use Application\Collections\RentPeriodCollection;
 use Application\Mappers\RentPeriodMapper;
+use Application\Models\MailContent;
 use Application\Models\RentPeriod;
 use Application\Models\User;
+use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 
 class RentPeriodService{
    private $rentPeriodMapper;
@@ -27,7 +30,8 @@ class RentPeriodService{
    }
 
    public function create(array $data, User $currentUser){
-      $rentPeriod = $this->getCalculatedPricePlan($data, $currentUser);
+      $data['isConfirmedByOwner'] = false;
+      $rentPeriod                 = $this->getCalculatedPricePlan($data, $currentUser);
       $this->rentPeriodValidationService->checkIsValidRentPeriod($rentPeriod);
       $rentPeriodData = $this->rentPeriodMapper->create($rentPeriod->getDBParameters());
 
@@ -40,5 +44,26 @@ class RentPeriodService{
       $rentPeriod->setPricePerDayFromRentalObject($rentalObject);
 
       return $rentPeriod;
+   }
+
+   public function index(User $user){
+      $filterData = array('userId' => $user->getId());
+      $result     = $this->rentPeriodMapper->index($filterData);
+
+      return new RentPeriodCollection($result);
+
+   }
+
+   public function confirmRentPeriod($id, User $currentUser){
+
+      $isOwner = $this->rentPeriodMapper->isRentalObjectOwner($id, $currentUser->getId());
+
+      if ($isOwner === false){
+         throw new ApplicationException('Kan inte godkänna uthyrningsperioder vars uthyrningsobjekt du inte är ägare av.');
+      }
+
+      $this->rentPeriodMapper->confirmRentPeriod($id);
+
+      return true;
    }
 }

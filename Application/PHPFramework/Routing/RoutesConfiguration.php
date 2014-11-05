@@ -27,11 +27,11 @@ $routes['authorization'] = array(
    'requestMethodCollection' => new RequestMethodCollection(array()),
    'subRoutesCollection'     => new SubRouteCollection(
          array(
-            'login'        => array(
+            'login'  => array(
                'controllerName'          => 'AuthorizationController',
                'requestMethodCollection' => new RequestMethodCollection(array('POST')),
                'subRoutesCollection'     => new SubRouteCollection(array())),
-            'logout'       => array(
+            'logout' => array(
                'controllerName'          => 'AuthorizationController',
                'requestMethodCollection' => new RequestMethodCollection(array('GET')),
                'subRoutesCollection'     => new SubRouteCollection())
@@ -45,7 +45,7 @@ $routes['users'] = array(
    'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
    'subRoutesCollection'     => new SubRouteCollection(
          array(
-            'currentUser' => array(
+            'currentUser'  => array(
                'controllerName'          => 'UserController',
                'accessRule'              => new AuthorizedAccessRule(),
                'requestMethodCollection' => new RequestMethodCollection(array('GET')),
@@ -84,6 +84,13 @@ $routes['rentperiods'] = array(
    'controllerName'          => 'RentPeriodController',
    'accessRule'              => new AuthorizedAccessRule(),
    'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
+   'subRoutesCollection'     => new SubRouteCollection()
+);
+
+$routes['confirmrentperiods'] = array(
+   'controllerName'          => 'ConfirmRentPeriodController',
+   'accessRule'              => new AuthorizedAccessRule(),
+   'requestMethodCollection' => new RequestMethodCollection(array('PUT')),
    'subRoutesCollection'     => new SubRouteCollection()
 );
 

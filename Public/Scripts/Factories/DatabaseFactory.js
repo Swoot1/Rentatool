@@ -1,6 +1,8 @@
 /**
  * Created by Elin on 2014-07-17.
  */
-rentaTool.factory('Database', ['$resource', function ($resource) {
-    return $resource('databases/:action', {});
-}]);
+(function () {
+   angular.module('Rentatool').factory('Database', ['$resource', function ($resource) {
+      return new $resource('databases/:action', {});
+   }]);
+})();

@@ -70,4 +70,105 @@ class RentPeriodServiceTest extends \PHPUnit_Framework_TestCase{
       $this->assertEquals(1, $rentPeriodData['renterId']);
       $this->assertEquals(800, $rentPeriodData['price']);
    }
+
+   public function testIndex(){
+      $rentPeriodMapperMock = $this->getMockBuilder('Application\Mappers\RentPeriodMapper')
+                                   ->disableOriginalConstructor()
+                                   ->getMock();
+
+      $rentPeriodMapperMock->expects($this->once())
+                           ->method('index')
+                           ->will($this->returnValue(array()));
+
+      $rentPeriodValidationServiceMock = $this->getMockBuilder('Application\Services\RentPeriodValidationService')
+                                              ->disableOriginalConstructor()
+                                              ->getMock();
+
+      $rentalObjectServiceMock = $this->getMockBuilder('Application\Services\RentalObjectService')
+                                      ->disableOriginalConstructor()
+                                      ->getMock();
+
+      $userMock = $this->getMockBuilder('Application\Models\User')
+                       ->disableOriginalConstructor()
+                       ->getMock();
+
+      $userMock->expects($this->once())
+               ->method('getId')
+               ->will($this->returnValue(1));
+
+      $rentPeriodService    = new RentPeriodService($rentPeriodMapperMock, $rentPeriodValidationServiceMock, $rentalObjectServiceMock);
+      $rentPeriodCollection = $rentPeriodService->index($userMock);
+
+      $this->assertInstanceOf('Application\Collections\RentPeriodCollection', $rentPeriodCollection);
+   }
+
+   public function testConfirmRentPeriod(){
+
+      $rentPeriodMapperMock = $this->getMockBuilder('Application\Mappers\RentPeriodMapper')
+                                   ->disableOriginalConstructor()
+                                   ->getMock();
+
+      $rentPeriodMapperMock->expects($this->once())
+                           ->method('confirmRentPeriod')
+                           ->will($this->returnValue(array()));
+
+      $rentPeriodMapperMock->expects($this->once())
+                           ->method('isRentalObjectOwner')
+                           ->will($this->returnValue(true));
+
+      $rentPeriodValidationServiceMock = $this->getMockBuilder('Application\Services\RentPeriodValidationService')
+                                              ->disableOriginalConstructor()
+                                              ->getMock();
+
+      $rentalObjectServiceMock = $this->getMockBuilder('Application\Services\RentalObjectService')
+                                      ->disableOriginalConstructor()
+                                      ->getMock();
+
+      $userMock = $this->getMockBuilder('Application\Models\User')
+                       ->disableOriginalConstructor()
+                       ->getMock();
+
+      $userMock->expects($this->once())
+               ->method('getId')
+               ->will($this->returnValue(1));
+
+      $rentPeriodService = new RentPeriodService($rentPeriodMapperMock, $rentPeriodValidationServiceMock, $rentalObjectServiceMock);
+      $result            = $rentPeriodService->confirmRentPeriod(1, $userMock);
+
+      $this->assertTrue($result);
+   }
+
+   /**
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
+    * @expectedExceptionMessage Kan inte godkänna uthyrningsperioder vars uthyrningsobjekt du inte är ägare av.
+    */
+   public function testConfirmRentPeriodIsNotOwner(){
+
+      $rentPeriodMapperMock = $this->getMockBuilder('Application\Mappers\RentPeriodMapper')
+                                   ->disableOriginalConstructor()
+                                   ->getMock();
+
+      $rentPeriodMapperMock->expects($this->once())
+                           ->method('isRentalObjectOwner')
+                           ->will($this->returnValue(false));
+
+      $rentPeriodValidationServiceMock = $this->getMockBuilder('Application\Services\RentPeriodValidationService')
+                                              ->disableOriginalConstructor()
+                                              ->getMock();
+
+      $rentalObjectServiceMock = $this->getMockBuilder('Application\Services\RentalObjectService')
+                                      ->disableOriginalConstructor()
+                                      ->getMock();
+
+      $userMock = $this->getMockBuilder('Application\Models\User')
+                       ->disableOriginalConstructor()
+                       ->getMock();
+
+      $userMock->expects($this->once())
+               ->method('getId')
+               ->will($this->returnValue(1));
+
+      $rentPeriodService = new RentPeriodService($rentPeriodMapperMock, $rentPeriodValidationServiceMock, $rentalObjectServiceMock);
+      $rentPeriodService->confirmRentPeriod(1, $userMock);
+   }
 } 
