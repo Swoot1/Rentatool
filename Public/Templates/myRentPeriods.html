@@ -4,7 +4,7 @@
             <li ng-repeat="unconfirmedRentPeriod in rentalPeriodCollection.unconfirmedRentPeriodCollection">
                 Från {{unconfirmedRentPeriod.fromDate}} Till {{unconfirmedRentPeriod.toDate}}
                 Person som vill hyra {{unconfirmedRentPeriod.renterId}} Uthyrningsobjekt {{unconfirmedRentPeriod.rentalObjectId}}
-                <textarea ng-model="unconfirmedRentPeriod.email"></textarea><input type="button" value="Godkänn" ng-click="confirmRentPeriod(unconfirmedRentPeriod)"/>
+                <textarea ng-model="unconfirmedRentPeriod.emailContent" placeholder="Tid och plats för hämtning och annat som kan vara bra att veta."></textarea><input type="button" value="Godkänn" ng-click="confirmRentPeriod(unconfirmedRentPeriod)"/>
             </li>
         </ul>
     </div>

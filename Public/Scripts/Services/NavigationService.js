@@ -26,5 +26,9 @@ angular.module('Rentatool')
          $location.path('/resetpasswords/new');
       };
 
+      navigationService.navigateToMyRentPeriods = function () {
+         $location.path('/myrentperiods');
+      };
+
       return navigationService;
    }]);

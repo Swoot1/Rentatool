@@ -8,29 +8,31 @@
 
 namespace Application\Controllers;
 
+use Application\Factories\MailFactory;
+use Application\PHPFramework\Configurations\MailConfiguration;
 use Application\PHPFramework\Response\Factories\ResponseFactory;
 use Application\PHPFramework\SessionManager;
-use Application\Services\RentPeriodService;
+use Application\Services\ConfirmRentPeriodService;
 
 class ConfirmRentPeriodController{
 
-   private $rentPeriodService;
+   private $confirmRentPeriodService;
    private $response;
    private $sessionManager;
 
-   public function __construct(RentPeriodService $rentPeriodService, ResponseFactory $responseFactory,
+   public function __construct(ConfirmRentPeriodService $confirmRentPeriodService, ResponseFactory $responseFactory,
                                SessionManager $sessionManager){
-      $this->rentPeriodService = $rentPeriodService;
-      $this->response          = $responseFactory->build();
-      $this->sessionManager    = $sessionManager;
+      $this->confirmRentPeriodService = $confirmRentPeriodService;
+      $this->response                 = $responseFactory->build();
+      $this->sessionManager           = $sessionManager;
    }
 
    public function update($id, array $data){
 
-      $this->rentPeriodService->confirmRentPeriod($id, $this->sessionManager->getCurrentUser());
-      // TODO
-      // $this->rentPeriodService->sendRentPeriodConfirmation($data);
+      $this->confirmRentPeriodService->confirmRentPeriod($id, $this->sessionManager->getCurrentUser());
+      $emailContent = array_key_exists('emailContent', $data) ? $data['emailContent'] : false;
+      $this->confirmRentPeriodService->sendRentPeriodConfirmation($id, $emailContent, new MailFactory(new \PHPMailer(), new MailConfiguration()));
 
-      return $this->response;
+      return $this->response->addNotifier(array('message' => 'Uthyrningsperioden har bekräftats och ett meddelande har skickats.'));
    }
 } 

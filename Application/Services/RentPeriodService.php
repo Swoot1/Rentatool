@@ -10,6 +10,7 @@ namespace Application\Services;
 
 
 use Application\Collections\RentPeriodCollection;
+use Application\Factories\MailFactory;
 use Application\Mappers\RentPeriodMapper;
 use Application\Models\MailContent;
 use Application\Models\RentPeriod;
@@ -52,18 +53,5 @@ class RentPeriodService{
 
       return new RentPeriodCollection($result);
 
-   }
-
-   public function confirmRentPeriod($id, User $currentUser){
-
-      $isOwner = $this->rentPeriodMapper->isRentalObjectOwner($id, $currentUser->getId());
-
-      if ($isOwner === false){
-         throw new ApplicationException('Kan inte godkänna uthyrningsperioder vars uthyrningsobjekt du inte är ägare av.');
-      }
-
-      $this->rentPeriodMapper->confirmRentPeriod($id);
-
-      return true;
    }
 }
