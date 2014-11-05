@@ -100,4 +100,36 @@ class RentPeriodControllerTest extends \PHPUnit_Framework_TestCase{
       $response                      = $rentalObjectServiceController->getCalculatedRentPeriod(array());
       $this->assertInstanceOf('Application\PHPFramework\Response\Response', $response);
    }
+
+   public function testIndex(){
+
+      $rentPeriodCollectionMock = $this->getMockBuilder('Application\Collections\RentPeriodCollection')
+                             ->disableOriginalConstructor()
+                             ->getMock();
+
+
+
+
+      $this->rentPeriodServiceMock->expects($this->once())
+                                  ->method('index')
+                                  ->will($this->returnValue($rentPeriodCollectionMock));
+
+      $responseMock = $this->getMockBuilder('Application\PHPFramework\Response\Response')
+                           ->disableOriginalConstructor()
+                           ->getMock();
+
+      $responseMock->expects($this->once())
+                   ->method('setResponseData')
+                   ->will($this->returnValue($responseMock));
+
+      $this->responseFactoryMock->expects($this->once())
+                                ->method('build')
+                                ->will($this->returnValue($responseMock));
+
+      $rentPeriodController = new RentPeriodController($this->rentPeriodServiceMock, $this->responseFactoryMock, $this->sessionManagerMock);
+      $response = $rentPeriodController->index();
+
+      $this->assertInstanceOf('Application\PHPFramework\Response\Response', $response);
+
+   }
 } 

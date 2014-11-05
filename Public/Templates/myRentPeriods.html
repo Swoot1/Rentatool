@@ -1,0 +1,11 @@
+<div class="row" ng-controller="MyRentPeriodsController">
+    <div class="large-12 columns">
+        <ul>
+            <li ng-repeat="unconfirmedRentPeriod in rentalPeriodCollection.unconfirmedRentPeriodCollection">
+                Från {{unconfirmedRentPeriod.fromDate}} Till {{unconfirmedRentPeriod.toDate}}
+                Person som vill hyra {{unconfirmedRentPeriod.renterId}} Uthyrningsobjekt {{unconfirmedRentPeriod.rentalObjectId}}
+                <textarea ng-model="unconfirmedRentPeriod.email"></textarea><input type="button" value="Godkänn" ng-click="confirmRentPeriod(unconfirmedRentPeriod)"/>
+            </li>
+        </ul>
+    </div>
+</div>

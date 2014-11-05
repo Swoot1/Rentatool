@@ -49,4 +49,14 @@ class RentPeriodController{
 
       return $this->response;
    }
+
+   public function index(){
+      $currentUser = $this->sessionManager->getCurrentUser();
+      $rentPeriodCollection = $this->rentPeriodService->index($currentUser);
+
+      $this->response
+         ->setResponseData($rentPeriodCollection);
+
+      return $this->response;
+   }
 } 

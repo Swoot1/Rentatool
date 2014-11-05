@@ -53,6 +53,14 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Application\Controllers" class="ConfirmRentPeriodController">
+            <dependencies>
+                <dependency namespace="Application\Services" class="RentPeriodService"/>
+                <dependency namespace="Application\PHPFramework\Response\Factories" class="ResponseFactory"/>
+                <dependency namespace="Application\PHPFramework" class="SessionManager"/>
+            </dependencies>
+        </dependency>
+
         <dependency namespace="Application\Controllers" class="RentPeriodCalculatorController">
             <dependencies>
                 <dependency namespace="Application\Services" class="RentPeriodService"/>
