@@ -23,6 +23,9 @@ class ConfirmRentPeriodControllerTest extends \PHPUnit_Framework_TestCase{
                             ->method('confirmRentPeriod')
                             ->will($this->returnValue(true)); // TODO return value
 
+      $rentPeriodServiceMock->expects($this->once())
+                            ->method('sendRentPeriodConfirmation');
+
       $responseFactoryMock = $this->getMockBuilder('Application\PHPFramework\Response\Factories\ResponseFactory')
                                   ->disableOriginalConstructor()
                                   ->getMock();

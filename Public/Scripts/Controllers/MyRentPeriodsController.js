@@ -11,7 +11,7 @@
       $scope.rentalPeriodCollection.unconfirmedRentPeriodCollection = [];
 
       $scope.confirmRentPeriod = function (rentPeriod) {
-         confirmRentPeriod = new ConfirmRentPeriod({email: rentPeriod.email});
+         confirmRentPeriod = new ConfirmRentPeriod({emailContent: rentPeriod.emailContent});
          confirmRentPeriod.$update({id: rentPeriod.id}, function () {
             indexOfRentPeriod = $scope.rentalPeriodCollection.unconfirmedRentPeriodCollection.indexOf(rentPeriod);
             $scope.rentalPeriodCollection.unconfirmedRentPeriodCollection.splice(indexOfRentPeriod, 1);
