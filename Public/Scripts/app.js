@@ -57,6 +57,10 @@ var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute',
             templateUrl: 'Public/Templates/myRentPeriods.html',
             controller: 'MyRentPeriodsController'
          })
+         .when('/rentalobjectpayments', {
+            templateUrl: 'Public/Templates/rentalObjectPayment.html',
+            controller: 'RentalObjectPaymentController'
+         })
          .otherwise({
             redirectTo: '/rentalobjects'
          });
