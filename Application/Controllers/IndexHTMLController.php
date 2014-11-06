@@ -66,6 +66,7 @@ class IndexHTMLController{
         </div>
     </div>
 </div>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript" src="Public/css/Foundation/js/vendor/modernizr.js"></script>
 <script type="text/javascript" src="Public/css/Foundation/js/vendor/fastclick.js"></script>
 <script type="text/javascript" src="Public/css/Foundation/js/vendor/jquery.js"></script>
@@ -99,9 +100,11 @@ class IndexHTMLController{
 <script type="text/javascript" src="Public/Scripts/Factories/ResetPasswordFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/PasswordFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/ConfirmRentPeriodFactory.js"></script>
+<script type="text/javascript" src="Public/Scripts/Factories/RentalObjectPaymentFactory.js"></script>
 <script type="text/javascript" src="Public/Scripts/Services/UnavailableRentPeriodService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Services/RentalObjectService.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectController.js"></script>
+<script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectPaymentController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectPhotoController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/DatabaseController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectListController.js"></script>

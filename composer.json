@@ -4,7 +4,8 @@
       "phpmd/phpmd": "2.0.*",
       "phpmailer/phpmailer": "5.2.*",
       "guzzle/guzzle": "3.9.*",
-      "guzzle/plugin-cookie": "3.9.*"
+      "guzzle/plugin-cookie": "3.9.*",
+      "stripe/stripe-php": "1.*"
    },
 
    "autoload": {

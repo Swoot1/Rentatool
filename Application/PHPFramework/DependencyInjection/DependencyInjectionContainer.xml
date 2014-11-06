@@ -15,6 +15,13 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Application\Controllers" class="RentalObjectPaymentController">
+            <dependencies>
+                <dependency namespace="Application\PHPFramework\Response\Factories" class="ResponseFactory"/>
+                <dependency namespace="Application\PHPFramework" class="SessionManager"/>
+            </dependencies>
+        </dependency>
+
         <dependency namespace="Application\Controllers" class="AuthorizationController">
             <dependencies>
                 <dependency namespace="Application\Services" class="AuthorizationService"/>

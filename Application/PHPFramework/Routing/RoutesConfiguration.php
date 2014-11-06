@@ -22,6 +22,13 @@ $routes['rentalobjects'] = array(
    'subRoutesCollection'     => new SubRouteCollection()
 );
 
+$routes['rentalobjectpayments'] = array(
+   'controllerName'          => 'RentalObjectPaymentController',
+   'requestMethodCollection' => new RequestMethodCollection(array('POST')),
+   'subRoutesCollection'     => new SubRouteCollection()
+);
+
+
 $routes['authorization'] = array(
    'controllerName'          => 'AuthorizationController',
    'requestMethodCollection' => new RequestMethodCollection(array()),
