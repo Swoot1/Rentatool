@@ -24,7 +24,7 @@ class MenuService{
       $this->menuItems      = [
          ['label' => 'Användare', 'callback' => 'navigateToUserList', 'accessRule' => new AdministrativeAccessRule()],
          ['label' => 'Uthyrningsobjekt', 'callback' => 'navigateToRentalObjectList'],
-         ['label' => 'Mina uthyrningsperioder', 'callback' => 'navigateToMyRentPeriods'],
+         ['label' => 'Mina uthyrningsperioder', 'callback' => 'navigateToMyRentPeriods', 'accessRule' => new AuthorizedAccessRule()],
          ['label' => 'Databasskapning', 'callback' => 'navigateToCreateDatabase', 'accessRule' => new AuthorizedAccessRule()]
       ];
    }

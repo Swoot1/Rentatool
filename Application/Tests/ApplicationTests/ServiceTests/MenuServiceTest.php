@@ -45,7 +45,7 @@ class MenuServiceTest extends \PHPUnit_Framework_TestCase{
    public function testGetAuthorizedMenu(){
       $_SESSION['user'] = ['id' => 1, 'username' => 'test'];
 
-      $expectedMenuItems = ['Uthyrningsobjekt', 'Databasskapning'];
+      $expectedMenuItems = ['Uthyrningsobjekt', 'Databasskapning', 'Mina uthyrningsperioder'];
       $menuItems         = $this->menuService->index()->toArray();
 
       $this->assertMenuIsSame($expectedMenuItems, $menuItems);
@@ -54,7 +54,7 @@ class MenuServiceTest extends \PHPUnit_Framework_TestCase{
    public function testGetAdministratorMenu(){
       $_SESSION['user'] = ['id' => 1, 'username' => 'testadministrator', 'hasAdministrativeAccess' => true];
 
-      $expectedMenuItems = ['Uthyrningsobjekt', 'Databasskapning', 'Användare'];
+      $expectedMenuItems = ['Uthyrningsobjekt', 'Databasskapning', 'Mina uthyrningsperioder', 'Användare'];
       $menuItems         = $this->menuService->index()->toArray();
 
       $this->assertMenuIsSame($expectedMenuItems, $menuItems);

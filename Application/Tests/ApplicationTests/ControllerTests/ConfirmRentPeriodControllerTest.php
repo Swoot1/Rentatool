@@ -15,15 +15,14 @@ class ConfirmRentPeriodControllerTest extends \PHPUnit_Framework_TestCase{
 
    public function testConfirmRentPeriod(){
 
-      $rentPeriodServiceMock = $this->getMockBuilder('Application\Services\RentPeriodService')
+      $confirmRentPeriodServiceMock = $this->getMockBuilder('Application\Services\ConfirmRentPeriodService')
                                     ->disableOriginalConstructor()
                                     ->getMock();
 
-      $rentPeriodServiceMock->expects($this->once())
-                            ->method('confirmRentPeriod')
-                            ->will($this->returnValue(true)); // TODO return value
+      $confirmRentPeriodServiceMock->expects($this->once())
+                            ->method('confirmRentPeriod');
 
-      $rentPeriodServiceMock->expects($this->once())
+      $confirmRentPeriodServiceMock->expects($this->once())
                             ->method('sendRentPeriodConfirmation');
 
       $responseFactoryMock = $this->getMockBuilder('Application\PHPFramework\Response\Factories\ResponseFactory')
@@ -33,6 +32,10 @@ class ConfirmRentPeriodControllerTest extends \PHPUnit_Framework_TestCase{
       $responseMock = $this->getMockBuilder('Application\PHPFramework\Response\Response')
                            ->disableOriginalConstructor()
                            ->getMock();
+
+      $responseMock->expects($this->once())
+                          ->method('addNotifier')
+                          ->will($this->returnValue($responseMock));
 
       $responseFactoryMock->expects($this->once())
                           ->method('build')
@@ -50,7 +53,7 @@ class ConfirmRentPeriodControllerTest extends \PHPUnit_Framework_TestCase{
                          ->method('getCurrentUser')
                          ->will($this->returnValue($userMock));
 
-      $confirmRentPeriodController = new ConfirmRentPeriodController($rentPeriodServiceMock, $responseFactoryMock, $sessionManagerMock);
+      $confirmRentPeriodController = new ConfirmRentPeriodController($confirmRentPeriodServiceMock, $responseFactoryMock, $sessionManagerMock);
 
       $response = $confirmRentPeriodController->update(2, array());
 
