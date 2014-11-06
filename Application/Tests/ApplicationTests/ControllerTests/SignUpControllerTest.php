@@ -10,7 +10,7 @@ namespace Tests\ControllerTests;
 
 use Application\Controllers\SignUpController;
 
-class UserControllerTest extends \PHPUnit_Framework_TestCase{
+class SignUpControllerTest extends \PHPUnit_Framework_TestCase{
    private $userServiceMock;
    private $responseFactoryMock;
    private $responseMock;
