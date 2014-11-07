@@ -24,4 +24,16 @@ class RentPeriodTest extends \PHPUnit_Framework_TestCase{
                         'toDate'   => '2015-02-20'
                      ));
    }
+
+   /**
+    * This should not cast an exception
+    */
+   public function testFromDateIsEqualToToDate(){
+      new RentPeriod(array(
+                        'fromDate' => '2016-01-18',
+                        'toDate'   => '2016-01-18'
+                     ));
+
+      $this->assertTrue(true);
+   }
 } 

@@ -33,7 +33,7 @@ class RentPeriod extends GeneralModel{
 
    protected function setFromDate($value){
       $this->fromDate = $this->formatDate($value);
-      $this->validateFromDateIsBeforeToDate();
+      $this->validateFromDateIsBeforeOrEqualToToDate();
       $this->setPrice();
 
       return $this;
@@ -41,14 +41,14 @@ class RentPeriod extends GeneralModel{
 
    protected function setToDate($value){
       $this->toDate = $this->formatDate($value);
-      $this->validateFromDateIsBeforeToDate();
+      $this->validateFromDateIsBeforeOrEqualToToDate();
       $this->setPrice();
 
       return $this;
    }
 
-   protected function validateFromDateIsBeforeToDate(){
-      if ($this->fromDate && $this->toDate && $this->fromDate >= $this->toDate){
+   protected function validateFromDateIsBeforeOrEqualToToDate(){
+      if ($this->fromDate && $this->toDate && $this->fromDate > $this->toDate){
          throw new ApplicationException('Från-och-med-datum måste komma före till-och-med-datum.');
       }
 
