@@ -41,10 +41,6 @@ var rentaTool = angular.module('Rentatool', ['ngResource', 'filters', 'ngRoute',
             templateUrl: 'Public/Templates/database.html',
             controller: 'DatabaseController'
          })
-         .when('/rentobjects/:id', {
-            templateUrl: 'Public/Templates/rentObjectCreate.html',
-            controller: 'RentObjectController'
-         })
          .when('/resetpasswords/new', {
             templateUrl: 'Public/Templates/resetPassword.html',
             controller: 'ResetPasswordController'
