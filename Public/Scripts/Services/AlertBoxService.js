@@ -25,6 +25,13 @@ rentaTool.factory('AlertBoxService', ['$rootScope', function ($rootScope) {
       $rootScope.alertBoxes.splice(index, 1);
    };
 
+   // Remove alert boxes when the user navigates to a different page.
+   $rootScope.$watch(function () {
+      return location.hash
+   }, function () {
+      $rootScope.alertBoxes = [];
+   });
+
    alertBoxService.isAllowedType = function (type) {
       return ['alert', 'success', 'warning', 'info', 'secondary'].indexOf(type) !== -1;
    };
