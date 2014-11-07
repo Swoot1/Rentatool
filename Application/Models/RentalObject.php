@@ -19,6 +19,7 @@ class RentalObject extends GeneralModel{
    protected $id;
    protected $userId;
    protected $name;
+   protected $description;
    protected $pricePerDay;
    protected $fileCollection;
    protected $_setters = array(
@@ -52,6 +53,12 @@ class RentalObject extends GeneralModel{
                                                                            'genericName'  => 'uthyrningsobjektets namn',
                                                                            'propertyName' => 'name',
                                                                            'maxLength'    => 30
+                                                                        )
+                                                     ),
+                                                     new TextValidation(array(
+                                                                           'genericName'  => 'beskrivning',
+                                                                           'propertyName' => 'description',
+                                                                           'maxLength'    => 3000
                                                                         )
                                                      )
                                                   ));

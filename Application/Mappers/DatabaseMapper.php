@@ -40,6 +40,7 @@ class DatabaseMapper{
          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
          user_id INTEGER NOT NULL,
          name VARCHAR(30) NOT NULL,
+         description VARCHAR(3000) NOT NULL,
          CONSTRAINT rental_object_owner_fk FOREIGN KEY (user_id) REFERENCES users(id),
          price_per_day FLOAT NOT NULL
       );
@@ -119,32 +120,38 @@ class DatabaseMapper{
          array(
             'name'        => 'Stiga gräsklippare',
             'userId'      => 1,
-            'pricePerDay' => 100
+            'pricePerDay' => 100,
+            'description' => 'Den går bra och klipper gräset.'
          ),
          array(
             'name'        => 'Hästtransport',
             'userId'      => 1,
-            'pricePerDay' => 100
+            'pricePerDay' => 100,
+            'description' => 'Man kan köra hästar i den.'
          ),
          array(
             'name'        => 'Slagborr',
             'userId'      => 1,
-            'pricePerDay' => 100
+            'pricePerDay' => 100,
+            'description' => 'Finns i Torsby.'
          ),
          array(
             'name'        => 'Slipmaskin',
             'userId'      => 2,
-            'pricePerDay' => 100
+            'pricePerDay' => 100,
+            'description' => 'Jag har aldrig använt den. Den ligger bara och skräpar. Snälla hyr den.'
          ),
          array(
             'name'        => 'Utemöbler',
             'userId'      => 2,
-            'pricePerDay' => 100
+            'pricePerDay' => 100,
+            'description' => 'Nu i vinter får ni gärna hyra dom.'
          ),
          array(
             'name'        => 'Tvätthall',
             'userId'      => 2,
-            'pricePerDay' => 100
+            'pricePerDay' => 100,
+            'description' => 'Hyr tvätthallen och kom och tvätta er bil.'
          )
       );
 
