@@ -18,6 +18,7 @@
         <form name="rental_object_form" ng-submit="createRentalObject()">
             <input id="rentalObject" ng-model="rentalObject.name" type="text" ng-placeholder="Namn" ng-focus/>
             <input type="text" ng-model="rentalObject.pricePerDay" placeholder="Ange pris per dag"/>
+            <textarea ng-model="rentalObject.description" placeholder="Ange en beskrivning av objektet."></textarea>
             <button type="button" class="tiny" ng-click="createRentalObject()"
                     ng-disabled="rental_object_form.$invalid">
                 Spara uthyrningsobjekt

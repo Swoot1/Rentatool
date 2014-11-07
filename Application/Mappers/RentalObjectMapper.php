@@ -20,6 +20,7 @@ class RentalObjectMapper{
                   rental_objects.id,
                   user_id as "userId",
                   name,
+                  description,
                   price_per_day AS "pricePerDay"
                FROM rental_objects';
 
@@ -29,12 +30,14 @@ class RentalObjectMapper{
           (
             user_id,
             name,
+            description,
             price_per_day
           )
       VALUES
         (
           :userId,
           :name,
+          :description,
           :pricePerDay
         )
     ';
@@ -44,6 +47,7 @@ class RentalObjectMapper{
        id,
        user_id AS "userId",
        name,
+       description,
        price_per_day AS "pricePerDay"
     FROM
       rental_objects
@@ -56,6 +60,7 @@ class RentalObjectMapper{
         SET
           user_id = :userId,
           name = :name,
+          description = :description,
           price_per_day = :pricePerDay
         WHERE
           id = :id

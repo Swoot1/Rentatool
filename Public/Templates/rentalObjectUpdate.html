@@ -1,10 +1,7 @@
-<div class="row">
+<div class="large-12 columns">
+
     <div class="large-12 columns">
-        <h1>Redigera uthyrningsobjekt {{rentalObject.name}}</h1>
-    </div>
-</div>
-<div class="row">
-    <div class="large-12 columns">
+        <h2>{{rentalObject.name}}</h2>
         <img style="width:100px; height:100px" ng-repeat="file in rentalObject.fileCollection"
              ng-src="Public/RentalObjectPhotos/{{file.id}}.JPG">
 
@@ -13,8 +10,28 @@
             </div>
             <input id="rentalObject" ng-model="rentalObject.name" type="text" ng-placeholder="Namn" ng-focus/>
             <input type="text" ng-model="rentalObject.pricePerDay" placeholder="Ange pris per dag"/>
+            <textarea ng-model="rentalObject.description" placeholder="Ange en beskrivning av objektet."></textarea>
             <button type="submit" class="tiny" ng-disabled="rental_object_form.$invalid">Spara ändringar</button>
             <button type="button" class="tiny" ng-click="returnToRentalObjectList()">Avbryt</button>
         </form>
+
+        <span ng-controller="RentObjectController">
+            <h2>Hyr</h2>
+
+            <form ng-submit="createRentPeriod()">
+
+                <input type="text" ng-model="rentPeriod.fromDate" rentperioddatepicker
+                       rental_object_id="{{rentPeriod.rentalObjectId}}" placeholder="Från och med"/>
+                <input type="text" ng-model="rentPeriod.toDate" rentperioddatepicker
+                       rental_object_id="{{rentPeriod.rentalObjectId}}" placeholder="Till och med"/>
+
+                <p>Pris {{rentPeriod.price}} kr</p>
+
+                <button type="submit" class="success tiny">
+                    Hyr
+                </button>
+                <button type="button" class="tiny" ng-click="returnToRentalObjectList()">Avbryt</button>
+            </form>
+        </span>
     </div>
 </div>

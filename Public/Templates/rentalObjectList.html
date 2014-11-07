@@ -20,16 +20,13 @@
         <div ng-repeat="rentalObject in rentalObjectCollection">
 
             <div class="row">
-                <div class="column large-5">
-                    {{rentalObject.name}}
+                <div class="column large-4">
+                    <p><a ng-click="navigateToRentalObject(rentalObject)">{{rentalObject.name}}</a></p>
+                </div>
+                <div class="column large-2">
+                    {{rentalObject.pricePerDay}} kr/dag
                 </div>
                 <div class="column large-5 end">
-                    <button type="button" ng-click="navigateToRentRentalObject(rentalObject)"
-                            class="success tiny">Hyr
-                    </button>
-                    <button type="button" class="tiny" ng-click="editRentalObject(rentalObject)"
-                            ng-show="rentalObject.userId === currentUser.id">Redigera
-                    </button>
                     <button type="button" ng-click="deleteRentalObject(rentalObject)"
                             ng-show="rentalObject.userId === currentUser.id" class="alert tiny">Ta bort
                     </button>
