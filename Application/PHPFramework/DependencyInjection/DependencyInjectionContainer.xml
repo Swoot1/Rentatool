@@ -57,6 +57,7 @@
                 <dependency namespace="Application\Services" class="RentPeriodService"/>
                 <dependency namespace="Application\PHPFramework\Response\Factories" class="ResponseFactory"/>
                 <dependency namespace="Application\PHPFramework" class="SessionManager"/>
+                <dependency namespace="Application\Services" class="RentalNotificationService"/>
             </dependencies>
         </dependency>
 
@@ -206,6 +207,13 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Application\Services" class="RentalNotificationService">
+            <dependencies>
+                <dependency namespace="Application\Factories" class="MailFactory"/>
+                <dependency namespace="Application\Mappers" class="RentalNotificationMapper"/>
+            </dependencies>
+        </dependency>
+
         <!-- Mappers -->
         <dependency namespace="Application\Mappers" class="RentalObjectMapper">
             <dependencies>
@@ -268,6 +276,12 @@
         </dependency>
 
         <dependency namespace="Application\Mappers" class="PasswordMapper">
+            <dependencies>
+                <dependency namespace="Application\PHPFramework\Database\Models" class="DatabaseConnection"/>
+            </dependencies>
+        </dependency>
+
+        <dependency namespace="Application\Mappers" class="RentalNotificationMapper">
             <dependencies>
                 <dependency namespace="Application\PHPFramework\Database\Models" class="DatabaseConnection"/>
             </dependencies>
