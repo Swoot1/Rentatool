@@ -8,9 +8,11 @@
 
 namespace Application\Controllers;
 
+use Application\Factories\MailFactory;
 use Application\PHPFramework\SessionManager;
 use Application\PHPFramework\Response\Factories\ResponseFactory;
 use Application\Services\RentPeriodService;
+use Application\Services\RentalNotificationService;
 
 class RentPeriodController{
 
@@ -20,16 +22,20 @@ class RentPeriodController{
    private $rentPeriodService;
    private $response;
    private $sessionManager;
+   private $rentalNotificationService;
 
-   public function __construct(RentPeriodService $rentPeriodService, ResponseFactory $responseFactory, SessionManager $sessionManager){
-      $this->rentPeriodService = $rentPeriodService;
-      $this->response          = $responseFactory->build();
-      $this->sessionManager    = $sessionManager;
+   public function __construct(RentPeriodService $rentPeriodService, ResponseFactory $responseFactory, SessionManager $sessionManager, RentalNotificationService $rentalNotificationService){
+      $this->rentPeriodService         = $rentPeriodService;
+      $this->response                  = $responseFactory->build();
+      $this->sessionManager            = $sessionManager;
+      $this->rentalNotificationService = $rentalNotificationService;
    }
 
    public function create(array $data){
       $currentUser = $this->sessionManager->getCurrentUser();
       $rentPeriod  = $this->rentPeriodService->create($data, $currentUser);
+
+      $this->rentalNotificationService->create($rentPeriod->getRentalObjectId());
 
       $this->response
          ->setStatusCode(201)
@@ -51,7 +57,7 @@ class RentPeriodController{
    }
 
    public function index(){
-      $currentUser = $this->sessionManager->getCurrentUser();
+      $currentUser          = $this->sessionManager->getCurrentUser();
       $rentPeriodCollection = $this->rentPeriodService->index($currentUser);
 
       $this->response
