@@ -29,16 +29,16 @@ class RentalObjectValidationService {
       return true;
    }
 
-   public function validateDelete(RentalObjectService $rentalObjectService, $id, User $currentUser){
+   public function validateInactivation(RentalObjectService $rentalObjectService, $id, User $currentUser){
 
       $rentalObject = $rentalObjectService->read($id);
 
       if ($rentalObject === null){
-         throw new NotFoundException('Kunde inte hitta valt uthyrningsobjekt för borttagning.');
+         throw new NotFoundException('Kunde inte hitta valt uthyrningsobjekt för inaktivering.');
       }
 
       if ($rentalObject->isOwner($currentUser) === false){
-         throw new ApplicationException('Kan inte ta bort uthyrningsobjekt som du inte är ägare av.');
+         throw new ApplicationException('Kan inte inaktivera uthyrningsobjekt som du inte är ägare av.');
       }
 
       return true;

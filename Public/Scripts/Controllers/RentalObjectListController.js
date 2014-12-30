@@ -1,7 +1,7 @@
 /**
  * Created by Elin on 2014-06-12.
  */
-rentaTool.controller('RentalObjectListController', ['$scope', '$location', 'RentalObject', 'User', function ($scope, $location, RentalObject, User) {
+rentaTool.controller('RentalObjectListController', ['$scope', '$location', 'RentalObject', 'InactivateRentalObject', 'User', function ($scope, $location, RentalObject, InactivateRentalObject, User) {
    $scope.rentalObjectCollection = RentalObject.query();
    $scope.rentalObjectFilter = {};
    $scope.currentUser = $scope.userIsLoggedIn && User.get({'id' : 'currentUser'});
@@ -27,11 +27,11 @@ rentaTool.controller('RentalObjectListController', ['$scope', '$location', 'Rent
       $location.path('/rentalobjects/' + rentalObject.id);
    };
 
-   $scope.deleteRentalObject = function (rentalObject) {
+   $scope.inactivateRentalObject = function (rentalObject) {
       var indexOfRentalObject;
-      var rentalObjectResource = new RentalObject(rentalObject);
+      var inactivateRentalObjectResource = new InactivateRentalObject(rentalObject);
 
-      rentalObjectResource.$delete({id: rentalObjectResource.id},
+      inactivateRentalObjectResource.$update({id: rentalObject.id},
          function () {
             indexOfRentalObject = $scope.rentalObjectCollection.indexOf(rentalObject);
             $scope.rentalObjectCollection.splice(indexOfRentalObject, 1);

@@ -129,9 +129,9 @@ class RentalObjectValidationServiceTest extends \PHPUnit_Framework_TestCase{
 
    /**
     * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
-    * @expectedExceptionMessage Kan inte ta bort uthyrningsobjekt som du inte är ägare av.
+    * @expectedExceptionMessage Kan inte inaktivera uthyrningsobjekt som du inte är ägare av.
     */
-   public function testValidateDeleteNotOwner(){
+   public function testValidateInactivateNotOwner(){
 
       $rentalObjectServiceMock = $this->getMockBuilder('Application\Services\RentalObjectService')
                                       ->disableOriginalConstructor()
@@ -155,7 +155,7 @@ class RentalObjectValidationServiceTest extends \PHPUnit_Framework_TestCase{
 
       $rentalObjectValidationService = new RentalObjectValidationService();
 
-      $rentalObjectValidationService->validateDelete($rentalObjectServiceMock, 1, $currentUserMock);
+      $rentalObjectValidationService->validateInactivation($rentalObjectServiceMock, 1, $currentUserMock);
 
    }
 

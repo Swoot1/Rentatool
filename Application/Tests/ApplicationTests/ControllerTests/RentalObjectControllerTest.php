@@ -145,26 +145,4 @@ class RentalObjectControllerTest extends \PHPUnit_Framework_TestCase{
       $response                      = $rentalObjectServiceController->update(1, array());
       $this->assertInstanceOf('Application\PHPFramework\Response\Response', $response);
    }
-
-   public function testDelete(){
-      $rentalObjectMock = $this->getMockBuilder('Application\Models\RentalObject')
-                               ->disableOriginalConstructor()
-                               ->getMock();
-
-      $this->rentalObjectServiceMock->expects($this->once())
-                                    ->method('delete')
-                                    ->will($this->returnValue($rentalObjectMock));
-
-      $this->responseMock->expects($this->once())
-                         ->method('setStatusCode')
-                         ->will($this->returnValue($this->responseMock));
-
-      $this->responseFactoryMock->expects($this->once())
-                                ->method('build')
-                                ->will($this->returnValue($this->responseMock));
-
-      $rentalObjectServiceController = new RentalObjectController($this->requestMock, $this->rentalObjectServiceMock, $this->responseFactoryMock, $this->sessionManagerMock);
-      $response                      = $rentalObjectServiceController->delete(1);
-      $this->assertInstanceOf('Application\PHPFramework\Response\Response', $response);
-   }
 } 

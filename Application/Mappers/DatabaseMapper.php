@@ -42,7 +42,8 @@ class DatabaseMapper{
          name VARCHAR(30) NOT NULL,
          description VARCHAR(3000) NOT NULL,
          CONSTRAINT rental_object_owner_fk FOREIGN KEY (user_id) REFERENCES users(id),
-         price_per_day FLOAT NOT NULL
+         price_per_day FLOAT NOT NULL,
+         active TINYINT(1) DEFAULT 1 NOT NULL
       );
 
       CREATE TABLE IF NOT EXISTS rent_periods(
@@ -123,37 +124,43 @@ class DatabaseMapper{
             'name'        => 'Stiga gräsklippare',
             'userId'      => 1,
             'pricePerDay' => 100,
-            'description' => 'Den går bra och klipper gräset.'
+            'description' => 'Den går bra och klipper gräset.',
+            'active'      => 1
          ),
          array(
             'name'        => 'Hästtransport',
             'userId'      => 1,
             'pricePerDay' => 100,
-            'description' => 'Man kan köra hästar i den.'
+            'description' => 'Man kan köra hästar i den.',
+            'active'      => 1
          ),
          array(
             'name'        => 'Slagborr',
             'userId'      => 1,
             'pricePerDay' => 100,
-            'description' => 'Finns i Torsby.'
+            'description' => 'Finns i Torsby.',
+            'active'      => 1
          ),
          array(
             'name'        => 'Slipmaskin',
             'userId'      => 2,
             'pricePerDay' => 100,
-            'description' => 'Jag har aldrig använt den. Den ligger bara och skräpar. Snälla hyr den.'
+            'description' => 'Jag har aldrig använt den. Den ligger bara och skräpar. Snälla hyr den.',
+            'active'      => 1
          ),
          array(
             'name'        => 'Utemöbler',
             'userId'      => 2,
             'pricePerDay' => 100,
-            'description' => 'Nu i vinter får ni gärna hyra dom.'
+            'description' => 'Nu i vinter får ni gärna hyra dom.',
+            'active'      => 1
          ),
          array(
             'name'        => 'Tvätthall',
             'userId'      => 2,
             'pricePerDay' => 100,
-            'description' => 'Hyr tvätthallen och kom och tvätta er bil.'
+            'description' => 'Hyr tvätthallen och kom och tvätta er bil.',
+            'active'      => 1
          )
       );
 

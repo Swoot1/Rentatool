@@ -21,7 +21,8 @@ class RentalObjectMapper{
                   user_id as "userId",
                   name,
                   description,
-                  price_per_day AS "pricePerDay"
+                  price_per_day AS "pricePerDay",
+                  active
                FROM rental_objects';
 
    private $createSQL = '
@@ -31,14 +32,16 @@ class RentalObjectMapper{
             user_id,
             name,
             description,
-            price_per_day
+            price_per_day,
+            active
           )
       VALUES
         (
           :userId,
           :name,
           :description,
-          :pricePerDay
+          :pricePerDay,
+          :active
         )
     ';
 
@@ -48,7 +51,8 @@ class RentalObjectMapper{
        user_id AS "userId",
        name,
        description,
-       price_per_day AS "pricePerDay"
+       price_per_day AS "pricePerDay",
+       active
     FROM
       rental_objects
     WHERE
@@ -61,18 +65,19 @@ class RentalObjectMapper{
           user_id = :userId,
           name = :name,
           description = :description,
-          price_per_day = :pricePerDay
+          price_per_day = :pricePerDay,
+          active = :active
         WHERE
           id = :id
     ';
 
-   private $deleteSQL = '
-        DELETE
-          FROM
-            rental_objects
+   private $inactivateSQL = '
+       UPDATE
+           rental_objects
+        SET
+          active = 0
         WHERE
           id = :id
-
     ';
 
    public function __construct(IDatabaseConnection $databaseConnection){
@@ -105,7 +110,7 @@ class RentalObjectMapper{
       return array_shift($result);
    }
 
-   public function delete($id){
-      return $this->databaseConnection->runQuery($this->deleteSQL, array('id' => $id));
+   public function inactivate($id){
+      return $this->databaseConnection->runQuery($this->inactivateSQL, array('id' => $id));
    }
 }

@@ -92,8 +92,8 @@ class RentalObjectService{
       return $rentalObject;
    }
 
-   public function delete($id, $currentUser){
-      $this->rentalObjectValidationService->validateDelete($this, $id, $currentUser);
-      $this->rentalObjectMapper->delete($id);
+   public function inactivate($id, $currentUser){
+      $this->rentalObjectValidationService->validateInactivation($this, $id, $currentUser);
+      $this->rentalObjectMapper->inactivate($id);
    }
 }

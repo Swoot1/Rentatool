@@ -18,7 +18,13 @@ $routes = array();
 
 $routes['rentalobjects'] = array(
    'controllerName'          => 'RentalObjectController',
-   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'DELETE', 'GET')),
+   'requestMethodCollection' => new RequestMethodCollection(array('PUT', 'POST', 'GET')),
+   'subRoutesCollection'     => new SubRouteCollection()
+);
+
+$routes['inactivaterentalobjects'] = array(
+   'controllerName'          => 'InactivateRentalObjectController',
+   'requestMethodCollection' => new RequestMethodCollection(array('PUT')),
    'subRoutesCollection'     => new SubRouteCollection()
 );
 

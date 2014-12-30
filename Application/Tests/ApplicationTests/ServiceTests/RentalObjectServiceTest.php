@@ -157,13 +157,13 @@ class RentalObjectServiceTest extends \PHPUnit_Framework_TestCase{
       $this->assertInstanceOf('Application\Models\RentalObject', $rentalObject);
    }
 
-   public function testDelete(){
+   public function testInactivate(){
       $rentalObjectMapperMock = $this->getMockBuilder('Application\Mappers\RentalObjectMapper')
                                      ->disableOriginalConstructor()
                                      ->getMock();
 
       $rentalObjectMapperMock->expects($this->once())
-                             ->method('delete');
+                             ->method('inactivate');
 
       $fileServiceMock = $this->getMockBuilder('Application\Services\FileService')
                               ->disableOriginalConstructor()
@@ -174,7 +174,7 @@ class RentalObjectServiceTest extends \PHPUnit_Framework_TestCase{
                                                 ->getMock();
 
       $rentalObjectValidationServiceMock->expects($this->once())
-                                        ->method('validateDelete')
+                                        ->method('validateInactivation')
                                         ->will($this->returnValue(true));
 
       $rentalObjectService = new RentalObjectService($rentalObjectMapperMock, $fileServiceMock, $rentalObjectValidationServiceMock);
@@ -183,7 +183,7 @@ class RentalObjectServiceTest extends \PHPUnit_Framework_TestCase{
                               ->disableOriginalConstructor()
                               ->getMock();
 
-      $rentalObjectService->delete(2, $currentUserMock);
+      $rentalObjectService->inactivate(2, $currentUserMock);
    }
 
    public function testCreate(){

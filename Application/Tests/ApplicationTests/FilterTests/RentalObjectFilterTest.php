@@ -70,7 +70,7 @@ class RentalObjectFilterTest extends \PHPUnit_Framework_TestCase{
                      )
 
                      )
-                 ) AND name = :query';
+                 ) AND name = :query AND active = :active';
 
       $query = $rentalObjectFilter->getFilterQuery($query);
 
