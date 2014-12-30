@@ -121,6 +121,7 @@ class IndexHTMLController{
 <script type="text/javascript" src="Public/Scripts/Controllers/MyRentPeriodsController.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/LogoutButton.js"></script>
 <script type="text/javascript" src="Public/Scripts/Directives/LoginButton.js"></script>
+<script type="text/javascript" src="Public/Scripts/Directives/StopEventPropagation.js"></script>
 <script type="text/javascript" src="Public/Scripts/Factories/MenuItemsFactory.js"></script>
 </body>
 </html>'));
