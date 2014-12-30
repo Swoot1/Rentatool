@@ -21,7 +21,7 @@
 </div>
 <div class="row" ng-click="navigateToRentalObject(rentalObject)" ng-repeat="rentalObject in rentalObjectCollection">
     <div class="column large-2">
-        <img style="width:50px; height:50px" ng-src="Public/RentalObjectPhotos/{{rentalObject.id}}.JPG">
+        <img style="width:50px; height:50px" ng-src="{{getThumbNailURL(rentalObject)}}">
     </div>
     <div class="column large-4">
         <p>{{rentalObject.name}}</p>

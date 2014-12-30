@@ -37,4 +37,15 @@ rentaTool.controller('RentalObjectListController', ['$scope', '$location', 'Rent
             $scope.rentalObjectCollection.splice(indexOfRentalObject, 1);
          });
    };
+
+   $scope.getThumbNailURL = function(rentalObject){
+      var url = '', id;
+
+      if(rentalObject.fileCollection.length > 0){
+         id = rentalObject.fileCollection[0].id;
+         url ='Public/RentalObjectPhotos/' + id + '.JPG';
+      }
+
+      return url;
+   };
 }]);

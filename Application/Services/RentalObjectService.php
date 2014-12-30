@@ -33,15 +33,30 @@ class RentalObjectService{
    }
 
    public function index(RentalObjectFilter $rentalObjectFilter){
-      $rentalObjectData = $this->rentalObjectMapper->index($rentalObjectFilter);
+      $rentalObjectData       = $this->rentalObjectMapper->index($rentalObjectFilter);
+      $rentalObjectCollection = new RentalObjectCollection($rentalObjectData);
+      return $this->setFileCollections($rentalObjectCollection);
+   }
 
-      return new RentalObjectCollection($rentalObjectData);
+   /**
+    * Adds file collection to the rental objects in the provided rental object collection.
+    * @param RentalObjectCollection $rentalObjectCollection
+    * @return $this
+    */
+   private function setFileCollections(RentalObjectCollection $rentalObjectCollection){
+      return $rentalObjectCollection->map(function ($rentalObject){
+         $rentalObjectFileCollection = $this->fileService->getRentalObjectFileCollection($rentalObject->getId());
+         $rentalObject->setFileCollection($rentalObjectFileCollection);
+
+         return $rentalObject;
+      });
    }
 
    public function create(array $data, User $currentUser){
       $rentalObject       = new RentalObject(array_merge(array('userId' => $currentUser->getId()), $data));
       $rentalObjectData   = $this->rentalObjectMapper->create($rentalObject->getDBParameters());
       $rentalObject       = new RentalObject($rentalObjectData);
+
       $fileCollectionData = array_key_exists('fileCollection', $data) ? $data['fileCollection'] : array();
       $rentalObject       = $this->createFileCollection($fileCollectionData, $rentalObject);
 
@@ -51,8 +66,8 @@ class RentalObjectService{
    private function createFileCollection(array $fileCollectionData, RentalObject $rentalObject){
       $fileCollection = new FileCollection($fileCollectionData);
       $this->fileService->setDependencies($fileCollection, $rentalObject);
-      $rentalObjectCollection = $this->fileService->getRentalObjectFileCollection($rentalObject->getId());
-      $rentalObject->setFileCollection($rentalObjectCollection);
+      $rentalObjectFileCollection = $this->fileService->getRentalObjectFileCollection($rentalObject->getId());
+      $rentalObject->setFileCollection($rentalObjectFileCollection);
 
       return $rentalObject;
    }
