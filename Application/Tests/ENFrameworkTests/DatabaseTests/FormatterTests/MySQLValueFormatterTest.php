@@ -15,9 +15,7 @@ class MySQLValueFormatterTest extends \PHPUnit_Framework_TestCase{
 
    public function testFormatValueToInteger(){
 
-      $PDOStatementMock    = $this->getMockBuilder('PDOStatementMock')
-                                  ->disableOriginalConstructor()
-                                  ->getMock();
+      $PDOStatementMock    = $this->getMock('\Tests\PHPFrameworkTests\DatabaseTests\FormatterTests\PDOStatementMock', array('prepare'));
       $mySQLValueFormatter = new MySQLValueFormatter();
       $columnMeta          = array(
          'native_type' => 'LONG',
@@ -40,9 +38,7 @@ class MySQLValueFormatterTest extends \PHPUnit_Framework_TestCase{
 
    public function testFormatValueToFloat(){
 
-      $PDOStatementMock    = $this->getMockBuilder('PDOStatementMock')
-                                  ->disableOriginalConstructor()
-                                  ->getMock();
+      $PDOStatementMock    = $this->getMock('\Tests\PHPFrameworkTests\DatabaseTests\FormatterTests\PDOStatementMock', array('prepare'));
       $mySQLValueFormatter = new MySQLValueFormatter();
       $columnMeta          = array(
          'native_type' => 'FLOAT',
@@ -65,4 +61,7 @@ class MySQLValueFormatterTest extends \PHPUnit_Framework_TestCase{
 }
 
 class PDOStatementMock extends \PDOStatement{
+   public function __construct(){
+
+   }
 }
