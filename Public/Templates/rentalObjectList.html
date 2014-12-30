@@ -17,22 +17,23 @@
                 <button type="submit" class="tiny">Sök</button>
             </div>
         </form>
-        <div ng-repeat="rentalObject in rentalObjectCollection">
-
-            <div class="row">
-                <div class="column large-4">
-                    <p><a ng-click="navigateToRentalObject(rentalObject)">{{rentalObject.name}}</a></p>
-                </div>
-                <div class="column large-2">
-                    {{rentalObject.pricePerDay}} kr/dag
-                </div>
-                <div class="column large-5 end">
-                    <button type="button" ng-click="deleteRentalObject(rentalObject)"
-                            ng-show="rentalObject.userId === currentUser.id" class="alert tiny">Ta bort
-                    </button>
-                </div>
-            </div>
-        </div>
     </div>
-    <p ng-hide="rentalObjectCollection.length">Hittade inga träffar. Prova att söka på något annat.</p>
 </div>
+<div class="row" ng-click="navigateToRentalObject(rentalObject)" ng-repeat="rentalObject in rentalObjectCollection">
+    <div class="column large-2">
+        <img style="width:50px; height:50px" ng-src="Public/RentalObjectPhotos/{{rentalObject.id}}.JPG">
+    </div>
+    <div class="column large-4">
+        <p>{{rentalObject.name}}</p>
+    </div>
+    <div class="column large-2">
+        {{rentalObject.pricePerDay}} kr/dag
+    </div>
+    <div class="column large-3 end">
+        <button type="button" ng-click="deleteRentalObject(rentalObject)" stopeventpropagation
+                ng-show="rentalObject.userId === currentUser.id" class="alert tiny">Ta bort
+        </button>
+    </div>
+</div>
+
+<p ng-hide="rentalObjectCollection.length">Hittade inga träffar. Prova att söka på något annat.</p>
