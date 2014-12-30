@@ -102,13 +102,15 @@ class DatabaseMapper{
             'username'                => 'andy',
             'email'                   => 'andy@andy.se',
             'password'                => '$2y$10$PwZXV0Rt0y013zL3oPxdUOComVYuspqPX/k2C6Da7dXFKdQc0qapS',
-            'hasAdministrativeAccess' => true
+            'hasAdministrativeAccess' => true,
+            'hasConfirmedEmail'       => true
          ),
          array(
             'username'                => 'elin',
             'email'                   => 'elin@elin.se',
             'password'                => '$2y$10$e5WdvQNzLGiR4AmU1qm/BupgIKxM1OQgfCS3nm7KVyIzaqq9P0lwK',
-            'hasAdministrativeAccess' => true
+            'hasAdministrativeAccess' => true,
+            'hasConfirmedEmail'       => true
          )
       );
 
