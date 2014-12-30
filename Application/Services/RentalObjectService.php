@@ -51,8 +51,8 @@ class RentalObjectService{
    private function createFileCollection(array $fileCollectionData, RentalObject $rentalObject){
       $fileCollection = new FileCollection($fileCollectionData);
       $this->fileService->setDependencies($fileCollection, $rentalObject);
-      $rentalObjectCollection = $this->fileService->getRentalObjectFileCollection($rentalObject->getId());
-      $rentalObject->setFileCollection($rentalObjectCollection);
+      $rentalObjectFileCollection = $this->fileService->getRentalObjectFileCollection($rentalObject->getId());
+      $rentalObject->setFileCollection($rentalObjectFileCollection);
 
       return $rentalObject;
    }
