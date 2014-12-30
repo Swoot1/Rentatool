@@ -13,4 +13,16 @@ use Application\PHPFramework\Collections\GeneralCollection;
 
 class RentalObjectCollection extends GeneralCollection{
     protected $model = 'Application\Models\RentalObject';
+
+   /**
+    * @param $applyFunction
+    * @return $this
+    */
+   public function map($applyFunction){
+      foreach($this->data as $key => $rentalObjectModel){
+         $this->data[$key] = call_user_func($applyFunction, $rentalObjectModel);
+      }
+
+      return $this;
+   }
 }

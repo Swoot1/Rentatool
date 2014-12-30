@@ -9,6 +9,7 @@
 namespace Tests\ServiceTests;
 
 
+use Application\Collections\FileCollection;
 use Application\Services\RentalObjectService;
 
 class RentalObjectServiceTest extends \PHPUnit_Framework_TestCase{
@@ -20,11 +21,36 @@ class RentalObjectServiceTest extends \PHPUnit_Framework_TestCase{
 
       $rentalObjectMapperMock->expects($this->once())
                              ->method('index')
-                             ->will($this->returnValue(array()));
+                             ->will($this->returnValue(
+                                         array(
+                                            array(
+                                               'id'          => 1,
+                                               'userId'      => 2,
+                                               'name'        => 'Fräck husvagn',
+                                               'description' => 'Överljudshastighets husvagn med sourroundsound.',
+                                               'pricePerDay' => 200
+                                            )
+                                         )
+                                    )
+         );
 
       $fileServiceMock = $this->getMockBuilder('Application\Services\FileService')
                               ->disableOriginalConstructor()
                               ->getMock();
+
+      $fileServiceMock->expects($this->once())
+                      ->method('getRentalObjectFileCollection')
+                      ->will($this->returnValue(
+                                  new FileCollection(
+                                     array(
+                                        array(
+                                           'id'       => 1,
+                                           'fileType' => 'image/jpeg',
+                                           'fileSize' => 40000
+                                        )
+                                     )
+                                  )
+                             ));
 
       $rentalObjectFilterMock = $this->getMockBuilder('Application\Filters\RentalObjectFilter')
                                      ->disableOriginalConstructor()
@@ -37,6 +63,10 @@ class RentalObjectServiceTest extends \PHPUnit_Framework_TestCase{
       $rentalObjectService    = new RentalObjectService($rentalObjectMapperMock, $fileServiceMock, $rentalObjectValidationServiceMock);
       $rentalObjectCollection = $rentalObjectService->index($rentalObjectFilterMock);
       $this->assertInstanceOf('Application\Collections\RentalObjectCollection', $rentalObjectCollection);
+
+      $rentalObjectCollectionData = $rentalObjectCollection->toArray();
+
+      $this->assertEquals(1, $rentalObjectCollectionData[0]['fileCollection'][0]['id']);
    }
 
    public function testRead(){
