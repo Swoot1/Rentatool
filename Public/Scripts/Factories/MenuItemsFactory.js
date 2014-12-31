@@ -6,6 +6,8 @@
  * To change this template use File | Settings | File Templates.
  */
 
-rentaTool.factory('MenuItems', ['$resource', function ($resource) {
-    return $resource('menuitems', {});
-}]);
+(function () {
+   angular.module('Rentatool').factory('MenuItems', ['$resource', function ($resource) {
+      return $resource('menuitems', {});
+   }]);
+})();

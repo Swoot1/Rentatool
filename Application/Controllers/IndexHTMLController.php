@@ -67,63 +67,10 @@ class IndexHTMLController{
     </div>
 </div>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<script type="text/javascript" src="Public/css/Foundation/js/vendor/modernizr.js"></script>
-<script type="text/javascript" src="Public/css/Foundation/js/vendor/fastclick.js"></script>
-<script type="text/javascript" src="Public/css/Foundation/js/vendor/jquery.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.7/jquery.fileupload.js"></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.7/jquery.iframe-transport.js"></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.7/jquery.fileupload-process.min.js"></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.7/jquery.iframe-transport.js"></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.js"></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.js"></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-route.js"></script>
-<script type="text/javascript" src="Public/Scripts/jquery.fileupload-angular.js"></script>
-<script type="text/javascript" src="Public/Scripts/app.js"></script>
-<script type="text/javascript" src="Public/Scripts/Directives/AlertBox.js"></script>
-<script type="text/javascript" src="Public/Scripts/Services/AlertBoxService.js"></script>
-<script type="text/javascript" src="Public/Scripts/Services/AuthorizationService.js"></script>
-<script type="text/javascript" src="Public/Scripts/Services/NavigationService.js"></script>
-<script type="text/javascript" src="Public/Scripts/Directives/Datepicker.js"></script>
-<script type="text/javascript" src="Public/Scripts/Directives/RentPeriodDatePicker.js"></script>
-<script type="text/javascript" src="Public/Scripts/Filters.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/RentalObjectFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/InactivateRentalObjectFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/RentPeriodFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/RentPeriodCalculatorFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/UserFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/SignUpFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/DatabaseFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/AuthorizationFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/UnavailableRentPeriodFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/RequestErrorInterceptorFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/RequestSuccessInterceptorFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/ResetPasswordFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/PasswordFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/ConfirmRentPeriodFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/RentalObjectPaymentFactory.js"></script>
-<script type="text/javascript" src="Public/Scripts/Services/UnavailableRentPeriodService.js"></script>
-<script type="text/javascript" src="Public/Scripts/Services/RentalObjectService.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectPaymentController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectPhotoController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/DatabaseController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/RentalObjectListController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/UserController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/SignUpController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/RentObjectController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/NavigationController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/UserListController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/AuthorizationController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/ContentController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/ResetPasswordController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/PasswordController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/ConfirmEmailController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Controllers/MyRentPeriodsController.js"></script>
-<script type="text/javascript" src="Public/Scripts/Directives/LogoutButton.js"></script>
-<script type="text/javascript" src="Public/Scripts/Directives/LoginButton.js"></script>
-<script type="text/javascript" src="Public/Scripts/Directives/StopEventPropagation.js"></script>
-<script type="text/javascript" src="Public/Scripts/Factories/MenuItemsFactory.js"></script>
+<script type="text/javascript" src="dist/Rentatool.min.js"></script>
+<script type="text/javascript" src="dist/Rentatool.js"></script>
+<script type="text/javascript" src="dist/Rentatool.js.map"></script>
+<script type="text/javascript" src="dist/Rentatool.min.js.map"></script>
 </body>
 </html>'));
    }
