@@ -20,10 +20,6 @@
             GETParams);
       };
 
-      $scope.navigateToCreateNewRentalObject = function () {
-         $location.path('/rentalobjects/new');
-      };
-
       $scope.navigateToRentalObject = function (rentalObject) {
          $location.path('/rentalobjects/' + rentalObject.id);
       };

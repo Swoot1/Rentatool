@@ -42713,6 +42713,20 @@ function ngViewFillContentFactory($compile, $controller, $route) {
    }]);
 })();
 ;/**
+ * Created by elinnilsson on 28/09/14.
+ */
+(function () {
+   angular.module('Rentatool')
+      .directive('createrentalobjectbutton', [function () {
+         return {
+            restrict: 'A',
+            replace: 'true',
+            template: '<li class="success"><button type="button" ng-click="navigateToCreateNewRentalObject()">Skapa nytt uthyrningsobjekt</button></li>'
+         };
+      }
+      ]);
+})();
+;/**
  * Created by elinnilsson on 30/08/14.
  */
 (function () {
@@ -42905,6 +42919,10 @@ angular.module('Rentatool')
          $location.path('/myrentperiods');
       };
 
+      navigationService.navigateToCreateNewRentalObject = function () {
+         $location.path('/rentalobjects/new');
+      };
+
       return navigationService;
    }]);;/**
  * Created by elinnilsson on 13/09/14.
@@ -43064,6 +43082,7 @@ angular.module('Rentatool')
       $scope.navigateToRentalObjectList = navigationService.navigateToRentalObjectList;
       $scope.navigateToCreateDatabase = navigationService.navigateToCreateDatabase;
       $scope.navigateToMyRentPeriods = navigationService.navigateToMyRentPeriods;
+      $scope.navigateToCreateNewRentalObject = navigationService.navigateToCreateNewRentalObject;
    }]);
 }());
 ;/**
@@ -43190,10 +43209,6 @@ angular.module('Rentatool')
 
          $scope.rentalObjectCollection = RentalObject.query(
             GETParams);
-      };
-
-      $scope.navigateToCreateNewRentalObject = function () {
-         $location.path('/rentalobjects/new');
       };
 
       $scope.navigateToRentalObject = function (rentalObject) {

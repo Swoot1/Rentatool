@@ -1,10 +1,6 @@
 <div class="row">
     <div class="12-columns large">
-        <h1>Uthyrningsobjekt
-            <button type="button" class="tiny" ng-click="navigateToCreateNewRentalObject()">Skapa nytt
-                uthyrningsobjekt
-            </button>
-        </h1>
+        <h1>Uthyrningsobjekt</h1>
         <form ng-submit="searchRentalObject(rentalObjectFilter)">
             <div class="large-10 columns">
 
@@ -28,7 +24,7 @@
         </form>
     </div>
 </div>
-<div class="row" ng-click="navigateToRentalObject(rentalObject)" ng-repeat="rentalObject in rentalObjectCollection">
+<div class="row cursor-pointer" ng-click="navigateToRentalObject(rentalObject)" ng-repeat="rentalObject in rentalObjectCollection">
     <div class="column large-2">
         <img style="width:50px; height:50px" ng-src="{{getThumbNailURL(rentalObject)}}">
     </div>

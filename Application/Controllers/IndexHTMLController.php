@@ -45,6 +45,7 @@ class IndexHTMLController{
        <!-- Right Nav Section -->
        <ul class="right">
         <div ng-controller="AuthorizationController">
+        <span createrentalobjectbutton></span>
         <span logoutbutton></span>
         <span loginbutton></span>
         </div>
