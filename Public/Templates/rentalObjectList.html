@@ -7,14 +7,23 @@
         </h1>
         <form ng-submit="searchRentalObject(rentalObjectFilter)">
             <div class="large-10 columns">
-                <input type="text" ng-model="rentalObjectFilter.query" name="query"/>
-                <input type="datetime" ng-model="rentalObjectFilter.fromDate" datepicker name="fromDate"
-                       placeholder="Tillgänglig från"/>
-                <input type="datetime" ng-model="rentalObjectFilter.toDate" datepicker name="toDate"
-                       placeholder="Till och med"/>
-            </div>
-            <div class="large-2 columns">
-                <button type="submit" class="tiny">Sök</button>
+
+                <div class="row">
+                    <div class="large-6 columns">
+                        <input type="search" ng-model="rentalObjectFilter.query" name="query" placeholder="Fritext"/>
+                    </div>
+                    <div class="large-2 columns">
+                        <input type="datetime" ng-model="rentalObjectFilter.fromDate" datepicker name="fromDate"
+                               placeholder="Tillgänglig från"/>
+                    </div>
+                    <div class="large-2 columns left">
+                        <input type="datetime" ng-model="rentalObjectFilter.toDate" datepicker name="toDate"
+                               placeholder="Till och med"/>
+                    </div>
+                    <div class="large-1 columns left">
+                        <button type="submit" class="tiny">Sök</button>
+                    </div>
+                </div>
             </div>
         </form>
     </div>

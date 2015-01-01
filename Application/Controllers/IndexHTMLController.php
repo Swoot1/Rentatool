@@ -67,7 +67,7 @@ class IndexHTMLController{
     </div>
 </div>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<script type="text/javascript" src="dist/Rentatool.min.js"></script>
+<script type="text/javascript" src="dist/Rentatool.js"></script>
 </body>
 </html>'));
    }
