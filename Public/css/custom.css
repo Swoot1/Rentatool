@@ -57,6 +57,10 @@ body {
     margin-top: 50px;
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 /* Css for removing border on editable input fields */
 
 input.editable[type="text"], input.editable[type="text"]:focus, textarea.editable, textarea:focus.editable {
