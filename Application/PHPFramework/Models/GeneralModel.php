@@ -54,12 +54,17 @@ abstract class GeneralModel implements IToArray, IGetDBParameters{
    }
 
    private function setPropertyValue($propertyName, $value){
-      if (property_exists($this, $propertyName)){
-         $this->$propertyName = $value;
-         $this->_validation->validate($propertyName, $value);
-      } else{
+      $this->checkPropertyExists($propertyName);
+      $this->$propertyName = $value;
+      $this->_validation->validate($propertyName, $value);
+   }
+
+   private function checkPropertyExists($propertyName){
+      if (!property_exists($this, $propertyName)){
          throw new ApplicationException('Ogiltigt egenskapsnamn.');
       }
+
+      return true;
    }
 
    protected function setPropertyValueWithSetter($propertyName, $value){

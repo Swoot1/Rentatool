@@ -8,7 +8,6 @@
 
 namespace Application\Controllers;
 
-use Application\Factories\MailFactory;
 use Application\PHPFramework\SessionManager;
 use Application\PHPFramework\Response\Factories\ResponseFactory;
 use Application\Services\RentPeriodService;
@@ -39,8 +38,7 @@ class RentPeriodController{
 
       $this->response
          ->setStatusCode(201)
-         ->setResponseData($rentPeriod)
-         ->addNotifier(array('message' => 'Objektet har hyrts wohoo!'));
+         ->setResponseData($rentPeriod);
 
       return $this->response;
    }

@@ -28,12 +28,13 @@
          };
 
          $scope.createRentPeriod = function () {
-            $scope.rentPeriod.$save({});
+            $scope.rentPeriod.$save({}, function (data) {
+               $location.path('/rentperiodconfirmations/' + data.id);
+            });
          };
 
          $scope.returnToRentalObjectList = function () {
             $location.path('/rentalobjects');
          };
-
       }]);
 })();

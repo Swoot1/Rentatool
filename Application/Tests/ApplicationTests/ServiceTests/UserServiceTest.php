@@ -16,6 +16,7 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase{
 
    private $userValidationMapperMock;
    private $userMapperMock;
+   private $userValidationServiceMock;
 
    public function setUp(){
       $this->userValidationMapperMock = $this->getMockBuilder('\Application\Mappers\UserValidationMapper')
@@ -25,6 +26,10 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase{
       $this->userMapperMock = $this->getMockBuilder('\Application\Mappers\UserMapper')
                                    ->disableOriginalConstructor()
                                    ->getMock();
+
+      $this->userValidationServiceMock = $this->getMockBuilder('Application\Services\UserValidationService')
+                                        ->disableOriginalConstructor()
+                                        ->getMock();
    }
 
    /**
@@ -87,27 +92,22 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase{
    }
 
    public function testDelete(){
-      $userValidationServiceMock = $this->getMockBuilder('Application\Services\UserValidationService')
-                                        ->disableOriginalConstructor()
-                                        ->getMock();
+
 
       $this->userMapperMock->expects($this->once())
                            ->method('delete');
 
-      $userService = new UserService($this->userMapperMock, $userValidationServiceMock);
+      $userService = new UserService($this->userMapperMock, $this->userValidationServiceMock);
       $userService->delete(1);
    }
 
    public function testIndex(){
-      $userValidationServiceMock = $this->getMockBuilder('Application\Services\UserValidationService')
-                                        ->disableOriginalConstructor()
-                                        ->getMock();
 
       $this->userMapperMock->expects($this->once())
                            ->method('index')
                            ->will($this->returnValue(array()));
 
-      $userService    = new UserService($this->userMapperMock, $userValidationServiceMock);
+      $userService    = new UserService($this->userMapperMock, $this->userValidationServiceMock);
       $userCollection = $userService->index();
       $this->assertInstanceOf('Application\Collections\UserCollection', $userCollection);
    }
@@ -117,28 +117,21 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase{
     * @expectedExceptionMessage Kunde inte hitta användaren.
     */
    public function testReadNotFound(){
-      $userValidationServiceMock = $this->getMockBuilder('Application\Services\UserValidationService')
-                                        ->disableOriginalConstructor()
-                                        ->getMock();
-
       $this->userMapperMock->expects($this->once())
                            ->method('read')
                            ->will($this->returnValue(null));
 
-      $userService = new UserService($this->userMapperMock, $userValidationServiceMock);
+      $userService = new UserService($this->userMapperMock, $this->userValidationServiceMock);
       $userService->read(1);
    }
 
    public function testRead(){
-      $userValidationServiceMock = $this->getMockBuilder('Application\Services\UserValidationService')
-                                        ->disableOriginalConstructor()
-                                        ->getMock();
 
       $this->userMapperMock->expects($this->once())
                            ->method('read')
                            ->will($this->returnValue(array()));
 
-      $userService = new UserService($this->userMapperMock, $userValidationServiceMock);
+      $userService = new UserService($this->userMapperMock, $this->userValidationServiceMock);
       $user        = $userService->read(1);
       $this->assertInstanceOf('Application\Models\User', $user);
    }
@@ -166,15 +159,12 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase{
    }
 
    public function testGetUserByEmail(){
-      $userValidationServiceMock = $this->getMockBuilder('Application\Services\UserValidationService')
-                                        ->disableOriginalConstructor()
-                                        ->getMock();
 
       $this->userMapperMock->expects($this->once())
                            ->method('getUserByEmail')
                            ->will($this->returnValue(array()));
 
-      $userService = new UserService($this->userMapperMock, $userValidationServiceMock);
+      $userService = new UserService($this->userMapperMock, $this->userValidationServiceMock);
       $user        = $userService->getUserByEmail('knugen@hovet.se');
       $this->assertInstanceOf('Application\Models\User', $user);
    }
@@ -184,15 +174,12 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase{
     * @expectedExceptionMessage Kunde inte hitta användaren.
     */
    public function testGetUserByEmailNotFound(){
-      $userValidationServiceMock = $this->getMockBuilder('Application\Services\UserValidationService')
-                                        ->disableOriginalConstructor()
-                                        ->getMock();
 
       $this->userMapperMock->expects($this->once())
                            ->method('getUserByEmail')
                            ->will($this->returnValue(null));
 
-      $userService = new UserService($this->userMapperMock, $userValidationServiceMock);
+      $userService = new UserService($this->userMapperMock, $this->userValidationServiceMock);
       $userService->getUserByEmail('knugen@hovet.se');
    }
 

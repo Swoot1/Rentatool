@@ -8,6 +8,8 @@
 
 namespace Tests\ENFrameworkTests\DependencyInjectionTests;
 
+use Application\Factories\MailFactory;
+use Application\PHPFramework\Configurations\MailConfiguration;
 use Application\PHPFramework\DependencyInjection\DependencyInjection;
 use Application\PHPFramework\SessionManager;
 
@@ -54,8 +56,12 @@ class DependencyInjectionTest extends \PHPUnit_Framework_TestCase{
 
       $dependencyInjection = new DependencyInjection($dependencyInjectionContainer);
       $sessionManager      = new SessionManager();
+      $mailFactory         = new MailFactory(new \PHPMailer(), new MailConfiguration());
       $dependencyInjection->setInstantiatedClasses(array('Request'        => $requestMock,
-                                                         'SessionManager' => $sessionManager));
+                                                         'SessionManager' => $sessionManager,
+                                                         'MailFactory'    => $mailFactory));
+
+
       $rentPeriodController = $dependencyInjection->getInstantiatedClass('RentPeriodController');
 
       $this->assertTrue(get_class($rentPeriodController) === 'Application\Controllers\RentPeriodController');

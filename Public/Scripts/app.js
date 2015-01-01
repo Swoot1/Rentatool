@@ -58,6 +58,10 @@
                templateUrl: 'Public/Templates/rentalObjectPayment.html',
                controller: 'RentalObjectPaymentController'
             })
+            .when('/rentperiodconfirmations/:id', {
+               templateUrl: 'Public/Templates/rentPeriodConfirmation.html',
+               controller: 'RentPeriodConfirmationController'
+            })
             .otherwise({
                redirectTo: '/rentalobjects'
             });

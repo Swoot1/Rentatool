@@ -42484,6 +42484,10 @@ function ngViewFillContentFactory($compile, $controller, $route) {
                templateUrl: 'Public/Templates/rentalObjectPayment.html',
                controller: 'RentalObjectPaymentController'
             })
+            .when('/rentperiodconfirmations/:id', {
+               templateUrl: 'Public/Templates/rentPeriodConfirmation.html',
+               controller: 'RentPeriodConfirmationController'
+            })
             .otherwise({
                redirectTo: '/rentalobjects'
             });
@@ -42553,6 +42557,14 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 (function () {
    angular.module('Rentatool').factory('RentPeriodCalculator', ['$resource', function ($resource) {
       return $resource('rentperiodcalculators');
+   }]);
+})();
+;/**
+ * Created by Elin on 2014-07-10.
+ */
+(function () {
+   angular.module('Rentatool').factory('RentPeriodConfirmation', ['$resource', function ($resource) {
+      return $resource('rentperiodconfirmations/:id', {id: '@id'});
    }]);
 })();
 ;/**
@@ -43096,15 +43108,28 @@ angular.module('Rentatool')
          };
 
          $scope.createRentPeriod = function () {
-            $scope.rentPeriod.$save({});
+            $scope.rentPeriod.$save({}, function (data) {
+               $location.path('/rentperiodconfirmations/' + data.id);
+            });
          };
 
          $scope.returnToRentalObjectList = function () {
             $location.path('/rentalobjects');
          };
-
       }]);
 })();;/**
+ * Created by elinnilsson on 29/09/14.
+ */
+(function () {
+   angular.module('Rentatool')
+      .controller('RentPeriodConfirmationController', ['$scope', '$routeParams', 'RentPeriodConfirmation', function ($scope, $routeParams, RentPeriodConfirmation) {
+         if ($routeParams.id) {
+            $scope.rentPeriodConfirmation = RentPeriodConfirmation.get({id: $routeParams.id});
+         }
+         // else TODO redirect 404.
+      }]);
+})();
+;/**
  * Created by Elin on 2014-04-18.
  */
 

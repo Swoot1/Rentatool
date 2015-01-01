@@ -8,9 +8,34 @@
 
 namespace Tests\ServiceTests;
 
+use Application\Models\RentPeriod;
 use Application\Services\RentPeriodService;
 
 class RentPeriodServiceTest extends \PHPUnit_Framework_TestCase{
+
+   public function testRead(){
+      $rentPeriodMapperMock = $this->getMockBuilder('Application\Mappers\RentPeriodMapper')
+                                   ->disableOriginalConstructor()
+                                   ->getMock();
+
+      $rentPeriodMapperMock->expects($this->once())
+                           ->method('read')
+                           ->will($this->returnValue(array()));
+
+      $rentPeriodValidationServiceMock = $this->getMockBuilder('Application\Services\RentPeriodValidationService')
+                                              ->disableOriginalConstructor()
+                                              ->getMock();
+
+      $rentalObjectServiceMock = $this->getMockBuilder('Application\Services\RentalObjectService')
+                                      ->disableOriginalConstructor()
+                                      ->getMock(); // TODO this should not be needed, fix
+
+      $rentPeriodService = new RentPeriodService($rentPeriodMapperMock, $rentPeriodValidationServiceMock, $rentalObjectServiceMock);
+      $rentPeriod = $rentPeriodService->read(2);
+
+      $this->assertInstanceOf('Application\Models\RentPeriod', $rentPeriod);
+   }
+
    public function testCreate(){
 
       $rentPeriodMapperMock = $this->getMockBuilder('Application\Mappers\RentPeriodMapper')

@@ -36,4 +36,16 @@ class RentPeriodTest extends \PHPUnit_Framework_TestCase{
 
       $this->assertTrue(true);
    }
+
+   public function testGetRenterId(){
+      $rentPeriod = new RentPeriod(
+         array(
+            'renterId' => 1,
+            'fromDate' => '2016-01-18',
+            'toDate'   => '2016-01-18'
+         )
+      );
+
+      $this->assertEquals(1, $rentPeriod->getRenterId());
+   }
 } 
