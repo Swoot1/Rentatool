@@ -80,6 +80,7 @@ class UserService{
    public function confirmEmail($email){
       $this->validateEmail($email);
       $this->userMapper->confirmEmail($email);
+
       return new ConfirmEmail();
    }
 
@@ -153,4 +154,6 @@ class UserService{
    public function delete($id){
       $this->userMapper->delete($id);
    }
+
+   // TODO this class is to long
 } 

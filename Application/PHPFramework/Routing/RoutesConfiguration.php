@@ -151,4 +151,11 @@ $routes['passwords'] = array(
    'subRoutesCollection'     => new SubRouteCollection(array())
 );
 
+$routes['rentperiodconfirmations'] = array(
+   'controllerName'          => 'RentPeriodConfirmationController',
+   'requestMethodCollection' => new RequestMethodCollection(array('GET')),
+   'subRoutesCollection'     => new SubRouteCollection(array())
+);
+
+
 return new RouteCollection($routes);

@@ -98,4 +98,12 @@ class RentalObject extends GeneralModel{
    public function getPricePerDay(){
       return $this->pricePerDay;
    }
+
+   public function getUserId(){
+      return $this->userId;
+   }
+
+   public function getName(){
+      return $this->name;
+   }
 }

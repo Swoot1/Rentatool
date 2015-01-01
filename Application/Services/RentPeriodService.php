@@ -30,6 +30,17 @@ class RentPeriodService{
       $this->rentalObjectService         = $rentalObjectService;
    }
 
+   public function read($id){
+      $rentPeriodData = $this->rentPeriodMapper->read($id);
+
+      if ($rentPeriodData === null){
+         throw new ApplicationException('Kunde inte hitta uthyrningsperiod.');
+      }
+
+      return new RentPeriod($rentPeriodData);
+
+   }
+
    public function create(array $data, User $currentUser){
       $data['isConfirmedByOwner'] = false;
       $rentPeriod                 = $this->getCalculatedPricePlan($data, $currentUser);

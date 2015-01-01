@@ -120,6 +120,14 @@ class RentPeriod extends GeneralModel{
       return $this->rentalObjectId;
    }
 
+   public function getRenterId(){
+      return $this->renterId;
+   }
+
+   public function getPrice(){
+      return $this->price;
+   }
+
    protected function setPricePerDay($price){
       $this->_validation->validate('pricePerDay', $price);
       $this->pricePerDay = $price;

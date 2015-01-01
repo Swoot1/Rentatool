@@ -123,6 +123,14 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Application\Controllers" class="RentPeriodConfirmationController">
+            <dependencies>
+                <dependency namespace="Application\Services" class="RentPeriodConfirmationService"/>
+                <dependency namespace="Application\PHPFramework\Response\Factories" class="ResponseFactory"/>
+                <dependency namespace="Application\PHPFramework" class="SessionManager"/>
+            </dependencies>
+        </dependency>
+
         <!-- Services -->
         <dependency namespace="Application\Services" class="RentalObjectService">
             <dependencies>
@@ -219,6 +227,14 @@
             <dependencies>
                 <dependency namespace="Application\Factories" class="MailFactory"/>
                 <dependency namespace="Application\Mappers" class="RentalNotificationMapper"/>
+            </dependencies>
+        </dependency>
+
+        <dependency namespace="Application\Services" class="RentPeriodConfirmationService">
+            <dependencies>
+                <dependency namespace="Application\Services" class="RentPeriodService"/>
+                <dependency namespace="Application\Services" class="UserService"/>
+                <dependency namespace="Application\Services" class="RentalObjectService"/>
             </dependencies>
         </dependency>
 

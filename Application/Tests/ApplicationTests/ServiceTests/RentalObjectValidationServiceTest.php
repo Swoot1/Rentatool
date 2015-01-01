@@ -122,7 +122,7 @@ class RentalObjectValidationServiceTest extends \PHPUnit_Framework_TestCase{
 
       $rentalObjectValidationService = new RentalObjectValidationService();
 
-      $result = $rentalObjectValidationService->validateDelete($rentalObjectServiceMock, 1, $currentUserMock);
+      $result = $rentalObjectValidationService->validateInactivation($rentalObjectServiceMock, 1, $currentUserMock);
 
       $this->assertTrue($result);
    }
@@ -161,7 +161,7 @@ class RentalObjectValidationServiceTest extends \PHPUnit_Framework_TestCase{
 
    /**
     * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\NotFoundException
-    * @expectedExceptionMessage Kunde inte hitta valt uthyrningsobjekt för borttagning.
+    * @expectedExceptionMessage Kunde inte hitta valt uthyrningsobjekt för inaktivering.
     */
    public function testValidateDeleteNotFound(){
 
@@ -179,7 +179,7 @@ class RentalObjectValidationServiceTest extends \PHPUnit_Framework_TestCase{
 
       $rentalObjectValidationService = new RentalObjectValidationService();
 
-      $rentalObjectValidationService->validateDelete($rentalObjectServiceMock, 1, $currentUserMock);
+      $rentalObjectValidationService->validateInactivation($rentalObjectServiceMock, 1, $currentUserMock);
 
    }
 } 
