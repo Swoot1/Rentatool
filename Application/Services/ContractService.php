@@ -10,6 +10,18 @@
 namespace Application\Services;
 
 
-class ContractService {
+use Application\Adapters\FortnoxContractAdapter;
+use Application\Mappers\ContractMapper;
+use Application\Models\Contract;
+
+class ContractService{
+
+   public function create(){
+      $contractMapper  = new ContractMapper();
+      $contract        = new Contract(['customerNumber' => '2']);
+      $contractAdapter = new FortnoxContractAdapter($contract);
+
+      $contractMapper->create($contractAdapter);
+   }
 
 }

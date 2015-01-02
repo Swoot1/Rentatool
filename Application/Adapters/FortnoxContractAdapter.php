@@ -9,20 +9,21 @@
 
 namespace Application\Adapters;
 
-use Application\Models\Customer;
+use Application\Models\Contract;
 use Application\PHPFramework\Configurations\FortnoxConfiguration;
 use Application\PHPFramework\Interfaces\IIntegrationAdapter;
 
-class FortnoxCustomerAdapter implements IIntegrationAdapter{
+class FortnoxContractAdapter implements IIntegrationAdapter{
 
-   private $customer;
+   private $contract;
 
-   public function __construct(Customer $customer){
-      $this->customer = $customer;
+   public function __construct(Contract $contract) {
+      $this->contract = $contract;
+      $this->contract->setContractTemplate(FortnoxConfiguration::getContractTemplate());
    }
 
    public function getUrl() {
-      return FortnoxConfiguration::getUrl() . '/customers/';
+      return FortnoxConfiguration::getUrl() . '/contracts/';
    }
 
    public function getRequestHeaders(){
@@ -30,12 +31,12 @@ class FortnoxCustomerAdapter implements IIntegrationAdapter{
    }
 
    public function getRequestBody(){
-      $customerData = $this->customer->getDBParameters();
+      $customerData = $this->contract->getDBParameters();
       $customerArray = array_combine(
          array_map('ucfirst', array_keys($customerData)),
          array_values($customerData)
       );
 
-      return json_encode(['Customer' => $customerArray]);
+      return json_encode(['Contract' => $customerArray]);
    }
 }
