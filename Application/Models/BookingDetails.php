@@ -11,7 +11,7 @@ namespace Application\Models;
 use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\PHPFramework\Interfaces\IToArray;
 
-class RentPeriodConfirmation implements IToArray{
+class BookingDetails implements IToArray{
 
    private $fromDate;
    private $toDate;

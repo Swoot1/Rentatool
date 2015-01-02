@@ -9,7 +9,7 @@
 namespace Application\Services;
 
 use Application\Collections\BookingCollection;
-use Application\Factories\IGetRentPeriodConfirmation;
+use Application\Factories\IGetBookingDetails;
 use Application\Mappers\BookingMapper;
 use Application\Models\User;
 use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
@@ -29,14 +29,14 @@ class BookingService{
       return $this;
    }
 
-   public function read($rentPeriodId, User $currentUser, IGetRentPeriodConfirmation $rentPeriodConfirmationFactory){
+   public function read($rentPeriodId, User $currentUser, IGetBookingDetails $getBookingDetailsFactory){
       $rentPeriod = $this->rentPeriodService->read($rentPeriodId);
       $this->checkCurrentUserIsRenter($currentUser, $rentPeriod);
 
       $rentalObject      = $this->rentalObjectService->read($rentPeriod->getRentalObjectId());
       $rentalObjectOwner = $this->userService->read($rentalObject->getUserId());
 
-      return $rentPeriodConfirmationFactory->getRentPeriodConfirmation($rentPeriod, $rentalObjectOwner, $rentalObject);
+      return $getBookingDetailsFactory->getBookingDetails($rentPeriod, $rentalObjectOwner, $rentalObject);
    }
 
    /**

@@ -16,7 +16,7 @@
       };
 
       $scope.navigateToRentalObjectList = NavigationService.navigateToRentalObjectList;
-      $scope.navigateToBooking = NavigationService.navigateToBooking;
+      $scope.navigateToMyBooking = NavigationService.navigateToMyBooking;
 
    }]);
 })();

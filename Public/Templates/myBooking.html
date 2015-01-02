@@ -4,9 +4,10 @@
 
         <div class="row">
             <div class="large-6 columns">
-                {{booking.rentalObjectName}}.</br>
-                Från och med {{booking.fromDate | asDate | date:'yyyy-MM-dd' }}.</br>
-                Till och med {{booking.toDate | asDate | date:'yyyy-MM-dd' }}.</br>
+                {{booking.rentalObjectName}}</br>
+                Från och med {{booking.fromDate | asDate | date:'yyyy-MM-dd' }}</br>
+                Till och med {{booking.toDate | asDate | date:'yyyy-MM-dd' }}</br>
+                Totalt: {{booking.price}} kr</br>
             </div>
             <div class="large-5 columns right">
                 Ägare: {{booking.rentalObjectOwnerName}}</br>

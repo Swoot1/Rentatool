@@ -16,13 +16,13 @@ class BookingControllerTest extends \PHPUnit_Framework_TestCase{
                                                 ->disableOriginalConstructor()
                                                 ->getMock();
 
-      $rentPeriodConfirmationMock = $this->getMockBuilder('Application\Models\RentPeriodConfirmation')
+      $bookingDetailsMock = $this->getMockBuilder('Application\Models\BookingDetails')
                                          ->disableOriginalConstructor()
                                          ->getMock();
 
       $bookingServiceMock->expects($this->once())
                                         ->method('read')
-                                        ->will($this->returnValue($rentPeriodConfirmationMock));
+                                        ->will($this->returnValue($bookingDetailsMock));
 
       $responseFactoryMock = $this->getMockBuilder('Application\PHPFramework\Response\Factories\ResponseFactory')
                                   ->disableOriginalConstructor()
@@ -64,13 +64,13 @@ class BookingControllerTest extends \PHPUnit_Framework_TestCase{
                                                 ->disableOriginalConstructor()
                                                 ->getMock();
 
-      $rentPeriodConfirmationCollectionMock = $this->getMockBuilder('Application\Collections\RentPeriodConfirmationCollection')
+      $bookingCollectionMock = $this->getMockBuilder('Application\Collections\BookingCollection')
                                          ->disableOriginalConstructor()
                                          ->getMock();
 
       $bookingServiceMock->expects($this->once())
                                         ->method('index')
-                                        ->will($this->returnValue($rentPeriodConfirmationCollectionMock));
+                                        ->will($this->returnValue($bookingCollectionMock));
 
       $responseFactoryMock = $this->getMockBuilder('Application\PHPFramework\Response\Factories\ResponseFactory')
                                   ->disableOriginalConstructor()

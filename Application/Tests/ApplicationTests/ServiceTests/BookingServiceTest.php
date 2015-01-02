@@ -10,7 +10,7 @@ namespace Tests\ServiceTests;
 
 
 use Application\Models\RentPeriod;
-use Application\Models\RentPeriodConfirmation;
+use Application\Models\BookingDetails;
 use Application\Services\BookingService;
 
 class BookingServiceTest extends \PHPUnit_Framework_TestCase{
@@ -59,16 +59,16 @@ class BookingServiceTest extends \PHPUnit_Framework_TestCase{
                       ->method('read')
                       ->will($this->returnValue($userMock));
 
-      $rentPeriodConfirmationFactoryMock = $this->getMockBuilder('Application\Factories\RentPeriodConfirmationFactory')
+      $bookingDetailsFactoryMock= $this->getMockBuilder('Application\Factories\BookingDetailsFactory')
                                                 ->disableOriginalConstructor()
                                                 ->getMock();
-      $rentPeriodConfirmationFactoryMock->expects($this->once())
-                                        ->method('getRentPeriodConfirmation')
-                                        ->will($this->returnValue(new RentPeriodConfirmation(array())));
+      $bookingDetailsFactoryMock->expects($this->once())
+                                        ->method('getBookingDetails')
+                                        ->will($this->returnValue(new BookingDetails(array())));
 
-      $booking = $bookingService->read(9, $userMock, $rentPeriodConfirmationFactoryMock);
+      $booking = $bookingService->read(9, $userMock, $bookingDetailsFactoryMock);
 
-      $this->assertInstanceOf('Application\Models\RentPeriodConfirmation', $booking);
+      $this->assertInstanceOf('Application\Models\BookingDetails', $booking);
    }
 
    /**
@@ -116,11 +116,11 @@ class BookingServiceTest extends \PHPUnit_Framework_TestCase{
                ->method('getId')
                ->will($this->returnValue(1));
 
-      $rentPeriodConfirmationFactoryMock = $this->getMockBuilder('Application\Factories\RentPeriodConfirmationFactory')
+      $bookingDetailsFactoryMock = $this->getMockBuilder('Application\Factories\BookingDetailsFactory')
                                                 ->disableOriginalConstructor()
                                                 ->getMock();
 
-      $bookingService->read(9, $userMock, $rentPeriodConfirmationFactoryMock);
+      $bookingService->read(9, $userMock, $bookingDetailsFactoryMock);
    }
 
    public function index(){

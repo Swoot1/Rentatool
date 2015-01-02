@@ -6,7 +6,7 @@
         <div ng-repeat="booking in futureBookingCollection = (bookingCollection | filter:isFutureBooking)">
             <div class="row">
                 <div class="large-12 columns">
-                    <span class="cursor-pointer link" ng-click="navigateToBooking(booking.rentPeriodId)">{{ booking.rentalObjectName }}, {{ booking.rentalObjectOwnerName }}</span>
+                    <span class="cursor-pointer link" ng-click="navigateToMyBooking(booking.rentPeriodId)">{{ booking.rentalObjectName }}, {{ booking.rentalObjectOwnerName }}</span>
                 </div>
             </div>
             <div class="row">
@@ -24,7 +24,7 @@
         <div ng-repeat="booking in pastBookingCollection = (bookingCollection | filter:isPastBooking)">
             <div class="row">
                 <div class="large-12 columns">
-                    <span class="cursor-pointer link" ng-click="navigateToBooking(booking.rentPeriodId)">Uthyrningsobjekt {{rentPeriod.rentalObjectId}}</span>
+                    <span class="cursor-pointer link" ng-click="navigateToMyBooking(booking.rentPeriodId)">Uthyrningsobjekt {{rentPeriod.rentalObjectId}}</span>
                 </div>
             </div>
             <div class="row">
