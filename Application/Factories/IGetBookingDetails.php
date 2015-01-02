@@ -12,6 +12,6 @@ use Application\Models\User;
  * Date: 01/01/15
  * Time: 09:47
  */
-interface IGetRentPeriodConfirmation{
-   public function getRentPeriodConfirmation(RentPeriod $rentPeriod, User $rentalObjectOwner, RentalObject $rentalObject);
+interface IGetBookingDetails{
+   public function getBookingDetails(RentPeriod $rentPeriod, User $rentalObjectOwner, RentalObject $rentalObject);
 }

@@ -9,14 +9,14 @@
 namespace Application\Factories;
 
 
+use Application\Models\BookingDetails;
 use Application\Models\RentalObject;
 use Application\Models\RentPeriod;
-use Application\Models\RentPeriodConfirmation;
 use Application\Models\User;
 
-class RentPeriodConfirmationFactory implements IGetRentPeriodConfirmation{
+class BookingDetailsFactory implements IGetBookingDetails{
 
-   public function getRentPeriodConfirmation(RentPeriod $rentPeriod, User $rentalObjectOwner, RentalObject $rentalObject){
+   public function getBookingDetails(RentPeriod $rentPeriod, User $rentalObjectOwner, RentalObject $rentalObject){
       $data = array();
       $data['fromDate']              = $rentPeriod->getFromDate();
       $data['toDate']                = $rentPeriod->getToDate();
@@ -24,6 +24,6 @@ class RentPeriodConfirmationFactory implements IGetRentPeriodConfirmation{
       $data['price']                 = $rentPeriod->getPrice();
       $data['rentalObjectName']      = $rentalObject->getName();
 
-      return new RentPeriodConfirmation($data);
+      return new BookingDetails($data);
    }
 } 

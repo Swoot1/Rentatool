@@ -30,8 +30,8 @@ angular.module('Rentatool')
          $location.path('/mybookings');
       };
 
-      navigationService.navigateToRentPeriodConfirmation = function (id) {
-         $location.path('/rentperiodconfirmations/' + id);
+      navigationService.navigateToMyBooking = function (id) {
+         $location.path('/mybookings/' + id);
       };
 
       return navigationService;

@@ -30,7 +30,7 @@
 
          $scope.createRentPeriod = function () {
             $scope.rentPeriod.$save({}, function (data) {
-               NavigationService.navigateToRentPeriodConfirmation(data.id);
+               NavigationService.navigateToMyBooking(data.id);
             });
          };
 
