@@ -3,33 +3,33 @@
 
         <h2>Aktuella bokningar</h2>
 
-        <div ng-repeat="rentPeriod in futureRentPeriodCollection = (rentalPeriodCollection | filter:isFutureRentPeriod)">
+        <div ng-repeat="booking in futureBookingCollection = (bookingCollection | filter:isFutureBooking)">
             <div class="row">
                 <div class="large-12 columns">
-                    Uthyrningsobjekt {{rentPeriod.rentalObjectId}}
+                    <span class="cursor-pointer link" ng-click="navigateToMyBooking(booking.rentPeriodId)">{{ booking.rentalObjectName }}, {{ booking.rentalObjectOwnerName }}</span>
                 </div>
             </div>
             <div class="row">
-                <div class="large-3 columns">Hämtas: {{'2014-01-01 00:00:00' | asDate | date:'yyyy-MM-dd' }}</div>
-                <div class="large-3 columns left">Lämnas: {{rentPeriod.toDate | asDate | date:'yyyy-MM-dd' }}</div>
+                <div class="large-3 columns">Hämtas: {{ booking.fromDate | asDate | date:'yyyy-MM-dd' }}</div>
+                <div class="large-3 columns left">Lämnas: {{ booking.toDate | asDate | date:'yyyy-MM-dd' }}</div>
             </div>
         </div>
 
-        <p ng-hide="futureRentPeriodCollection.length">Du har inga aktuella bokningar. <span class="cursor-pointer link"
+        <p ng-hide="futureBookingCollection.length">Du har inga aktuella bokningar. <span class="cursor-pointer link"
                                                                                              ng-click="navigateToRentalObjectList()">Boka något nu och ha det klart redan till semestern.</span></span>
         </p>
 
         <h2 ng-show="pastRentPeriodCollection.length">Gamla bokningar</h2>
 
-        <div ng-repeat="rentPeriod in pastRentPeriodCollection = (rentalPeriodCollection | filter:isPastRentPeriod)">
+        <div ng-repeat="booking in pastBookingCollection = (bookingCollection | filter:isPastBooking)">
             <div class="row">
                 <div class="large-12 columns">
-                    Uthyrningsobjekt {{rentPeriod.rentalObjectId}}
+                    <span class="cursor-pointer link" ng-click="navigateToMyBooking(booking.rentPeriodId)">Uthyrningsobjekt {{rentPeriod.rentalObjectId}}</span>
                 </div>
             </div>
             <div class="row">
-                <div class="large-3 columns">Hämtas: {{'2014-01-01 00:00:00' | asDate | date:'yyyy-MM-dd' }}</div>
-                <div class="large-3 columns left">Lämnas: {{rentPeriod.toDate | asDate | date:'yyyy-MM-dd' }}</div>
+                <div class="large-3 columns">Hämtas: {{ booking.fromDate | asDate | date:'yyyy-MM-dd' }}</div>
+                <div class="large-3 columns left">Lämnas: {{ booking.toDate | asDate | date:'yyyy-MM-dd' }}</div>
             </div>
         </div>
     </div>

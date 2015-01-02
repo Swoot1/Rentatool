@@ -42480,13 +42480,13 @@ function ngViewFillContentFactory($compile, $controller, $route) {
                templateUrl: 'Public/Templates/myBookingList.html',
                controller: 'MyBookingListController'
             })
+            .when('/mybookings/:id', {
+               templateUrl: 'Public/Templates/myBooking.html', // TODO
+               controller: 'MyBookingController'
+            })
             .when('/rentalobjectpayments', {
                templateUrl: 'Public/Templates/rentalObjectPayment.html',
                controller: 'RentalObjectPaymentController'
-            })
-            .when('/rentperiodconfirmations/:id', {
-               templateUrl: 'Public/Templates/rentPeriodConfirmation.html',
-               controller: 'RentPeriodConfirmationController'
             })
             .otherwise({
                redirectTo: '/rentalobjects'
@@ -42502,6 +42502,14 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 (function () {
    angular.module('Rentatool').factory('Authorization', ['$resource', function ($resource) {
       return $resource('authorization/:action');
+   }]);
+})();
+;/**
+ * Created by Elin on 2014-07-10.
+ */
+(function () {
+   angular.module('Rentatool').factory('Booking', ['$resource', function ($resource) {
+      return $resource('bookings/:id', {id: '@id'});
    }]);
 })();
 ;/**
@@ -42550,14 +42558,6 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 (function () {
    angular.module('Rentatool').factory('RentPeriodCalculator', ['$resource', function ($resource) {
       return $resource('rentperiodcalculators');
-   }]);
-})();
-;/**
- * Created by Elin on 2014-07-10.
- */
-(function () {
-   angular.module('Rentatool').factory('RentPeriodConfirmation', ['$resource', function ($resource) {
-      return $resource('rentperiodconfirmations/:id', {id: '@id'});
    }]);
 })();
 ;/**
@@ -42923,8 +42923,8 @@ angular.module('Rentatool')
          $location.path('/mybookings');
       };
 
-      navigationService.navigateToRentPeriodConfirmation = function (id) {
-         $location.path('/rentperiodconfirmations/' + id);
+      navigationService.navigateToMyBooking = function (id) {
+         $location.path('/mybookings/' + id);
       };
 
       return navigationService;
@@ -42995,6 +42995,17 @@ angular.module('Rentatool')
       }]);
 })();
 ;/**
+ * Created by elinnilsson on 29/09/14.
+ */
+(function () {
+   angular.module('Rentatool')
+      .controller('BookingController', ['$scope', '$routeParams', 'Booking', function ($scope, $routeParams, Booking) {
+         if ($routeParams.id) {
+            $scope.booking = Booking.get({id: $routeParams.id});
+         }
+      }]);
+})();
+;/**
  * Created by elinnilsson on 03/11/14.
  */
 (function () {
@@ -43036,23 +43047,35 @@ angular.module('Rentatool')
    }])
 })();
 ;/**
+ * Created by elinnilsson on 29/09/14.
+ */
+(function () {
+   angular.module('Rentatool')
+      .controller('MyBookingController', ['$scope', '$routeParams', 'Booking', function ($scope, $routeParams, Booking) {
+         if ($routeParams.id) {
+            $scope.booking = Booking.get({id: $routeParams.id});
+         }
+      }]);
+})();
+;/**
  * Created by elinnilsson on 03/11/14.
  */
 (function () {
-   angular.module('Rentatool').controller('MyBookingListController', ['RentPeriod', '$scope', 'NavigationService', function (RentPeriod, $scope, NavigationService) {
-      $scope.rentalPeriodCollection = RentPeriod.query();
+   angular.module('Rentatool').controller('MyBookingListController', ['Booking', '$scope', 'NavigationService', function (Booking, $scope, NavigationService) {
+      $scope.bookingCollection = Booking.query();
       var now = new Date();
       now.setHours(0, 0, 0, 0);
 
-      $scope.isPastRentPeriod = function (date) {
+      $scope.isPastBooking = function (date) {
          return now > new Date(date.toDate);
       };
 
-      $scope.isFutureRentPeriod = function (date) {
+      $scope.isFutureBooking = function (date) {
          return now < new Date(date.toDate);
       };
 
       $scope.navigateToRentalObjectList = NavigationService.navigateToRentalObjectList;
+      $scope.navigateToMyBooking = NavigationService.navigateToMyBooking;
 
    }]);
 })();;/**
@@ -43123,25 +43146,13 @@ angular.module('Rentatool')
 
          $scope.createRentPeriod = function () {
             $scope.rentPeriod.$save({}, function (data) {
-               NavigationService.navigateToRentPeriodConfirmation(data.id);
+               NavigationService.navigateToMyBooking(data.id);
             });
          };
 
          $scope.navigateToRentalObjectList = NavigationService.navigateToRentalObjectList;
       }]);
 })();;/**
- * Created by elinnilsson on 29/09/14.
- */
-(function () {
-   angular.module('Rentatool')
-      .controller('RentPeriodConfirmationController', ['$scope', '$routeParams', 'RentPeriodConfirmation', function ($scope, $routeParams, RentPeriodConfirmation) {
-         if ($routeParams.id) {
-            $scope.rentPeriodConfirmation = RentPeriodConfirmation.get({id: $routeParams.id});
-         }
-         // else TODO redirect 404.
-      }]);
-})();
-;/**
  * Created by Elin on 2014-04-18.
  */
 

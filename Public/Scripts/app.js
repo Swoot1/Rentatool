@@ -54,13 +54,13 @@
                templateUrl: 'Public/Templates/myBookingList.html',
                controller: 'MyBookingListController'
             })
+            .when('/mybookings/:id', {
+               templateUrl: 'Public/Templates/myBooking.html', // TODO
+               controller: 'MyBookingController'
+            })
             .when('/rentalobjectpayments', {
                templateUrl: 'Public/Templates/rentalObjectPayment.html',
                controller: 'RentalObjectPaymentController'
-            })
-            .when('/rentperiodconfirmations/:id', {
-               templateUrl: 'Public/Templates/rentPeriodConfirmation.html',
-               controller: 'RentPeriodConfirmationController'
             })
             .otherwise({
                redirectTo: '/rentalobjects'
