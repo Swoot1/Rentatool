@@ -8,19 +8,23 @@
 
 namespace Application\Services;
 
+use Application\Collections\BookingCollection;
 use Application\Factories\IGetRentPeriodConfirmation;
+use Application\Mappers\BookingMapper;
 use Application\Models\User;
 use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 
-class RentPeriodConfirmationService{
+class BookingService{
    private $rentPeriodService;
    private $userService;
    private $rentalObjectService;
+   private $bookingMapper;
 
-   public function __construct(RentPeriodService $rentPeriodService, UserService $userService, RentalObjectService $rentalObjectService){
+   public function __construct(RentPeriodService $rentPeriodService, UserService $userService, RentalObjectService $rentalObjectService, BookingMapper $bookingMapper){
       $this->rentPeriodService   = $rentPeriodService;
       $this->userService         = $userService;
       $this->rentalObjectService = $rentalObjectService;
+      $this->bookingMapper       = $bookingMapper;
 
       return $this;
    }
@@ -48,5 +52,11 @@ class RentPeriodConfirmationService{
       }
 
       return true;
+   }
+
+   public function index(User $currentUser){
+      $bookingDataList = $this->bookingMapper->index($currentUser);
+
+      return new BookingCollection($bookingDataList);
    }
 } 
