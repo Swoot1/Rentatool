@@ -72,3 +72,9 @@ input.editable[type="text"], input.editable[type="text"]:focus, textarea.editabl
     outline:none;
     background: none;
 }
+
+/* Clickable text should have link appearance */
+
+p.link, span.link{
+    color: #008cba;
+}

@@ -50,9 +50,9 @@
                templateUrl: 'Public/Templates/passwordCreate.html',
                controller: 'PasswordController'
             })
-            .when('/myrentperiods', {
-               templateUrl: 'Public/Templates/myRentPeriods.html',
-               controller: 'MyRentPeriodsController'
+            .when('/mybookings', {
+               templateUrl: 'Public/Templates/myBookingList.html',
+               controller: 'MyBookingListController'
             })
             .when('/rentalobjectpayments', {
                templateUrl: 'Public/Templates/rentalObjectPayment.html',

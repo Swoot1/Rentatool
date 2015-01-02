@@ -22,8 +22,7 @@ class RentPeriodMapper{
          rental_object_id AS "rentalObjectId",
          from_date AS "fromDate",
          to_date AS "toDate",
-         price_per_day AS "pricePerDay",
-         is_confirmed_by_owner AS "isConfirmedByOwner"
+         price_per_day AS "pricePerDay"
       FROM
         rent_periods
       WHERE
@@ -38,8 +37,7 @@ class RentPeriodMapper{
             rental_object_id,
             from_date,
             to_date,
-            price_per_day,
-            is_confirmed_by_owner
+            price_per_day
         )
         VALUES
         (
@@ -47,8 +45,7 @@ class RentPeriodMapper{
            :rentalObjectId,
            :fromDate,
            :toDate,
-           :pricePerDay,
-           :isConfirmedByOwner
+           :pricePerDay
         )
    ';
 
@@ -59,8 +56,7 @@ class RentPeriodMapper{
          rent_periods.rental_object_id AS "rentalObjectId",
          rent_periods.from_date AS "fromDate",
          rent_periods.to_date AS "toDate",
-         rent_periods.price_per_day AS "pricePerDay",
-         rent_periods.is_confirmed_by_owner AS "isConfirmedByOwner"
+         rent_periods.price_per_day AS "pricePerDay"
       FROM
         rent_periods
       LEFT JOIN
@@ -68,7 +64,7 @@ class RentPeriodMapper{
         ON
         rental_objects.id = rent_periods.rental_object_id
       WHERE
-         rental_objects.user_id = :userId
+         renter_id = :userId
    ';
 
    public function __construct(IDatabaseConnection $databaseConnection){
