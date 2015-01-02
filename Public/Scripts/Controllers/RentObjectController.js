@@ -3,7 +3,7 @@
  */
 (function () {
    angular.module('Rentatool')
-      .controller('RentObjectController', ['$scope', '$routeParams', '$location', 'RentalObject', 'RentPeriod', 'RentPeriodCalculator', function ($scope, $routeParams, $location, RentalObject, RentPeriod, RentPeriodCalculator) {
+      .controller('RentObjectController', ['$scope', '$routeParams', '$location', 'RentalObject', 'RentPeriod', 'RentPeriodCalculator', 'NavigationService', function ($scope, $routeParams, $location, RentalObject, RentPeriod, RentPeriodCalculator, NavigationService) {
          $scope.rentalObject = RentalObject.get({id: $routeParams.id});
          $scope.rentPeriod = new RentPeriod({});
          $scope.rentPeriod.rentalObjectId = parseInt($routeParams.id, 10);
@@ -27,14 +27,13 @@
             });
          };
 
+
          $scope.createRentPeriod = function () {
             $scope.rentPeriod.$save({}, function (data) {
-               $location.path('/rentperiodconfirmations/' + data.id);
+               NavigationService.navigateToRentPeriodConfirmation(data.id);
             });
          };
 
-         $scope.returnToRentalObjectList = function () {
-            $location.path('/rentalobjects');
-         };
+         $scope.navigateToRentalObjectList = NavigationService.navigateToRentalObjectList;
       }]);
 })();

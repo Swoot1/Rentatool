@@ -28,6 +28,7 @@ module.exports = function (grunt) {
                   'Public/Scripts/app.js',
                   'Public/Scripts/Factories/*.js',
                   'Public/Scripts/Directives/*.js',
+                  'Public/Scripts/Filters/*.js',
                   'Public/Scripts/Services/*.js',
                   'Public/Scripts/Controllers/*.js'
                ],

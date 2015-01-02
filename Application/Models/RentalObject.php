@@ -22,7 +22,7 @@ class RentalObject extends GeneralModel{
    protected $description;
    protected $pricePerDay;
    protected $fileCollection;
-   protected $active;
+   protected $active = true;
    protected $_setters = array(
       'fileCollection' => 'setFileCollection'
    );

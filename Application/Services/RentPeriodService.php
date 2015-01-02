@@ -42,7 +42,6 @@ class RentPeriodService{
    }
 
    public function create(array $data, User $currentUser){
-      $data['isConfirmedByOwner'] = false;
       $rentPeriod                 = $this->getCalculatedPricePlan($data, $currentUser);
       $this->rentPeriodValidationService->checkIsValidRentPeriod($rentPeriod);
       $rentPeriodData = $this->rentPeriodMapper->create($rentPeriod->getDBParameters());
@@ -63,6 +62,5 @@ class RentPeriodService{
       $result     = $this->rentPeriodMapper->index($filterData);
 
       return new RentPeriodCollection($result);
-
    }
 }

@@ -56,3 +56,25 @@ body {
 .front-card {
     margin-top: 50px;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Css for removing border on editable input fields */
+
+input.editable[type="text"], input.editable[type="text"]:focus, textarea.editable, textarea:focus.editable {
+    -moz-appearance:    value;
+    -webkit-appearance: none;
+    appearance:         value;
+    border: none;
+    box-shadow: none;
+    outline:none;
+    background: none;
+}
+
+/* Clickable text should have link appearance */
+
+p.link, span.link{
+    color: #008cba;
+}

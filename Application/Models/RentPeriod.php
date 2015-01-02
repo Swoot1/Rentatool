@@ -23,7 +23,6 @@ class RentPeriod extends GeneralModel{
    protected $toDate;
    protected $pricePerDay;
    protected $price;
-   protected $isConfirmedByOwner = false;
    protected $_setters = array(
       'pricePerDay' => 'setPricePerDay',
       'fromDate'    => 'setFromDate',

@@ -100,13 +100,6 @@ $routes['rentperiods'] = array(
    'subRoutesCollection'     => new SubRouteCollection()
 );
 
-$routes['confirmrentperiods'] = array(
-   'controllerName'          => 'ConfirmRentPeriodController',
-   'accessRule'              => new AuthorizedAccessRule(),
-   'requestMethodCollection' => new RequestMethodCollection(array('PUT')),
-   'subRoutesCollection'     => new SubRouteCollection()
-);
-
 $routes['rentperiodcalculators'] = array(
    'controllerName'          => 'RentPeriodCalculatorController',
    'accessRule'              => new AuthorizedAccessRule(),

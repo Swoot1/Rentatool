@@ -1,25 +1,30 @@
 <div class="row">
     <div class="12-columns large">
-        <h1>Uthyrningsobjekt
-            <button type="button" class="tiny" ng-click="navigateToCreateNewRentalObject()">Skapa nytt
-                uthyrningsobjekt
-            </button>
-        </h1>
+        <h1>Uthyrningsobjekt</h1>
         <form ng-submit="searchRentalObject(rentalObjectFilter)">
             <div class="large-10 columns">
-                <input type="text" ng-model="rentalObjectFilter.query" name="query"/>
-                <input type="datetime" ng-model="rentalObjectFilter.fromDate" datepicker name="fromDate"
-                       placeholder="Tillgänglig från"/>
-                <input type="datetime" ng-model="rentalObjectFilter.toDate" datepicker name="toDate"
-                       placeholder="Till och med"/>
-            </div>
-            <div class="large-2 columns">
-                <button type="submit" class="tiny">Sök</button>
+
+                <div class="row">
+                    <div class="large-6 columns">
+                        <input type="search" ng-model="rentalObjectFilter.query" name="query" placeholder="Fritext"/>
+                    </div>
+                    <div class="large-2 columns">
+                        <input type="datetime" ng-model="rentalObjectFilter.fromDate" datepicker name="fromDate"
+                               placeholder="Tillgänglig från"/>
+                    </div>
+                    <div class="large-2 columns left">
+                        <input type="datetime" ng-model="rentalObjectFilter.toDate" datepicker name="toDate"
+                               placeholder="Till och med"/>
+                    </div>
+                    <div class="large-1 columns left">
+                        <button type="submit" class="tiny">Sök</button>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
 </div>
-<div class="row" ng-click="navigateToRentalObject(rentalObject)" ng-repeat="rentalObject in rentalObjectCollection">
+<div class="row cursor-pointer" ng-click="navigateToRentalObject(rentalObject)" ng-repeat="rentalObject in rentalObjectCollection">
     <div class="column large-2">
         <img style="width:50px; height:50px" ng-src="{{getThumbNailURL(rentalObject)}}">
     </div>

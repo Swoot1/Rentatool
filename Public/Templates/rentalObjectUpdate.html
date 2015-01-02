@@ -8,11 +8,16 @@
         <form name="rental_object_form" ng-submit="updateRentalObject()">
             <div class="error" ng-show="rental_object_form.name.$dirty && rental_object_form.$invalid">
             </div>
-            <input id="rentalObject" ng-model="rentalObject.name" type="text" ng-placeholder="Namn" ng-focus/>
-            <input type="text" ng-model="rentalObject.pricePerDay" placeholder="Ange pris per dag"/>
-            <textarea ng-model="rentalObject.description" placeholder="Ange en beskrivning av objektet."></textarea>
-            <button type="submit" class="tiny" ng-disabled="rental_object_form.$invalid">Spara ändringar</button>
-            <button type="button" class="tiny" ng-click="returnToRentalObjectList()">Avbryt</button>
+            <input type="text" id="rentalObject" ng-class="{editable: !isUserOwner()}" ng-readonly="!isUserOwner()" ng-model="rentalObject.name"
+                   ng-placeholder="Namn"
+                   ng-focus/>
+            <input type="text" ng-class="{editable: !isUserOwner()}" ng-readonly="!isUserOwner()" ng-model="rentalObject.pricePerDay"
+                   placeholder="Ange pris per dag"/>
+            <textarea ng-class="{editable: !isUserOwner()}" ng-readonly="!isUserOwner()" ng-model="rentalObject.description"
+                      placeholder="Ange en beskrivning av objektet."></textarea>
+            <button type="submit" class="tiny" ng-show="isUserOwner()" ng-disabled="rental_object_form.$invalid">Spara
+                ändringar
+            </button>
         </form>
 
         <span ng-controller="RentObjectController">
@@ -20,17 +25,23 @@
 
             <form ng-submit="createRentPeriod()">
 
-                <input type="text" ng-model="rentPeriod.fromDate" rentperioddatepicker
-                       rental_object_id="{{rentPeriod.rentalObjectId}}" placeholder="Från och med"/>
-                <input type="text" ng-model="rentPeriod.toDate" rentperioddatepicker
-                       rental_object_id="{{rentPeriod.rentalObjectId}}" placeholder="Till och med"/>
+                <div class="row">
+                    <div class="large-2 columns">
+                        <input type="text" ng-model="rentPeriod.fromDate" rentperioddatepicker
+                               rental_object_id="{{rentPeriod.rentalObjectId}}" placeholder="Från och med"/>
+                    </div>
+                    <div class="large-2 columns left">
+                        <input type="text" ng-model="rentPeriod.toDate" rentperioddatepicker
+                               rental_object_id="{{rentPeriod.rentalObjectId}}" placeholder="Till och med"/>
+                    </div>
+                </div>
 
-                <p>Pris {{rentPeriod.price}} kr</p>
+                <p>Pris {{rentPeriod.price || 0}} kr</p>
 
                 <button type="submit" class="success tiny">
                     Hyr
                 </button>
-                <button type="button" class="tiny" ng-click="returnToRentalObjectList()">Avbryt</button>
+                <button type="button" class="tiny" ng-click="navigateToRentalObjectList()">Avbryt</button>
             </form>
         </span>
     </div>
