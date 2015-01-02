@@ -62,10 +62,6 @@
                templateUrl: 'Public/Templates/rentalObjectPayment.html',
                controller: 'RentalObjectPaymentController'
             })
-            .when('/bookings/:id', {
-               templateUrl: 'Public/Templates/myBooking.html', // TODO
-               controller: 'BookingController'
-            })
             .otherwise({
                redirectTo: '/rentalobjects'
             });

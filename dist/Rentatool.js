@@ -42481,16 +42481,12 @@ function ngViewFillContentFactory($compile, $controller, $route) {
                controller: 'MyBookingListController'
             })
             .when('/mybookings/:id', {
-               templateUrl: 'Public/Templates/myBooking.html',
+               templateUrl: 'Public/Templates/myBooking.html', // TODO
                controller: 'MyBookingController'
             })
             .when('/rentalobjectpayments', {
                templateUrl: 'Public/Templates/rentalObjectPayment.html',
                controller: 'RentalObjectPaymentController'
-            })
-            .when('/bookings/:id', {
-               templateUrl: 'Public/Templates/myBooking.html',
-               controller: 'BookingController'
             })
             .otherwise({
                redirectTo: '/rentalobjects'
@@ -42927,10 +42923,6 @@ angular.module('Rentatool')
          $location.path('/mybookings');
       };
 
-      navigationService.navigateToBooking = function (id) {
-         $location.path('/bookings/' + id);
-      };
-
       navigationService.navigateToMyBooking = function (id) {
          $location.path('/mybookings/' + id);
       };
@@ -43008,11 +43000,9 @@ angular.module('Rentatool')
 (function () {
    angular.module('Rentatool')
       .controller('BookingController', ['$scope', '$routeParams', 'Booking', function ($scope, $routeParams, Booking) {
-
          if ($routeParams.id) {
             $scope.booking = Booking.get({id: $routeParams.id});
          }
-         // else TODO redirect 404.
       }]);
 })();
 ;/**
@@ -43057,13 +43047,17 @@ angular.module('Rentatool')
    }])
 })();
 ;/**
- * Created by elinnilsson on 02/01/15.
+ * Created by elinnilsson on 29/09/14.
  */
 (function () {
-   angular.module('Rentatool').controller('MyBookingController', [function () {
-
-   }]);
-})();;/**
+   angular.module('Rentatool')
+      .controller('MyBookingController', ['$scope', '$routeParams', 'Booking', function ($scope, $routeParams, Booking) {
+         if ($routeParams.id) {
+            $scope.booking = Booking.get({id: $routeParams.id});
+         }
+      }]);
+})();
+;/**
  * Created by elinnilsson on 03/11/14.
  */
 (function () {
@@ -43081,7 +43075,7 @@ angular.module('Rentatool')
       };
 
       $scope.navigateToRentalObjectList = NavigationService.navigateToRentalObjectList;
-      $scope.navigateToBooking = NavigationService.navigateToBooking;
+      $scope.navigateToMyBooking = NavigationService.navigateToMyBooking;
 
    }]);
 })();;/**
@@ -43152,7 +43146,7 @@ angular.module('Rentatool')
 
          $scope.createRentPeriod = function () {
             $scope.rentPeriod.$save({}, function (data) {
-               NavigationService.navigateToBooking(data.id);
+               NavigationService.navigateToMyBooking(data.id);
             });
          };
 
