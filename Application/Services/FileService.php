@@ -45,7 +45,7 @@ class FileService{
    private function moveFile(array $data, File $file){
       try{
          $photoPath = sprintf('%sPublic/RentalObjectPhotos/%s.%s', PROJECT_ROOT, $file->getId(), pathinfo(array_shift($data['name']), PATHINFO_EXTENSION));
-         $tmpName = array_shift($data['tmp_name']);
+         $tmpName   = array_shift($data['tmp_name']);
          $this->checkFileExists($tmpName);
          rename($tmpName, $photoPath);
       } catch (Exception $e){
@@ -56,7 +56,7 @@ class FileService{
    private function checkFileExists($fileName){
       $fileExists = file_exists($fileName);
 
-      if($fileExists === false){
+      if ($fileExists === false){
          throw new NotFoundException('Kunde inte koppa bilden till uthyrningsobjektet.');
       }
 
@@ -66,8 +66,12 @@ class FileService{
    private function buildFile(array $data){
       $fileData = array();
       try{
-         $fileData['fileType'] = array_shift($data['type']);
-         $fileData['fileSize'] = array_shift($data['size']);
+         $fileName      = array_shift($data['name']);
+         $fileNameParts = explode('.', $fileName);
+
+         $fileData['fileType']      = array_shift($data['type']);
+         $fileData['fileSize']      = array_shift($data['size']);
+         $fileData['fileExtension'] = array_pop($fileNameParts);
       } catch (Exception $exception){
          throw new ApplicationException('Fel vid uppladdning av bild.');
       }

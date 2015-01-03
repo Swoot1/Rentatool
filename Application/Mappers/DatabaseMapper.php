@@ -60,7 +60,8 @@ class DatabaseMapper{
       CREATE TABLE IF NOT EXISTS files(
        id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
        file_size INTEGER NOT NULL,
-       file_type VARCHAR(30) NOT NULL
+       file_type VARCHAR(30) NOT NULL,
+       file_extension VARCHAR(5) NOT NULL
       );
 
       CREATE TABLE IF NOT EXISTS rental_object_file_dependencies(
