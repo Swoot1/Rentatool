@@ -15,5 +15,7 @@
             $scope.currentUser = data.id;
         });
 
+        $scope.navigateToRentalObject = NavigationService.navigateToRentalObject;
+
     }]);
 })();

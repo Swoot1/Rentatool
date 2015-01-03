@@ -38,6 +38,9 @@ angular.module('Rentatool')
             $location.path('/myrentalobjects');
         };
 
+        navigationService.navigateToRentalObject = function (rentalObject) {
+            $location.path('/rentalobjects/' + rentalObject.id);
+        };
 
         return navigationService;
     }]);
