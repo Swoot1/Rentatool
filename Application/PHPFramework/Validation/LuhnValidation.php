@@ -17,7 +17,7 @@ class LuhnValidation extends ValueValidation{
       return $this->validateIsLuhn($value);
    }
 
-   public function validateIsLuhn($number){
+   private function validateIsLuhn($number){
 
       if (!is_numeric($number)){
          throw new ApplicationException(sprintf('Ange ett numeriskt värde för %s.', $this->genericName));
