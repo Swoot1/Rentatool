@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="12-columns large">
+        <h1>Mina uthyrningsobjekt</h1>
+    </div>
+</div>
+<div class="row cursor-pointer" ng-click="navigateToRentalObject(rentalObject)" ng-repeat="rentalObject in rentalObjectCollection">
+    <div class="column large-4">
+        <p>{{rentalObject.name}}</p>
+    </div>
+</div>

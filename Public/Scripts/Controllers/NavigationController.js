@@ -20,5 +20,6 @@
       $scope.navigateToRentalObjectList = navigationService.navigateToRentalObjectList;
       $scope.navigateToCreateDatabase = navigationService.navigateToCreateDatabase;
       $scope.navigateToMyBookingList = navigationService.navigateToMyBookingList;
+      $scope.navigateToMyRentalObjectsList = navigationService.navigateToMyRentalObjectsList;
    }]);
 }());
