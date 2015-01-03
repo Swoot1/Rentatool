@@ -62,6 +62,10 @@
                templateUrl: 'Public/Templates/rentalObjectPayment.html',
                controller: 'RentalObjectPaymentController'
             })
+             .when('/myrentalobjects', {
+                 templateUrl: 'Public/Templates/myRentalObjectsList.html',
+                 controller: 'MyRentalObjectsListController'
+             })
             .otherwise({
                redirectTo: '/rentalobjects'
             });

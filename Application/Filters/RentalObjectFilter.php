@@ -19,6 +19,7 @@ class RentalObjectFilter extends GeneralModel{
    protected $fromDate = null;
    protected $toDate = null;
    protected $active = true;
+   protected $userId = null;
 
    /**
     * @param array $data
@@ -87,6 +88,10 @@ class RentalObjectFilter extends GeneralModel{
 
       if ($this->query){
          $result[] = 'name = :query';
+      }
+
+      if ($this->userId) {
+         $result[] = 'user_id = :userId';
       }
 
       $result[] = 'active = :active';

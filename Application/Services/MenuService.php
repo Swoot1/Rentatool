@@ -25,6 +25,7 @@ class MenuService{
          ['label' => 'Användare', 'callback' => 'navigateToUserList', 'accessRule' => new AdministrativeAccessRule()],
          ['label' => 'Uthyrningsobjekt', 'callback' => 'navigateToRentalObjectList'],
          ['label' => 'Mina Bokningar', 'callback' => 'navigateToMyBookingList', 'accessRule' => new AuthorizedAccessRule()],
+         ['label' => 'Mina Uthyrningsobjekt', 'callback' => 'navigateToMyRentalObjectsList', 'accessRule' => new AuthorizedAccessRule()],
          ['label' => 'Databasskapning', 'callback' => 'navigateToCreateDatabase', 'accessRule' => new AuthorizedAccessRule()]
       ];
    }

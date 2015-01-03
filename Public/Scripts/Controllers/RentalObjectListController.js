@@ -2,7 +2,7 @@
  * Created by Elin on 2014-06-12.
  */
 (function () {
-   angular.module('Rentatool').controller('RentalObjectListController', ['$scope', '$location', 'RentalObject', 'InactivateRentalObject', 'User', function ($scope, $location, RentalObject, InactivateRentalObject, User) {
+   angular.module('Rentatool').controller('RentalObjectListController', ['$scope', '$location', 'RentalObject', 'InactivateRentalObject', 'User', 'NavigationService', function ($scope, $location, RentalObject, InactivateRentalObject, User, NavigationService) {
       $scope.rentalObjectCollection = RentalObject.query();
       $scope.rentalObjectFilter = {};
       $scope.currentUser = $scope.userIsLoggedIn && User.get({'id': 'currentUser'});
@@ -18,10 +18,6 @@
 
          $scope.rentalObjectCollection = RentalObject.query(
             GETParams);
-      };
-
-      $scope.navigateToRentalObject = function (rentalObject) {
-         $location.path('/rentalobjects/' + rentalObject.id);
       };
 
       $scope.inactivateRentalObject = function (rentalObject) {
@@ -46,5 +42,7 @@
 
          return url;
       };
+
+       $scope.navigateToRentalObject = NavigationService.navigateToRentalObject;
    }]);
 })();
