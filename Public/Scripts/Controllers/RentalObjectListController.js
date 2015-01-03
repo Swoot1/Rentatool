@@ -36,11 +36,12 @@
       };
 
       $scope.getThumbNailURL = function (rentalObject) {
-         var url = '', id;
+         var url = '', id, extension;
 
          if (rentalObject.fileCollection.length > 0) {
             id = rentalObject.fileCollection[0].id;
-            url = 'Public/RentalObjectPhotos/' + id + '.JPG';
+            extension = rentalObject.fileCollection[0].fileExtension;
+            url = 'Public/RentalObjectPhotos/' + id + '.' + extension;
          }
 
          return url;
