@@ -102,8 +102,4 @@ class RentalObject extends GeneralModel{
    public function getUserId(){
       return $this->userId;
    }
-
-   public function getName(){
-      return $this->name;
-   }
 }

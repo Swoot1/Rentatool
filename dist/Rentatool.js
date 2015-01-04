@@ -47400,7 +47400,7 @@ angular.module('Rentatool')
          $scope.calculatePrice = function () {
             var rentPeriodCalculator = new RentPeriodCalculator($scope.rentPeriod);
             rentPeriodCalculator.$save(function (data) {
-               $scope.rentPeriod.price = data.price;
+               $scope.rentPeriod.totalPrice = data.totalPrice;
             });
          };
 

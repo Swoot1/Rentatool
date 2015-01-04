@@ -8,8 +8,6 @@
 
 namespace Application\Controllers;
 
-
-use Application\Factories\BookingDetailsFactory;
 use Application\PHPFramework\Response\Factories\ResponseFactory;
 use Application\PHPFramework\SessionManager;
 use Application\Services\BookingService;
@@ -28,10 +26,9 @@ class BookingController{
    }
 
    public function read($rentPeriodId){
-      $bookingDetailsFactory = new BookingDetailsFactory();
-      $bookingDetails        = $this->bookingService->read($rentPeriodId, $this->sessionManager->getCurrentUser(), $bookingDetailsFactory);
+      $booking        = $this->bookingService->read($rentPeriodId, $this->sessionManager->getCurrentUser());
 
-      return $this->response->setResponseData($bookingDetails);
+      return $this->response->setResponseData($booking);
    }
 
    public function index(){

@@ -22,7 +22,8 @@ class RentPeriodMapper{
          rental_object_id AS "rentalObjectId",
          from_date AS "fromDate",
          to_date AS "toDate",
-         price_per_day AS "pricePerDay"
+         price_per_day AS "pricePerDay",
+         total_price AS "totalPrice"
       FROM
         rent_periods
       WHERE
@@ -37,7 +38,8 @@ class RentPeriodMapper{
             rental_object_id,
             from_date,
             to_date,
-            price_per_day
+            price_per_day,
+            total_price
         )
         VALUES
         (
@@ -45,7 +47,8 @@ class RentPeriodMapper{
            :rentalObjectId,
            :fromDate,
            :toDate,
-           :pricePerDay
+           :pricePerDay,
+           :totalPrice
         )
    ';
 
@@ -56,7 +59,8 @@ class RentPeriodMapper{
          rent_periods.rental_object_id AS "rentalObjectId",
          rent_periods.from_date AS "fromDate",
          rent_periods.to_date AS "toDate",
-         rent_periods.price_per_day AS "pricePerDay"
+         rent_periods.price_per_day AS "pricePerDay",
+         rent_periods.total_price AS "totalPrice"
       FROM
         rent_periods
       LEFT JOIN

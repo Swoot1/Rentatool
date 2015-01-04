@@ -13,16 +13,16 @@ use Application\Controllers\BookingController;
 class BookingControllerTest extends \PHPUnit_Framework_TestCase{
    public function testRead(){
       $bookingServiceMock = $this->getMockBuilder('Application\Services\BookingService')
-                                                ->disableOriginalConstructor()
-                                                ->getMock();
+                                 ->disableOriginalConstructor()
+                                 ->getMock();
 
-      $bookingDetailsMock = $this->getMockBuilder('Application\Models\BookingDetails')
-                                         ->disableOriginalConstructor()
-                                         ->getMock();
+      $booking = $this->getMockBuilder('Application\Models\Booking')
+                      ->disableOriginalConstructor()
+                      ->getMock();
 
       $bookingServiceMock->expects($this->once())
-                                        ->method('read')
-                                        ->will($this->returnValue($bookingDetailsMock));
+                         ->method('read')
+                         ->will($this->returnValue($booking));
 
       $responseFactoryMock = $this->getMockBuilder('Application\PHPFramework\Response\Factories\ResponseFactory')
                                   ->disableOriginalConstructor()
@@ -61,16 +61,16 @@ class BookingControllerTest extends \PHPUnit_Framework_TestCase{
 
    public function testIndex(){
       $bookingServiceMock = $this->getMockBuilder('Application\Services\BookingService')
-                                                ->disableOriginalConstructor()
-                                                ->getMock();
+                                 ->disableOriginalConstructor()
+                                 ->getMock();
 
       $bookingCollectionMock = $this->getMockBuilder('Application\Collections\BookingCollection')
-                                         ->disableOriginalConstructor()
-                                         ->getMock();
+                                    ->disableOriginalConstructor()
+                                    ->getMock();
 
       $bookingServiceMock->expects($this->once())
-                                        ->method('index')
-                                        ->will($this->returnValue($bookingCollectionMock));
+                         ->method('index')
+                         ->will($this->returnValue($bookingCollectionMock));
 
       $responseFactoryMock = $this->getMockBuilder('Application\PHPFramework\Response\Factories\ResponseFactory')
                                   ->disableOriginalConstructor()

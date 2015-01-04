@@ -9,45 +9,44 @@
 namespace Application\Services;
 
 use Application\Collections\BookingCollection;
-use Application\Factories\IGetBookingDetails;
 use Application\Mappers\BookingMapper;
+use Application\Models\Booking;
 use Application\Models\User;
 use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
+use Application\PHPFramework\ErrorHandling\Exceptions\NotFoundException;
 
 class BookingService{
-   private $rentPeriodService;
-   private $userService;
-   private $rentalObjectService;
    private $bookingMapper;
 
-   public function __construct(RentPeriodService $rentPeriodService, UserService $userService, RentalObjectService $rentalObjectService, BookingMapper $bookingMapper){
-      $this->rentPeriodService   = $rentPeriodService;
-      $this->userService         = $userService;
-      $this->rentalObjectService = $rentalObjectService;
+   public function __construct(BookingMapper $bookingMapper){
       $this->bookingMapper       = $bookingMapper;
 
       return $this;
    }
 
-   public function read($rentPeriodId, User $currentUser, IGetBookingDetails $getBookingDetailsFactory){
-      $rentPeriod = $this->rentPeriodService->read($rentPeriodId);
-      $this->checkCurrentUserIsRenter($currentUser, $rentPeriod);
+   public function read($rentPeriodId, User $currentUser){
 
-      $rentalObject      = $this->rentalObjectService->read($rentPeriod->getRentalObjectId());
-      $rentalObjectOwner = $this->userService->read($rentalObject->getUserId());
+      $rentPeriodData = $this->bookingMapper->read($rentPeriodId);
 
-      return $getBookingDetailsFactory->getBookingDetails($rentPeriod, $rentalObjectOwner, $rentalObject);
+      if($rentPeriodData === null){
+         throw new NotFoundException('Kunde inte hitta bokningsdetaljer.');
+      }
+
+      $booking = new Booking($rentPeriodData);
+      $this->checkCurrentUserIsRenter($currentUser, $booking);
+
+      return $booking;
    }
 
    /**
     * Validates that the user is allowed to read the rent period confirmation.
-    * @param $renter
-    * @param $rentPeriod
+    * @param User $renter
+    * @param Booking $booking
     * @return bool
     * @throws \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     */
-   private function checkCurrentUserIsRenter($renter, $rentPeriod){
-      if ($renter->getId() !== $rentPeriod->getRenterId()){
+   private function checkCurrentUserIsRenter(User $renter, Booking $booking){
+      if ($renter->getId() !== $booking->getRenterId()){
          throw new ApplicationException('Du har inte rättighet att visa den här bokningsbekräftelsen.');
       }
 

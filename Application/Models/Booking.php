@@ -16,9 +16,16 @@ class Booking implements IToArray{
    private $rentPeriodId;
    private $fromDate;
    private $toDate;
+   private $totalPrice;
    private $rentalObjectOwnerName;
    private $rentalObjectName;
-
+   private $renterId;
+   private $phoneNumber;
+   private $address;
+   private $additionalAddressInformation;
+   private $zipCode;
+   private $city;
+   private $email;
 
    public function __construct(array $data){
       $this->setData($data);
@@ -43,6 +50,10 @@ class Booking implements IToArray{
       }
 
       return true;
+   }
+
+   public function getRenterId(){
+      return $this->renterId;
    }
 
    /**

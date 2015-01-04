@@ -17,4 +17,20 @@ class UserTest extends \PHPUnit_Framework_TestCase{
       $user = new User(array('password' => 'Marknadskaramell007'));
       $this->assertEquals('Marknadskaramell007', $user->getPassword());
    }
+
+   public function testSetOrganizationNumber(){
+      $user = new User(array('organizationNumber' => '199004075678'));
+
+      $userData = $user->toArray();
+
+      $this->assertEquals('199004075678', $userData['organizationNumber']);
+   }
+
+   /**
+    * @expectedException \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
+    * @expectedExceptionMessage Ogiltigt format på organisationsnummer/personnummer.
+    */
+   public function testInvalidOrganizationNumber(){
+      new User(array('organizationNumber' => '5568940389'));
+   }
 } 
