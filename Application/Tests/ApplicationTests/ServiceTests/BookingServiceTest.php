@@ -8,67 +8,30 @@
 
 namespace Tests\ServiceTests;
 
-
-use Application\Models\RentPeriod;
-use Application\Models\BookingDetails;
 use Application\Services\BookingService;
 
 class BookingServiceTest extends \PHPUnit_Framework_TestCase{
 
    public function testRead(){
 
-      $rentPeriodServiceMock = $this->getMockBuilder('Application\Services\RentPeriodService')
-                                    ->disableOriginalConstructor()
-                                    ->getMock();
-
-      $rentPeriodServiceMock->expects($this->once())
-                            ->method('read')
-                            ->will($this->returnValue(new RentPeriod(array())));
-
-      $userServiceMock = $this->getMockBuilder('Application\Services\UserService')
-                              ->disableOriginalConstructor()
-                              ->getMock();
-
-      $rentalObjectServiceMock = $this->getMockBuilder('Application\Services\RentalObjectService')
-                                      ->disableOriginalConstructor()
-                                      ->getMock();
-
-      $rentalObjectMock = $this->getMockBuilder('Application\Models\RentalObject')
-                               ->disableOriginalConstructor()
-                               ->getMock();
-
-      $rentalObjectMock->expects($this->once())
-                       ->method('getUserId')
-                       ->will($this->returnValue(1));
-
-      $rentalObjectServiceMock->expects($this->once())
-                              ->method('read')
-                              ->will($this->returnValue($rentalObjectMock));
 
       $bookingMapperMock = $this->getMockBuilder('Application\Mappers\BookingMapper')
                                 ->disableOriginalConstructor()
                                 ->getMock();
 
-      $bookingService = new BookingService($rentPeriodServiceMock, $userServiceMock, $rentalObjectServiceMock, $bookingMapperMock);
+      $bookingMapperMock->expects($this->once())
+                        ->method('read')
+                        ->will($this->returnValue(array()));
+
+      $bookingService = new BookingService($bookingMapperMock);
 
       $userMock = $this->getMockBuilder('Application\Models\User')
                        ->disableOriginalConstructor()
                        ->getMock();
 
-      $userServiceMock->expects($this->once())
-                      ->method('read')
-                      ->will($this->returnValue($userMock));
+      $booking = $bookingService->read(9, $userMock);
 
-      $bookingDetailsFactoryMock= $this->getMockBuilder('Application\Factories\BookingDetailsFactory')
-                                                ->disableOriginalConstructor()
-                                                ->getMock();
-      $bookingDetailsFactoryMock->expects($this->once())
-                                        ->method('getBookingDetails')
-                                        ->will($this->returnValue(new BookingDetails(array())));
-
-      $booking = $bookingService->read(9, $userMock, $bookingDetailsFactoryMock);
-
-      $this->assertInstanceOf('Application\Models\BookingDetails', $booking);
+      $this->assertInstanceOf('Application\Models\Booking', $booking);
    }
 
    /**
@@ -78,35 +41,15 @@ class BookingServiceTest extends \PHPUnit_Framework_TestCase{
     */
    public function testReadWithoutPermission(){
 
-      $rentPeriodServiceMock = $this->getMockBuilder('Application\Services\RentPeriodService')
-                                    ->disableOriginalConstructor()
-                                    ->getMock();
-
-      $rentPeriodMock = $this->getMockBuilder('Application\Models\RentPeriod')
-                             ->disableOriginalConstructor()
-                             ->getMock();
-
-      $rentPeriodMock->expects($this->once())
-                     ->method('getRenterId')
-                     ->will($this->returnValue(2));
-
-      $rentPeriodServiceMock->expects($this->once())
-                            ->method('read')
-                            ->will($this->returnValue($rentPeriodMock));
-
-      $userServiceMock = $this->getMockBuilder('Application\Services\UserService')
-                              ->disableOriginalConstructor()
-                              ->getMock();
-
-      $rentalObjectServiceMock = $this->getMockBuilder('Application\Services\RentalObjectService')
-                                      ->disableOriginalConstructor()
-                                      ->getMock();
-
       $bookingMapperMock = $this->getMockBuilder('Application\Mappers\BookingMapper')
                                 ->disableOriginalConstructor()
                                 ->getMock();
 
-      $bookingService = new BookingService($rentPeriodServiceMock, $userServiceMock, $rentalObjectServiceMock, $bookingMapperMock);
+      $bookingMapperMock->expects($this->once())
+                        ->method('read')
+                        ->will($this->returnValue(array()));
+
+      $bookingService = new BookingService($bookingMapperMock);
 
       $userMock = $this->getMockBuilder('Application\Models\User')
                        ->disableOriginalConstructor()
@@ -116,11 +59,7 @@ class BookingServiceTest extends \PHPUnit_Framework_TestCase{
                ->method('getId')
                ->will($this->returnValue(1));
 
-      $bookingDetailsFactoryMock = $this->getMockBuilder('Application\Factories\BookingDetailsFactory')
-                                                ->disableOriginalConstructor()
-                                                ->getMock();
-
-      $bookingService->read(9, $userMock, $bookingDetailsFactoryMock);
+      $bookingService->read(9, $userMock);
    }
 
    public function index(){

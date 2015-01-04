@@ -23,7 +23,7 @@ class ZipCodeValidation extends ValueValidation{
    private function validateIsZipCode($zipCode){
 
       if (!is_string($zipCode)){
-         throw new ApplicationException(sprintf('Ogiltigt %s.'), $this->genericName);
+         throw new ApplicationException(sprintf('Ogiltigt %s.', $this->genericName));
       }
 
       $matches = preg_match('/^[1-9]{3,3}\s[1-9]{2,2}$/', $zipCode);

@@ -42995,17 +42995,6 @@ angular.module('Rentatool')
       }]);
 })();
 ;/**
- * Created by elinnilsson on 29/09/14.
- */
-(function () {
-   angular.module('Rentatool')
-      .controller('BookingController', ['$scope', '$routeParams', 'Booking', function ($scope, $routeParams, Booking) {
-         if ($routeParams.id) {
-            $scope.booking = Booking.get({id: $routeParams.id});
-         }
-      }]);
-})();
-;/**
  * Created by elinnilsson on 03/11/14.
  */
 (function () {
@@ -43139,7 +43128,7 @@ angular.module('Rentatool')
          $scope.calculatePrice = function () {
             var rentPeriodCalculator = new RentPeriodCalculator($scope.rentPeriod);
             rentPeriodCalculator.$save(function (data) {
-               $scope.rentPeriod.price = data.price;
+               $scope.rentPeriod.totalPrice = data.totalPrice;
             });
          };
 

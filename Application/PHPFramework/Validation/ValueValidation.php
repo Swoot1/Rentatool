@@ -34,8 +34,11 @@ abstract class ValueValidation{
    }
 
    public function validate($value){
-      $this->validateNull($value);
-      $this->objectValidation($value);
+
+      if (!($this->allowNull && $value === null)){
+         $this->validateNull($value);
+         $this->objectValidation($value);
+      }
 
       return true;
    }
@@ -48,7 +51,7 @@ abstract class ValueValidation{
     * @throws ApplicationException
     */
    private function validateNull($value){
-      if ($value === null && $this->allowNull === false){
+      if ($this->allowNull === false && $value === null){
          throw new ApplicationException(sprintf('Ange ett värde för %s.', $this->genericName));
       }
 

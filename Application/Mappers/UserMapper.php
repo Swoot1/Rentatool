@@ -18,7 +18,14 @@ class UserMapper{
        id,
        username,
        email,
-       has_confirmed_email AS hasConfirmedEmail
+       has_confirmed_email AS "hasConfirmedEmail",
+       organization_number AS "organizationNumber",
+       address,
+       additional_address_information AS "additionalAddressInformation",
+       zip_code AS "zipCode",
+       city,
+       phone_number AS "phoneNumber",
+       customer_records_id AS "customerRecordsId"
     FROM
       users';
 
@@ -30,7 +37,14 @@ class UserMapper{
           email,
           password,
           administrative_access,
-          has_confirmed_email
+          has_confirmed_email,
+          organization_number,
+          address,
+          additional_address_information,
+          zip_code,
+          city,
+          phone_number,
+          customer_records_id
           )
       VALUES
         (
@@ -38,7 +52,14 @@ class UserMapper{
           :email,
           :password,
           :hasAdministrativeAccess,
-          :hasConfirmedEmail
+          :hasConfirmedEmail,
+          :organizationNumber,
+          :address,
+          :additionalAddressInformation,
+          :zipCode,
+          :city,
+          :phoneNumber,
+          :customerRecordsId
         )
     ';
 
@@ -48,7 +69,14 @@ class UserMapper{
        username,
        email,
        administrative_access AS "hasAdministrativeAccess",
-       has_confirmed_email AS "hasConfirmedEmail"
+       has_confirmed_email AS "hasConfirmedEmail",
+       organization_number AS "organizationNumber",
+       address,
+       additional_address_information AS "additionalAddressInformation",
+       zip_code AS "zipCode",
+       city,
+       phone_number AS "phoneNumber",
+       customer_records_id AS "customerRecordsId"
     FROM
       users
     WHERE
@@ -61,7 +89,14 @@ class UserMapper{
             email,
             password,
             administrative_access AS "hasAdministrativeAccess",
-            has_confirmed_email AS "hasConfirmedEmail"
+            has_confirmed_email AS "hasConfirmedEmail",
+            organization_number AS "organizationNumber",
+            address,
+            additional_address_information AS "additionalAddressInformation",
+            zip_code AS "zipCode",
+            city,
+            phone_number AS "phoneNumber",
+            customer_records_id AS "customerRecordsId"
         FROM
           users
         WHERE
@@ -76,7 +111,14 @@ class UserMapper{
           email = :email,
           password = :password,
           administrative_access = :hasAdministrativeAccess,
-          has_confirmed_email = :hasConfirmedEmail
+          has_confirmed_email = :hasConfirmedEmail,
+          organization_number = :organizationNumber,
+          address = :address,
+          additional_address_information = :additionalAddressInformation,
+          zip_code = :zipCode,
+          city = :city,
+          phone_number = :phoneNumber,
+          customer_records_id = :customerRecordsId
         WHERE
           id = :id
     ';

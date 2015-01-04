@@ -26,10 +26,10 @@ class LuhnValidation extends ValueValidation{
       $digits     = str_split($number);
       $digits     = array_reverse($digits);
       $checkSum   = 0;
-      $multiplier = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2];
 
       foreach ($digits as $key => $digit){
-         $sum = $digit * $multiplier[$key];
+         $multiplier = ($key + 1) % 2 ? 1 : 2;
+         $sum = $digit *  $multiplier;
 
          if ($sum > 9){
             $checkSum += 1 + $sum % 10;

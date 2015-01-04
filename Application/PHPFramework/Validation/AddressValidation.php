@@ -14,7 +14,7 @@ use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 class AddressValidation extends ValueValidation{
 
    protected function objectValidation($value){
-      $matches = preg_match('/^[a-zåäö\d\s]{1,100}$/i', $value);
+      $matches = preg_match('/^[a-zåäö\d\d\s]{1,100}$/i', $value);
 
       if (!$matches){
          throw new ApplicationException('Ogiltig adress.');
