@@ -2,7 +2,7 @@
  * Created by Elin on 2014-06-12.
  */
 (function () {
-   angular.module('Rentatool').controller('RentalObjectListController', ['$scope', '$location', 'RentalObject', 'InactivateRentalObject', 'User', function ($scope, $location, RentalObject, InactivateRentalObject, User) {
+   angular.module('Rentatool').controller('RentalObjectListController', ['$scope', '$location', 'RentalObject', 'InactivateRentalObject', 'User', 'NavigationService', function ($scope, $location, RentalObject, InactivateRentalObject, User, NavigationService) {
       $scope.rentalObjectCollection = RentalObject.query();
       $scope.rentalObjectFilter = {};
       $scope.currentUser = $scope.userIsLoggedIn && User.get({'id': 'currentUser'});
@@ -20,10 +20,6 @@
             GETParams);
       };
 
-      $scope.navigateToRentalObject = function (rentalObject) {
-         $location.path('/rentalobjects/' + rentalObject.id);
-      };
-
       $scope.inactivateRentalObject = function (rentalObject) {
          var indexOfRentalObject;
          var inactivateRentalObjectResource = new InactivateRentalObject(rentalObject);
@@ -36,14 +32,17 @@
       };
 
       $scope.getThumbNailURL = function (rentalObject) {
-         var url = '', id;
+         var url = '', id, extension;
 
          if (rentalObject.fileCollection.length > 0) {
             id = rentalObject.fileCollection[0].id;
-            url = 'Public/RentalObjectPhotos/' + id + '.JPG';
+            extension = rentalObject.fileCollection[0].fileExtension;
+            url = 'Public/RentalObjectPhotos/' + id + '.' + extension;
          }
 
          return url;
       };
+
+       $scope.navigateToRentalObject = NavigationService.navigateToRentalObject;
    }]);
 })();

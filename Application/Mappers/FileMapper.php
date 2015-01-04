@@ -18,7 +18,8 @@ class FileMapper{
       SELECT
          files.id,
          file_type AS "fileType",
-         file_size AS "fileSize"
+         file_size AS "fileSize",
+         file_extension AS "fileExtension"
       FROM
         files
       LEFT JOIN
@@ -33,7 +34,8 @@ class FileMapper{
       SELECT
          id,
          file_type AS "fileType",
-         file_size AS "fileSize"
+         file_size AS "fileSize",
+         file_extension AS "fileExtension"
       FROM
         files
       WHERE
@@ -44,12 +46,14 @@ class FileMapper{
       INSERT INTO files
         (
           file_type,
-          file_size
+          file_size,
+          file_extension
        )
        VALUES
         (
           :fileType,
-          :fileSize
+          :fileSize,
+          :fileExtension
           )
    ';
 

@@ -3,7 +3,7 @@
     <div class="large-12 columns">
         <h2>{{rentalObject.name}}</h2>
         <img style="width:100px; height:100px" ng-repeat="file in rentalObject.fileCollection"
-             ng-src="Public/RentalObjectPhotos/{{file.id}}.JPG">
+             ng-src="Public/RentalObjectPhotos/{{file.id}}.{{file.fileExtension}}">
 
         <form name="rental_object_form" ng-submit="updateRentalObject()">
             <div class="error" ng-show="rental_object_form.name.$dirty && rental_object_form.$invalid">
