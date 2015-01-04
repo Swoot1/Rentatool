@@ -92,7 +92,7 @@ class RentPeriodServiceTest extends \PHPUnit_Framework_TestCase{
       $this->assertEquals($data['fromDate'] . ' 00:00:00', $rentPeriodData['fromDate']);
       $this->assertEquals($data['toDate'] . ' 00:00:00', $rentPeriodData['toDate']);
       $this->assertEquals(1, $rentPeriodData['renterId']);
-      $this->assertEquals(800, $rentPeriodData['price']);
+      $this->assertEquals(800, $rentPeriodData['totalPrice']);
    }
 
    public function testIndex(){

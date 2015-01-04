@@ -15,7 +15,7 @@ class TextValidation extends ValueValidation{
    protected $minLength = 1;
    protected $maxLength = null;
 
-   public function objectValidation($value){
+   protected function objectValidation($value){
       $this->validateText($value);
    }
 

@@ -7,12 +7,12 @@
                 {{booking.rentalObjectName}}</br>
                 Från och med {{booking.fromDate | asDate | date:'yyyy-MM-dd' }}</br>
                 Till och med {{booking.toDate | asDate | date:'yyyy-MM-dd' }}</br>
-                Totalt: {{booking.price}} kr</br>
+                Totalt: {{booking.totalPrice}} kr</br>
             </div>
             <div class="large-5 columns right">
                 Ägare: {{booking.rentalObjectOwnerName}}</br>
-                Tel: 006281907388647</br>
-                E-post: gili.laboheme@gmail.com</br>
+                Tel: {{booking.phoneNumber}}</br>
+                E-post: {{booking.email}}</br>
                 Hämtas: Fri 12th December 2014</br>
                 Lämnas: Sun 14th December 2014</br>
                 Upphämtningstid: 11:00

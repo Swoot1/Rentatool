@@ -218,9 +218,6 @@
 
         <dependency namespace="Application\Services" class="BookingService">
             <dependencies>
-                <dependency namespace="Application\Services" class="RentPeriodService"/>
-                <dependency namespace="Application\Services" class="UserService"/>
-                <dependency namespace="Application\Services" class="RentalObjectService"/>
                 <dependency namespace="Application\Mappers" class="BookingMapper"/>
             </dependencies>
         </dependency>
