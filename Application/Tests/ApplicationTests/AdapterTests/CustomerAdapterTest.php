@@ -18,6 +18,7 @@ class CustomerAdapterTest extends PHPUnit_Framework_TestCase{
 
    public function setUp(){
       $customer = new Customer([
+                               'id'       => '1',
                                'name'     => 'Anki',
                                'address1' => 'Ankgatan 2',
                                'address2' => '',
@@ -40,11 +41,12 @@ class CustomerAdapterTest extends PHPUnit_Framework_TestCase{
          'Accept: ' . FortnoxConfiguration::ACCEPT_TYPE
       ];
 
+
       $this->assertEquals($expectedHeaders, $this->adapter->getRequestHeaders());
    }
 
    public function testGetBody(){
-      $expectedJSON = '{"Customer":{"Name":"Anki","Address1":"Ankgatan 2","Address2":"","ZipCode":"123412","City":"Ankeborg"}}';
+      $expectedJSON = '{"Customer":{"Id":"1","Name":"Anki","Address1":"Ankgatan 2","Address2":"","ZipCode":"123412","City":"Ankeborg"}}';
       $this->assertEquals($expectedJSON, $this->adapter->getRequestBody());
    }
 
