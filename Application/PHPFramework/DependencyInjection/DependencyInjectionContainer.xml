@@ -77,6 +77,14 @@
             </dependencies>
         </dependency>
 
+        <dependency namespace="Application\Controllers" class="CancelRentPeriodController">
+            <dependencies>
+                <dependency namespace="Application\Services" class="RentPeriodService"/>
+                <dependency namespace="Application\PHPFramework\Response\Factories" class="ResponseFactory"/>
+                <dependency namespace="Application\PHPFramework" class="SessionManager"/>
+            </dependencies>
+        </dependency>
+
         <dependency namespace="Application\Controllers" class="MenuController">
             <dependencies>
                 <dependency namespace="Application\PHPFramework\Response\Factories" class="ResponseFactory"/>
@@ -219,6 +227,7 @@
         <dependency namespace="Application\Services" class="BookingService">
             <dependencies>
                 <dependency namespace="Application\Mappers" class="BookingMapper"/>
+                <dependency namespace="Application\Services" class="RentPeriodValidationService"/>
             </dependencies>
         </dependency>
 

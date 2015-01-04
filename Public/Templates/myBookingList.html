@@ -12,6 +12,7 @@
             <div class="row">
                 <div class="large-3 columns">Hämtas: {{ booking.fromDate | asDate | date:'yyyy-MM-dd' }}</div>
                 <div class="large-3 columns left">Lämnas: {{ booking.toDate | asDate | date:'yyyy-MM-dd' }}</div>
+                <button ng-click="cancelRentPeriod(booking)">Avboka</button>
             </div>
         </div>
 

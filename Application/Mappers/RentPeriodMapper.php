@@ -23,7 +23,8 @@ class RentPeriodMapper{
          from_date AS "fromDate",
          to_date AS "toDate",
          price_per_day AS "pricePerDay",
-         total_price AS "totalPrice"
+         total_price AS "totalPrice",
+         cancelled
       FROM
         rent_periods
       WHERE
@@ -39,7 +40,8 @@ class RentPeriodMapper{
             from_date,
             to_date,
             price_per_day,
-            total_price
+            total_price,
+            cancelled
         )
         VALUES
         (
@@ -48,7 +50,8 @@ class RentPeriodMapper{
            :fromDate,
            :toDate,
            :pricePerDay,
-           :totalPrice
+           :totalPrice,
+           :cancelled
         )
    ';
 
@@ -60,7 +63,8 @@ class RentPeriodMapper{
          rent_periods.from_date AS "fromDate",
          rent_periods.to_date AS "toDate",
          rent_periods.price_per_day AS "pricePerDay",
-         rent_periods.total_price AS "totalPrice"
+         rent_periods.total_price AS "totalPrice",
+         cancelled
       FROM
         rent_periods
       LEFT JOIN
@@ -69,6 +73,15 @@ class RentPeriodMapper{
         rental_objects.id = rent_periods.rental_object_id
       WHERE
          renter_id = :userId
+   ';
+
+   private $cancelRentPeriodSQL = '
+      UPDATE
+         rent_periods
+      SET
+        cancelled = 1
+      WHERE
+        id = :id
    ';
 
    public function __construct(IDatabaseConnection $databaseConnection){
@@ -90,5 +103,9 @@ class RentPeriodMapper{
 
    public function index(array $data){
       return $this->databaseConnection->runQuery($this->indexSQL, $data);
+   }
+
+   public function cancelRentPeriod($id){
+      $this->databaseConnection->runQuery($this->cancelRentPeriodSQL, array('id' => $id));
    }
 } 

@@ -9,13 +9,14 @@
 namespace Application\Models;
 
 use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
+use Application\PHPFramework\Validation\BooleanValidation;
 use Application\PHPFramework\Validation\Collections\ValueValidationCollection;
 use Application\PHPFramework\Validation\DateTimeValidation;
 use Application\PHPFramework\Validation\FloatValidation;
 use Application\PHPFramework\Validation\IntegerValidation;
 use Application\PHPFramework\Models\GeneralModel;
 
-class RentPeriod extends GeneralModel{
+class RentPeriod extends GeneralModel implements IGetRenterId{
    protected $id;
    protected $rentalObjectId;
    protected $renterId;
@@ -23,6 +24,7 @@ class RentPeriod extends GeneralModel{
    protected $toDate;
    protected $pricePerDay;
    protected $totalPrice;
+   protected $cancelled = false;
    protected $_setters = array(
       'pricePerDay' => 'setPricePerDay',
       'fromDate'    => 'setFromDate',
@@ -101,6 +103,12 @@ class RentPeriod extends GeneralModel{
                   'propertyName'     => 'pricePerDay',
                   'numberOfDecimals' => 2
                )
+            ),
+            new BooleanValidation(
+               array(
+                  'genericName'  => 'avbokad',
+                  'propertyName' => 'cancelled'
+               )
             )
          )
       );
@@ -134,8 +142,8 @@ class RentPeriod extends GeneralModel{
    }
 
    private function setTotalPrice(){
-      $numberOfDays = $this->getNumberOfDays();
-      $this->totalPrice  = $numberOfDays * $this->pricePerDay;
+      $numberOfDays     = $this->getNumberOfDays();
+      $this->totalPrice = $numberOfDays * $this->pricePerDay;
    }
 
    private function getNumberOfDays(){
