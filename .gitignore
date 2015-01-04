@@ -16,6 +16,6 @@ Public/RentalObjectPhotos
 Application/.DS_Store
 Application/PHPFramework/.DS_Store
 Application/Factories/MailFactory.php
-vendor/
+/vendor/
 composer.lock
 Application/Tests/GuzzleTests/guzzleCookies
