@@ -42,11 +42,19 @@ class RentPeriodService{
    }
 
    public function create(array $data, User $currentUser){
-      $rentPeriod                 = $this->getCalculatedPricePlan($data, $currentUser);
+      $rentPeriod = $this->getCalculatedPricePlan($data, $currentUser);
       $this->rentPeriodValidationService->checkIsValidRentPeriod($rentPeriod);
       $rentPeriodData = $this->rentPeriodMapper->create($rentPeriod->getDBParameters());
 
       return new RentPeriod($rentPeriodData);
+   }
+
+   public function cancelRentPeriod($id, $currentUser){
+      $rentPeriod = $this->read($id);
+      $this->rentPeriodValidationService->checkCurrentUserIsRenter($currentUser, $rentPeriod);
+      $this->rentPeriodMapper->cancelRentPeriod($id);
+
+      return $rentPeriod;
    }
 
    public function getCalculatedPricePlan(array $data, User $currentUser){

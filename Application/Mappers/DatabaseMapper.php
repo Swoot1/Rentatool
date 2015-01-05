@@ -59,6 +59,7 @@ class DatabaseMapper{
          renter_id INTEGER NOT NULL,
          from_date DATETIME NOT NULL,
          to_date DATETIME NOT NULL,
+         cancelled TINYINT(1) DEFAULT 0 NOT NULL,
          price_per_day FLOAT NOT NULL,
          total_price FLOAT NOT NULL,
          CONSTRAINT rent_period_has_a_rental_object_fk FOREIGN KEY (rental_object_id) REFERENCES rental_objects(id),

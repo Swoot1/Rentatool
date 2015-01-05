@@ -11,13 +11,14 @@ namespace Application\Models;
 use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\PHPFramework\Interfaces\IToArray;
 
-class Booking implements IToArray{
+class Booking implements IGetRenterId, IToArray{
 
    private $rentPeriodId;
    private $fromDate;
    private $toDate;
    private $totalPrice;
    private $rentalObjectOwnerName;
+   private $cancelled;
    private $rentalObjectName;
    private $renterId;
    private $phoneNumber;

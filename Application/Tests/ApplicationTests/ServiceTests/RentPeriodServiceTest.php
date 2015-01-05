@@ -31,7 +31,7 @@ class RentPeriodServiceTest extends \PHPUnit_Framework_TestCase{
                                       ->getMock(); // TODO this should not be needed, fix
 
       $rentPeriodService = new RentPeriodService($rentPeriodMapperMock, $rentPeriodValidationServiceMock, $rentalObjectServiceMock);
-      $rentPeriod = $rentPeriodService->read(2);
+      $rentPeriod        = $rentPeriodService->read(2);
 
       $this->assertInstanceOf('Application\Models\RentPeriod', $rentPeriod);
    }
@@ -124,5 +124,40 @@ class RentPeriodServiceTest extends \PHPUnit_Framework_TestCase{
       $rentPeriodCollection = $rentPeriodService->index($userMock);
 
       $this->assertInstanceOf('Application\Collections\RentPeriodCollection', $rentPeriodCollection);
+   }
+
+   public function testCancelRentPeriod(){
+      $rentPeriodMapperMock = $this->getMockBuilder('Application\Mappers\RentPeriodMapper')
+                                   ->disableOriginalConstructor()
+                                   ->getMock();
+
+      $rentPeriodMapperMock->expects($this->once())
+                           ->method('cancelRentPeriod')
+                           ->will($this->returnValue(array()));
+
+      $rentPeriodMapperMock->expects($this->once())
+                           ->method('read')
+                           ->will($this->returnValue(array()));
+
+      $rentPeriodValidationServiceMock = $this->getMockBuilder('Application\Services\RentPeriodValidationService')
+                                              ->disableOriginalConstructor()
+                                              ->getMock();
+
+      $rentalObjectServiceMock = $this->getMockBuilder('Application\Services\RentalObjectService')
+                                      ->disableOriginalConstructor()
+                                      ->getMock();
+
+      $userMock = $this->getMockBuilder('Application\Models\User')
+                       ->disableOriginalConstructor()
+                       ->getMock();
+
+      $userMock->expects($this->once())
+               ->method('getId')
+               ->will($this->returnValue(1));
+
+      $rentPeriodService = new RentPeriodService($rentPeriodMapperMock, $rentPeriodValidationServiceMock, $rentalObjectServiceMock);
+      $rentPeriod        = $rentPeriodService->cancelRentPeriod(1, $userMock);
+
+      $this->assertInstanceOf('Application\Models\RentPeriod', $rentPeriod);
    }
 } 

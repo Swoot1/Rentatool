@@ -28,6 +28,12 @@ $routes['inactivaterentalobjects'] = array(
    'subRoutesCollection'     => new SubRouteCollection()
 );
 
+$routes['cancelrentperiods'] = array(
+   'controllerName'          => 'CancelRentPeriodController',
+   'requestMethodCollection' => new RequestMethodCollection(array('GET')),
+   'subRoutesCollection'     => new SubRouteCollection()
+);
+
 $routes['rentalobjectpayments'] = array(
    'controllerName'          => 'RentalObjectPaymentController',
    'requestMethodCollection' => new RequestMethodCollection(array('POST')),
