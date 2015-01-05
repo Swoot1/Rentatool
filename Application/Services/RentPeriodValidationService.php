@@ -9,6 +9,7 @@
 namespace Application\Services;
 
 
+use Application\Models\IGetRenterId;
 use Application\Models\User;
 use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\Mappers\RentPeriodValidationMapper;
@@ -42,11 +43,11 @@ class RentPeriodValidationService{
    /**
     * Validates that the user is allowed to read the rent period confirmation.
     * @param User $renter
-    * @param RentPeriod $rentPeriod
+    * @param IGetRenterId $rentPeriod
     * @return bool
     * @throws \Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException
     */
-   public function checkCurrentUserIsRenter(User $renter, IToArray $rentPeriod){
+   public function checkCurrentUserIsRenter(User $renter, IGetRenterId $rentPeriod){
       if ($renter->getId() !== $rentPeriod->getRenterId()){
          throw new ApplicationException('Du har inte rättighet att visa den här bokningsbekräftelsen.');
       }

@@ -40,8 +40,7 @@ class RentPeriodMapper{
             from_date,
             to_date,
             price_per_day,
-            total_price,
-            cancelled
+            total_price
         )
         VALUES
         (
@@ -50,8 +49,7 @@ class RentPeriodMapper{
            :fromDate,
            :toDate,
            :pricePerDay,
-           :totalPrice,
-           :cancelled
+           :totalPrice
         )
    ';
 

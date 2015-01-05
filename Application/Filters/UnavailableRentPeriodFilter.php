@@ -51,7 +51,10 @@ class UnavailableRentPeriodFilter extends GeneralModel{
    public function getFilterQuery($query){
 
       if ($this->rentalObjectId != null){
-         $query .= ' WHERE rental_object_id = :rentalObjectId';
+         $query .= ' WHERE
+                        rental_object_id = :rentalObjectId
+                     AND
+                        cancelled = false';
       }
 
       return $query;

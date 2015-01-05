@@ -30,6 +30,9 @@ class RentPeriod extends GeneralModel implements IGetRenterId{
       'fromDate'    => 'setFromDate',
       'toDate'      => 'setToDate'
    );
+   protected $_noDBProperties = array(
+      'cancelled'
+   );
 
    protected function setFromDate($value){
       $this->fromDate = $this->formatDate($value);
