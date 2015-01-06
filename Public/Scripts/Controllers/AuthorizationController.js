@@ -12,7 +12,7 @@
                if (data.isLoggedIn) {
                   $location.path('/rentalobjects/new');
                   $rootScope.$broadcast('loginStateChanged');
-                  authorizationService.logIn();
+                  authorizationService.logIn(data.userId);
                } else {
                   alertBoxService.addAlertBox('alert', 'Misslyckad inloggning!');
                }

@@ -2,16 +2,14 @@
  * Created by elinnilsson on 28/09/14.
  */
 angular.module('Rentatool')
-   .factory('AuthorizationService', ['$rootScope', function ($rootScope) {
+   .factory('AuthorizationService', ['UserService', function (UserService) {
 
-      $rootScope.userIsLoggedIn = false;
-
-      var logIn = function () {
-         $rootScope.userIsLoggedIn = true;
+      var logIn = function (user) {
+         UserService.setCurrentUser(user);
       };
 
       var logOut = function () {
-         $rootScope.userIsLoggedIn = false;
+         UserService.setUserLoggedOut();
       };
 
       return {

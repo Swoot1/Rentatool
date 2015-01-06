@@ -27,7 +27,7 @@ class AuthorizationService{
       $user  = $this->getLoginUser($login);
       $this->sessionManager->setUserData($user->toArray());
 
-      return new Authorization(array('isLoggedIn' => true));
+      return new Authorization(['isLoggedIn' => true, 'userId' => $user->getId()]);
    }
 
    private function getLoginUser(Login $login){

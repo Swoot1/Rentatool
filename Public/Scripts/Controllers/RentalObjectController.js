@@ -3,19 +3,19 @@
  */
 
 (function () {
-   angular.module('Rentatool').controller('RentalObjectController', ['$scope', '$routeParams', 'RentalObject', 'NavigationService', 'RentalObjectService', 'User', function ($scope, $routeParams, RentalObject, NavigationService, RentalObjectService, User) {
+   angular.module('Rentatool').controller('RentalObjectController', ['$scope', '$routeParams', 'RentalObject', 'NavigationService', 'RentalObjectService', 'User', 'UserService', function ($scope, $routeParams, RentalObject, NavigationService, RentalObjectService, User, UserService) {
+
+       var currentUser;
 
       if ($routeParams.id) {
          $scope.rentalObject = RentalObject.get({id: $routeParams.id});
 
-         $scope.currentUser = {};
-
-         if ($scope.userIsLoggedIn) {
-            $scope.currentUser = User.get({'id': 'currentUser'});
+         if (UserService.isLoggedIn()) {
+            currentUser = UserService.getCurrentUser();
          }
 
          $scope.isUserOwner = function () {
-            return $scope.currentUser.id === $scope.rentalObject.userId
+            return currentUser === $scope.rentalObject.userId
          };
       } else {
          $scope.rentalObject = new RentalObject({fileCollection: []});

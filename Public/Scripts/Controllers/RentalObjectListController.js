@@ -2,10 +2,13 @@
  * Created by Elin on 2014-06-12.
  */
 (function () {
-   angular.module('Rentatool').controller('RentalObjectListController', ['$scope', '$location', 'RentalObject', 'InactivateRentalObject', 'User', 'NavigationService', function ($scope, $location, RentalObject, InactivateRentalObject, User, NavigationService) {
+   angular.module('Rentatool').controller('RentalObjectListController', ['$scope', '$location', 'RentalObject', 'InactivateRentalObject', 'User', 'NavigationService', 'UserService', function ($scope, $location, RentalObject, InactivateRentalObject, User, NavigationService, UserService) {
       $scope.rentalObjectCollection = RentalObject.query();
       $scope.rentalObjectFilter = {};
-      $scope.currentUser = $scope.userIsLoggedIn && User.get({'id': 'currentUser'});
+
+       if (UserService.isLoggedIn()) {
+           $scope.currentUser = UserService.getCurrentUser();
+       }
 
       $scope.searchRentalObject = function (rentalObjectFilter) {
          var GETParams = {};
