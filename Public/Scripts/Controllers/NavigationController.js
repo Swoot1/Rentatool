@@ -21,5 +21,6 @@
       $scope.navigateToCreateDatabase = navigationService.navigateToCreateDatabase;
       $scope.navigateToMyBookingList = navigationService.navigateToMyBookingList;
       $scope.navigateToMyRentalObjectsList = navigationService.navigateToMyRentalObjectsList;
+      $scope.navigateToCreateNewRentalObject = navigationService.navigateToCreateNewRentalObject;
    }]);
 }());
