@@ -5,33 +5,65 @@
         <div class="large-6 columns">
 
             <label for="organization_number">Organisationsnummer</label>
-            <input ng-model="user.organizationNumber" name="organization_number" type="text"/>
+            <span ng-messages="{{user_form.organization_number.$error}}">
+                <span ng-message="required">Ange ett organisationsnummer.</span>
+                <span ng-message="pattern">Ange ett giltigt organisationsnummer.</span>
+            </span>
+            <input organizationnumbervalidation required ng-model="user.organizationNumber" name="organization_number"
+                   type="text"/>
 
             <label for="username">Namn</label>
-            <input ng-model="user.username" name="username" type="text"/>
+            <span ng-messages="{{user_form.user_name.$error}}">
+                <span ng-message="required">Ange ett namn.</span>
+                <span ng-message="pattern">Otillåtna tecken. Tillåtna tecken: a-zåäöA-ZÅÄÖ0-9</span>
+            </span>
+            <input alphanumericvalidation required ng-model="user.username" name="username" type="text"/>
 
             <label for="email">E-post</label>
-            <input ng-model="user.email" name="email" type="email"/>
+            <span ng-messages="{{user_form.email.$error}}">
+                <span ng-message="required">Ange en e-postadress.</span>
+            </span>
+            <input ng-model="user.email" required name="email" type="email"/>
 
             <label for="address">Adress</label>
-            <input ng-model="user.address" name="address" type="text"/>
+            <span ng-messages="{{user_form.address.$error}}">
+                <span ng-message="pattern">Otillåtna tecken. Försök igen.</span>
+            </span>
+            <input addressvalidation ng-model="user.address" name="address" type="text"/>
 
             <label for="additional_address_information">Adress 2</label>
-            <input ng-model="user.additionalAddressInformation" name="additional_address_information" type="text"/>
+            <span ng-messages="{{user_form.additional_address_information.$error}}">
+                <span ng-message="pattern">Otillåtna tecken. Försök igen.</span>
+            </span>
+            <input addressvalidation ng-model="user.additionalAddressInformation" name="additional_address_information"
+                   type="text"/>
 
             <label for="zipcode">Postnummer</label>
-            <input ng-model="user.zipCode" name="zipcode" type="text"/>
+            <span ng-messages="{{user_form.zip_code.$error}}">
+                <span ng-message="pattern">Otillåtna tecken. Tillåtna tecken: 0-9.</span>
+            </span>
+            <input zipcodevalidation ng-model="user.zipCode" name="zipcode" type="text"/>
 
             <label for="city">Stad</label>
-            <input ng-model="user.city" name="city" type="text"/>
+            <span ng-messages="{{user_form.city.$error}}">
+                <span ng-message="pattern">Otillåtna tecken. Försök igen.</span>
+            </span>
+            <input cityvalidation ng-model="user.city" name="city" type="text"/>
 
             <label for="phone_number">Telefonnummer</label>
-            <input ng-model="user.phoneNumber" name="phone_number" type="text"/>
+            <span ng-messages="{{user_form.phone_number.$error}}">
+                <span ng-message="pattern">Otillåtna tecken. Försök igen. Tillåtna tecken: 0-9, mellanslag och bindestreck.</span>
+            </span>
+            <input phonenumbervalidation ng-model="user.phoneNumber" name="phone_number"/>
 
             <label for="password">Lösenord</label>
-            <input ng-model="user.password" name="password" type="password"/>
+            <span ng-messages="{{user_form.phone_number.$error}}">
+                <span ng-message="required">Ange ett lösenord.</span>
+                <span ng-message="pattern">Otillåtna tecken. Försök igen.</span>
+            </span>
+            <input passwordvalidation required ng-model="user.password" name="password" type="password"/>
 
-            <button type="submit">Spara användare</button>
+            <button type="submit" ng-disabled="user_form.$invalid">Spara användare</button>
             <button type="button" ng-click="returnToUserList()">Avbryt</button>
         </div>
         <div class="large-6 columns">

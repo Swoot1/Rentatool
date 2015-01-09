@@ -3,7 +3,7 @@
  */
 
 (function () {
-   angular.module('Rentatool', ['ngResource', 'ngRoute', 'blueimp.fileupload'])
+   angular.module('Rentatool', ['ngResource', 'ngRoute', 'blueimp.fileupload', 'ngMessages'])
       .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
          $routeProvider
             .when('/rentalobjects/new', {

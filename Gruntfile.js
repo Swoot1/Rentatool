@@ -16,10 +16,11 @@ module.exports = function (grunt) {
                src: [
                   'Public/css/Foundation/js/vendor/modernizr.js',
                   'Public/css/Foundation/js/vendor/fastclick.js',
-                  'Public/css/Foundation/js/vendor/jquery.js',
+                  'Public/Scripts/Vendor/JQuery/jquery-1.11.2.js',
                   'Public/Scripts/Vendor/JQuery/jquery-ui.js',
                   'Public/Scripts/Vendor/JQuery/jquery.fileupload.js',
                   'Public/Scripts/Vendor/Angular/angular.js',
+                  'Public/Scripts/Vendor/Angular/angular-messages.js',
                   'Public/Scripts/Vendor/Angular/Plugins/angular-resource.js',
                   'Public/Scripts/Vendor/Angular/Plugins/angular-route.js',
                   'Public/Scripts/Vendor/JQuery/jquery.iframe-transport.js',
@@ -28,6 +29,7 @@ module.exports = function (grunt) {
                   'Public/Scripts/app.js',
                   'Public/Scripts/Factories/*.js',
                   'Public/Scripts/Directives/*.js',
+                  'Public/Scripts/Directives/FormValidation/*.js',
                   'Public/Scripts/Filters/*.js',
                   'Public/Scripts/Services/*.js',
                   'Public/Scripts/Controllers/*.js'

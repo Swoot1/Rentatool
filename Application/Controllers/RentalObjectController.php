@@ -55,6 +55,7 @@ class RentalObjectController{
    }
 
    public function read($id){
+
       $rentalObject = $this->rentalObjectService->read($id);
       $this->response->setResponseData($rentalObject);
 
