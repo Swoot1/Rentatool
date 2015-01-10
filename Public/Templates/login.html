@@ -11,11 +11,11 @@
                 <h2 class="front-box-text"><strong class="">Logga in</strong></h2>
 
                 <form ng-submit="attemptLogin()">
-                    <input name="email" type="text" ng-model="login.email" placeholder="E-postadress"/>
+                    <input name="email" type="text" ng-model="login.email" required placeholder="E-postadress"/>
 
                     <div class="row">
                         <div class="large-7 columns">
-                            <input name="password" type="password" ng-model="login.password" placeholder="Lösenord"/>
+                            <input name="password" type="password" ng-model="login.password" required placeholder="Lösenord"/>
                         </div>
                         <div class="large-5 columns">
                             <button type="submit" class="tiny">Logga in</button>
@@ -28,10 +28,10 @@
                 <h2 class="front-box-text"><strong class="">Har du inget konto?</strong> Bli medlem</h2>
 
                 <form name="sign_up_form" ng-submit="createSignUp()">
-                    <input ng-model="signUp.username" name="username" type="text" placeholder="Användarnamn"/>
-                    <input ng-model="signUp.email" name="email" type="email" placeholder="E-postadress"/>
-                    <input ng-model="signUp.password" name="password" type="password" placeholder="Lösenord"/>
-                    <button type="submit" class="tiny">Skapa konto</button>
+                    <input alphanumericvalidation ng-model="signUp.username" required name="username" type="text" placeholder="Användarnamn"/>
+                    <input ng-model="signUp.email" required name="email" type="email" placeholder="E-postadress"/>
+                    <input passwordvalidation ng-model="signUp.password" required name="password" type="password" placeholder="Lösenord"/>
+                    <button type="submit" class="tiny" ng-disabled="sign_up_form.$invalid">Skapa konto</button>
                 </form>
             </div>
         </div>

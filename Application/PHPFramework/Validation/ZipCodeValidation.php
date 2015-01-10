@@ -26,7 +26,7 @@ class ZipCodeValidation extends ValueValidation{
          throw new ApplicationException(sprintf('Ogiltigt %s.', $this->genericName));
       }
 
-      $matches = preg_match('/^[1-9]{3,3}\s[1-9]{2,2}$/', $zipCode);
+      $matches = preg_match('/^[\d]{3,3}\s[\d]{2,2}$/', $zipCode);
 
       if (!$matches){
          throw new ApplicationException(sprintf('Ogiltigt %s.', $this->genericName));
