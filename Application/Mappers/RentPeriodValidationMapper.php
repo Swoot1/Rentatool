@@ -26,6 +26,8 @@ class RentPeriodValidationMapper{
            to_date >= :fromDate
          AND
            rental_object_id = :rentalObjectId
+         AND
+           cancelled = 0
         )
       AS
         "numberOfExistingRentPeriods";
