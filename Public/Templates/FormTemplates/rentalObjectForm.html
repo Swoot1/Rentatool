@@ -1,0 +1,53 @@
+<div>
+    <form id="fileupload" action="http://jquery-file-upload.appspot.com/" method="POST"
+          enctype="multipart/form-data" data-ng-app="Rentatool" data-ng-controller="RentalObjectPhotoController"
+          data-file-upload="file.options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}"
+          class="ng-scope ng-pristine ng-valid">
+        <input type="file" name="files[]" ng-disabled="disabled">
+    </form>
+    <div ng-repeat="file in rentalObject.fileCollection">
+        <img style="width:100px; height:100px"
+             ng-src="Public/RentalObjectPhotos/{{file.id}}.{{file.fileExtension}}">
+    </div>
+    <form name="rental_object_form" ng-submit="rentalObjectFormConfiguration.submitFunction()"
+          ng-model-options="{updateOn: 'blur'}">
+        <label ng-class="{error: rental_object_form.name.$invalid && rental_object_form.name.$dirty}">Rubrik
+            <small>Obligatorisk</small>
+            <input textvalidation type="text" name="name" editright ng-model="rentalObject.name" ng-maxlength="30"
+                   required
+                   ng-focus/>
+        </label>
+            <span ng-messages="rental_object_form.name.$error" ng-if="rental_object_form.name.$dirty">
+                <small class="error" ng-message="required"> Ange en rubrik.</small>
+                <small class="error" ng-message="pattern">Otillåtna tecken. Försök igen.</small>
+            </span>
+
+        <label ng-class="{error: rental_object_form.price_per_day.$invalid && rental_object_form.price_per_day.$dirty}">Pris
+            per dag
+            <small>Obligatorisk</small>
+            <input name="price_per_day" editright required min="1" max="1000000" type="number"
+                   ng-model="rentalObject.pricePerDay"/>
+        </label>
+            <span ng-messages="rental_object_form.price_per_day.$error" ng-if="rental_object_form.price_per_day.$dirty">
+                <small class="error" ng-message="required">Ange ett pris.</small>
+                <small class="error" ng-message="max">Ange ett pris mellan 1-1 000 000.</small>
+                <small class="error" ng-message="min">Ange ett pris mellan 1-1 000 000.</small>
+            </span>
+
+        <label ng-class="{error: rental_object_form.description.$invalid && rental_object_form.description.$dirty}">Beskrivning
+            <small>Obligatorisk</small>
+            <textarea name="description" editright required textvalidation ng-maxlength="3000"
+                      ng-model="rentalObject.description"></textarea>
+        </label>
+            <span ng-messages="rental_object_form.description.$error" ng-if="rental_object_form.description.$dirty">
+                <small class="error" ng-message="required">Ange ett pris.</small>
+                <small class="error" ng-message="max">Beskrivningen kan högst vara 3000 tecken.</small>
+                <small class="error" ng-message="pattern">Otillåtna tecken. Försök igen.</small>
+            </span>
+
+        <button type="submit" class="tiny" editright ng-disabled="rental_object_form.$invalid">
+            {{rentalObjectFormConfiguration.submitButtonText}}
+        </button>
+        <button type="button" class="tiny" ng-click="navigateToRentalObjectList()">Avbryt</button>
+    </form>
+</div>

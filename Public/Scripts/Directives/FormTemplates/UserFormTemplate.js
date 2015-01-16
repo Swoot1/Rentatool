@@ -6,7 +6,7 @@
       return {
          restrict: 'A',
          replace: true,
-         templateUrl: 'Public/Templates/FormTemplates/userFormTemplate.html'
+         templateUrl: 'Public/Templates/FormTemplates/userForm.html'
       };
    }]);
 })();
