@@ -5,7 +5,16 @@
 (function () {
    angular.module('Rentatool').controller('RentalObjectController', ['$scope', '$routeParams', 'RentalObject', 'NavigationService', 'RentalObjectService', 'User', 'UserService', function ($scope, $routeParams, RentalObject, NavigationService, RentalObjectService, User, UserService) {
 
-       var currentUser;
+      var currentUser;
+
+      var createRentalObject = function () {
+         $scope.rentalObject.$save({});
+      };
+
+      var updateRentalObject = function () {
+         $scope.rentalObject.$update({});
+      };
+
 
       if ($routeParams.id) {
          $scope.rentalObject = RentalObject.get({id: $routeParams.id});
@@ -17,17 +26,18 @@
          $scope.isUserOwner = function () {
             return currentUser === $scope.rentalObject.userId
          };
+
+         $scope.rentalObjectFormConfiguration = {
+            submitFunction: updateRentalObject,
+            submitButtonText: 'Uppdatera uthyrningsobjekt'
+         };
       } else {
          $scope.rentalObject = new RentalObject({fileCollection: []});
+         $scope.rentalObjectFormConfiguration = {
+            submitFunction: createRentalObject,
+            submitButtonText: 'Spara uthyrningsobjekt'
+         };
       }
-
-      $scope.createRentalObject = function () {
-         $scope.rentalObject.$save({});
-      };
-
-      $scope.updateRentalObject = function () {
-         $scope.rentalObject.$update({});
-      };
 
       $scope.navigateToRentalObjectList = NavigationService.navigateToRentalObjectList;
 

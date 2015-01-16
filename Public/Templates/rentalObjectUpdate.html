@@ -5,20 +5,7 @@
         <img style="width:100px; height:100px" ng-repeat="file in rentalObject.fileCollection"
              ng-src="Public/RentalObjectPhotos/{{file.id}}.{{file.fileExtension}}">
 
-        <form name="rental_object_form" ng-submit="updateRentalObject()">
-            <div class="error" ng-show="rental_object_form.name.$dirty && rental_object_form.$invalid">
-            </div>
-            <input type="text" id="rentalObject" ng-class="{editable: !isUserOwner()}" ng-readonly="!isUserOwner()" ng-model="rentalObject.name"
-                   ng-placeholder="Namn"
-                   ng-focus/>
-            <input type="text" ng-class="{editable: !isUserOwner()}" ng-readonly="!isUserOwner()" ng-model="rentalObject.pricePerDay"
-                   placeholder="Ange pris per dag"/>
-            <textarea ng-class="{editable: !isUserOwner()}" ng-readonly="!isUserOwner()" ng-model="rentalObject.description"
-                      placeholder="Ange en beskrivning av objektet."></textarea>
-            <button type="submit" class="tiny" ng-show="isUserOwner()" ng-disabled="rental_object_form.$invalid">Spara
-                ändringar
-            </button>
-        </form>
+        <span rentalobjectformtemplate></span>
 
         <span ng-controller="RentObjectController">
             <h2>Hyr</h2>

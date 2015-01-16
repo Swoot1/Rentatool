@@ -30,8 +30,7 @@ module.exports = function (grunt) {
                   'Public/Scripts/app.js',
                   'Public/Scripts/Factories/*.js',
                   'Public/Scripts/Directives/*.js',
-                  'Public/Scripts/Directives/FormValidation/*.js',
-                  'Public/Scripts/Directives/Parsers/*.js',
+                  'Public/Scripts/Directives/**/*.js',
                   'Public/Scripts/Filters/*.js',
                   'Public/Scripts/Services/*.js',
                   'Public/Scripts/Controllers/*.js'
@@ -63,8 +62,7 @@ module.exports = function (grunt) {
                      'Public/Scripts/app.js',
                      'Public/Scripts/Factories/*.js',
                      'Public/Scripts/Directives/*.js',
-                     'Public/Scripts/Directives/FormValidation/*.js',
-                     'Public/Scripts/Directives/Parsers/*.js',
+                     'Public/Scripts/Directives/**/*.js',
                      'Public/Scripts/Filters/*.js',
                      'Public/Scripts/Services/*.js',
                      'Public/Scripts/Controllers/*.js'

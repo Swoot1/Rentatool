@@ -1,41 +1,4 @@
 <div class="row">
-    <h2 ng-model="user">Uppdatera användare {{username}}</h2>
-
-    <form name="user_form" ng-submit="updateUser()">
-        <div class="large-6 columns">
-            <label for="organization_number">Organisationsnummer</label>
-            <input ng-model="user.organizationNumber" name="organization_number" type="text"/>
-
-            <label for="username">Namn</label>
-            <input ng-model="user.username" name="username" type="text"/>
-
-            <label for="email">E-post</label>
-            <input ng-model="user.email" name="email" type="email"/>
-
-            <label for="address">Adress</label>
-            <input ng-model="user.address" name="address" type="text"/>
-
-            <label for="additional_address_information">Adress 2</label>
-            <input ng-model="user.additionalAddressInformation" name="additional_address_information" type="text"/>
-
-            <label for="zipcode">Postnummer</label>
-            <input ng-model="user.zipCode" name="zipcode" type="text"/>
-
-            <label for="city">Stad</label>
-            <input ng-model="user.city" name="city" type="text"/>
-
-            <label for="phone_number">Telefonnummer</label>
-            <input ng-model="user.phoneNumber" name="phone_number" type="text"/>
-
-            <label for="password">Lösenord</label>
-            <input ng-model="user.password" name="password" type="password"/>
-
-            <button type="submit">Spara ändringar</button>
-            <button type="button" ng-click="returnToUserList()">Avbryt</button>
-        </div>
-        <div class="large-6 columns">
-            <label for="hasAdministrativeAccess">Administratör</label>
-            <input type="checkbox" ng-model="user.hasAdministrativeAccess" name="hasAdministrativeAccess"/>
-        </div>
-    </form>
+    <h2 ng-model="user">Uppdatera användare</h2>
+    <span userformtemplate></span>
 </div>
