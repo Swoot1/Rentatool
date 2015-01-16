@@ -22,6 +22,8 @@ class DatabaseMapper{
    private $createTableSQL = "
       CREATE TABLE IF NOT EXISTS users(
          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+         pick_up_time_from TIMESTAMP DEFAULT NULL,
+         drop_off_time_to TIMESTAMP DEFAULT NULL
          username VARCHAR(50) NOT NULL UNIQUE,
          email VARCHAR(128) NOT NULL UNIQUE,
          password VARCHAR(60) NOT NULL,

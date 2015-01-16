@@ -25,7 +25,9 @@ class UserMapper{
        zip_code AS "zipCode",
        city,
        phone_number AS "phoneNumber",
-       customer_records_id AS "customerRecordsId"
+       customer_records_id AS "customerRecordsId",
+       pick_up_time_from AS "pickUpTimeFrom",
+       drop_off_time_to AS "dropOffTimeTo"
     FROM
       users';
 
@@ -44,7 +46,9 @@ class UserMapper{
           zip_code,
           city,
           phone_number,
-          customer_records_id
+          customer_records_id,
+          pick_up_time_from,
+          drop_off_time_to
           )
       VALUES
         (
@@ -59,7 +63,9 @@ class UserMapper{
           :zipCode,
           :city,
           :phoneNumber,
-          :customerRecordsId
+          :customerRecordsId,
+          :pickUpTimeFrom,
+          :dropOffTimeTo
         )
     ';
 
@@ -76,7 +82,9 @@ class UserMapper{
        zip_code AS "zipCode",
        city,
        phone_number AS "phoneNumber",
-       customer_records_id AS "customerRecordsId"
+       customer_records_id AS "customerRecordsId",
+       pick_up_time_from AS "pickUpTimeFrom",
+       drop_off_time_to AS "dropOffTimeTo"
     FROM
       users
     WHERE
@@ -96,7 +104,9 @@ class UserMapper{
             zip_code AS "zipCode",
             city,
             phone_number AS "phoneNumber",
-            customer_records_id AS "customerRecordsId"
+            customer_records_id AS "customerRecordsId",
+            pick_up_time_from AS "pickUpTimeFrom",
+            drop_off_time_to AS "dropOffTimeTo"
         FROM
           users
         WHERE
@@ -118,7 +128,9 @@ class UserMapper{
           zip_code = :zipCode,
           city = :city,
           phone_number = :phoneNumber,
-          customer_records_id = :customerRecordsId
+          customer_records_id = :customerRecordsId,
+          pick_up_time_from = :pickUpTimeFrom,
+          drop_off_time_to = :dropOffTimeTo
         WHERE
           id = :id
     ';

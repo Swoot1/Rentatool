@@ -13,6 +13,7 @@ use Application\PHPFramework\Validation\CityValidation;
 use Application\PHPFramework\Validation\Collections\ValueValidationCollection;
 use Application\PHPFramework\Validation\AlphaNumericValidation;
 use Application\PHPFramework\Validation\BooleanValidation;
+use Application\PHPFramework\Validation\DateTimeValidation;
 use Application\PHPFramework\Validation\EmailValidation;
 use Application\PHPFramework\Validation\IntegerValidation;
 use Application\PHPFramework\Validation\OrganizationNumberValidation;
@@ -36,6 +37,8 @@ class User extends GeneralModel{
    protected $city = null;
    protected $phoneNumber;
    protected $customerRecordsId = null;
+   protected $pickUpTimeFrom = null;
+   protected $dropOffTimeTo = null;
 
    public function __construct(array $data){
       parent::__construct($data);
@@ -119,6 +122,20 @@ class User extends GeneralModel{
                                                                array(
                                                                   'genericName'  => 'telefonnummer',
                                                                   'propertyName' => 'phoneNumber',
+                                                                  'allowNull'    => true
+                                                               )
+                                                            ),
+                                                            new DateTimeValidation(
+                                                               array(
+                                                                  'genericName'  => 'upphämtningstid',
+                                                                  'propertyName' => 'pickUpTime',
+                                                                  'allowNull'    => true
+                                                               )
+                                                            ),
+                                                            new DateTimeValidation(
+                                                               array(
+                                                                  'genericName'  => 'avlämningstid',
+                                                                  'propertyName' => 'dropOffTime',
                                                                   'allowNull'    => true
                                                                )
                                                             )
