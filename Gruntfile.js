@@ -23,6 +23,7 @@ module.exports = function (grunt) {
                   'Public/Scripts/Vendor/Angular/angular-messages.js',
                   'Public/Scripts/Vendor/Angular/Plugins/angular-resource.js',
                   'Public/Scripts/Vendor/Angular/Plugins/angular-route.js',
+                  'Public/Scripts/Vendor/Angular/Plugins/angular-cookies.js',
                   'Public/Scripts/Vendor/JQuery/jquery.iframe-transport.js',
                   'Public/Scripts/Vendor/JQuery/jquery.fileupload-process.js',
                   'Public/Scripts/Vendor/JQuery/jquery.fileupload-angular.js',
@@ -30,6 +31,7 @@ module.exports = function (grunt) {
                   'Public/Scripts/Factories/*.js',
                   'Public/Scripts/Directives/*.js',
                   'Public/Scripts/Directives/FormValidation/*.js',
+                  'Public/Scripts/Directives/Parsers/*.js',
                   'Public/Scripts/Filters/*.js',
                   'Public/Scripts/Services/*.js',
                   'Public/Scripts/Controllers/*.js'
@@ -54,6 +56,7 @@ module.exports = function (grunt) {
                      'Public/Scripts/Vendor/Angular/angular-messages.js',
                      'Public/Scripts/Vendor/Angular/Plugins/angular-resource.js',
                      'Public/Scripts/Vendor/Angular/Plugins/angular-route.js',
+                     'Public/Scripts/Vendor/Angular/Plugins/angular-cookies.js',
                      'Public/Scripts/Vendor/JQuery/jquery.iframe-transport.js',
                      'Public/Scripts/Vendor/JQuery/jquery.fileupload-process.js',
                      'Public/Scripts/Vendor/JQuery/jquery.fileupload-angular.js',
@@ -61,6 +64,7 @@ module.exports = function (grunt) {
                      'Public/Scripts/Factories/*.js',
                      'Public/Scripts/Directives/*.js',
                      'Public/Scripts/Directives/FormValidation/*.js',
+                     'Public/Scripts/Directives/Parsers/*.js',
                      'Public/Scripts/Filters/*.js',
                      'Public/Scripts/Services/*.js',
                      'Public/Scripts/Controllers/*.js'

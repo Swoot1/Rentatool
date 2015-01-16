@@ -19,7 +19,7 @@ class CityValidation extends ValueValidation{
          throw new ApplicationException(sprintf('Ogiltig %s.'), $this->genericName);
       }
 
-      $matches = preg_match('/^[a-zåäö\d\s]{1,100}$/i', $value);
+      $matches = preg_match('/^[a-zåäö\s]{1,100}$/i', $value); // TODO not working with Åtorp
 
       if (!$matches){
          throw new ApplicationException('Ogiltig stad.');

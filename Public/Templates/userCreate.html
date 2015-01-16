@@ -81,6 +81,14 @@
                 <small class="error" ng-message="pattern">Otillåtna tecken. Försök igen.</small>
             </span>
 
+            <label for="pick_up_time_from">Upphämtningstid
+                <input timetodatetimeformatter disabletimevalidation ng-model="user.pickUpTime" name="pick_up_time_from" type="time"/>
+            </label>
+
+            <label for="drop_off_time_to">Återlämningstid
+                <input ng-model="user.dropOffTime" timetodatetimeformatter disabletimevalidation name="drop_off_time_to" type="time"/>
+            </label>
+
             <button type="submit" ng-disabled="user_form.$invalid">Spara användare</button>
             <button type="button" ng-click="returnToUserList()">Avbryt</button>
         </div>
