@@ -122,7 +122,9 @@ class DatabaseMapper{
             'zipCode'                      => null,
             'city'                         => null,
             'phoneNumber'                  => null,
-            'customerRecordsId'            => null
+            'customerRecordsId'            => null,
+            'pickUpTimeFrom'               => null,
+            'dropOffTimeTo'                => null
          ),
          array(
             'username'                     => 'elin',
@@ -136,7 +138,9 @@ class DatabaseMapper{
             'zipCode'                      => null,
             'city'                         => null,
             'phoneNumber'                  => null,
-            'customerRecordsId'            => null
+            'customerRecordsId'            => null,
+            'pickUpTimeFrom'               => null,
+            'dropOffTimeTo'                => null
          )
       );
 
