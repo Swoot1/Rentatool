@@ -10,8 +10,17 @@
          require: 'ngModel',
          link: function (scope, element, attributes, ngModelController) {
             var dateObject, date, timeValues, year, month, hours, minutes;
+
+            // When the data has to be shown as a date object in frontend
+            ngModelController.$formatters.unshift(createDateFromTimeString);
+
+            function createDateFromTimeString(dateTime) {
+               return new Date(dateTime);
+            }
+
             ngModelController.$parsers.unshift(formatDate);
 
+            // But saved as a timestamp in backend.
             function formatDate(viewValue) {
 
                if (!viewValue) {
@@ -29,6 +38,7 @@
 
                return year + '-' + month + '-' + date + ' ' + hours + ':' + minutes + ':00';
             }
+
          }
       };
    }])

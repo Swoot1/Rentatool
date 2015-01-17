@@ -47,10 +47,10 @@
             </span>
 
         <label ng-class="{'error' : user_form.zip_code.$invalid && user_form.zip_code.$dirty}" for="zipcode">Postnummer
-            <input zipcodevalidation ng-model="user.zipCode" name="zip_code" type="text"/>
+            <input zipcodevalidation ng-model="user.zipCode" zipcodeparser name="zip_code" type="text"/>
         </label>
             <span ng-messages="user_form.zip_code.$error" ng-if="user_form.zip_code.$dirty">
-                <small class="error" ng-message="pattern">Otillåtna tecken. Tillåtna tecken: 0-9.</small>
+                <small class="error" ng-message="pattern">Otillåtna tecken. Tillåtna tecken: 0-9 och mellanslag.</small>
             </span>
 
         <label ng-class="{'error' : user_form.city.$invalid && user_form.city.$dirty}" for="city">Stad
