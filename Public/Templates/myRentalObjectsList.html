@@ -4,7 +4,11 @@
     </div>
 </div>
 <div class="row cursor-pointer" ng-click="navigateToRentalObject(rentalObject)" ng-repeat="rentalObject in rentalObjectCollection">
-    <div class="column large-4">
+    <div class="column large-3">
         <p>{{rentalObject.name}}</p>
+    </div>
+    <div class="column large-3 end">
+        <button type="button" ng-click="inactivateRentalObject(rentalObject)" stopeventpropagation class="alert tiny">Inaktivera
+        </button>
     </div>
 </div>

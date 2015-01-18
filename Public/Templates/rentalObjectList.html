@@ -34,11 +34,6 @@
     <div class="column large-2">
         {{rentalObject.pricePerDay}} kr/dag
     </div>
-    <div class="column large-3 end">
-        <button type="button" ng-click="inactivateRentalObject(rentalObject)" stopeventpropagation
-                ng-show="rentalObject.userId === currentUser" class="alert tiny">Inaktivera
-        </button>
-    </div>
 </div>
 
 <p ng-hide="rentalObjectCollection.length">Hittade inga träffar. Prova att söka på något annat.</p>
