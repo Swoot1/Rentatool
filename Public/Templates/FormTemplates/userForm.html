@@ -1,7 +1,7 @@
 <form name="user_form" ng-submit="userFormConfiguration.submitFunction()" ng-model-options="{updateOn: 'blur'}">
     <div class="large-6 columns">
         <label ng-class="{'error' : user_form.organization_number.$invalid && user_form.organization_number.$dirty}"
-               for="organization_number">Organisationsnummer
+               for="organization_number">Organisationsnummer 10 siffror eller personnummer 12 siffror.
             <small>Obligatorisk</small>
             <input organizationnumbervalidation required ng-model="user.organizationNumber"
                    name="organization_number" type="text"/>
@@ -47,10 +47,10 @@
             </span>
 
         <label ng-class="{'error' : user_form.zip_code.$invalid && user_form.zip_code.$dirty}" for="zipcode">Postnummer
-            <input zipcodevalidation ng-model="user.zipCode" name="zip_code" type="text"/>
+            <input zipcodevalidation ng-model="user.zipCode" zipcodeparser name="zip_code" type="text"/>
         </label>
             <span ng-messages="user_form.zip_code.$error" ng-if="user_form.zip_code.$dirty">
-                <small class="error" ng-message="pattern">Otillåtna tecken. Tillåtna tecken: 0-9.</small>
+                <small class="error" ng-message="pattern">Otillåtna tecken. Tillåtna tecken: 0-9 och mellanslag.</small>
             </span>
 
         <label ng-class="{'error' : user_form.city.$invalid && user_form.city.$dirty}" for="city">Stad
@@ -80,13 +80,13 @@
             </span>
 
         <label for="pick_up_time_from">Hämtas fr.om.
-            <input timetodatetimeformatter disabletimevalidation ng-model="user.pickUpTimeFrom" name="pick_up_time_from"
-                   type="time"/>
+            <input type="text" placeholder="T.ex. 10:00" timetodatetimeformatter ng-model="user.pickUpTimeFrom"
+                   name="pick_up_time_from"/>
         </label>
 
         <label for="drop_off_time_to">Lämnas t.om.
-            <input ng-model="user.dropOffTimeTo" timetodatetimeformatter disabletimevalidation name="drop_off_time_to"
-                   type="time"/>
+            <input type="text" placeholder="T.ex. 16:00" ng-model="user.dropOffTimeTo" timetodatetimeformatter
+                   name="drop_off_time_to"/>
         </label>
 
         <button type="submit" ng-disabled="user_form.$invalid">{{userFormConfiguration.submitButtonText}}</button>

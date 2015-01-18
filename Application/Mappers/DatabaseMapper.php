@@ -23,7 +23,7 @@ class DatabaseMapper{
       CREATE TABLE IF NOT EXISTS users(
          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
          pick_up_time_from TIMESTAMP DEFAULT NULL,
-         drop_off_time_to TIMESTAMP DEFAULT NULL
+         drop_off_time_to TIMESTAMP DEFAULT NULL,
          username VARCHAR(50) NOT NULL UNIQUE,
          email VARCHAR(128) NOT NULL UNIQUE,
          password VARCHAR(60) NOT NULL,
@@ -32,7 +32,7 @@ class DatabaseMapper{
          organization_number VARCHAR(12) NOT NULL,
          address VARCHAR(100) DEFAULT NULL,
          additional_address_information VARCHAR(100) DEFAULT NULL,
-         zip_code INTEGER DEFAULT NULL,
+         zip_code VARCHAR(6) DEFAULT NULL,
          city VARCHAR(50) DEFAULT NULL,
          phone_number VARCHAR(30) DEFAULT NULL,
          customer_records_id INTEGER DEFAULT NULL UNIQUE
@@ -122,7 +122,9 @@ class DatabaseMapper{
             'zipCode'                      => null,
             'city'                         => null,
             'phoneNumber'                  => null,
-            'customerRecordsId'            => null
+            'customerRecordsId'            => null,
+            'pickUpTimeFrom'               => null,
+            'dropOffTimeTo'                => null
          ),
          array(
             'username'                     => 'elin',
@@ -136,7 +138,9 @@ class DatabaseMapper{
             'zipCode'                      => null,
             'city'                         => null,
             'phoneNumber'                  => null,
-            'customerRecordsId'            => null
+            'customerRecordsId'            => null,
+            'pickUpTimeFrom'               => null,
+            'dropOffTimeTo'                => null
          )
       );
 
