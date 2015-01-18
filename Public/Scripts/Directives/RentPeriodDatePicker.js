@@ -6,32 +6,36 @@
       return {
          require: 'ngModel',
          link: function (scope, element, attrs, ngModelCtrl) {
-            var rentalObjectId = attrs['rentalObjectId'];
-            var unavailableRentPeriods;
+             scope.$watch('rentalObject', function(rentalObject) {
 
-            if (rentalObjectId) {
-               UnavailableRentPeriodService.getUnavailableRentPeriods(rentalObjectId, function (result) {
-                     unavailableRentPeriods = result;
-                     element.datepicker();
+                 var rentalObjectId = rentalObject.id;
+                 var unavailableRentPeriods;
 
-                     element.datepicker('option', 'dateFormat', 'yy-mm-dd');
-                     element.datepicker('option', 'minDate', 0);
-                     element.datepicker('option', 'onSelect', function (dateText) {
-                        ngModelCtrl.$setViewValue(dateText);
-                        scope.$apply();
-                     });
+                 if (rentalObjectId) {
+                     UnavailableRentPeriodService.getUnavailableRentPeriods(rentalObjectId, function (result) {
+                             unavailableRentPeriods = result;
+                             element.datepicker();
+
+                             element.datepicker('option', 'dateFormat', 'yy-mm-dd');
+                             element.datepicker('option', 'minDate', 0);
+                             element.datepicker('option', 'onSelect', function (dateText) {
+                                 ngModelCtrl.$setViewValue(dateText);
+                                 scope.$apply();
+                             });
 
 
-                     element.datepicker('option', 'beforeShowDay', function (date) {
-                        var unavailableRentDate = unavailableRentPeriods.some(function (unavailableRentPeriod) {
-                           return date >= new Date(unavailableRentPeriod.fromDate) && date <= new Date(unavailableRentPeriod.toDate);
-                        });
+                             element.datepicker('option', 'beforeShowDay', function (date) {
+                                 var unavailableRentDate = unavailableRentPeriods.some(function (unavailableRentPeriod) {
+                                     return date >= new Date(unavailableRentPeriod.fromDate) && date <= new Date(unavailableRentPeriod.toDate);
+                                 });
 
-                        return unavailableRentDate ? [false, '', 'Verkar som att någon annan hann före dig.'] : [true];
-                     });
-                  }
-               );
-            }
+                                 return unavailableRentDate ? [false, '', 'Verkar som att någon annan hann före dig.'] : [true];
+                             });
+                         }
+                     );
+                 }
+
+             }, true);
          }
       };
    }]);
