@@ -7,19 +7,17 @@
 
         <span rentalobjectformtemplate></span>
 
-        <span ng-controller="RentObjectController">
+        <span>
             <h2>Hyr</h2>
 
             <form ng-submit="createRentPeriod()">
 
                 <div class="row">
                     <div class="large-2 columns">
-                        <input type="text" ng-model="rentPeriod.fromDate" rentperioddatepicker
-                               rental_object_id="{{rentPeriod.rentalObjectId}}" placeholder="Från och med"/>
+                        <input type="text" ng-model="rentPeriod.fromDate" rentperioddatepicker placeholder="Från och med"/>
                     </div>
                     <div class="large-2 columns left">
-                        <input type="text" ng-model="rentPeriod.toDate" rentperioddatepicker
-                               rental_object_id="{{rentPeriod.rentalObjectId}}" placeholder="Till och med"/>
+                        <input type="text" ng-model="rentPeriod.toDate" rentperioddatepicker placeholder="Till och med"/>
                     </div>
                 </div>
 
