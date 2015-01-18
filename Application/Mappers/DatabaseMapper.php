@@ -32,7 +32,7 @@ class DatabaseMapper{
          organization_number VARCHAR(12) NOT NULL,
          address VARCHAR(100) DEFAULT NULL,
          additional_address_information VARCHAR(100) DEFAULT NULL,
-         zip_code INTEGER DEFAULT NULL,
+         zip_code VARCHAR(6) DEFAULT NULL,
          city VARCHAR(50) DEFAULT NULL,
          phone_number VARCHAR(30) DEFAULT NULL,
          customer_records_id INTEGER DEFAULT NULL UNIQUE

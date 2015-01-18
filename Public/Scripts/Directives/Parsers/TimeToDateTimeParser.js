@@ -15,7 +15,12 @@
             ngModelController.$formatters.unshift(createDateFromTimeString);
 
             function createDateFromTimeString(dateTime) {
-               return new Date(dateTime);
+
+               if (!dateTime) {
+                  return dateTime;
+               }
+
+               return dateTime.slice(11, 16);
             }
 
             ngModelController.$parsers.unshift(formatDate);
@@ -38,7 +43,6 @@
 
                return year + '-' + month + '-' + date + ' ' + hours + ':' + minutes + ':00';
             }
-
          }
       };
    }])

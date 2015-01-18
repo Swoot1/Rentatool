@@ -80,13 +80,13 @@
             </span>
 
         <label for="pick_up_time_from">Hämtas fr.om.
-            <input timetodatetimeformatter disabletimevalidation ng-model="user.pickUpTimeFrom" name="pick_up_time_from"
-                   type="time"/>
+            <input type="text" placeholder="T.ex. 10:00" timetodatetimeformatter ng-model="user.pickUpTimeFrom"
+                   name="pick_up_time_from"/>
         </label>
 
         <label for="drop_off_time_to">Lämnas t.om.
-            <input ng-model="user.dropOffTimeTo" timetodatetimeformatter disabletimevalidation name="drop_off_time_to"
-                   type="time"/>
+            <input type="text" placeholder="T.ex. 16:00" ng-model="user.dropOffTimeTo" timetodatetimeformatter
+                   name="drop_off_time_to"/>
         </label>
 
         <button type="submit" ng-disabled="user_form.$invalid">{{userFormConfiguration.submitButtonText}}</button>
