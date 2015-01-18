@@ -1,7 +1,7 @@
 <form name="user_form" ng-submit="userFormConfiguration.submitFunction()" ng-model-options="{updateOn: 'blur'}">
     <div class="large-6 columns">
         <label ng-class="{'error' : user_form.organization_number.$invalid && user_form.organization_number.$dirty}"
-               for="organization_number">Organisationsnummer
+               for="organization_number">Organisationsnummer 10 siffror eller personnummer 12 siffror.
             <small>Obligatorisk</small>
             <input organizationnumbervalidation required ng-model="user.organizationNumber"
                    name="organization_number" type="text"/>
