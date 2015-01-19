@@ -17,6 +17,7 @@ class Pagination extends GeneralModel implements IPagination{
    protected $page;
    protected $entryLimit = 10;
    protected $rowCount = null;
+   protected $parameters = array();
 
    public function __construct(array $data){
       foreach ($data as $key => $value){
@@ -55,10 +56,12 @@ class Pagination extends GeneralModel implements IPagination{
       $zeroBasedPageNumber = $this->page - 1;
 
       if ($zeroBasedPageNumber > 0){
-         $entryLimitSQL .= $zeroBasedPageNumber * $this->entryLimit . ',';
+         $entryLimitSQL .= ':startLimit,';
+         $this->parameters['startLimit'] = (int)$zeroBasedPageNumber * $this->entryLimit;
       }
 
-      $entryLimitSQL .= $this->entryLimit;
+      $entryLimitSQL .= ':endLimit';
+      $this->parameters['endLimit'] = (int)$this->entryLimit;
 
       return $entryLimitSQL;
    }
@@ -75,6 +78,10 @@ class Pagination extends GeneralModel implements IPagination{
 
    public function getRowCount(){
       return $this->rowCount;
+   }
+
+   public function getPaginationParameters(){
+      return $this->parameters;
    }
 
    protected function setUpValidation(){

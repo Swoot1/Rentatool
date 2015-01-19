@@ -22,6 +22,9 @@ class PDOContainer{
          self::$instance = new \PDO($dsn, $username, $password, $options);
       }
 
+      // Execute tries to set LIMIT as a string but that's incorrect syntax. Emulate off makes it work.
+      self::$instance->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+
       return self::$instance;
    }
 }

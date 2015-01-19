@@ -88,7 +88,7 @@ class RentalObjectMapper{
    public function index(RentalObjectFilter $rentalObjectFilter, IPagination &$pagination){
       $query          = $rentalObjectFilter->getFilterQuery($this->indexSQL);
       $paginatedQuery = $pagination->getPaginatedQuery($query);
-      $rentalObjects  = $this->databaseConnection->runQuery($paginatedQuery, $rentalObjectFilter->getFilterParams());
+      $rentalObjects  = $this->databaseConnection->runQuery($paginatedQuery, array_merge($rentalObjectFilter->getFilterParams(), $pagination->getPaginationParameters()));
 
       $rowCountQuery  = $pagination->getRowCountQuery($query);
       $rowCountResult = $this->databaseConnection->runQuery($rowCountQuery, $rentalObjectFilter->getFilterParams());

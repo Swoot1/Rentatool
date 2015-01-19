@@ -11,4 +11,16 @@ namespace Application\PHPFramework;
 
 interface IPagination{
 
+
+   public function getPaginatedQuery($query);
+
+   public function getRowCountQuery($query);
+
+
+   public function setRowCount($rowCount);
+
+   public function getRowCount();
+
+   public function getPaginationParameters();
+
 }
