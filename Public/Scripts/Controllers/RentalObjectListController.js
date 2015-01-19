@@ -3,25 +3,76 @@
  */
 (function () {
    angular.module('Rentatool').controller('RentalObjectListController', ['$scope', '$location', 'RentalObject', 'User', 'NavigationService', 'UserService', function ($scope, $location, RentalObject, User, NavigationService, UserService) {
-      $scope.rentalObjectCollection = RentalObject.query();
-      $scope.rentalObjectFilter = {};
 
-       if (UserService.isLoggedIn()) {
-           $scope.currentUser = UserService.getCurrentUser();
-       }
+      $scope.pagination = {
+         page: 1,
+         entryLimit: 3,
+         numberOfPages: 1,
+         goToFirstPage: function () {
+            this.page = 1;
+         },
+         goToPreviousPage: function () {
+            this.page--;
+         },
+         goToNextPage: function () {
+            this.page++;
+         },
+         goToLastPage: function () {
+            this.page = this.numberOfPages;
+         },
+         pages: [1]
+      };
 
-      $scope.searchRentalObject = function (rentalObjectFilter) {
-         var GETParams = {};
+      $scope.$watchGroup(['pagination.page', 'pagination.numberOfPages'], function () {
+         var pageNumber = $scope.pagination.page, k = 0;
+         var diff = $scope.pagination.numberOfPages - $scope.pagination.page;
+         var i = diff === 0 ? -2 : (diff === 1 ? -1 : 0);
 
-         for (var i in rentalObjectFilter) {
-            if (rentalObjectFilter.hasOwnProperty(i) && rentalObjectFilter[i]) {
-               GETParams[i] = rentalObjectFilter[i];
-            }
+         $scope.pagination.pages = [];
+
+         while (pageNumber > 1 && i < 2) {
+            pageNumber--;
+            i++;
          }
 
-         $scope.rentalObjectCollection = RentalObject.query(
-            GETParams);
+         while (k < 5 && pageNumber <= $scope.pagination.numberOfPages) {
+            $scope.pagination.pages.push(pageNumber);
+            pageNumber++;
+            k++;
+         }
+      });
+
+      $scope.$watch('totalNumberOfRows', function () {
+         $scope.pagination.numberOfPages = Math.ceil($scope.totalNumberOfRows / $scope.pagination.entryLimit);
+      });
+
+      $scope.$watch('pagination.page', function (newValue) {
+         $scope.setPage(newValue);
+      });
+
+      $scope.setPage = function (page) {
+         $scope.pagination.page = page;
+         $scope.getRentalObjects();
       };
+
+      $scope.getRentalObjects = function () {
+         var GETParameters = $scope.rentalObjectFilter;
+         GETParameters.page = $scope.pagination.page;
+         GETParameters.entryLimit = $scope.pagination.entryLimit;
+         $scope.rentalObjectCollection = RentalObject.query(GETParameters);
+      };
+
+      $scope.searchRentalObject = function () {
+         $scope.pagination.page = 1;
+         $scope.getRentalObjects();
+      };
+
+      $scope.rentalObjectFilter = {};
+      $scope.rentalObjectCollection = $scope.getRentalObjects();
+
+      if (UserService.isLoggedIn()) {
+         $scope.currentUser = UserService.getCurrentUser();
+      }
 
       $scope.getThumbNailURL = function (rentalObject) {
          var url = '', id, extension;
@@ -35,6 +86,6 @@
          return url;
       };
 
-       $scope.navigateToRentalObject = NavigationService.navigateToRentalObject;
+      $scope.navigateToRentalObject = NavigationService.navigateToRentalObject;
    }]);
 })();

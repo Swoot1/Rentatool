@@ -8,15 +8,18 @@
 
 namespace Application\PHPFramework\Response;
 
+use Application\PHPFramework\IPagination;
 use Application\PHPFramework\Validation\Collections\ValueValidationCollection;
 use Application\PHPFramework\Models\GeneralModel;
 use Application\PHPFramework\Response\Models\Notifier;
 
 class Metadata extends GeneralModel implements IMetadata{
    protected $notificationCollection;
+   protected $totalNumberOfRows = null;
 
-   public function __construct(INotificationCollection $notificationCollection){
+   public function __construct(INotificationCollection $notificationCollection, $totalNumberOfRows = null){
       $this->notificationCollection = $notificationCollection;
+      $this->totalNumberOfRows      = $totalNumberOfRows;
       parent::__construct();
    }
 
@@ -29,5 +32,9 @@ class Metadata extends GeneralModel implements IMetadata{
       $this->notificationCollection->addNotifier($notifier);
 
       return $this;
+   }
+
+   public function setPaginationInfo(IPagination $pagination){
+      $this->totalNumberOfRows = $pagination->getRowCount();
    }
 } 

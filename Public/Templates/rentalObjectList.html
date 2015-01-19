@@ -1,8 +1,9 @@
 <div class="row">
     <div class="12-columns large">
         <h1>Uthyrningsobjekt</h1>
-        <form ng-submit="searchRentalObject(rentalObjectFilter)">
-            <div class="large-10 columns">
+
+        <form ng-submit="searchRentalObject()">
+        <div class="large-10 columns">
 
                 <div class="row">
                     <div class="large-6 columns">
@@ -24,8 +25,9 @@
         </form>
     </div>
 </div>
-<div class="row cursor-pointer" ng-click="navigateToRentalObject(rentalObject)" ng-repeat="rentalObject in rentalObjectCollection">
-    <div class="column large-2">
+<div class="row cursor-pointer" ng-click="navigateToRentalObject(rentalObject)"
+     ng-repeat="rentalObject in rentalObjectCollection">
+<div class="column large-2">
         <img style="width:50px; height:50px" ng-src="{{getThumbNailURL(rentalObject)}}">
     </div>
     <div class="column large-4">
@@ -37,3 +39,25 @@
 </div>
 
 <p ng-hide="rentalObjectCollection.length">Hittade inga träffar. Prova att söka på något annat.</p>
+
+<div class="row">
+    <div class="column large-7">
+        <ul class="pagination">
+            <li class="arrow" ng-show="pagination.page > 1" ng-click="pagination.goToFirstPage()"><a href="">&laquo;&laquo;
+                First</a></li>
+            <li class="arrow" ng-show="pagination.page > 1" ng-click="pagination.goToPreviousPage()"><a href="">&laquo;
+                Previous</a></li>
+            <li ng-class="{current: pagination.page === page}" ng-repeat="page in pagination.pages"><a href=""
+                                                                                                       ng-click="setPage(page)">{{page}}</a>
+            </li>
+            <div pagenumbers></div>
+            <li class="arrow" ng-show="pagination.page < pagination.numberOfPages" ng-click="pagination.goToNextPage()">
+                <a href="">Next &raquo;</a>
+            </li>
+            <li class="arrow" ng-show="pagination.page < pagination.numberOfPages" ng-click="pagination.goToLastPage()">
+                <a href="">Last &raquo;&raquo;</a>
+            </li>
+        </ul>
+    </div>
+</div>
+

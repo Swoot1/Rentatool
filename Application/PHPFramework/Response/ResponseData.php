@@ -8,6 +8,7 @@
 
 namespace Application\PHPFramework\Response;
 
+use Application\PHPFramework\IPagination;
 use Application\PHPFramework\Validation\Collections\ValueValidationCollection;
 use Application\PHPFramework\ErrorHandling\Exceptions\ApplicationException;
 use Application\PHPFramework\Interfaces\IToArray;
@@ -60,6 +61,12 @@ class ResponseData extends GeneralModel{
 
    public function addNotifier(Notifier $notifier){
       $this->metadata->addNotifier($notifier);
+
+      return $this;
+   }
+
+   public function setPaginationInfo(IPagination $pagination){
+      $this->metadata->setPaginationInfo($pagination);
 
       return $this;
    }

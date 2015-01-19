@@ -15,6 +15,7 @@ use Application\Mappers\RentalObjectMapper;
 use Application\Models\RentalObject;
 use Application\Models\User;
 use Application\PHPFramework\ErrorHandling\Exceptions\NotFoundException;
+use Application\PHPFramework\IPagination;
 
 class RentalObjectService{
    /**
@@ -32,9 +33,10 @@ class RentalObjectService{
       return $this;
    }
 
-   public function index(RentalObjectFilter $rentalObjectFilter){
-      $rentalObjectData       = $this->rentalObjectMapper->index($rentalObjectFilter);
+   public function index(RentalObjectFilter $rentalObjectFilter, IPagination &$pagination){
+      $rentalObjectData       = $this->rentalObjectMapper->index($rentalObjectFilter, $pagination);
       $rentalObjectCollection = new RentalObjectCollection($rentalObjectData);
+
       return $this->setFileCollections($rentalObjectCollection);
    }
 
@@ -53,9 +55,9 @@ class RentalObjectService{
    }
 
    public function create(array $data, User $currentUser){
-      $rentalObject       = new RentalObject(array_merge(array('userId' => $currentUser->getId()), $data));
-      $rentalObjectData   = $this->rentalObjectMapper->create($rentalObject->getDBParameters());
-      $rentalObject       = new RentalObject($rentalObjectData);
+      $rentalObject     = new RentalObject(array_merge(array('userId' => $currentUser->getId()), $data));
+      $rentalObjectData = $this->rentalObjectMapper->create($rentalObject->getDBParameters());
+      $rentalObject     = new RentalObject($rentalObjectData);
 
       $fileCollectionData = array_key_exists('fileCollection', $data) ? $data['fileCollection'] : array();
       $rentalObject       = $this->createFileCollection($fileCollectionData, $rentalObject);

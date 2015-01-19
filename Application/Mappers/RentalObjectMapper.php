@@ -11,6 +11,7 @@ namespace Application\Mappers;
 
 use Application\PHPFramework\Database\Models\IDatabaseConnection;
 use Application\Filters\RentalObjectFilter;
+use Application\PHPFramework\IPagination;
 
 class RentalObjectMapper{
    private $databaseConnection;
@@ -84,9 +85,14 @@ class RentalObjectMapper{
       $this->databaseConnection = $databaseConnection;
    }
 
-   public function index(RentalObjectFilter $rentalObjectFilter){
-      $query         = $rentalObjectFilter->getFilterQuery($this->indexSQL);
-      $rentalObjects = $this->databaseConnection->runQuery($query, $rentalObjectFilter->getFilterParams());
+   public function index(RentalObjectFilter $rentalObjectFilter, IPagination &$pagination){
+      $query          = $rentalObjectFilter->getFilterQuery($this->indexSQL);
+      $paginatedQuery = $pagination->getPaginatedQuery($query);
+      $rentalObjects  = $this->databaseConnection->runQuery($paginatedQuery, $rentalObjectFilter->getFilterParams());
+
+      $rowCountQuery  = $pagination->getRowCountQuery($query);
+      $rowCountResult = $this->databaseConnection->runQuery($rowCountQuery, $rentalObjectFilter->getFilterParams());
+      $pagination->setRowCount($rowCountResult[0]['rowCount']);
 
       return $rentalObjects;
    }

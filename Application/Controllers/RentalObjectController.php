@@ -9,6 +9,7 @@
 
 namespace Application\Controllers;
 
+use Application\PHPFramework\Pagination;
 use Application\PHPFramework\SessionManager;
 use Application\PHPFramework\Request\Request;
 use Application\PHPFramework\Response\Factories\ResponseFactory;
@@ -36,10 +37,15 @@ class RentalObjectController{
     * @return \Application\PHPFramework\Response\Response
     */
    public function index(){
-      $GETParameters          = $this->request->getGETParameters();
-      $rentalObjectFilter     = new RentalObjectFilter($GETParameters);
-      $rentalObjectCollection = $this->rentalObjectService->index($rentalObjectFilter);
-      $this->response->setResponseData($rentalObjectCollection);
+      $GETParameters      = $this->request->getGETParameters();
+      $rentalObjectFilter = new RentalObjectFilter($GETParameters);
+      $GETParameters      = $this->request->getGETParameters();
+
+      $pagination             = new Pagination($GETParameters);
+      $rentalObjectCollection = $this->rentalObjectService->index($rentalObjectFilter, $pagination);
+
+      $this->response->setResponseData($rentalObjectCollection)
+                     ->setPaginationInfo($pagination);
 
       return $this->response;
    }
@@ -55,7 +61,6 @@ class RentalObjectController{
    }
 
    public function read($id){
-
       $rentalObject = $this->rentalObjectService->read($id);
       $this->response->setResponseData($rentalObject);
 

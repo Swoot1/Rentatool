@@ -8,6 +8,7 @@
 namespace Application\PHPFramework\Response;
 
 use Application\PHPFramework\Interfaces\IToArray;
+use Application\PHPFramework\IPagination;
 use Application\PHPFramework\Response\Models\Notifier;
 
 /**
@@ -43,6 +44,12 @@ class Response implements IResponse{
 
       return $this;
 
+   }
+
+   public function setPaginationInfo(IPagination $pagination){
+      $this->responseData->setPaginationInfo($pagination);
+
+      return $this;
    }
 
    public function setContentType($value){
