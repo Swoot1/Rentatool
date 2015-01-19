@@ -41,7 +41,7 @@ class MySQLValueFormatter implements IMySQLValueFormatter{
    private function parseValue($value, array $columnMeta){
       $dataType = $this->getDataTypeFromColumnMeta($columnMeta);
 
-      if ($dataType !== 'string' && is_string($value)){
+      if ($dataType !== 'string'){
          settype($value, $dataType);
       }
 
