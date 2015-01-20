@@ -63,7 +63,7 @@ body {
 
 /* Css for removing border on editable input fields */
 
-input.editable[type="text"], input.editable[type="text"]:focus, textarea.editable, textarea:focus.editable {
+input.editable[type="text"], input.editable[type="text"]:focus, input.editable[type="number"], input.editable[type="number"]:focus, textarea.editable, textarea:focus.editable {
     -moz-appearance:    value;
     -webkit-appearance: none;
     appearance:         value;
