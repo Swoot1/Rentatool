@@ -35,7 +35,7 @@ class AuthorizationService{
       $invalidLogin = $user === null || $user->isValidPassword($login->getPassword()) == false;
 
       if ($invalidLogin){
-         throw new ApplicationException('Fel e-postadress eller användarnamn.');
+         throw new ApplicationException('Fel e-postadress.');
       }
 
       return $user;
