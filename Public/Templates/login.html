@@ -15,7 +15,8 @@
 
                     <div class="row">
                         <div class="large-7 columns">
-                            <input name="password" type="password" ng-model="login.password" required placeholder="Lösenord"/>
+                            <input name="password" type="password" ng-model="login.password" required
+                                   placeholder="Lösenord"/>
                         </div>
                         <div class="large-5 columns">
                             <button type="submit" class="tiny">Logga in</button>
@@ -28,9 +29,22 @@
                 <h2 class="front-box-text"><strong class="">Har du inget konto?</strong> Bli medlem</h2>
 
                 <form name="sign_up_form" ng-submit="createSignUp()">
-                    <input alphanumericvalidation ng-model="signUp.username" required name="username" type="text" placeholder="Användarnamn"/>
+                    <input alphanumericvalidation ng-model="signUp.username" required name="username" type="text"
+                           placeholder="Namn"/>
+                    <label for="is_company">Företagskonto
+                        <input ng-model="signUp.isCompany" required name="is_company" type="checkbox"/>
+                    </label>
+                    <input organizationnumbervalidation ng-if="signUp.isCompany" ng-model="signUp.organizationNumber"
+                           required
+                           name="organization_number" type="text"
+                           placeholder="Organisationsnummer"/>
+                    <input organizationnumbervalidation ng-if="!signUp.isCompany" ng-model="signUp.organizationNumber"
+                           required
+                           name="organization_number" type="text"
+                           placeholder="Personnummer"/>
                     <input ng-model="signUp.email" required name="email" type="email" placeholder="E-postadress"/>
-                    <input passwordvalidation ng-model="signUp.password" required name="password" type="password" placeholder="Lösenord"/>
+                    <input passwordvalidation ng-model="signUp.password" required name="password" type="password"
+                           placeholder="Lösenord"/>
                     <button type="submit" class="tiny" ng-disabled="sign_up_form.$invalid">Skapa konto</button>
                 </form>
             </div>

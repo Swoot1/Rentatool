@@ -31,6 +31,7 @@ class User extends GeneralModel{
    protected $hasAdministrativeAccess = false;
    protected $hasConfirmedEmail = false;
    protected $organizationNumber;
+   protected $isCompany;
    protected $address = null;
    protected $additionalAddressInformation = null;
    protected $zipCode = null;
@@ -81,6 +82,12 @@ class User extends GeneralModel{
                                                                array(
                                                                   'genericName'  => 'organisationsnummer/personnummer',
                                                                   'propertyName' => 'organizationNumber'
+                                                               )
+                                                            ),
+                                                            new BooleanValidation(
+                                                               array(
+                                                                  'genericName'  => 'check för företag',
+                                                                  'propertyName' => 'isCompany'
                                                                )
                                                             ),
                                                             new AddressValidation(
