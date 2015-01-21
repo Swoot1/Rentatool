@@ -10,11 +10,11 @@
                         <input type="search" ng-model="rentalObjectFilter.query" name="query" placeholder="Fritext"/>
                     </div>
                     <div class="large-2 columns">
-                        <input type="datetime" ng-model="rentalObjectFilter.fromDate" datepicker name="fromDate"
+                        <input type="datetime" ng-model="rentalObjectFilter.fromDate" emptytonull datepicker name="fromDate"
                                placeholder="Tillgänglig från"/>
                     </div>
                     <div class="large-2 columns left">
-                        <input type="datetime" ng-model="rentalObjectFilter.toDate" datepicker name="toDate"
+                        <input type="datetime" ng-model="rentalObjectFilter.toDate" emptytonull datepicker name="toDate"
                                placeholder="Till och med"/>
                     </div>
                     <div class="large-1 columns left">
