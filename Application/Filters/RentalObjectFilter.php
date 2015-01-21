@@ -20,6 +20,9 @@ class RentalObjectFilter extends GeneralModel{
    protected $toDate = null;
    protected $active = true;
    protected $userId = null;
+   protected $additionalParameters = array();
+   protected $_noDBProperties = array("additionalParameters");
+
 
    /**
     * @param array $data
@@ -46,11 +49,25 @@ class RentalObjectFilter extends GeneralModel{
    protected function setFromDate($value){
       $this->fromDate = $this->formatDate($value);
 
+      $this->additionalParameters['fromDate2'] = $this->fromDate;
+
+      if ($this->toDate){
+         $this->additionalParameters['fromDate3'] = $this->fromDate;
+         $this->additionalParameters['toDate3']   = $this->toDate;
+      }
+
       return $this;
    }
 
    protected function setToDate($value){
       $this->toDate = $this->formatDate($value);
+
+      $this->additionalParameters['toDate2'] = $this->toDate;
+
+      if ($this->toDate){
+         $this->additionalParameters['fromDate3'] = $this->fromDate;
+         $this->additionalParameters['toDate3']   = $this->toDate;
+      }
 
       return $this;
    }
@@ -90,7 +107,7 @@ class RentalObjectFilter extends GeneralModel{
          $result[] = 'name = :query';
       }
 
-      if ($this->userId) {
+      if ($this->userId){
          $result[] = 'user_id = :userId';
       }
 
@@ -167,7 +184,7 @@ class RentalObjectFilter extends GeneralModel{
          $result[] = '(
                            :fromDate >= rent_periods.from_date
                         AND
-                           :fromDate <= rent_periods.to_date
+                           :fromDate2 <= rent_periods.to_date
                      )';
       }
 
@@ -184,7 +201,7 @@ class RentalObjectFilter extends GeneralModel{
          $result[] = '(
                            :toDate <= rent_periods.to_date
                         AND
-                           :toDate >= rent_periods.from_date
+                           :toDate2 >= rent_periods.from_date
                      )';
       }
 
@@ -199,9 +216,9 @@ class RentalObjectFilter extends GeneralModel{
 
       if ($this->fromDate && $this->toDate){
          $result[] = '(
-                           :fromDate <= rent_periods.to_date
+                           :fromDate3 <= rent_periods.to_date
                         AND
-                           :toDate >= rent_periods.from_date
+                           :toDate3 >= rent_periods.from_date
                      )';
       }
 
@@ -213,9 +230,11 @@ class RentalObjectFilter extends GeneralModel{
     * @return array
     */
    public function getFilterParams(){
-      $DBParams = $this->getDBParameters();
+      $filterParams = $this->getDBParameters();
 
-      return array_filter($DBParams, function ($value){
+      $filterParams = array_merge($filterParams, $this->additionalParameters);
+
+      return array_filter($filterParams, function ($value){
          return $value != null;
       });
    }
