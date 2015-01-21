@@ -15,7 +15,7 @@
       PaginationService.setPagination($scope, $scope.getRentalObjects);
 
       $scope.searchRentalObject = function () {
-         PaginationService.setPage(1);
+         $scope.setPage(1);
       };
 
       $scope.rentalObjectFilter = {};
