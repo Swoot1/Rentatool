@@ -30,7 +30,7 @@ class IndexHTMLController{
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
     <link href="Public/css/custom.css" type="text/css" rel="stylesheet"/>
 </head>
-<body>
+<body ng-controller="SessionController">
 <div id="content">
    <nav class="top-bar" data-topbar ng-controller="NavigationController">
      <ul class="title-area">
