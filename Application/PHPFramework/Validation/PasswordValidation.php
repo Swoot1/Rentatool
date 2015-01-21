@@ -18,7 +18,7 @@ class PasswordValidation extends ValueValidation{
 
    private function validatePassword($value){
 
-      $result            = preg_match('/^[A-ZÅÄÖa-zåäö0-9!#\\\\$%&\'\(\)\*\+,\.\/:;<=>\?@^_`\{|\}~\[\]\-]{1,64}$/', $value);
+      $result = preg_match('/^[A-ZÅÄÖa-zåäö0-9!#\\\\$%&"\'\(\)\*\+,\.\/:;<=>\?@^_`\{|\}~\[\]\-]{1,64}$/', $value);
       $isInvalidPassword = $result === 0 || $result === false;
 
       if ($isInvalidPassword){

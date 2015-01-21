@@ -11,7 +11,7 @@
          priority: 1000,
          compile: function compile(element) {
             // When copy pasting please note that the frontend regexp is double escaped and the backend regexp is single escaped.
-            element.attr('ng-pattern', "/^[A-ZÅÄÖa-zåäö0-9!#\\\\\\$%&\\'\\(\\)\\*\\+,\\.\/:;<=>\\?@^_`\\{|\\}~\\[\\]\\-]+$/");
+            element.attr('ng-pattern', "/^[A-ZÅÄÖa-zåäö0-9!#\\\\\\$%&\"\\'\\(\\)\\*\\+,\\.\/:;<=>\\?@^_`\\{|\\}~\\[\\]\\-]+$/");
             element.attr('type', 'password');
             element.attr('maxlength', '64');
             element.removeAttr('passwordvalidation'); // Remove current directive and avoid infinite loop.
