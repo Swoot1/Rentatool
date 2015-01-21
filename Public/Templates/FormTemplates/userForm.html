@@ -10,7 +10,9 @@
                 <small class="error" ng-message="required">Ange ett organisationsnummer.</small>
                 <small class="error" ng-message="pattern">Ange ett giltigt organisationsnummer.</small>
             </span>
-
+        <label for="is_company">Företagskonto
+            <input type="checkbox" ng-model="user.isCompany" name="is_company">
+        </label>
         <label ng-class="{'error' : user_form.username.$invalid && user_form.username.$dirty}" for="username">Namn
             <small>Obligatorisk</small>
             <input alphanumericvalidation required ng-model="user.username" name="username" type="text"/>
